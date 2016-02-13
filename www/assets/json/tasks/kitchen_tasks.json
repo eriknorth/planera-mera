@@ -1,0 +1,86 @@
+{
+	"tasks": [
+		{
+			"id": 1,
+			"name": "",
+			"difficulty": 1,
+			"items": [
+				{
+					"item": "bread",
+					"category": "",
+					"order": 1
+				},
+				{
+					"item": "toaster",
+					"category": "",
+					"order": 1
+					
+				},
+				{
+					"item": "",
+					"category": "topping",
+					"order": 2
+				},
+				{
+					"item": "plate",
+					"category": "",
+					"order": 2
+				}
+			]
+		},
+		{
+			"id": 2,
+			"name": "",
+			"difficulty": 1,
+			"items": [
+				{
+					"item": "dirty_dish",
+					"category": "",
+					"order": 1
+				},
+				{
+					"item": "water",
+					"category": "",
+					"order": 1
+					
+				},
+				{
+					"item": "dish_soap",
+					"category": "",
+					"order": 1
+				},
+				{
+					"item": "washing_brush",
+					"category": "",
+					"order": 1
+				},
+				{
+					"item": "drainer",
+					"category": "",
+					"order": 2
+				}
+			]
+		},
+		{
+			"id": 3,
+			"name": "",
+			"difficulty": 1,
+			"items": [
+				{
+					"item": "",
+					"category": "edible",
+					"order": 1
+				},
+				{
+					"item": "",
+					"category": "drinkable",
+					"order": 1
+				},
+				
+			]
+		}
+	]
+	
+	
+	
+}

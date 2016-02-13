@@ -1,0 +1,60 @@
+{
+	"tasks": [
+		{
+			"id": 1,
+			"name": "",
+			"difficulty": 1,
+			"audio": "tasks/wash_clothes.mp3",
+			"items": [
+				{
+					"item": "washing-machine",
+					"category": "",
+					"order": 1
+				},
+				{
+					"item": "basket",
+					"category": "",
+					"order": 1
+					
+				},
+				{
+					"item": "",
+					"category": "clothes",
+					"order": 1
+				},
+				{
+					"item": "washing-liquid",
+					"category": "",
+					"order": 1
+				}
+			]
+		},
+		{
+			"id": 2,
+			"name": "",
+			"difficulty": 1,
+			"audio": "tasks/brush_teeth.mp3",
+			"items": [
+				{
+					"item": "tooth-paste",
+					"category": "",
+					"order": 1
+				},
+				{
+					"item": "tooth-brush",
+					"category": "",
+					"order": 1
+					
+				},
+				{
+					"item": "sink",
+					"category": "",
+					"order": 1
+				}
+			]
+		}
+	]
+	
+	
+	
+}

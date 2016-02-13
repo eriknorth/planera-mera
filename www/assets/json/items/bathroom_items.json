@@ -1,0 +1,76 @@
+{
+	"items": [
+		{
+			"name": "basket",
+			"x": 420,
+			"y": 252,
+			"categories": []
+		},
+		{
+			"name": "towel",
+			"x": 954,
+			"y": 512,
+			"categories": ["clothes"]
+		},
+		{
+			"name": "toilet",
+			"x": 633,
+			"y": 325,
+			"categories": []
+		},
+		{
+			"name": "washing-machine",
+			"x": 212,
+			"y": 308,
+			"categories": []
+		},
+		{
+			"name": "tumbler",
+			"x": 212,
+			"y": 518,
+			"categories": []
+		},
+		{
+			"name": "tooth-brush",
+			"x": 747,
+			"y": 446,
+			"categories": []
+		},
+		{
+			"name": "cloth",
+			"x": 420,
+			"y": 340,
+			"categories": ["clothes"]
+		},
+		{
+			"name": "shower",
+			"x": 1190,
+			"y": 594,
+			"categories": []
+		},
+		{
+			"name": "washing-liquid",
+			"x": 264,
+			"y": 660,
+			"categories": []
+		},
+		{
+			"name": "sink",
+			"x": 798,
+			"y": 396,
+			"categories": []
+		},
+		{
+			"name": "tooth-paste",
+			"x": 858,
+			"y": 441,
+			"categories": []
+		},
+		{
+			"name": "shower-liquids",
+			"x": 1102,
+			"y": 465,
+			"categories": []
+		}
+	]
+}

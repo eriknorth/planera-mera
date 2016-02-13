@@ -1,0 +1,18 @@
+{
+	"items": [
+		{
+			"name": "bread",
+			"x": 100,
+			"y": 100,
+			"categories": ["edible"],
+			"image": "items/bread.png"
+		},
+		{
+			"name": "butter",
+			"x": 200,
+			"y": 100,
+			"categories": ["edible", "topping"],
+			"image": "items/butter.png"
+		}
+	]
+}

@@ -1,0 +1,73 @@
+{
+	"worlds": [
+		{
+			"id": 1,
+			"name": "home",
+			"icon": "house.png",
+			"background": "home.png",
+			"rooms": [
+				{
+					"id": 1,
+					"name": "bathroom",
+					"icon": "rooms/bathroom_icon.png",
+					"icon_x": 540,
+					"icon_y": 340,
+					"background": "rooms/bathroom.png",
+					"item_atlas": "items/bathroom.json",
+					"item_image": "items/bathroom.png",
+					"items": "items/bathroom_items.json",
+					"tasks": "tasks/bathroom_tasks.json",
+					"enabled": true
+				},
+				{
+					"id": 2,
+					"name": "kitchen",
+					"icon": "rooms/kitchen_icon.png",
+					"icon_x": 740,
+					"icon_y": 340,
+					"background": "",
+					"item_atlas": "",
+					"item_image": "",
+					"items": "",
+					"tasks": "",
+					"enabled": true
+				},
+				{
+					"id": 3,
+					"name": "bedroom",
+					"icon": "rooms/bedroom_icon.png",
+					"icon_x": 540,
+					"icon_y": 520,
+					"background": "",
+					"item_atlas": "",
+					"item_image": "",
+					"items": "",
+					"tasks": "",
+					"enabled": true
+				},
+				{
+					"id": 4,
+					"name": "playroom",
+					"icon": "rooms/playroom_icon.png",
+					"icon_x": 740,
+					"icon_y": 520,
+					"background": "",
+					"item_atlas": "",
+					"item_image": "",
+					"items": "",
+					"tasks": "",
+					"enabled": true
+				}
+			],
+			"enabled": true
+		},
+		{
+			"id": 2,
+			"name": "school",
+			"icon": "house.png",
+			"background": "home.png",
+			"rooms": [],
+			"enabled": false
+		}
+	]
+}
