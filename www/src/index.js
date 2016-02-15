@@ -36,8 +36,12 @@ var app = {
         app.receivedEvent('deviceready');
 		
 		
-		var w = window.innerWidth * window.devicePixelRatio;
-		var h = window.innerHeight * window.devicePixelRatio;
+		// var w = window.innerWidth * window.devicePixelRatio;
+// 		var h = window.innerHeight * window.devicePixelRatio;
+// 		var game = new Phaser.Game(w, h, Phaser.AUTO, '');
+
+		var w = 1280;
+		var h = 800;
 		var game = new Phaser.Game(w, h, Phaser.AUTO, '');
 		
 		// Add states

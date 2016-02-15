@@ -111,15 +111,20 @@ GameObj.Preloader.prototype = {
 		this.audioList.push('wrong_audio');
 		
 		// Load task audio files
+		// Wait for task files to be loaded
+		// TODO: Some problems with loading
 		this.load.onFileComplete.add(function(progress, key) {
 			
 			var pos = key.indexOf('_tasks');
 			if(pos > -1) {
 				var prefix = key.substring(0, pos);
 				var json = this.cache.getJSON(key);
-				for(i = 0; i < json.tasks.length; i++) {
-					this.load.audio(prefix+'_t'+json.tasks[i].id+'_audio', 'assets/audio/'+json.tasks[i].audio);
-					this.audioList.push(prefix+'_t'+json.tasks[i].id+'_audio');
+				// Check if tasks exist
+				if(json.tasks != null) {
+					for(i = 0; i < json.tasks.length; i++) {
+						this.load.audio(prefix+'_t'+json.tasks[i].id+'_audio', 'assets/audio/'+json.tasks[i].audio);
+						this.audioList.push(prefix+'_t'+json.tasks[i].id+'_audio');
+					}
 				}
 			}
 			

@@ -70,6 +70,10 @@ GameObj.Room.prototype = {
 		this.cloud = this.add.sprite(0, 600, 'cloud');
 		this.layer1.add(this.cloud);
 		
+		
+		// Create array for Items
+		this.itemObj = [];
+		
 		// Add items
 		for(i = 0; i < itemJson.items.length; i++)
 		{
@@ -96,12 +100,20 @@ GameObj.Room.prototype = {
 			// Add to group
 			this.itemGroups[i].add(this.items[i]);
 			// Add events
-			this.items[i].events.onInputDown.add(this.itemDown, this);
+			//this.items[i].events.onInputDown.add(this.itemDown, this);
 			this.items[i].events.onInputUp.add(this.itemUp, this);
 			this.items[i].events.onDragUpdate.add(this.itemDrag, this);
 
-
-			this.layer1.add(this.itemGroups[i]);
+			
+			// TODO: Testing, added group to layer2 instead of layer1
+			this.layer2.add(this.itemGroups[i]);
+			
+			
+			// Item objects
+			this.itemObj[i] = new Item(this, itemJson.items[i].x, 800-itemJson.items[i].y, 'w'+worldObj.id+'_r'+roomObj.id+'_atlas', itemJson.items[i].name);
+			this.add.existing(this.itemObj[i]);
+			this.layer1.add(this.itemObj[i]);
+			this.itemObj[i].events.onInputDown.add(this.itemDown, this);
 		}
 		
 		// Back button
@@ -124,6 +136,7 @@ GameObj.Room.prototype = {
 		this.wrongAudio.onStop.add(this.soundStopped, this);
 		
 		
+		// Overlay
 		var graphicOverlay = new Phaser.Graphics(this, 0, 0);
 		graphicOverlay.beginFill(0x000000, 0.85);
 		graphicOverlay.drawRect(0,0, this.world.width, this.world.height);
@@ -136,6 +149,19 @@ GameObj.Room.prototype = {
 		
 		// Destroy graphics
 		graphicOverlay.destroy();
+		
+		
+		// Add slots for items
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		// TODO: For testing choose random task
 		var num = this.rnd.integerInRange(0, taskJson.tasks.length-1);
@@ -292,15 +318,17 @@ GameObj.Room.prototype = {
 	itemDown: function (sprite) {
 		
 		// Item
-		sprite.scale.setTo(1.1);
+		// sprite.scale.setTo(1.1);
+//
+// 		// Shadow
+// 		this.shadows[sprite.listId].x = sprite.x+10;
+// 		this.shadows[sprite.listId].y = sprite.y+10;
+// 		this.shadows[sprite.listId].visible = true;
+//
+// 		// Bring group to top
+// 		this.layer1.bringToTop(this.itemGroups[sprite.listId]);
 		
-		// Shadow
-		this.shadows[sprite.listId].x = sprite.x+10;
-		this.shadows[sprite.listId].y = sprite.y+10;
-		this.shadows[sprite.listId].visible = true;
-		
-		// Bring group to top
-		this.world.bringToTop(this.itemGroups[sprite.listId]);
+		this.layer1.bringToTop(sprite);
 	},
 	itemUp: function (sprite) {
 

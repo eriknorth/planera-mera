@@ -23,6 +23,9 @@ GameObj.Boot.prototype = {
 		// Set scaling
 		this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 		
+		this.scale.pageAlignHorizontally = true;
+		this.scale.pageAlignVertically = true;
+		
 		// Calculate background scaling
 		// var ratio = 1280 / 800;
 // 		var gameRatio = this.game.width / this.game.height;
