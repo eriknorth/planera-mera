@@ -84,6 +84,10 @@ GameObj.Preloader.prototype = {
 		this.load.spritesheet('alien-mouth-talk', 'assets/img/alien/alien-mouth-talk.png', 63, 19, 2);
 		
 		
+		// Load elements for the game
+		this.load.image('box', 'assets/img/elements/box.png');
+		this.load.image('arrow', 'assets/img/elements/arrow.png');
+		
 		
 		// TODO: Testing audio
 		this.load.audio('task1_audio', 'assets/audio/task1.mp3');
