@@ -1,41 +1,67 @@
-Box = function(game, x, y, num) {
+Box = function(game, y) {
 
 	this.game = game;
-	this.items = [];
-
-    Phaser.Group.call(this, game, null);
-
+	this.yPos = y;
+	
 	this.box = [];
 	this.arrow = [];
-	this.num = num;
-	
-	// Generate boxes and arrows
-	var spacing = game.world.width / (num+1);
-	for(i = num-1; i >= 0; i--) {
-		this.box[i] = game.make.sprite(spacing * (i+1), 280, 'box');
-		this.box[i].anchor.set(0.5);
-		this.add(this.box[i]);
-		
-		if(i > 0) {
-			this.arrow[i] = game.make.sprite(spacing * (i+1) - this.box[i].width/2+10, 280, 'arrow');
-			this.arrow[i].anchor.set(1, 0.5);
-			this.add(this.arrow[i]);
-		}
-	}
-	
-	// Add extra layer for items
-	this.items = game.make.group();
-	this.add(this.items);
+	this.num = 0;
+
+    Phaser.Group.call(this, game, null);
 };
 
 Box.prototype = Object.create(Phaser.Group.prototype);
 Box.prototype.constructor = Box;
 
 
+// Set Boxes
+Box.prototype.setBoxes = function(num) {
+	
+	// First reset
+	this.resetBoxes();
+	
+	this.num = num;
+	
+	// Calculate spacing
+	var bWidth = this.game.cache.getImage('box').width;
+	var spacing = bWidth + bWidth/3;
+	// Calculate offset
+	var offset = (this.game.world.width - (spacing * (num-1))) / 2;
+	// Generate boxes and arrows
+	for(i = num-1; i >= 0; i--) {
+		this.box[i] = this.game.make.sprite(offset + spacing * i, this.yPos, 'box');
+		this.box[i].anchor.set(0.5);
+		this.add(this.box[i]);
+		
+		if(i > 0) {
+			this.arrow[i] = this.game.make.sprite(offset + spacing * i - bWidth/2+10, this.yPos, 'arrow');
+			this.arrow[i].anchor.set(1, 0.5);
+			this.add(this.arrow[i]);
+		}
+	}
+	
+	// Add extra layer for items
+	this.items = this.game.make.group();
+	this.add(this.items);
+}
 
-// Add item to Box
-Box.prototype.addItem = function(item) {
-	this.items.add(item);
+// Reset Boxes
+Box.prototype.resetBoxes = function() {
+	
+	if(this.num != 0) {
+		// for(i = 0; i < this.num; i++) {
+// 			this.remove(this.box[i]);
+// 			if(i > 0) {
+// 				this.remove(this.arrow[i]);
+// 			}
+// 		}
+		this.removeAll();
+
+		this.box = [];
+		this.arrow = [];
+		this.items = [];
+		this.num = 0;
+	}
 }
 
 // Check overlap

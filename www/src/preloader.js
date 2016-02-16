@@ -113,6 +113,8 @@ GameObj.Preloader.prototype = {
 		this.audioList.push('correct_audio');
 		this.load.audio('wrong_audio', 'assets/audio/wrong.mp3');
 		this.audioList.push('wrong_audio');
+		this.load.audio('order_audio', 'assets/audio/order.mp3');
+		this.audioList.push('order_audio');
 		
 		// Load task audio files
 		// Wait for task files to be loaded

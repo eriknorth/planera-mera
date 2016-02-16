@@ -12,20 +12,14 @@
 					"order": 1
 				},
 				{
-					"item": "basket",
-					"category": "",
-					"order": 1
-					
-				},
-				{
 					"item": "",
 					"category": "clothes",
-					"order": 1
+					"order": 2
 				},
 				{
 					"item": "washing-liquid",
 					"category": "",
-					"order": 1
+					"order": 2
 				}
 			]
 		},
@@ -36,20 +30,63 @@
 			"audio": "tasks/brush_teeth.mp3",
 			"items": [
 				{
-					"item": "tooth-paste",
-					"category": "",
-					"order": 1
-				},
-				{
 					"item": "tooth-brush",
 					"category": "",
 					"order": 1
 					
 				},
 				{
+					"item": "tooth-paste",
+					"category": "",
+					"order": 2
+				},
+				{
 					"item": "sink",
 					"category": "",
+					"order": 2
+				}
+			]
+		},
+		{
+			"id": 3,
+			"name": "",
+			"difficulty": 1,
+			"audio": "tasks/shower.mp3",
+			"items": [
+				{
+					"item": "shower",
+					"category": "",
 					"order": 1
+					
+				},
+				{
+					"item": "shower-liquids",
+					"category": "",
+					"order": 2
+				},
+				{
+					"item": "towel",
+					"category": "",
+					"order": 3
+				}
+			]
+		},
+		{
+			"id": 4,
+			"name": "",
+			"difficulty": 1,
+			"audio": "tasks/dry_laundry.mp3",
+			"items": [
+				{
+					"item": "",
+					"category": "clothes",
+					"order": 1
+					
+				},
+				{
+					"item": "tumbler",
+					"category": "",
+					"order": 2
 				}
 			]
 		}

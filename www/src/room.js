@@ -12,6 +12,7 @@ GameObj.Room = function (game) {
 	this.audio = null;
 	this.correctAudio = null;
 	this.wrongAudio = null;
+	this.orderAudio = null;
 	this.taskAudio = null;
 	this.alien = null;
 	
@@ -106,9 +107,11 @@ GameObj.Room.prototype = {
 		this.audio.onStop.add(this.soundStopped, this);
 		//
 		this.correctAudio = this.add.audio('correct_audio');
-		this.correctAudio.onStop.add(this.soundStopped, this);
+		//this.correctAudio.onStop.add(this.soundStopped, this);
 		this.wrongAudio = this.add.audio('wrong_audio');
-		this.wrongAudio.onStop.add(this.soundStopped, this);
+		//this.wrongAudio.onStop.add(this.soundStopped, this);
+		this.orderAudio = this.add.audio('order_audio');
+		//this.orderAudio.onStop.add(this.soundStopped, this);
 		
 		
 		// Overlay
@@ -119,8 +122,8 @@ GameObj.Room.prototype = {
 		
 		var myBitmap = this.add.bitmapData(this.world.width, this.world.height);
 		var grd=myBitmap.context.createLinearGradient(0,0,0,this.world.height);
-		grd.addColorStop(0,'rgba(36,65,92,0.95)'); //"#24415c"
-		grd.addColorStop(1,'rgba(16,29,41,1.0)'); //"#152737"
+		grd.addColorStop(0,'rgba(36,65,92,0.95)');
+		grd.addColorStop(1,'rgba(16,29,41,1.0)');
 		myBitmap.context.fillStyle=grd;
 		myBitmap.context.fillRect(0,0,this.world.width,this.world.height);
 		
@@ -153,7 +156,7 @@ GameObj.Room.prototype = {
 		// }
 		
 		
-		this.box = new Box(this, 0, 0, 4);
+		this.box = new Box(this, 280);
 		this.add.existing(this.box);
 		this.layer2.add(this.box);
 		
@@ -163,6 +166,9 @@ GameObj.Room.prototype = {
 		var num = this.rnd.integerInRange(0, taskJson.tasks.length-1);
 		this.startTask(taskJson.tasks[num]);
 		this.task = num;
+		
+		// Update boxes
+		this.box.setBoxes(this.taskArray[this.task].items.length);
 	},
 	
 	shutdown: function () {
@@ -201,6 +207,12 @@ GameObj.Room.prototype = {
 			this.wrongAudio = null;
 		}
 		
+		if (this.orderAudio) {
+			this.orderAudio.stop();
+			this.orderAudio.destroy();
+			this.orderAudio = null;
+		}
+		
 		if (this.alien) {
 			this.alien.destroy();
 			this.alien = null;
@@ -223,12 +235,17 @@ GameObj.Room.prototype = {
 		
 	},
 	
-	playSequence: function(soundArray) {
+	playSequence: function(soundArray, callback) {
 		soundArray[0].play();
 		soundArray.forEach(function(element, index, array) {
-			if (soundArray[index + 1]) {
+			if (typeof soundArray[index + 1] == 'object') {	
 				soundArray[index].onStop.addOnce(function() {
 					soundArray[index + 1].play();
+				}, this);
+			}
+			else {
+				soundArray[index].onStop.addOnce(function() {
+					callback();
 				}, this);
 			}
 		});
@@ -243,6 +260,8 @@ GameObj.Room.prototype = {
 	
 	// Check result
 	play: function (pointer) {
+		
+		var self = this;
 		
 		var result = 0;
 		var correctItem = false;
@@ -284,8 +303,9 @@ GameObj.Room.prototype = {
 		// Play result
 		if(result >= this.taskArray[this.task].items.length) {
 			// Correct
-			this.correctAudio.play();
-			
+			this.playSequence([this.correctAudio, this.orderAudio], function() {
+				self.alien.talk(false);
+			});
 			
 			// TODO: Testing layers
 			this.layer1.remove(this.alien);
@@ -300,8 +320,8 @@ GameObj.Room.prototype = {
 			{
 				this.layer1.remove(this.itemObj[this.selectedItems[i]]);
 				
-				this.box.addItem(this.itemObj[this.selectedItems[i]]);
-				//this.layer2.add(this.itemObj[this.selectedItems[i]]);
+				//this.box.addItem(this.itemObj[this.selectedItems[i]]);
+				this.layer2.add(this.itemObj[this.selectedItems[i]]);
 			}
 			
 			this.layer2.visible = true;
@@ -319,7 +339,7 @@ GameObj.Room.prototype = {
 	// Pick up item
 	itemDown: function (sprite) {
 		// Bring to front
-		this.layer1.bringToTop(sprite);
+		sprite.bringToTop();
 	},
 	// Put down item
 	itemUp: function (sprite) {
@@ -362,8 +382,21 @@ GameObj.Room.prototype = {
 	
 	alienUp: function (sprite) {
 
+		var self = this;
+
 		this.alien.talk(true);
-		this.playSequence([this.taskAudio, this.audio]);
+		
+		// TODO: Make states
+		if(this.layer2.visible == false) {
+			this.playSequence([this.taskAudio, this.audio], function() {
+				self.alien.talk(false);
+			});
+		}
+		else {
+			this.playSequence([this.taskAudio, this.orderAudio], function() {
+				self.alien.talk(false);
+			});
+		}
 	},
 	soundStopped: function (sound) {
 	
