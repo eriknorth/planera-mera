@@ -169,6 +169,10 @@ GameObj.Room.prototype = {
 		
 		// Update boxes
 		this.box.setBoxes(this.taskArray[this.task].items.length);
+		
+		
+		// Sound library
+		this.sound = new Sound(this);
 	},
 	
 	shutdown: function () {
@@ -225,7 +229,6 @@ GameObj.Room.prototype = {
 		this.task = null;
 	},
 	
-	
 	startTask: function (task) {
 		
 		// Load task audio
@@ -234,6 +237,39 @@ GameObj.Room.prototype = {
 		// 
 		
 	},
+	
+	
+	playSequenceNew: function(soundArray, callback, delayStartCallback, delayEndCallback) {
+		var timer = this.time.create();
+		
+		soundArray[0].play();
+		soundArray.forEach(function(element, index, array) {
+			
+			if (typeof soundArray[index] == 'number') {	
+				timer.add(soundArray[index], function() {
+					soundArray[index + 1].play();
+					return delayEndCallback();
+				}, this);
+			}
+			else if (typeof soundArray[index + 1] == 'object') {
+				soundArray[index].onStop.addOnce(function() {
+					soundArray[index + 1].play();
+				}, this);
+			}
+			else if (typeof soundArray[index + 1] == 'number') {	
+				soundArray[index].onStop.addOnce(function() {
+					timer.start();
+					return delayStartCallback();
+				}, this);
+			}
+			else {
+				soundArray[index].onStop.addOnce(function() {
+					return callback();
+				}, this);
+			}
+		});
+	},
+	
 	
 	playSequence: function(soundArray, callback) {
 		soundArray[0].play();
@@ -251,12 +287,10 @@ GameObj.Room.prototype = {
 		});
 	},
 	
-	
 	goToWorld: function (pointer) {
 		//	Go back to world
 		this.state.start('World');
 	},
-	
 	
 	// Check result
 	play: function (pointer) {
@@ -338,9 +372,10 @@ GameObj.Room.prototype = {
 	
 	// Pick up item
 	itemDown: function (sprite) {
-		// Bring to front
+		// Bring to frontt
 		sprite.bringToTop();
 	},
+	
 	// Put down item
 	itemUp: function (sprite) {
 
@@ -379,7 +414,6 @@ GameObj.Room.prototype = {
 		
 	},
 	
-	
 	alienUp: function (sprite) {
 
 		var self = this;
@@ -388,9 +422,30 @@ GameObj.Room.prototype = {
 		
 		// TODO: Make states
 		if(this.layer2.visible == false) {
-			this.playSequence([this.taskAudio, this.audio], function() {
-				self.alien.talk(false);
-			});
+			
+			this.sound.playSequence(['correct_audio', 1000, 'order_audio', 1000, 'wrong_audio'], 
+				function() {
+					self.alien.talk(false);
+				},
+				function() {
+					self.alien.talk(false);
+				},
+				function() {
+					self.alien.talk(true);
+				}
+			);
+			
+			// this.playSequenceNew([this.taskAudio, 1000, this.audio],
+// 				function() {
+// 					self.alien.talk(false);
+// 				},
+// 				function() {
+// 					self.alien.talk(false);
+// 				},
+// 				function() {
+// 					self.alien.talk(true);
+// 				}
+// 			);
 		}
 		else {
 			this.playSequence([this.taskAudio, this.orderAudio], function() {
@@ -398,6 +453,7 @@ GameObj.Room.prototype = {
 			});
 		}
 	},
+	
 	soundStopped: function (sound) {
 	
 		this.alien.talk(false);
