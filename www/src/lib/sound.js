@@ -6,6 +6,26 @@ Sound = function (game) {
 
 Sound.prototype = {
 
+	play: function(audioName, callback) {
+		
+		// Destory timer
+		var killer = this.game.time.create();
+		var audio = this.game.add.audio(audioName);
+		
+		audio.play();
+		audio.onStop.addOnce(function() {
+			// Destroy audio
+			killer.add(1, function() {
+				audio.destroy();
+			}, this);
+			killer.start();
+		
+			// Execute callback if defined
+			typeof callback === 'function' && callback();
+		}, this);
+	
+	},
+	
 
 	playSequence: function(sequence, callback, delayStartCallback, delayEndCallback) {
 		
@@ -81,10 +101,8 @@ Sound.prototype = {
 				seqArray[index].audio.onStop.addOnce(function() {
 					// Destroy everything
 					killer.add(1, function() {
-						console.log('Killing audio...');
 						for(var i = 0; i < seqArray.length; i++) {
 							if(seqArray[i].type === 'audio') {
-								console.log('destroy:' + sequence[i]);
 								seqArray[i].audio.destroy();
 							}
 						}

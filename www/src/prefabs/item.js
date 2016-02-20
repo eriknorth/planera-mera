@@ -4,6 +4,9 @@ Item = function(game, x, y, atlas, sprite, id) {
 	this.initX = x;
 	this.initY = y;
 	this.id = id;
+	this.name = sprite;
+	this.xPos = x;
+	this.yPos = y;
 
 	// Make pixel
 	var graphicPixel = new Phaser.Graphics(this, 0, 0);
@@ -48,10 +51,23 @@ Item.prototype.getId = function() {
 	return this.id;
 };
 
+// Get item id
+Item.prototype.getName = function() {
+	return this.name;
+};
+
 // Set position
 Item.prototype.setPos = function(x, y) {
-	this.item.x = x;
-	this.item.y = y;
+	this.x = x;
+	this.y = y;
+	
+	this.xPos = x;
+	this.yPos = y;
+};
+
+// Get last position
+Item.prototype.getLastPos = function() {	
+	return {x: this.xPos, y: this.yPos};
 };
 
 // Reset position

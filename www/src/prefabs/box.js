@@ -6,6 +6,8 @@ Box = function(game, y) {
 	this.box = [];
 	this.arrow = [];
 	this.num = 0;
+	
+	this.items = [];
 
     Phaser.Group.call(this, game, null);
 };
@@ -28,7 +30,7 @@ Box.prototype.setBoxes = function(num) {
 	// Calculate offset
 	var offset = (this.game.world.width - (spacing * (num-1))) / 2;
 	// Generate boxes and arrows
-	for(i = num-1; i >= 0; i--) {
+	for(var i = num-1; i >= 0; i--) {
 		this.box[i] = this.game.make.sprite(offset + spacing * i, this.yPos, 'box');
 		this.box[i].anchor.set(0.5);
 		this.add(this.box[i]);
@@ -38,23 +40,16 @@ Box.prototype.setBoxes = function(num) {
 			this.arrow[i].anchor.set(1, 0.5);
 			this.add(this.arrow[i]);
 		}
+		
+		this.items[i] = -1;
 	}
-	
-	// Add extra layer for items
-	this.items = this.game.make.group();
-	this.add(this.items);
 }
 
 // Reset Boxes
 Box.prototype.resetBoxes = function() {
 	
 	if(this.num != 0) {
-		// for(i = 0; i < this.num; i++) {
-// 			this.remove(this.box[i]);
-// 			if(i > 0) {
-// 				this.remove(this.arrow[i]);
-// 			}
-// 		}
+
 		this.removeAll();
 
 		this.box = [];
@@ -66,7 +61,10 @@ Box.prototype.resetBoxes = function() {
 
 // Check overlap
 Box.prototype.checkOverlap = function(item) {
-		
+	
+	var overlap = false;
+	var kicker = true;
+	
 	// Check colision
 	for(i = 0; i < this.num; i++) {
 		
@@ -77,9 +75,51 @@ Box.prototype.checkOverlap = function(item) {
 			item.y > (b.y - b.height/2) && 
 			item.y < (b.y + b.height/2))
 		{
+			// Register item in the box
+			if(this.items[i] == -1) {
+				this.items[i] = item;
+				console.log('I\'m in box: ' + i);
+			}
+			// Someone else is in the box...
+			else {
+				// Check if this item is in other box
+				for(var j = 0; j < this.num; j++) {
+					if(this.items[j] != -1 && j != i) {
+						// Exchange items in places
+						if(this.items[j].getId() == item.getId()) {
+							this.items[j] = this.items[i];
+							this.items[i] = item;
+							
+							// Place other item in the other box
+							this.items[j].setPos(this.box[j].x, this.box[j].y);
+							
+							console.log('I changed from ' + j + ' to ' + i);
+							kicker = false;
+							break;
+						}
+					}
+				}
+				
+				// Item was not in other box...
+				// Kick out the item
+				if(kicker == true) {
+					console.log('Kick out item from: ' + i);
+					
+					var pos = item.getLastPos();
+					this.items[i].setPos(pos.x, pos.y);
+					
+					this.items[i] = item;
+					
+				}
+				else {
+					// Reset kicker
+					kicker = true;
+				}
+			}
+			
+			
 			// If collision, set position as box
-			item.x = b.x;
-			item.y = b.y;
+			item.setPos(b.x, b.y);
 			
 			// Scale to fit in
 			if(item.getHeight() > 140) {
@@ -90,10 +130,27 @@ Box.prototype.checkOverlap = function(item) {
 				var ratio = 140 / item.getWidth();
 				item.scale.setTo(ratio);
 			}
+			
+			// Set overlap
+			overlap = true;
 		}
 	}
 	
-
+	// Check if box was in the box
+	if(overlap == false) {
+		for(i = 0; i < this.num; i++) {
+			// Check if item was in the box
+			if(this.items[i] != -1) {
+				// Remove if it was in the box
+				if(this.items[i].getId() == item.getId()) {
+					this.items[i] = -1;
+					console.log('I\'m was in box: ' + i);
+				}
+			}
+		}
+	}
+	
+	return overlap;
 }
 
 

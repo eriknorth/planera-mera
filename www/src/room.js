@@ -1,32 +1,44 @@
 GameObj.Room = function (game) {
-
-	this.btnBack = null;
-	
-	this.itemGroups = [];
-	this.items = [];
-	this.shadows = [];
-	
-	// Create array for Items
-	this.itemObj = [];
-	
-	this.audio = null;
-	this.correctAudio = null;
-	this.wrongAudio = null;
-	this.orderAudio = null;
-	this.taskAudio = null;
-	this.alien = null;
-	
+		
 	this.prefix = null;
 	
-	this.selectedItems = [];
+
 	this.itemArray = [];
 	this.taskArray = [];
 	
-	this.task = null;
 	
+	// --- Revised vairables ---
+	// Gameplay state
+	this._state = 0;
 	
-	this.layer1 = null;
-	this.layer2 = null;
+	// Current task
+	this._currTask = null;
+	
+	// Alien
+	this._alien = null;
+	
+	// Cloud
+	this._cloud = null;
+	
+	// Box
+	this._box = null;
+	
+	// Array for selected item list
+	this._selectedItems = [];
+	
+	// Layers
+	this._layer1 = null;
+	this._layer2 = null;
+	
+	// Overlay
+	this._overlay = null;
+	
+	// Array for Items
+	this._items = [];
+	
+	// Buttons
+	this._btnBack = null;
+	this._btnPlay = null;
 };
 
 GameObj.Room.prototype = {
@@ -41,250 +53,123 @@ GameObj.Room.prototype = {
 		var worldObj = worldsJson.worlds[GameObj.world];
 		var roomObj = worldObj.rooms[GameObj.room];
 		
-		// Get itmes
-		var itemJson = this.cache.getJSON('w'+worldObj.id+'_r'+roomObj.id+'_items');
-		this.itemArray = itemJson.items;
-		// Get tasks
-		var taskJson = this.cache.getJSON('w'+worldObj.id+'_r'+roomObj.id+'_tasks');
-		this.taskArray = taskJson.tasks;
-		
+		// Make prefix
 		this.prefix = 'w'+worldObj.id+'_r'+roomObj.id;
 		
-		// Create layers
-		this.layer1 = this.add.group();
-		this.layer2 = this.add.group();
-		this.layer1.visible = true;
-		this.layer2.visible = false;
+		// Get itmes
+		var itemJson = this.cache.getJSON(this.prefix + '_items');
+		this.itemArray = itemJson.items;
+		// Get tasks
+		var taskJson = this.cache.getJSON(this.prefix + '_tasks');
+		this.taskArray = taskJson.tasks;
 		
+		// Create layers
+		this._layer1 = this.add.group();
+		this._layer2 = this.add.group();
+		this._layer1.visible = true;
+		this._layer2.visible = false;
 		
 		// Background
-		var background = this.add.sprite(0, 0, 'w'+worldObj.id+'_r'+roomObj.id+'_bg');
-		this.layer1.add(background);
-		
+		var background = this.add.sprite(0, 0, this.prefix + '_bg');
+		this._layer1.add(background);
 		
 		// Alien
-		this.alien = new Alien(this, 1150, 550);
-		this.add.existing(this.alien);
-		this.alien.inputEnabled = true;
-		this.alien.events.onInputDown.add(this.alienUp, this);
-		this.layer1.add(this.alien);
+		this._alien = new Alien(this, 1150, 550);
+		this.add.existing(this._alien);
+		this._alien.inputEnabled = true;
+		this._alien.events.onInputDown.add(this.alienClickRelease, this);
+		this._layer1.add(this._alien);
 	
-		
 		// Cloud
-		this.cloud = this.add.sprite(0, 600, 'cloud');
-		this.layer1.add(this.cloud);
+		this._cloud = new Cloud(this, 0, 600);
+		this.add.existing(this._cloud);
+		this._layer1.add(this._cloud);
 		
 		
 		// Add items
 		for(i = 0; i < itemJson.items.length; i++)
 		{
 			// Create item
-			this.itemObj[i] = new Item(this, 
+			this._items[i] = new Item(this, 
 				itemJson.items[i].x, 
 				800-itemJson.items[i].y, 
-				'w'+worldObj.id+'_r'+roomObj.id+'_atlas', 
+				this.prefix + '_atlas', 
 				itemJson.items[i].name,
 				i
 			);
-			this.add.existing(this.itemObj[i]);
-			this.layer1.add(this.itemObj[i]);
+			this.add.existing(this._items[i]);
+			this._layer1.add(this._items[i]);
 			// Add events
-			this.itemObj[i].events.onInputDown.add(this.itemDown, this);
-			this.itemObj[i].events.onInputUp.add(this.itemUp, this);
+			this._items[i].events.onInputDown.add(this.itemClickPress, this);
+			this._items[i].events.onInputUp.add(this.itemClickRelease, this);
 		}
 		
 		// Back button
-		this.btnBack = this.add.button(60, 60, 'btnBack', this.goToWorld, this, 2, 0, 1);
-		this.btnBack.anchor.set(0.5);
+		this._btnBack = this.add.button(60, 60, 'btnBack', this.goToWorld, this, 2, 0, 1);
+		this._btnBack.anchor.set(0.5);
 		
 		// Play button
-		this.btnPlay = this.add.button(this.world.width - 60, 60, 'btnPlay', this.play, this, 2, 0, 1);
-		this.btnPlay.anchor.set(0.5);
+		this._btnPlay = this.add.button(this.world.width - 60, 60, 'btnPlay', this.play, this, 2, 0, 1);
+		this._btnPlay.anchor.set(0.5);
 			
 		
-		// Add audio
-		this.audio = this.add.audio('whatDoINeed_audio');
-		this.audio.onStop.add(this.soundStopped, this);
-		//
-		this.correctAudio = this.add.audio('correct_audio');
-		//this.correctAudio.onStop.add(this.soundStopped, this);
-		this.wrongAudio = this.add.audio('wrong_audio');
-		//this.wrongAudio.onStop.add(this.soundStopped, this);
-		this.orderAudio = this.add.audio('order_audio');
-		//this.orderAudio.onStop.add(this.soundStopped, this);
-		
-		
 		// Overlay
-		// var graphicOverlay = new Phaser.Graphics(this, 0, 0);
-		// graphicOverlay.beginFill(0x24415c, 0.95);
-		// graphicOverlay.drawRect(0,0, this.world.width, this.world.height);
-		// graphicOverlay.endFill();
+		var overlayBitmap = this.add.bitmapData(this.world.width, this.world.height);
+		var overlayGradient = overlayBitmap.context.createLinearGradient(0,0,0,this.world.height);
+		overlayGradient.addColorStop(0,'rgba(36,65,92,0.95)');
+		overlayGradient.addColorStop(1,'rgba(16,29,41,1.0)');
+		overlayBitmap.context.fillStyle = overlayGradient;
+		overlayBitmap.context.fillRect(0,0,this.world.width,this.world.height);
+		// Add overlay
+		this._overlay = this.add.sprite(0, 0, overlayBitmap);
+		this._overlay.inputEnabled = true;
+		this._overlay.alpha = 0;
+		this._layer2.add(this._overlay);
 		
-		var myBitmap = this.add.bitmapData(this.world.width, this.world.height);
-		var grd=myBitmap.context.createLinearGradient(0,0,0,this.world.height);
-		grd.addColorStop(0,'rgba(36,65,92,0.95)');
-		grd.addColorStop(1,'rgba(16,29,41,1.0)');
-		myBitmap.context.fillStyle=grd;
-		myBitmap.context.fillRect(0,0,this.world.width,this.world.height);
-		
-		
-		this.overlay = this.add.sprite(0,0,myBitmap);
-		// this.overlay = this.add.sprite(0,0,graphicOverlay.generateTexture());
-		this.overlay.inputEnabled = true;
-		this.overlay.alpha = 0;
-		this.layer2.add(this.overlay);
-		
-		// Destroy graphics
-		// graphicOverlay.destroy();
-		
-		
-		// // Add slots/boxes for items
-		// var box = [];
-		// var arrow = [];
-		// var boxNum = 3;
-		// var spacing = this.world.width / (boxNum+1);
-		// for(i = 0; i < boxNum; i++) {
-		// 	box[i] = this.add.sprite(spacing * (boxNum-i), 280, 'box');
-		// 	box[i].anchor.set(0.5);
-		// 	this.layer2.add(box[i]);
-		//
-		// 	if(i < (boxNum-1)) {
-		// 		arrow[i] = this.add.sprite(spacing * (boxNum-i) - box[i].width/2+10, 280, 'arrow');
-		// 		arrow[i].anchor.set(1, 0.5);
-		// 		this.layer2.add(arrow[i]);
-		// 	}
-		// }
-		
-		
-		this.box = new Box(this, 280);
-		this.add.existing(this.box);
-		this.layer2.add(this.box);
-		
-		
+		// Add slots/_boxes for items
+		this._box = new Box(this, 280);
+		this.add.existing(this._box);
+		this._layer2.add(this._box);
 		
 		// TODO: For testing choose random task
-		var num = this.rnd.integerInRange(0, taskJson.tasks.length-1);
-		this.startTask(taskJson.tasks[num]);
-		this.task = num;
-		
-		// Update boxes
-		this.box.setBoxes(this.taskArray[this.task].items.length);
-		
+		var rndNum = this.rnd.integerInRange(0, taskJson.tasks.length-1);
+		this._currTask = this.taskArray[rndNum];
+
+		// Update _boxes
+		this._box.setBoxes(this._currTask.items.length);
 		
 		// Sound library
-		this.sound = new Sound(this);
+		this._sound = new Sound(this);
 	},
 	
+	// TODO: Need to fix
 	shutdown: function () {
 		
-		if (this.btnBack) {
-			this.btnBack.destroy();
-			this.btnBack = null;
+		if (this._btnBack) {
+			this._btnBack.destroy();
+			this._btnBack = null;
 		}
 		
 		// TODO: Destroy this...
 		this.itemGroups = [];
 		this.items = [];
 		this.shadows = [];
-	
-		if (this.taskAudio) {
-			this.taskAudio.stop();
-			this.taskAudio.destroy();
-			this.taskAudio = null;
-		}
-	
-		if (this.audio) {
-			this.audio.stop();
-			this.audio.destroy();
-			this.audio = null;
-		}
 		
-		if (this.correctAudio) {
-			this.correctAudio.stop();
-			this.correctAudio.destroy();
-			this.correctAudio = null;
-		}
-		
-		if (this.wrongAudio) {
-			this.wrongAudio.stop();
-			this.wrongAudio.destroy();
-			this.wrongAudio = null;
-		}
-		
-		if (this.orderAudio) {
-			this.orderAudio.stop();
-			this.orderAudio.destroy();
-			this.orderAudio = null;
-		}
-		
-		if (this.alien) {
-			this.alien.destroy();
-			this.alien = null;
+		if (this._alien) {
+			this._alien.destroy();
+			this._alien = null;
 		}
 	
 		this.prefix = null;
-		this.selectedItems = [];
+		this._selectedItems = [];
 		this.itemArray = [];
 		this.taskArray = [];
 		this.task = null;
 	},
 	
+	// TODO: Need to fix
 	startTask: function (task) {
 		
-		// Load task audio
-		this.taskAudio = this.add.audio(this.prefix+'_t'+task.id+'_audio');
-		
-		// 
-		
-	},
-	
-	
-	playSequenceNew: function(soundArray, callback, delayStartCallback, delayEndCallback) {
-		var timer = this.time.create();
-		
-		soundArray[0].play();
-		soundArray.forEach(function(element, index, array) {
-			
-			if (typeof soundArray[index] == 'number') {	
-				timer.add(soundArray[index], function() {
-					soundArray[index + 1].play();
-					return delayEndCallback();
-				}, this);
-			}
-			else if (typeof soundArray[index + 1] == 'object') {
-				soundArray[index].onStop.addOnce(function() {
-					soundArray[index + 1].play();
-				}, this);
-			}
-			else if (typeof soundArray[index + 1] == 'number') {	
-				soundArray[index].onStop.addOnce(function() {
-					timer.start();
-					return delayStartCallback();
-				}, this);
-			}
-			else {
-				soundArray[index].onStop.addOnce(function() {
-					return callback();
-				}, this);
-			}
-		});
-	},
-	
-	
-	playSequence: function(soundArray, callback) {
-		soundArray[0].play();
-		soundArray.forEach(function(element, index, array) {
-			if (typeof soundArray[index + 1] == 'object') {	
-				soundArray[index].onStop.addOnce(function() {
-					soundArray[index + 1].play();
-				}, this);
-			}
-			else {
-				soundArray[index].onStop.addOnce(function() {
-					callback();
-				}, this);
-			}
-		});
 	},
 	
 	goToWorld: function (pointer) {
@@ -297,26 +182,178 @@ GameObj.Room.prototype = {
 		
 		var self = this;
 		
+		
+		// Play audio depending on the gameplay state
+		switch(this._state)
+		{
+		case 0:
+			// Play result
+			if(this.checkFirstAnswer() == true) {
+				// Correct
+				this._alien.talk(true);
+				this._sound.playSequence(['correct_audio', 500, 'order_audio'], 
+					function() { self._alien.talk(false); },
+					function() { self._alien.talk(false); },
+					function() { self._alien.talk(true); }
+				);
+			
+				// TODO: Testing layers
+				this._layer1.remove(this._alien);
+				this._layer1.remove(this._cloud);
+				this._layer2.add(this._alien);
+				this._layer2.add(this._cloud);
+				// Bring _box on top
+				this._layer2.bringToTop(this._box);
+			
+				// Move items
+				for(i = 0; i < this._selectedItems.length; i++)
+				{
+					this._layer1.remove(this._items[this._selectedItems[i]]);
+					this._layer2.add(this._items[this._selectedItems[i]]);
+				}
+			
+				this._layer2.visible = true;
+			
+				this.add.tween(this._overlay).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, true, 0, 0, false);
+			
+				this._state = 1;
+			}
+			else {
+				// Wrong
+				this._alien.talk(true);
+				this._sound.play('wrong_audio', function() { 
+					self._alien.talk(false); 
+				});
+			}
+			break;
+		case 1:
+			
+			// Play result
+			if(this.checkSecondAnswer() == true) {
+				// Correct
+				
+			}
+			else {
+				// Wrong
+				this._alien.talk(true);
+				this._sound.play('wrong_audio', function() { 
+					self._alien.talk(false); 
+				});
+			}
+			break;
+			
+			break;
+		default:
+			break;
+		}
+	},
+	
+	// Pick up item
+	itemClickPress: function (sprite) {
+		// Bring item to front
+		sprite.bringToTop();
+	},
+	
+	// Put down item
+	itemClickRelease: function (item) {
+
+		// Play audio depending on the gameplay state
+		switch(this._state)
+		{
+		case 0:
+
+			// Check if item in the list
+			var index = this._selectedItems.indexOf(item.getId());
+			
+			if(this._cloud.checkOverlap(item) == true) {
+				// Add item (if does not exist in the list)
+				if(index == -1) {
+					this._selectedItems.push(item.getId());
+				}
+			}
+			else {
+				// Remove item (if exists in the list)
+				if(index > -1) {
+					this._selectedItems.splice(index, 1);
+				}
+				// Move to initial position
+				item.resetPos();
+			}
+			
+			break;
+		case 1:
+			
+			// Check if set on a cloud
+			this._cloud.checkOverlap(item);
+			
+			// Check if set on a box
+			if(this._box.checkOverlap(item) == false) {
+				// No -> Move to cloud
+				this._cloud.putInCloud(item);
+			}
+			
+			
+			break;
+		default:
+			break;
+		}
+		
+	},
+	
+	// Click on _alien (release)
+	alienClickRelease: function (sprite) {
+
+		var self = this;
+
+		// Start talking animation
+		this._alien.talk(true);
+		
+		// Play audio depending on the gameplay state
+		switch(this._state)
+		{
+		case 0:
+			this._sound.playSequence([this.prefix + '_t' + this._currTask.id + '_audio', 200, 'whatDoINeed_audio'], 
+				function() { self._alien.talk(false); },
+				function() { self._alien.talk(false); },
+				function() { self._alien.talk(true); }
+			);
+			break;
+		case 1:
+			this._sound.playSequence([this.prefix + '_t' + this._currTask.id + '_audio', 200, 'order_audio'], 
+				function() { self._alien.talk(false); },
+				function() { self._alien.talk(false); },
+				function() { self._alien.talk(true); }
+			);
+			break;
+		default:
+			break;
+		}
+	},
+	
+	
+	// Check first part answer
+	checkFirstAnswer: function () {
+		
 		var result = 0;
 		var correctItem = false;
 		var taskItem = null;
 		
-		for(i = 0; i < this.selectedItems.length; i++)
+		for(i = 0; i < this._selectedItems.length; i++)
 		{
-			for(j = 0; j < this.taskArray[this.task].items.length; j++)
+			for(j = 0; j < this._currTask.items.length; j++)
 			{
-				taskItem = this.taskArray[this.task].items[j];
+				taskItem = this._currTask.items[j];
 				
 				// Check item
 				if(taskItem.item != '') {
-					if(this.itemArray[this.selectedItems[i]].name == taskItem.item) {
+					if(this.itemArray[this._selectedItems[i]].name == taskItem.item) {
 						correctItem = true;
 					}
 				}
 				// Check category
 				else if(taskItem.category != '') {
-					for(k = 0; k < this.itemArray[this.selectedItems[i]].categories.length; k++) {
-						if(this.itemArray[this.selectedItems[i]].categories[k] == taskItem.category) {
+					for(k = 0; k < this.itemArray[this._selectedItems[i]].categories.length; k++) {
+						if(this.itemArray[this._selectedItems[i]].categories[k] == taskItem.category) {
 							correctItem = true;
 						}
 					}
@@ -335,128 +372,19 @@ GameObj.Room.prototype = {
 		
 		
 		// Play result
-		if(result >= this.taskArray[this.task].items.length) {
-			// Correct
-			this.playSequence([this.correctAudio, this.orderAudio], function() {
-				self.alien.talk(false);
-			});
-			
-			// TODO: Testing layers
-			this.layer1.remove(this.alien);
-			this.layer1.remove(this.cloud);
-			this.layer2.add(this.alien);
-			this.layer2.add(this.cloud);
-			// Bring box on top
-			this.layer2.bringToTop(this.box);
-			
-			// Move items
-			for(i = 0; i < this.selectedItems.length; i++)
-			{
-				this.layer1.remove(this.itemObj[this.selectedItems[i]]);
-				
-				//this.box.addItem(this.itemObj[this.selectedItems[i]]);
-				this.layer2.add(this.itemObj[this.selectedItems[i]]);
-			}
-			
-			this.layer2.visible = true;
-			
-			this.add.tween(this.overlay).to( { alpha: 1 }, 200, Phaser.Easing.Linear.None, true, 0, 0, false);
+		if(result >= this._currTask.items.length) {
+			return true;
 		}
 		else {
-			// Wrong
-			this.wrongAudio.play();
-		}
-		this.alien.talk(true);
-
-	},
-	
-	// Pick up item
-	itemDown: function (sprite) {
-		// Bring to frontt
-		sprite.bringToTop();
-	},
-	
-	// Put down item
-	itemUp: function (sprite) {
-
-		// Check if item in the list
-		var index = this.selectedItems.indexOf(sprite.getId());
-		
-		// Check if dropped on a cloud
-		if(sprite.y > 600) {
-			// Add item (if does not exist in the list)
-			if(index == -1) {
-				this.selectedItems.push(sprite.getId());
-			}
-			// Fix in the cloud
-			if(sprite.getHeight() > 140) {
-				var ratio = 140 / sprite.getHeight();
-				sprite.scale.setTo(ratio);
-			}
-			sprite.y = 720;
-		}
-		else {
-			// TODO: Make states
-			if(this.layer2.visible == false) {
-				// Remove item (if exists in the list)
-				if(index > -1) {
-					this.selectedItems.splice(index, 1);
-				}
-				// Move to initial position
-				sprite.resetPos();
-			}
-			else
-			{
-				// TODO: Testing
-				this.box.checkOverlap(sprite);
-			}
+			return false;
 		}
 		
 	},
 	
-	alienUp: function (sprite) {
-
-		var self = this;
-
-		this.alien.talk(true);
+	// Check second part answer
+	checkSecondAnswer: function () {
 		
-		// TODO: Make states
-		if(this.layer2.visible == false) {
-			
-			this.sound.playSequence(['correct_audio', 1000, 'order_audio', 1000, 'wrong_audio'], 
-				function() {
-					self.alien.talk(false);
-				},
-				function() {
-					self.alien.talk(false);
-				},
-				function() {
-					self.alien.talk(true);
-				}
-			);
-			
-			// this.playSequenceNew([this.taskAudio, 1000, this.audio],
-// 				function() {
-// 					self.alien.talk(false);
-// 				},
-// 				function() {
-// 					self.alien.talk(false);
-// 				},
-// 				function() {
-// 					self.alien.talk(true);
-// 				}
-// 			);
-		}
-		else {
-			this.playSequence([this.taskAudio, this.orderAudio], function() {
-				self.alien.talk(false);
-			});
-		}
-	},
-	
-	soundStopped: function (sound) {
-	
-		this.alien.talk(false);
-	},
+		return false;
+	}
 
 };
