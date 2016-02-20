@@ -384,6 +384,8 @@ GameObj.Room.prototype = {
 	// Check second part answer
 	checkSecondAnswer: function () {
 		
+		console.log(this._box.getOrder());
+		
 		return false;
 	}
 

@@ -38,7 +38,7 @@ Cloud.prototype.checkOverlap = function(item) {
 // Check overlap
 Cloud.prototype.putInCloud = function(item) {
 	
-	item.y = this.y + 120;
+	item.setPos(item.x, this.y + 120);
 	
 	// Scale to fit in
 	if(item.getHeight() > 140) {
