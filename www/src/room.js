@@ -145,10 +145,6 @@ GameObj.Room.prototype = {
 	// TODO: Need to fix
 	shutdown: function () {
 		
-		if (this._btnBack) {
-			this._btnBack.destroy();
-			this._btnBack = null;
-		}
 		
 		// TODO: Destroy this...
 		this.itemGroups = [];
@@ -165,6 +161,45 @@ GameObj.Room.prototype = {
 		this.itemArray = [];
 		this.taskArray = [];
 		this.task = null;
+		
+		// --- Revised vairables ---
+		// Gameplay state
+		this._state = 0;
+	
+		// Current task
+		this._currTask = null;
+	
+		// Alien
+		this._alien = null;
+	
+		// Cloud
+		this._cloud = null;
+	
+		// Box
+		this._box = null;
+	
+		// Array for selected item list
+		this._selectedItems = [];
+	
+		// Layers
+		this._layer1 = null;
+		this._layer2 = null;
+	
+		// Overlay
+		this._overlay = null;
+	
+		// Array for Items
+		this._items = [];
+	
+		// Buttons
+		if (this._btnBack) {
+			this._btnBack.destroy();
+			this._btnBack = null;
+		}
+		if (this._btnPlay) {
+			this._btnPlay.destroy();
+			this._btnPlay = null;
+		}
 	},
 	
 	// TODO: Need to fix
@@ -231,6 +266,10 @@ GameObj.Room.prototype = {
 			// Play result
 			if(this.checkSecondAnswer() == true) {
 				// Correct
+				this._alien.talk(true);
+				this._sound.play('correct_audio', function() { 
+					self._alien.talk(false); 
+				});
 				
 			}
 			else {
@@ -384,9 +423,73 @@ GameObj.Room.prototype = {
 	// Check second part answer
 	checkSecondAnswer: function () {
 		
-		console.log(this._box.getOrder());
+		var itemOrder = this._box.getOrder();
 		
-		return false;
+		// Sort by order
+		this._currTask.items.sort(function(a, b){
+			return a.order - b.order;
+		})
+		
+		// Set initial order position
+		var currPos = this._currTask.items[0].order;
+		var result = 0;
+		var correctItem = false;
+		var correctOrder = false;
+		
+		for(i = 0; i < this._currTask.items.length; i++)
+		{
+			currPos = this._currTask.items[i].order;
+			
+			for(j = 0; j < this._currTask.items.length; j++)
+			{
+				taskItem = this._currTask.items[j];
+				
+				// Check item
+				if(taskItem.item != '') {
+					if(this.itemArray[itemOrder[i]].name == taskItem.item) {
+						correctItem = true;
+					}
+				}
+				// Check category
+				else if(taskItem.category != '') {
+					for(k = 0; k < this.itemArray[itemOrder[i]].categories.length; k++) {
+						if(this.itemArray[itemOrder[i]].categories[k] == taskItem.category) {
+							correctItem = true;
+						}
+					}
+				}
+				
+				
+				if(correctItem == true) {
+					if(currPos == taskItem.order) {
+						correctOrder = true;
+					}
+					else {
+						// Not right
+					}
+					break;
+				}
+			}
+			
+			if(correctOrder == false) {
+				result = -1;
+				break;
+			}
+			else {
+				result++;
+				correctItem = false;
+				correctOrder = false;
+			}
+		}
+		
+		
+		// Play result
+		if(result >= this._currTask.items.length) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 };

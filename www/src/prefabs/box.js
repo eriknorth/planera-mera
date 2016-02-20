@@ -171,7 +171,7 @@ Box.prototype.getOrder = function() {
 	// Loop through all the items
 	for(var i = 0; i < this.num; i++) {
 		if(this.items[i] != -1) {
-			order[i] = this.items[i].getName();
+			order[i] = this.items[i].getId();
 		}
 		else {
 			order[i] = -1;
