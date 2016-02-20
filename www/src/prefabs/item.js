@@ -74,6 +74,9 @@ Item.prototype.getLastPos = function() {
 Item.prototype.resetPos = function() {
 	this.x = this.initX;
 	this.y = this.initY;
+	
+	// Scale to normal
+	this.scale.setTo(1);
 };
 
 Item.prototype.getHeight = function() {

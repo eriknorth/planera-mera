@@ -271,6 +271,34 @@ GameObj.Room.prototype = {
 					self._alien.talk(false); 
 				});
 				
+				
+				// TODO: Testing layers
+				this._layer2.remove(this._alien);
+				this._layer2.remove(this._cloud);
+				this._layer1.add(this._alien);
+				this._layer1.add(this._cloud);			
+			
+				var tween = this.add.tween(this._layer2).to( { alpha: 0 }, 500, Phaser.Easing.Linear.None, true, 0, 0, false);
+				tween.onComplete.add(function() {
+					
+					self._overlay.alpha = 0;
+					self._layer2.visible = false;
+					self._layer2.alpha = 1;
+					self._state = 0;
+					
+					// Move items
+					for(i = 0; i < this._selectedItems.length; i++)
+					{
+						this._layer2.remove(this._items[this._selectedItems[i]]);
+						this._layer1.add(this._items[this._selectedItems[i]]);
+					
+						this._items[this._selectedItems[i]].resetPos();
+						this._items[this._selectedItems[i]].alpha = 0;
+						this.add.tween(this._items[this._selectedItems[i]]).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, true, 0, 0, false);
+					}
+					
+				}, this);
+				
 			}
 			else {
 				// Wrong

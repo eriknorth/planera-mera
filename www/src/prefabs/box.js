@@ -159,8 +159,6 @@ Box.prototype.checkOverlap = function(item) {
 		}
 	}
 	
-	console.log(this.getOrder());
-	
 	return overlap;
 }
 
