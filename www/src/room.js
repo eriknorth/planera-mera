@@ -3,8 +3,8 @@ GameObj.Room = function (game) {
 	this.prefix = null;
 	
 
-	this.itemArray = [];
-	this.taskArray = [];
+	this._itemArray = [];
+	this._taskArray = [];
 	
 	
 	// --- Revised vairables ---
@@ -58,10 +58,10 @@ GameObj.Room.prototype = {
 		
 		// Get itmes
 		var itemJson = this.cache.getJSON(this.prefix + '_items');
-		this.itemArray = itemJson.items;
+		this._itemArray = itemJson.items;
 		// Get tasks
 		var taskJson = this.cache.getJSON(this.prefix + '_tasks');
-		this.taskArray = taskJson.tasks;
+		this._taskArray = taskJson.tasks;
 		
 		// Create layers
 		this._layer1 = this.add.group();
@@ -131,15 +131,11 @@ GameObj.Room.prototype = {
 		this.add.existing(this._box);
 		this._layer2.add(this._box);
 		
-		// TODO: For testing choose random task
-		var rndNum = this.rnd.integerInRange(0, taskJson.tasks.length-1);
-		this._currTask = this.taskArray[rndNum];
-
-		// Update _boxes
-		this._box.setBoxes(this._currTask.items.length);
-		
 		// Sound library
 		this._sound = new Sound(this);
+		
+		// Start New Task
+		this.startNewTask();
 	},
 	
 	// TODO: Need to fix
@@ -158,8 +154,8 @@ GameObj.Room.prototype = {
 	
 		this.prefix = null;
 		this._selectedItems = [];
-		this.itemArray = [];
-		this.taskArray = [];
+		this._itemArray = [];
+		this._taskArray = [];
 		this.task = null;
 		
 		// --- Revised vairables ---
@@ -203,7 +199,17 @@ GameObj.Room.prototype = {
 	},
 	
 	// TODO: Need to fix
-	startTask: function (task) {
+	startNewTask: function () {
+		
+		// Choose randomly a task from a pool
+		var rndNum = this.rnd.integerInRange(0, this._taskArray.length-1);
+		this._currTask = this._taskArray[rndNum];
+		
+		// Update new boxes
+		this._box.setBoxes(this._currTask.items.length);
+		
+		// Clear selected item list
+		this._selectedItems = [];
 		
 	},
 	
@@ -272,18 +278,28 @@ GameObj.Room.prototype = {
 				});
 				
 				
+				// Temporaty
+				this._layer2.remove(this._overlay);
+				this._layer1.add(this._overlay);	
+				
 				// TODO: Testing layers
 				this._layer2.remove(this._alien);
 				this._layer2.remove(this._cloud);
 				this._layer1.add(this._alien);
 				this._layer1.add(this._cloud);			
 			
+			
 				var tween = this.add.tween(this._layer2).to( { alpha: 0 }, 500, Phaser.Easing.Linear.None, true, 0, 0, false);
+				this.add.tween(this._overlay).to( { alpha: 0 }, 500, Phaser.Easing.Linear.None, true, 0, 0, false);
+				
 				tween.onComplete.add(function() {
 					
-					self._overlay.alpha = 0;
+					// Temporaty
+					this._layer1.remove(this._overlay);
+					this._layer2.add(this._overlay);
+					
 					self._layer2.visible = false;
-					self._layer2.alpha = 1;
+					self._layer2.alpha = 1;	
 					self._state = 0;
 					
 					// Move items
@@ -296,6 +312,9 @@ GameObj.Room.prototype = {
 						this._items[this._selectedItems[i]].alpha = 0;
 						this.add.tween(this._items[this._selectedItems[i]]).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, true, 0, 0, false);
 					}
+					
+					// Start new task
+					this.startNewTask();
 					
 				}, this);
 				
@@ -413,14 +432,14 @@ GameObj.Room.prototype = {
 				
 				// Check item
 				if(taskItem.item != '') {
-					if(this.itemArray[this._selectedItems[i]].name == taskItem.item) {
+					if(this._itemArray[this._selectedItems[i]].name == taskItem.item) {
 						correctItem = true;
 					}
 				}
 				// Check category
 				else if(taskItem.category != '') {
-					for(k = 0; k < this.itemArray[this._selectedItems[i]].categories.length; k++) {
-						if(this.itemArray[this._selectedItems[i]].categories[k] == taskItem.category) {
+					for(k = 0; k < this._itemArray[this._selectedItems[i]].categories.length; k++) {
+						if(this._itemArray[this._selectedItems[i]].categories[k] == taskItem.category) {
 							correctItem = true;
 						}
 					}
@@ -474,14 +493,14 @@ GameObj.Room.prototype = {
 				
 				// Check item
 				if(taskItem.item != '') {
-					if(this.itemArray[itemOrder[i]].name == taskItem.item) {
+					if(this._itemArray[itemOrder[i]].name == taskItem.item) {
 						correctItem = true;
 					}
 				}
 				// Check category
 				else if(taskItem.category != '') {
-					for(k = 0; k < this.itemArray[itemOrder[i]].categories.length; k++) {
-						if(this.itemArray[itemOrder[i]].categories[k] == taskItem.category) {
+					for(k = 0; k < this._itemArray[itemOrder[i]].categories.length; k++) {
+						if(this._itemArray[itemOrder[i]].categories[k] == taskItem.category) {
 							correctItem = true;
 						}
 					}
