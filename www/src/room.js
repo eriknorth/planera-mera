@@ -1,3 +1,9 @@
+// TODO: If you drag item to alien it appears in the cloud
+// TODO: If you bring more valid items you get more boxes
+// TODO: If in state 1 you press back, it goes to state 0
+// TODO: Tactile feedback on all buttons
+
+
 GameObj.Room = function (game) {
 		
 	this.prefix = null;
@@ -136,6 +142,10 @@ GameObj.Room.prototype = {
 		
 		// Start New Task
 		this.startNewTask();
+	},
+	
+	render: function () {
+		this.game.debug.text(this.time.fps || '--', 2, 14, "#00ff00");
 	},
 	
 	// TODO: Need to fix
@@ -394,19 +404,22 @@ GameObj.Room.prototype = {
 		// Start talking animation
 		this._alien.talk(true);
 		
+		// Disable buttons
+		this.disableButtons();
+		
 		// Play audio depending on the gameplay state
 		switch(this._state)
 		{
 		case 0:
 			this._sound.playSequence([this.prefix + '_t' + this._currTask.id + '_audio', 200, 'whatDoINeed_audio'], 
-				function() { self._alien.talk(false); },
+				function() { self._alien.talk(false); self.enableButtons(); },
 				function() { self._alien.talk(false); },
 				function() { self._alien.talk(true); }
 			);
 			break;
 		case 1:
 			this._sound.playSequence([this.prefix + '_t' + this._currTask.id + '_audio', 200, 'order_audio'], 
-				function() { self._alien.talk(false); },
+				function() { self._alien.talk(false); self.enableButtons(); },
 				function() { self._alien.talk(false); },
 				function() { self._alien.talk(true); }
 			);
@@ -414,6 +427,20 @@ GameObj.Room.prototype = {
 		default:
 			break;
 		}
+	},
+	
+	// Enable / Disable buttons
+	enableButtons: function () {
+		this._btnPlay.alpha = 1;
+		this._btnBack.alpha = 1;
+		this._btnPlay.inputEnabled = true;
+		this._btnBack.inputEnabled = true;
+	},
+	disableButtons: function () {
+		this._btnPlay.alpha = 0.5;
+		this._btnBack.alpha = 0.5;
+		this._btnPlay.inputEnabled = false;
+		this._btnBack.inputEnabled = false;
 	},
 	
 	
@@ -492,6 +519,7 @@ GameObj.Room.prototype = {
 				taskItem = this._currTask.items[j];
 				
 				// Check item
+				// TODO: check if the box is empty -> itemOrder[i] == -1
 				if(taskItem.item != '') {
 					if(this._itemArray[itemOrder[i]].name == taskItem.item) {
 						correctItem = true;
