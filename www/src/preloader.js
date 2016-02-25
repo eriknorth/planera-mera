@@ -55,7 +55,7 @@ GameObj.Preloader.prototype = {
 					{
 						roomObj = worldObj.rooms[j];
 						// Load icon and background
-						this.load.image('w'+worldObj.id+'_r'+roomObj.id+'_icon', 'assets/img/'+roomObj.icon);
+						this.load.spritesheet('w'+worldObj.id+'_r'+roomObj.id+'_icon', 'assets/img/'+roomObj.icon, 180, 192);
 						this.load.image('w'+worldObj.id+'_r'+roomObj.id+'_bg', 'assets/img/'+roomObj.background);
 						
 						// Load item atlas and items
@@ -93,8 +93,13 @@ GameObj.Preloader.prototype = {
 		this.load.audio('task1_audio', 'assets/audio/task1.mp3');
 		
 		// Load assets for Game
+		
+		
+		// Load buttons
 		this.load.spritesheet('btnAbout', 'assets/img/button.png', 260, 84);
 		this.load.spritesheet('btnMovie', 'assets/img/button_film.png', 260, 84);
+		this.load.spritesheet('btnRound', 'assets/img/buttons/round_tmpl.png', 180, 192);
+		
 		
 		this.load.spritesheet('alien', 'assets/img/alien_sprite.png', 250, 467);
 		this.load.image('title', 'assets/img/title.png');

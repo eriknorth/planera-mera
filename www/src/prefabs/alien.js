@@ -19,8 +19,6 @@ Alien = function(game, x, y) {
 	this.mouth.anchor.set(0.5);
 	this.addChild(this.mouth);
 	this.mouth.animations.add('talk');
-
-
 };
 
 Alien.prototype = Object.create(Phaser.Sprite.prototype);
@@ -41,4 +39,23 @@ Alien.prototype.talk = function(enable) {
 		this.mouth.animations.play('talk', 8, true);
 	else
 		this.mouth.animations.stop(null, true);
+};
+
+// Check overlap
+Alien.prototype.checkOverlap = function(item) {
+	
+	var overlap = false;
+	
+	// Check overlap
+	if( item.x > (this.x - this.width/2) && 
+		item.x < (this.x + this.width/2) &&
+		item.y > (this.y - this.height/2) && 
+		item.y < (this.y + this.height/2))
+	{
+		
+		// Set overlap
+		overlap = true;
+	}
+	
+	return overlap;
 };

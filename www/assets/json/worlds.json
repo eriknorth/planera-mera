@@ -9,7 +9,7 @@
 				{
 					"id": 1,
 					"name": "bathroom",
-					"icon": "rooms/bathroom_icon.png",
+					"icon": "rooms/btn/btn_bathroom.png",
 					"icon_x": 540,
 					"icon_y": 340,
 					"background": "rooms/bathroom.png",
@@ -22,7 +22,7 @@
 				{
 					"id": 2,
 					"name": "kitchen",
-					"icon": "rooms/kitchen_icon.png",
+					"icon": "rooms/btn/btn_kitchen.png",
 					"icon_x": 740,
 					"icon_y": 340,
 					"background": "rooms/kitchen.png",
@@ -35,7 +35,7 @@
 				{
 					"id": 3,
 					"name": "bedroom",
-					"icon": "rooms/bedroom_icon.png",
+					"icon": "rooms/btn/btn_bedroom.png",
 					"icon_x": 540,
 					"icon_y": 520,
 					"background": "rooms/bedroom.png",
@@ -48,7 +48,7 @@
 				{
 					"id": 4,
 					"name": "entrance",
-					"icon": "rooms/playroom_icon.png",
+					"icon": "rooms/btn/btn_entrance.png",
 					"icon_x": 740,
 					"icon_y": 520,
 					"background": "rooms/entrance.png",

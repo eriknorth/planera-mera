@@ -1,6 +1,4 @@
-// TODO: If you drag item to alien it appears in the cloud
-// TODO: If you bring more valid items you get more boxes
-// TODO: Tactile feedback on all buttons
+// TODO: Enable/disable buttons buggy
 
 
 GameObj.Room = function (game) {
@@ -213,7 +211,8 @@ GameObj.Room.prototype = {
 		// Choose randomly a task from a pool (if there is any)
 		if(this._taskArray.length > 0) {
 			var rndNum = this.rnd.integerInRange(0, this._taskArray.length-1);
-			this._currTask = this._taskArray[rndNum];
+			//this._currTask = this._taskArray[rndNum];
+			this._currTask = this._taskArray[0];
 			
 			// Update new boxes
 			// if(typeof this._currTask.items !== typeof undefined) {
@@ -324,7 +323,11 @@ GameObj.Room.prototype = {
 			// Check if item in the list
 			var index = this._selectedItems.indexOf(item.getId());
 			
-			if(this._cloud.checkOverlap(item) == true) {
+			if(this._cloud.checkOverlap(item) == true || this._alien.checkOverlap(item) == true) {
+				
+				// Put in cloud
+				this._cloud.putInCloud(item);
+				
 				// Add item (if does not exist in the list)
 				if(index == -1) {
 					this._selectedItems.push(item.getId());
@@ -462,30 +465,37 @@ GameObj.Room.prototype = {
 		
 		var itemOrder = this._box.getOrder();
 		
+		// Check if all items has been used
+		if(itemOrder.indexOf(-1) != -1) {
+			return false;
+		}
+		
 		// Sort by order
 		this._currTask.items.sort(function(a, b){
 			return a.order - b.order;
 		})
 		
 		// Set initial order position
-		var currPos = this._currTask.items[0].order;
+		var currPosI = 0;
+		var currPos = this._currTask.items[currPosI].order;
 		var result = 0;
 		var correctItem = false;
 		var correctOrder = false;
 		
-		for(i = 0; i < this._currTask.items.length; i++)
+		// Check all boxes
+		for(i = 0; i < itemOrder.length; i++)
 		{
-			currPos = this._currTask.items[i].order;
+			currPos = this._currTask.items[currPosI].order;
 			
 			for(j = 0; j < this._currTask.items.length; j++)
 			{
 				taskItem = this._currTask.items[j];
 				
 				// Check item
-				// TODO: check if the box is empty -> itemOrder[i] == -1
 				if(taskItem.item != '') {
 					if(this._itemArray[itemOrder[i]].name == taskItem.item) {
 						correctItem = true;
+						currPosI++;
 					}
 				}
 				// Check category
@@ -495,6 +505,22 @@ GameObj.Room.prototype = {
 							correctItem = true;
 						}
 					}
+					
+					// Increment position only if next items are not same category
+					var correct = false;
+					for(var n = i+1; n < itemOrder.length; n++) {
+						for(k = 0; k < this._itemArray[itemOrder[n]].categories.length; k++) {
+							if(this._itemArray[itemOrder[n]].categories[k] == taskItem.category) {
+								correct = true;
+							}
+						}
+					}
+					
+					// Increment only if there are no other with the same category
+					if(correct == false) {
+						currPosI++;
+					}
+
 				}
 				
 				
@@ -522,7 +548,7 @@ GameObj.Room.prototype = {
 		
 		
 		// Play result
-		if(result >= this._currTask.items.length) {
+		if(result >= itemOrder.length) {
 			return true;
 		}
 		else {

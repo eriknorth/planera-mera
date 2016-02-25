@@ -19,14 +19,6 @@ Cloud.prototype.checkOverlap = function(item) {
 		item.y > (this.y) && 
 		item.y < (this.y + this.height))
 	{
-		// If collision, set in the cloud
-		item.setPos(item.x, this.y + 120);
-		
-		// Scale to fit in
-		if(item.getHeight() > 140) {
-			var ratio = 140 / item.getHeight();
-			item.scale.setTo(ratio);
-		}
 
 		// Set overlap
 		overlap = true;
