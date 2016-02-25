@@ -1,6 +1,5 @@
 // TODO: If you drag item to alien it appears in the cloud
 // TODO: If you bring more valid items you get more boxes
-// TODO: If in state 1 you press back, it goes to state 0
 // TODO: Tactile feedback on all buttons
 
 
@@ -111,7 +110,7 @@ GameObj.Room.prototype = {
 		}
 		
 		// Back button
-		this._btnBack = this.add.button(60, 60, 'btnBack', this.goToWorld, this, 2, 0, 1);
+		this._btnBack = this.add.button(60, 60, 'btnBack', this.goBack, this, 2, 0, 1);
 		this._btnBack.anchor.set(0.5);
 		
 		// Play button
@@ -144,9 +143,9 @@ GameObj.Room.prototype = {
 		this.startNewTask();
 	},
 	
-	render: function () {
-		this.game.debug.text(this.time.fps || '--', 2, 14, "#00ff00");
-	},
+	// render: function () {
+	// 	this.game.debug.text(this.time.fps || '--', 2, 14, "#00ff00");
+	// },
 	
 	// TODO: Need to fix
 	shutdown: function () {
@@ -211,21 +210,34 @@ GameObj.Room.prototype = {
 	// TODO: Need to fix
 	startNewTask: function () {
 		
-		// Choose randomly a task from a pool
-		var rndNum = this.rnd.integerInRange(0, this._taskArray.length-1);
-		this._currTask = this._taskArray[rndNum];
-		
-		// Update new boxes
-		this._box.setBoxes(this._currTask.items.length);
-		
-		// Clear selected item list
-		this._selectedItems = [];
+		// Choose randomly a task from a pool (if there is any)
+		if(this._taskArray.length > 0) {
+			var rndNum = this.rnd.integerInRange(0, this._taskArray.length-1);
+			this._currTask = this._taskArray[rndNum];
+			
+			// Update new boxes
+			// if(typeof this._currTask.items !== typeof undefined) {
+			// 	this._box.setBoxes(this._currTask.items.length);
+			// }
+		}
 		
 	},
 	
-	goToWorld: function (pointer) {
-		//	Go back to world
-		this.state.start('World');
+	goBack: function (pointer) {
+
+		var self = this;
+
+		// If in the first state of the game -> can leave to world
+		if (this._state == 0) {
+			//	Go back to world
+			this.state.start('World');
+		}
+		// Otherwise go back to state 1
+		else {
+			
+			this.changeState(0);
+			
+		}
 	},
 	
 	// Check result
@@ -248,26 +260,11 @@ GameObj.Room.prototype = {
 					function() { self._alien.talk(true); }
 				);
 			
-				// TODO: Testing layers
-				this._layer1.remove(this._alien);
-				this._layer1.remove(this._cloud);
-				this._layer2.add(this._alien);
-				this._layer2.add(this._cloud);
-				// Bring _box on top
-				this._layer2.bringToTop(this._box);
-			
-				// Move items
-				for(i = 0; i < this._selectedItems.length; i++)
-				{
-					this._layer1.remove(this._items[this._selectedItems[i]]);
-					this._layer2.add(this._items[this._selectedItems[i]]);
-				}
-			
-				this._layer2.visible = true;
-			
-				this.add.tween(this._overlay).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, true, 0, 0, false);
-			
-				this._state = 1;
+				// Generate boxes
+				this._box.setBoxes(this._selectedItems.length);
+				
+				// Change state
+				this.changeState(1);
 			}
 			else {
 				// Wrong
@@ -288,45 +285,11 @@ GameObj.Room.prototype = {
 				});
 				
 				
-				// Temporaty
-				this._layer2.remove(this._overlay);
-				this._layer1.add(this._overlay);	
-				
-				// TODO: Testing layers
-				this._layer2.remove(this._alien);
-				this._layer2.remove(this._cloud);
-				this._layer1.add(this._alien);
-				this._layer1.add(this._cloud);			
-			
-			
-				var tween = this.add.tween(this._layer2).to( { alpha: 0 }, 500, Phaser.Easing.Linear.None, true, 0, 0, false);
-				this.add.tween(this._overlay).to( { alpha: 0 }, 500, Phaser.Easing.Linear.None, true, 0, 0, false);
-				
-				tween.onComplete.add(function() {
-					
-					// Temporaty
-					this._layer1.remove(this._overlay);
-					this._layer2.add(this._overlay);
-					
-					self._layer2.visible = false;
-					self._layer2.alpha = 1;	
-					self._state = 0;
-					
-					// Move items
-					for(i = 0; i < this._selectedItems.length; i++)
-					{
-						this._layer2.remove(this._items[this._selectedItems[i]]);
-						this._layer1.add(this._items[this._selectedItems[i]]);
-					
-						this._items[this._selectedItems[i]].resetPos();
-						this._items[this._selectedItems[i]].alpha = 0;
-						this.add.tween(this._items[this._selectedItems[i]]).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, true, 0, 0, false);
-					}
-					
+				// Change state
+				this.changeState(0, function() {
 					// Start new task
-					this.startNewTask();
-					
-				}, this);
+					self.startNewTask();
+				});				
 				
 			}
 			else {
@@ -564,6 +527,96 @@ GameObj.Room.prototype = {
 		}
 		else {
 			return false;
+		}
+	},
+	
+	changeState: function (state, callback) {
+		
+		// Do nothing if state is the same
+		if(this._state == state) return;
+		
+		var self = this;
+		
+		// Change state
+		if(this._state == 0) {
+			
+			// Switch layers for alien and cloud
+			this._layer1.remove(this._alien);
+			this._layer1.remove(this._cloud);
+			this._layer2.add(this._alien);
+			this._layer2.add(this._cloud);
+			// Bring _box on top
+			this._layer2.bringToTop(this._box);
+		
+			// Move items
+			for(i = 0; i < this._selectedItems.length; i++)
+			{
+				this._layer1.remove(this._items[this._selectedItems[i]]);
+				this._layer2.add(this._items[this._selectedItems[i]]);
+			}
+		
+			this._layer2.visible = true;
+			
+			// Animate
+			var tween = this.add.tween(this._overlay).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, true, 0, 0, false);
+			
+			// One animation end
+			tween.onComplete.add(function() {
+			
+				// Set new state
+				self._state = 1;
+				
+				// Callback to know that state change has been complete
+				typeof callback === 'function' && callback();
+			}, this);
+			
+		}
+		else {
+			// Temporary overlay change
+			this._layer2.remove(this._overlay);
+			this._layer1.add(this._overlay);	
+			
+			// Switch layers for alien and cloud
+			this._layer2.remove(this._alien);
+			this._layer2.remove(this._cloud);
+			this._layer1.add(this._alien);
+			this._layer1.add(this._cloud);			
+		
+			// Animate
+			var tween = this.add.tween(this._layer2).to( { alpha: 0 }, 500, Phaser.Easing.Linear.None, true, 0, 0, false);
+			this.add.tween(this._overlay).to( { alpha: 0 }, 500, Phaser.Easing.Linear.None, true, 0, 0, false);
+			
+			// One animation end
+			tween.onComplete.add(function() {
+				
+				// Switch overlay back
+				this._layer1.remove(this._overlay);
+				this._layer2.add(this._overlay);
+				
+				self._layer2.visible = false;
+				self._layer2.alpha = 1;	
+				
+				// Move items
+				for(i = 0; i < this._selectedItems.length; i++)
+				{
+					this._layer2.remove(this._items[this._selectedItems[i]]);
+					this._layer1.add(this._items[this._selectedItems[i]]);
+				
+					this._items[this._selectedItems[i]].resetPos();
+					this._items[this._selectedItems[i]].alpha = 0;
+					this.add.tween(this._items[this._selectedItems[i]]).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, true, 0, 0, false);
+				}
+				
+				// Clear selected item list
+				this._selectedItems = [];
+				
+				// Set new state
+				self._state = 0;
+				
+				// Callback to know that state change has been complete
+				typeof callback === 'function' && callback();
+				
+			}, this);
 		}
 	}
 

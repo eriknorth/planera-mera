@@ -34,8 +34,8 @@ GameObj.World.prototype = {
 		}
 		
 		// Back button
-		this.btnback = this.add.button(this.world.centerX, this.world.height - 120, 'btnBack', this.goToMenu, this, 2, 0, 1);
-		this.btnback.x = this.game.world.centerX - (this.btnback.width/2)
+		this.btnBack = this.add.button(60, 60, 'btnBack', this.goToMenu, this, 2, 0, 1);
+		this.btnBack.anchor.set(0.5);
 
 		// Add alien
 		var alien = this.add.sprite(1080, 550, 'alien');

@@ -25,12 +25,12 @@
 					"icon": "rooms/kitchen_icon.png",
 					"icon_x": 740,
 					"icon_y": 340,
-					"background": "",
-					"item_atlas": "",
-					"item_image": "",
-					"items": "",
-					"tasks": "",
-					"enabled": false
+					"background": "rooms/kitchen.png",
+					"item_atlas": "items/bathroom.json",
+					"item_image": "items/bathroom.png",
+					"items": "items/kitchen_items.json",
+					"tasks": "tasks/kitchen_tasks.json",
+					"enabled": true
 				},
 				{
 					"id": 3,
@@ -38,25 +38,25 @@
 					"icon": "rooms/bedroom_icon.png",
 					"icon_x": 540,
 					"icon_y": 520,
-					"background": "",
-					"item_atlas": "",
-					"item_image": "",
-					"items": "",
-					"tasks": "",
-					"enabled": false
+					"background": "rooms/bedroom.png",
+					"item_atlas": "items/bathroom.json",
+					"item_image": "items/bathroom.png",
+					"items": "items/bedroom_items.json",
+					"tasks": "tasks/bedroom_tasks.json",
+					"enabled": true
 				},
 				{
 					"id": 4,
-					"name": "playroom",
+					"name": "entrance",
 					"icon": "rooms/playroom_icon.png",
 					"icon_x": 740,
 					"icon_y": 520,
-					"background": "",
-					"item_atlas": "",
-					"item_image": "",
-					"items": "",
-					"tasks": "",
-					"enabled": false
+					"background": "rooms/entrance.png",
+					"item_atlas": "items/bathroom.json",
+					"item_image": "items/bathroom.png",
+					"items": "items/entrance_items.json",
+					"tasks": "tasks/entrance_tasks.json",
+					"enabled": true
 				}
 			],
 			"enabled": true

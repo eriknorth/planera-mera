@@ -12,8 +12,9 @@ GameObj.About.prototype = {
 		
 		this.game.stage.backgroundColor = '#304656';
 
-		this.btnback = this.add.button(this.game.world.centerX, this.game.world.height - 120, 'btnBack', this.goToMenu, this, 2, 0, 1);
-		this.btnback.x = this.game.world.centerX - (this.btnback.width/2)
+		// Back button
+		this.btnBack = this.add.button(60, 60, 'btnBack', this.goToMenu, this, 2, 0, 1);
+		this.btnBack.anchor.set(0.5);
 
 		// Shadow
 		this.shadow = this.add.sprite(this.world.centerX, this.world.centerY, 'alien');

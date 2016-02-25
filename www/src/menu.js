@@ -34,6 +34,8 @@ GameObj.Menu.prototype = {
 		// Add rocket	
 		var rocket = this.add.sprite(dist, this.world.centerY, 'rocket_icon');
 		rocket.anchor.setTo(0.5, 0.5);
+		rocket.inputEnabled = true;
+		rocket.events.onInputUp.add(this.goToRocket, this);
 		
 		// Add world icons/padlocks
 		var worldCount = worldsJson.worlds.length;
@@ -71,6 +73,13 @@ GameObj.Menu.prototype = {
 
 		//	Go to About page
 		this.state.start('About');
+
+	},
+	
+	goToRocket: function (pointer) {
+
+		//	Go to About page
+		this.state.start('Rocket');
 
 	},
 	

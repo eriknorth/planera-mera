@@ -101,6 +101,7 @@ GameObj.Preloader.prototype = {
 		this.load.image('padlock_icon', 'assets/img/padlock.png');
 		this.load.image('house_icon', 'assets/img/house.png');
 		this.load.image('rocket_icon', 'assets/img/rocket.png');
+		this.load.image('rocket_bg', 'assets/img/rocket_bg.png');
 		this.load.image('home_bg', 'assets/img/home.png');
 		
 		this.load.image('alien3', 'assets/img/alien3.png');

@@ -51,6 +51,7 @@ var app = {
 		game.state.add('About', GameObj.About);
 		game.state.add('World', GameObj.World);
 		game.state.add('Room', GameObj.Room);
+		game.state.add('Rocket', GameObj.Rocket);
 		
 		//	Now start the Boot state.
 		game.state.start('Boot');
