@@ -5,6 +5,8 @@
 			"name": "home",
 			"icon": "house.png",
 			"background": "home.png",
+			"level": 0,
+			"enabled": true,
 			"rooms": [
 				{
 					"id": 1,
@@ -17,6 +19,7 @@
 					"item_image": "items/bathroom.png",
 					"items": "items/bathroom_items.json",
 					"tasks": "tasks/bathroom_tasks.json",
+					"level": 0,
 					"enabled": true
 				},
 				{
@@ -30,6 +33,7 @@
 					"item_image": "items/bathroom.png",
 					"items": "items/kitchen_items.json",
 					"tasks": "tasks/kitchen_tasks.json",
+					"level": 1,
 					"enabled": true
 				},
 				{
@@ -43,6 +47,7 @@
 					"item_image": "items/bathroom.png",
 					"items": "items/bedroom_items.json",
 					"tasks": "tasks/bedroom_tasks.json",
+					"level": 2,
 					"enabled": true
 				},
 				{
@@ -56,18 +61,19 @@
 					"item_image": "items/bathroom.png",
 					"items": "items/entrance_items.json",
 					"tasks": "tasks/entrance_tasks.json",
+					"level": 3,
 					"enabled": true
 				}
-			],
-			"enabled": true
+			]
 		},
 		{
 			"id": 2,
 			"name": "school",
 			"icon": "house.png",
 			"background": "home.png",
-			"rooms": [],
-			"enabled": false
+			"level": 4,
+			"enabled": true,
+			"rooms": []
 		}
 	]
 }

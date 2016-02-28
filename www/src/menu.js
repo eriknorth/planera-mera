@@ -42,18 +42,22 @@ GameObj.Menu.prototype = {
 		var worldIcons = [];
 		for(i = 0; i < worldCount; i++)
 		{
-			// TODO: For testing, unlock home
-			if(i == 0) {
-				worldIcons[i] = this.add.sprite(worldIconPos[worldCount-1][i].x, worldIconPos[worldCount-1][i].y, 'w'+worldsJson.worlds[i].id+'_icon');
-				worldIcons[i].inputEnabled = true;
+			// Check if enabled
+			if(worldsJson.worlds[i].enabled == true) {
+				// Check if level is enough high to access
+				if(GameObj.user.level >= worldsJson.worlds[i].level) {
+					worldIcons[i] = this.add.sprite(worldIconPos[worldCount-1][i].x, worldIconPos[worldCount-1][i].y, 'w'+worldsJson.worlds[i].id+'_icon');
+					worldIcons[i].inputEnabled = true;
+					worldIcons[i].anchor.setTo(0.5, 0.5);
+					// Add event
+					worldIcons[i].events.onInputUp.add(this.goToWorld(i), this);
+				}
+				else {
+					// Add padlock
+					worldIcons[i] = this.add.sprite(worldIconPos[worldCount-1][i].x, worldIconPos[worldCount-1][i].y, 'padlock_icon');
+					worldIcons[i].anchor.setTo(0.5, 0.5);
+				}
 			}
-			else {
-				worldIcons[i] = this.add.sprite(worldIconPos[worldCount-1][i].x, worldIconPos[worldCount-1][i].y, 'padlock_icon');
-				worldIcons[i].inputEnabled = false;
-			}
-			worldIcons[i].anchor.setTo(0.5, 0.5);
-			// Add event
-			worldIcons[i].events.onInputUp.add(this.goToWorld(i), this);
 		}
 
 		// Add buttons
@@ -70,6 +74,8 @@ GameObj.Menu.prototype = {
 	},
 
 	goToAbout: function (pointer) {
+
+		GameObj.db.insertEvent(1, 'about');
 
 		//	Go to About page
 		this.state.start('About');

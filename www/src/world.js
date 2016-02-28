@@ -22,23 +22,26 @@ GameObj.World.prototype = {
 		var roomIcons = [];
 		for(i = 0; i < worldObj.rooms.length; i++) 
 		{
+			// Check if room is enabled
 			if(worldObj.rooms[i].enabled == true)
 			{
-				//roomIcons[i] = this.add.sprite(worldObj.rooms[i].icon_x, worldObj.rooms[i].icon_y, 'w'+worldObj.id+'_r'+worldObj.rooms[i].id+'_icon');
-				//roomIcons[i].inputEnabled = true;
-				//roomIcons[i].anchor.setTo(0.5, 0.5);
-				//roomIcons[i].scale.setTo(0.8);
-				// Add event
-				//roomIcons[i].events.onInputUp.add(this.goToRoom(i), this);
-				
-				roomIcons[i] = this.add.button(
-					worldObj.rooms[i].icon_x, 
-					worldObj.rooms[i].icon_y, 
-					'w'+worldObj.id+'_r'+worldObj.rooms[i].id+'_icon', 
-					this.goToRoom(i), this, 2, 0, 1);
+				// Check if level is enough high to access
+				if(GameObj.user.level >= worldObj.rooms[i].level) {
+					roomIcons[i] = this.add.button(
+						worldObj.rooms[i].icon_x, 
+						worldObj.rooms[i].icon_y, 
+						'w'+worldObj.id+'_r'+worldObj.rooms[i].id+'_icon', 
+						this.goToRoom(i), this, 2, 0, 1);
 					
-				roomIcons[i].anchor.setTo(0.5);
-				roomIcons[i].scale.setTo(0.8);
+					roomIcons[i].anchor.setTo(0.5);
+					roomIcons[i].scale.setTo(0.8);
+				}
+				else {
+					// Add padlock
+					roomIcons[i] = this.add.sprite(worldObj.rooms[i].icon_x, worldObj.rooms[i].icon_y, 'padlock_icon');
+					roomIcons[i].anchor.setTo(0.5);
+					roomIcons[i].scale.setTo(0.8);
+				}
 			}
 		}
 		

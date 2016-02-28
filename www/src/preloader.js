@@ -12,7 +12,7 @@ GameObj.Preloader.prototype = {
 
 	preload: function () {
 
-		// --- Set up the preloader ---
+		// --- < Set up the preloader > ---
 		// These are the assets we loaded in Boot.js
 		this.background = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'splashScreen');
 		this.background.anchor.setTo(0.5, 0.5);
@@ -29,10 +29,34 @@ GameObj.Preloader.prototype = {
 		GameObj.music.loop = true;
 		//GameObj.music.play();
 		
+		// --- </ Set up the preloader > ---
 		
+		
+		// --- < Configure and Run DB > ---
 		// Connect to DB
 		GameObj.db = new Db();
 		GameObj.db.connect();
+		
+		// Check if this is first time the app has run
+		GameObj.db.getUser(function (res) {
+			// If no result returned -> first time
+			if(res.rows.length == 0) {
+				// Generate random Identity
+				var identity = Math.random().toString(36).substr(2, 5);
+				// Insert new user
+				GameObj.db.insertUser(identity, function (id) {
+					// Save user in game object
+					GameObj.user = {id: id, identity: identity, level: 0, timestamp: Date.now()};
+				});
+			}
+			else {
+				// Save user in game object
+				GameObj.user = res.rows[0];
+			}
+		});
+		
+		// --- </ Configure and Run DB > ---		
+		
 		
 		// Get JSONs
 		var gameJson = this.game.cache.getJSON('game');

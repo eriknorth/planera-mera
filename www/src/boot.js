@@ -1,14 +1,18 @@
 // Variables that presist through out the states
 GameObj = {
 
+	// TODO: Review these!
 	score: 0,
 	music: null,
 	backWidth: 1280,
 	backHeight: 800,
 	db: null,
 	world: null,
-	room: null
+	room: null,
 	
+	
+	// New variables
+	user: null
 };
 
 GameObj.Boot = function (game) {
