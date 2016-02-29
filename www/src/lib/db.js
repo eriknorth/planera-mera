@@ -14,7 +14,7 @@ Db.prototype = {
 
 		this.db.transaction(function(tx) {
 			// For testing
-			// tx.executeSql('DROP TABLE IF EXISTS test_table');
+			//tx.executeSql('DROP TABLE IF EXISTS test_table');
 			// tx.executeSql('DROP TABLE IF EXISTS users');
 			// tx.executeSql('DROP TABLE IF EXISTS events');
 			// tx.executeSql('DROP TABLE IF EXISTS tasks');
@@ -35,34 +35,36 @@ Db.prototype = {
 			
 			
 			// Create user table
-			tx.executeSql('CREATE TABLE IF NOT EXISTS users (\
-				id INTEGER PRIMARY KEY, \
-				identity VARCHAR(16), \
-				level INTEGER, \
-				timestamp TIMESTAMP)');
+			tx.executeSql('CREATE TABLE IF NOT EXISTS users (' +
+				'id INTEGER PRIMARY KEY, ' +
+				'identity VARCHAR(16), ' +
+				'level INTEGER, ' +
+				'timestamp TIMESTAMP)');
 			// Create event table
-			tx.executeSql('CREATE TABLE IF NOT EXISTS events (\
-				id INTEGER PRIMARY KEY, \
-				user_id INTEGER, \
-				event INTEGER, \
-				value VARCHAR(64), \
-				timestamp TIMESTAMP)');
+			tx.executeSql('CREATE TABLE IF NOT EXISTS events (' +
+				'id INTEGER PRIMARY KEY, ' +
+				'user_id INTEGER, ' +
+				'event INTEGER, ' +
+				'value VARCHAR(64), ' +
+				'timestamp TIMESTAMP)');
 			// Create task table
-			tx.executeSql('CREATE TABLE IF NOT EXISTS tasks (\
-				id INTEGER PRIMARY KEY, \
-				user_id INTEGER, \
-				task INTEGER, \
-				value INTEGER, \
-				timestamp TIMESTAMP)');
+			tx.executeSql('CREATE TABLE IF NOT EXISTS tasks (' +
+				'id INTEGER PRIMARY KEY, ' +
+				'user_id INTEGER, ' +
+				'level_id INTEGER, ' +
+				'task INTEGER, ' +
+				'wrong INTEGER, ' +
+				'value INTEGER, ' +
+				'timestamp TIMESTAMP)');
 			// Create level table
-			tx.executeSql('CREATE TABLE IF NOT EXISTS levels (\
-				id INTEGER PRIMARY KEY, \
-				user_id INTEGER, \
-				room INTEGER, \
-				level INTEGER, \
-				cleared INTEGER, \
-				failed INTEGER, \
-				timestamp TIMESTAMP)');
+			tx.executeSql('CREATE TABLE IF NOT EXISTS levels (' +
+				'id INTEGER PRIMARY KEY, ' +
+				'user_id INTEGER, ' +
+				'room INTEGER, ' +
+				'level INTEGER, ' +
+				'cleared INTEGER, ' +
+				'failed INTEGER, ' +
+				'timestamp TIMESTAMP)');
 		});
 	
 	},
@@ -89,20 +91,20 @@ Db.prototype = {
 	// Increase user level
 	incUserLevel: function (userId) {
 		this.db.transaction(function(tx) {
-			tx.executeSql('\
-				UPDATE users \
-				SET level = level + 1, timestamp = ?) \
-				WHERE userId = ?', 
+			tx.executeSql(
+				'UPDATE users ' +
+				'SET level = level + 1, timestamp = ?) ' +
+				'WHERE userId = ?', 
 			[Date.now(), userId]);		
 		});
 	},
 	// Decrease user level
 	decUserLevel: function (userId) {
 		this.db.transaction(function(tx) {
-			tx.executeSql('\
-				UPDATE users \
-				SET level = level - 1, timestamp = ?) \
-				WHERE userId = ?', 
+			tx.executeSql(
+				'UPDATE users ' +
+				'SET level = level - 1, timestamp = ?) ' +
+				'WHERE userId = ?', 
 			[Date.now(), userId]);		
 		});
 	},
@@ -111,43 +113,81 @@ Db.prototype = {
 	// Insert event
 	insertEvent: function (userId, event, value) {
 		this.db.transaction(function(tx) {
-			tx.executeSql('\
-				INSERT INTO events (user_id, event, value, timestamp) \
-				VALUES (?, ?, ?, ?)', 
+			tx.executeSql(
+				'INSERT INTO events (user_id, event, value, timestamp) ' +
+				'VALUES (?, ?, ?, ?)', 
 			[userId, event, value, Date.now()]);		
 		});
 	},
 	
 	// Insert task
-	insertTask: function (userId, task, value) {
+	insertTask: function (userId, levelId, task, callback) {
 		this.db.transaction(function(tx) {
-			tx.executeSql('\
-				INSERT INTO tasks (user_id, task, value, timestamp) \
-				VALUES (?, ?, ?, ?)', 
-			[userId, task, value, Date.now()]);		
+			tx.executeSql(
+				'INSERT INTO tasks (user_id, level_id, task, wrong, value, timestamp) ' +
+				'VALUES (?, ?, ?, ?, ?, ?)', 
+			[userId, levelId, task, 0, 0, Date.now()], function(tx, res) {
+				// Run callback if defined
+				typeof callback === 'function' && callback(res.insertId);
+			});	
+		});
+	},
+	// Get task
+	getTask: function (userId, levelId, callback) {
+		this.db.transaction(function(tx) {
+			tx.executeSql(
+				'SELECT * FROM tasks ' + 
+				'WHERE user_id = ? AND level_id = ? AND value = ? ' +
+				'ORDER BY id DESC ' + 
+				'LIMIT 1', 
+			[userId, levelId, 0], function(tx, res) {
+				// Run callback if defined
+				typeof callback === 'function' && callback(res);
+			});		
+		});
+	},
+	// Insert task wrong
+	incTaskWrong: function (taskId) {
+		this.db.transaction(function(tx) {
+			tx.executeSql(
+				'UPDATE tasks ' +
+				'SET wrong = wrong + 1, timestamp = ? ' +
+				'WHERE id = ?', 
+			[Date.now(), taskId]);		
+		});
+	},
+	// Insert task wrong
+	setTaskValue: function (taskId, value) {
+		this.db.transaction(function(tx) {
+			tx.executeSql(
+				'UPDATE tasks ' +
+				'SET value = ?, timestamp = ? ' +
+				'WHERE id = ?', 
+			[value, Date.now(), taskId]);		
 		});
 	},
 	
 	// Insert level
-	insertLevel: function (userId, room) {
+	insertLevel: function (userId, room, callback) {
 		this.db.transaction(function(tx) {
-			tx.executeSql('\
-				INSERT INTO levels (user_id, room, level, cleared, failed, timestamp) \
-				VALUES (?, ?, ?, ?, ?, ?)', 
-			[userId, room, 0, 0, 0, Date.now()]);		
+			tx.executeSql(
+				'INSERT INTO levels (user_id, room, level, cleared, failed, timestamp) ' +
+				'VALUES (?, ?, ?, ?, ?, ?)', 
+			[userId, room, 0, 0, 0, Date.now()], function(tx, res) {
+				// Run callback if defined
+				typeof callback === 'function' && callback(res.insertId);
+			});		
 		});
 	},
 	
 	// Get level
 	getLevel: function (userId, room, callback) {
 		this.db.transaction(function(tx) {
-			tx.executeSql('\
-				SELECT * FROM levels \
-				WHERE userId = ? AND room = ? \
-				LIMIT 1', 
-			[userId, room], function(tx, res) {
-				console.log(res);
-				
+			tx.executeSql(
+				'SELECT * FROM levels ' +
+				'WHERE user_id = ? AND room = ? ' +
+				'LIMIT 1', 
+			[userId, room], function(tx, res) {				
 				// Run callback if defined
 				typeof callback === 'function' && callback(res);
 			});		
@@ -157,10 +197,10 @@ Db.prototype = {
 	// Increase level
 	incLevel: function (userId, room) {
 		this.db.transaction(function(tx) {
-			tx.executeSql('\
-				UPDATE levels \
-				SET level = level + 1, timestamp = ?) \
-				WHERE userId = ? AND room = ?', 
+			tx.executeSql(
+				'UPDATE levels ' +
+				'SET level = level + 1, timestamp = ?) ' +
+				'WHERE user_id = ? AND room = ?', 
 			[Date.now(), userId, room]);		
 		});
 	},
@@ -168,10 +208,21 @@ Db.prototype = {
 	// Decrease level
 	decLevel: function (userId, room) {
 		this.db.transaction(function(tx) {
-			tx.executeSql('\
-				UPDATE levels \
-				SET level = level - 1, timestamp = ?) \
-				WHERE userId = ? AND room = ?', 
+			tx.executeSql(
+				'UPDATE levels ' +
+				'SET level = level - 1, timestamp = ?) ' +
+				'WHERE user_id = ? AND room = ?', 
+			[Date.now(), userId, room]);		
+		});
+	},
+	
+	// Increase level cleared
+	clearLevelCleared: function (userId, room) {
+		this.db.transaction(function(tx) {
+			tx.executeSql(
+				'UPDATE levels ' +
+				'SET cleared = 0, timestamp = ?) ' +
+				'WHERE user_id = ? AND room = ?', 
 			[Date.now(), userId, room]);		
 		});
 	},
@@ -179,10 +230,10 @@ Db.prototype = {
 	// Increase level cleared
 	incLevelCleared: function (userId, room) {
 		this.db.transaction(function(tx) {
-			tx.executeSql('\
-				UPDATE levels \
-				SET cleared = cleared + 1, timestamp = ?) \
-				WHERE userId = ? AND room = ?', 
+			tx.executeSql(
+				'UPDATE levels ' +
+				'SET cleared = cleared + 1, timestamp = ?) ' +
+				'WHERE user_id = ? AND room = ?', 
 			[Date.now(), userId, room]);		
 		});
 	},
@@ -190,10 +241,10 @@ Db.prototype = {
 	// Decrease level cleared
 	decLevelCleared: function (userId, room) {
 		this.db.transaction(function(tx) {
-			tx.executeSql('\
-				UPDATE levels \
-				SET cleared = cleared - 1, timestamp = ?) \
-				WHERE userId = ? AND room = ?', 
+			tx.executeSql(
+				'UPDATE levels ' +
+				'SET cleared = cleared - 1, timestamp = ?) ' +
+				'WHERE user_id = ? AND room = ?', 
 			[Date.now(), userId, room]);		
 		});
 	},
@@ -201,10 +252,10 @@ Db.prototype = {
 	// Increase level failed
 	incLevelFailed: function (userId, room) {
 		this.db.transaction(function(tx) {
-			tx.executeSql('\
-				UPDATE levels \
-				SET failed = failed + 1, timestamp = ?) \
-				WHERE userId = ? AND room = ?', 
+			tx.executeSql(
+				'UPDATE levels ' +
+				'SET failed = failed + 1, timestamp = ?) ' +
+				'WHERE user_id = ? AND room = ?', 
 			[Date.now(), userId, room]);		
 		});
 	},
@@ -212,10 +263,10 @@ Db.prototype = {
 	// Decrease level failed
 	decLevelFailed: function (userId, room) {
 		this.db.transaction(function(tx) {
-			tx.executeSql('\
-				UPDATE levels \
-				SET failed = failed - 1, timestamp = ?) \
-				WHERE userId = ? AND room = ?', 
+			tx.executeSql(
+				'UPDATE levels ' +
+				'SET failed = failed - 1, timestamp = ?) ' +
+				'WHERE user_id = ? AND room = ?', 
 			[Date.now(), userId, room]);		
 		});
 	},

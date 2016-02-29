@@ -10,9 +10,10 @@ GameObj = {
 	world: null,
 	room: null,
 	
-	
 	// New variables
-	user: null
+	user: null,
+	level: null,
+	task: null
 };
 
 GameObj.Boot = function (game) {

@@ -69,8 +69,38 @@ GameObj.World.prototype = {
 	
 	goToRoom: function (room) {
 		return function () {
+			
+			var self = this;
 			GameObj.room = room;
-			this.state.start('Room');
+			
+			// Get JSONs
+			var worldsJson = this.cache.getJSON('worlds');
+			// Get room objects
+			var roomObj = worldsJson.worlds[GameObj.world].rooms[GameObj.room];
+			
+			// Get Stuff from DB
+			// Get room level
+			GameObj.db.getLevel(GameObj.user.id, roomObj.id, function (res) {
+				
+				// If no result returned -> first time this room has been opened
+				if(res.rows.length == 0) {
+					// Insert new clean room entry
+					GameObj.db.insertLevel(GameObj.user.id, roomObj.id, function (id) {
+						// Save user in game object
+						GameObj.level = {id: id, user_id: GameObj.user.id, room: roomObj.id, level: 0, cleared: 0, failed: 0, timestamp: Date.now()};
+						
+						// Go to room only when level stuff loaded
+						self.state.start('Room');
+					});
+				}
+				else {
+					// Save room in game object
+					GameObj.level = res.rows[0];
+					
+					// Go to room only when level stuff loaded
+					self.state.start('Room');
+				}
+			});
 		}
 	}
 

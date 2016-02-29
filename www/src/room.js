@@ -137,10 +137,12 @@ GameObj.Room.prototype = {
 		// Sound library
 		this._sound = new Sound(this);
 		
+		
 		// Start New Task
 		this.startNewTask();
 	},
 	
+	// TODO: This is for testing framerate
 	// render: function () {
 	// 	this.game.debug.text(this.time.fps || '--', 2, 14, "#00ff00");
 	// },
@@ -208,17 +210,26 @@ GameObj.Room.prototype = {
 	// TODO: Need to fix
 	startNewTask: function () {
 		
+		var self = this;
+		
 		// Choose randomly a task from a pool (if there is any)
-		if(this._taskArray.length > 0) {
-			var rndNum = this.rnd.integerInRange(0, this._taskArray.length-1);
-			//this._currTask = this._taskArray[rndNum];
-			this._currTask = this._taskArray[0];
-			
-			// Update new boxes
-			// if(typeof this._currTask.items !== typeof undefined) {
-			// 	this._box.setBoxes(this._currTask.items.length);
-			// }
-		}
+		// if(this._taskArray.length > 0) {
+		// 	var rndNum = this.rnd.integerInRange(0, this._taskArray.length-1);
+		// 	this._currTask = this._taskArray[rndNum];
+		//
+		//
+		// 	// TODO: This should be done better
+		// 	// Say task
+		// 	this.alienClickRelease();
+		// }
+		
+		// Choose task
+		this.chooseTask(function () {
+			// TODO: This should be done better
+			// Say task
+			self.alienClickRelease();
+		});
+		
 		
 	},
 	
@@ -244,7 +255,6 @@ GameObj.Room.prototype = {
 		
 		var self = this;
 		
-		
 		// Play audio depending on the gameplay state
 		switch(this._state)
 		{
@@ -266,11 +276,33 @@ GameObj.Room.prototype = {
 				this.changeState(1);
 			}
 			else {
-				// Wrong
-				this._alien.talk(true);
-				this._sound.play('wrong_audio', function() { 
-					self._alien.talk(false); 
-				});
+				// -- Wrong --
+				
+				// Increase wrong counter
+				GameObj.task.wrong++;
+				// Update DB
+				GameObj.db.incTaskWrong(GameObj.task.id);
+				
+				// Check how many errors has been made
+				if(GameObj.task.wrong < 10) {
+					// Feedback
+					this._alien.talk(true);
+					this._sound.play('wrong_audio', function() { 
+						self._alien.talk(false); 
+					});
+				}
+				else {
+					// TODO: Hensi says something about better luck next time
+					// Update value
+					GameObj.task.value = -1;
+					// Update DB
+					GameObj.db.setTaskValue(GameObj.task.id, -1);
+					
+					// Change state
+					this.resetState(0);
+					// Start new task
+					this.startNewTask();
+				}
 			}
 			break;
 		case 1:
@@ -278,25 +310,54 @@ GameObj.Room.prototype = {
 			// Play result
 			if(this.checkSecondAnswer() == true) {
 				// Correct
+				
+				// Update value
+				GameObj.task.value = 1;
+				// Update DB
+				GameObj.db.setTaskValue(GameObj.task.id, 1);
+				
+				// Feedback
 				this._alien.talk(true);
 				this._sound.play('correct_audio', function() { 
-					self._alien.talk(false); 
+					self._alien.talk(false);
+					
+					// Change state
+					self.changeState(0, function() {
+						// Start new task
+						self.startNewTask();
+					});		
 				});
-				
-				
-				// Change state
-				this.changeState(0, function() {
-					// Start new task
-					self.startNewTask();
-				});				
-				
+			
 			}
 			else {
-				// Wrong
-				this._alien.talk(true);
-				this._sound.play('wrong_audio', function() { 
-					self._alien.talk(false); 
-				});
+				// -- Wrong --
+				
+				// Increase wrong counter
+				GameObj.task.wrong++;
+				// Update DB
+				GameObj.db.incTaskWrong(GameObj.task.id);
+				
+				// Check how many errors has been made
+				if(GameObj.task.wrong < 10) {
+					// Feedback
+					this._alien.talk(true);
+					this._sound.play('wrong_audio', function() { 
+						self._alien.talk(false); 
+					});
+				}
+				else {
+					// TODO: Hensi says something about better luck next time
+					// Update value
+					GameObj.task.value = -1;
+					// Update DB
+					GameObj.db.setTaskValue(GameObj.task.id, -1);
+					
+					// Change state
+					this.changeState(0, function() {
+						// Start new task
+						self.startNewTask();
+					});
+				}
 			}
 			break;
 			
@@ -408,8 +469,7 @@ GameObj.Room.prototype = {
 		this._btnPlay.inputEnabled = false;
 		this._btnBack.inputEnabled = false;
 	},
-	
-	
+
 	// Check first part answer
 	checkFirstAnswer: function () {
 		
@@ -450,11 +510,13 @@ GameObj.Room.prototype = {
 		}
 		
 		
-		// Play result
+		// Return result
 		if(result >= this._currTask.items.length) {
+			// Correct
 			return true;
 		}
 		else {
+			// Wrong	
 			return false;
 		}
 		
@@ -556,6 +618,33 @@ GameObj.Room.prototype = {
 		}
 	},
 	
+	
+	resetState: function (state) {
+		
+		// Return if no current state
+		if(this._state != state) return;
+		
+		// Change state
+		if(this._state == 0) {
+			
+			// Move items
+			for(i = 0; i < this._selectedItems.length; i++)
+			{
+				this._layer2.remove(this._items[this._selectedItems[i]]);
+				this._layer1.add(this._items[this._selectedItems[i]]);
+			
+				this._items[this._selectedItems[i]].resetPos();
+				this._items[this._selectedItems[i]].alpha = 0;
+				this.add.tween(this._items[this._selectedItems[i]]).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, true, 0, 0, false);
+			}
+			
+			// Clear selected item list
+			this._selectedItems = [];
+			
+		}
+		
+	},
+	
 	changeState: function (state, callback) {
 		
 		// Do nothing if state is the same
@@ -644,6 +733,64 @@ GameObj.Room.prototype = {
 				
 			}, this);
 		}
-	}
+	},
+
+
+	
+	// TODO: Need to implement this
+	chooseTask: function (callback) {
+		
+		var self = this;
+		
+		// First try to get task from DB
+		GameObj.db.getTask(GameObj.user.id, GameObj.level.id, function (res) {
+			
+			// If no result returned -> there is not task started
+			if(res.rows.length == 0) {
+				
+				// Choose new task...
+				// TODO: This should be fixed to choose tasks better, not random...
+				// Choose randomly a task from a pool (if there is any)
+				// Make sure there are any tasks to handle
+				if(self._taskArray.length > 0) {
+					var rndNum = self.rnd.integerInRange(0, self._taskArray.length-1);
+					self._currTask = self._taskArray[rndNum];
+				}
+				
+				// Insert task entry in DB
+				GameObj.db.insertTask(GameObj.user.id, GameObj.level.id, self._currTask.id, function (id) {
+					// Save task in game object
+					GameObj.task = {
+						id: id, 
+						user_id: GameObj.user.id, 
+						level_id: GameObj.level.id, 
+						task: self._currTask.id, 
+						wrong: 0, 
+						value: 0, 
+						timestamp: Date.now()
+					};
+					
+					// Run callback if defined
+					typeof callback === 'function' && callback();
+				});
+				
+			}
+			// There is a task started
+			else {
+				// Save task in game object
+				GameObj.task = res.rows[0];
+				
+				// Load task in the object
+				self._currTask = self._taskArray.filter(function (obj) {
+					return obj.id === GameObj.task.task;
+				})[0];
+				
+				// Run callback if defined
+				typeof callback === 'function' && callback();
+			}
+		});
+
+	},
+	
 
 };
