@@ -195,79 +195,90 @@ Db.prototype = {
 	},
 	
 	// Increase level
-	incLevel: function (userId, room) {
+	incLevel: function (levelId) {
 		this.db.transaction(function(tx) {
 			tx.executeSql(
 				'UPDATE levels ' +
-				'SET level = level + 1, timestamp = ?) ' +
-				'WHERE user_id = ? AND room = ?', 
-			[Date.now(), userId, room]);		
+				'SET level = level + 1, timestamp = ? ' +
+				'WHERE id = ?',
+			[Date.now(), levelId]);
 		});
 	},
 	
 	// Decrease level
-	decLevel: function (userId, room) {
+	decLevel: function (levelId) {
 		this.db.transaction(function(tx) {
 			tx.executeSql(
 				'UPDATE levels ' +
-				'SET level = level - 1, timestamp = ?) ' +
-				'WHERE user_id = ? AND room = ?', 
-			[Date.now(), userId, room]);		
+				'SET level = level - 1, timestamp = ? ' +
+				'WHERE id = ?',
+			[Date.now(), levelId]);	
 		});
 	},
 	
 	// Increase level cleared
-	clearLevelCleared: function (userId, room) {
+	clearLevelCleared: function (levelId) {
 		this.db.transaction(function(tx) {
 			tx.executeSql(
 				'UPDATE levels ' +
-				'SET cleared = 0, timestamp = ?) ' +
-				'WHERE user_id = ? AND room = ?', 
-			[Date.now(), userId, room]);		
+				'SET cleared = 0, timestamp = ? ' +
+				'WHERE id = ?', 
+			[Date.now(), levelId]);		
 		});
 	},
 	
 	// Increase level cleared
-	incLevelCleared: function (userId, room) {
+	incLevelCleared: function (levelId) {
 		this.db.transaction(function(tx) {
 			tx.executeSql(
 				'UPDATE levels ' +
-				'SET cleared = cleared + 1, timestamp = ?) ' +
-				'WHERE user_id = ? AND room = ?', 
-			[Date.now(), userId, room]);		
+				'SET cleared = cleared + 1, timestamp = ? ' +
+				'WHERE id = ?', 
+			[Date.now(), levelId]);		
 		});
 	},
 	
 	// Decrease level cleared
-	decLevelCleared: function (userId, room) {
+	decLevelCleared: function (levelId) {
 		this.db.transaction(function(tx) {
 			tx.executeSql(
 				'UPDATE levels ' +
-				'SET cleared = cleared - 1, timestamp = ?) ' +
-				'WHERE user_id = ? AND room = ?', 
-			[Date.now(), userId, room]);		
+				'SET cleared = cleared - 1, timestamp = ? ' +
+				'WHERE id = ?', 
+			[Date.now(), levelId]);
+		});
+	},
+	
+	// Increase level cleared
+	clearLevelFailed: function (levelId) {
+		this.db.transaction(function(tx) {
+			tx.executeSql(
+				'UPDATE levels ' +
+				'SET failed = 0, timestamp = ? ' +
+				'WHERE id = ?', 
+			[Date.now(), levelId]);		
 		});
 	},
 	
 	// Increase level failed
-	incLevelFailed: function (userId, room) {
+	incLevelFailed: function (levelId) {
 		this.db.transaction(function(tx) {
 			tx.executeSql(
 				'UPDATE levels ' +
-				'SET failed = failed + 1, timestamp = ?) ' +
-				'WHERE user_id = ? AND room = ?', 
-			[Date.now(), userId, room]);		
+				'SET failed = failed + 1, timestamp = ? ' +
+				'WHERE id = ?', 
+			[Date.now(), levelId]);
 		});
 	},
 	
 	// Decrease level failed
-	decLevelFailed: function (userId, room) {
+	decLevelFailed: function (levelId) {
 		this.db.transaction(function(tx) {
 			tx.executeSql(
 				'UPDATE levels ' +
-				'SET failed = failed - 1, timestamp = ?) ' +
-				'WHERE user_id = ? AND room = ?', 
-			[Date.now(), userId, room]);		
+				'SET failed = failed - 1, timestamp = ? ' +
+				'WHERE id = ?', 
+			[Date.now(), levelId]);
 		});
 	},
 	

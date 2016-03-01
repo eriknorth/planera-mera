@@ -10,14 +10,13 @@ GameObj.About.prototype = {
 
 	create: function () {
 		
-		this.game.stage.backgroundColor = '#304656';
+		// Set backgound
+		this.stage.backgroundColor = '#304656';
+		this.add.sprite(0, 0, 'background');
 
 		// Back button
 		this.btnBack = this.add.button(60, 60, 'btnBack', this.goToMenu, this, 2, 0, 1);
 		this.btnBack.anchor.set(0.5);
-		
-		// Back button
-		this.add.button(200, 200, 'btnRound', null, this, 2, 0, 1);
 
 		// Shadow
 		this.shadow = this.add.sprite(this.world.centerX, this.world.centerY, 'alien');
@@ -37,6 +36,10 @@ GameObj.About.prototype = {
 		this.alien.events.onInputDown.add(this.alienDown, this);
 		this.alien.events.onInputUp.add(this.alienUp, this);
 		this.alien.events.onDragUpdate.add(this.alienDrag, this);
+		
+		
+		
+		
 	},
 	
 	goToMenu: function (pointer) {

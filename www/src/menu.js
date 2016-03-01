@@ -12,6 +12,7 @@ GameObj.Menu.prototype = {
 		
 		// Set backgound
 		this.stage.backgroundColor = '#304656';
+		this.add.sprite(0, 0, 'background');
 		
 		// Get JSONs
 		var gameJson = this.cache.getJSON('game');
@@ -61,9 +62,10 @@ GameObj.Menu.prototype = {
 		}
 
 		// Add buttons
-		this.btnAbout = this.game.add.button(this.game.world.centerX - 280, this.game.world.height - 120, 'btnAbout', this.goToAbout, this, 2, 0, 1);
-		this.btnMovie = this.game.add.button(this.game.world.centerX + 20, this.game.world.height - 120, 'btnMovie', this.goToMovie, this, 2, 0, 1);
-
+		this.btnAbout = this.game.add.button(this.game.world.centerX - 60, this.game.world.height - 80, 'btnAbout', this.goToAbout, this, 2, 0, 1);
+		this.btnAbout.anchor.setTo(0.5);
+		this.btnMovie = this.game.add.button(this.game.world.centerX + 60, this.game.world.height - 80, 'btnMovie', this.goToMovie, this, 2, 0, 1);
+		this.btnMovie.anchor.setTo(0.5);
 
 	},
 

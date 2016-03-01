@@ -96,9 +96,6 @@ GameObj.Preloader.prototype = {
 
 		// Load other general assets
 		this.load.image('cloud', 'assets/img/cloud.png');
-		// Buttons
-		this.load.spritesheet('btnBack', 'assets/img/button_back.png', 85, 90);
-		this.load.spritesheet('btnPlay', 'assets/img/button_play.png', 85, 90);
 		
 		
 		// Alien
@@ -108,21 +105,27 @@ GameObj.Preloader.prototype = {
 		this.load.spritesheet('alien-mouth-talk', 'assets/img/alien/alien-mouth-talk.png', 63, 19, 2);
 		
 		
-		// Load elements for the game
+		
+		// ---------- Load assets for Game ----------
+		
+		// --- < Load Menu Background > ---
+		this.load.image('background', 'assets/img/background.png');
+		// --- </ Load Menu Background > ---
+		
+		// --- < Load Buttons > ---
+		this.load.spritesheet('btnAbout', 'assets/img/buttons/button_about.png', 85, 90);
+		this.load.spritesheet('btnMovie', 'assets/img/buttons/button_movie.png',  85, 90);
+		this.load.spritesheet('btnRound', 'assets/img/buttons/round_tmpl.png', 180, 192);
+		this.load.spritesheet('btnBack', 'assets/img/buttons/button_back.png', 85, 90);
+		this.load.spritesheet('btnPlay', 'assets/img/buttons/button_play.png', 85, 90);
+		this.load.spritesheet('btnOk', 'assets/img/buttons/button_ok.png', 85, 90);
+		// --- </ Load Buttons > ---
+		
+		// --- < Load Elements > ---
 		this.load.image('box', 'assets/img/elements/box.png');
 		this.load.image('arrow', 'assets/img/elements/arrow.png');
-		
-		
-		// TODO: Testing audio
-		this.load.audio('task1_audio', 'assets/audio/task1.mp3');
-		
-		// Load assets for Game
-		
-		
-		// Load buttons
-		this.load.spritesheet('btnAbout', 'assets/img/button.png', 260, 84);
-		this.load.spritesheet('btnMovie', 'assets/img/button_film.png', 260, 84);
-		this.load.spritesheet('btnRound', 'assets/img/buttons/round_tmpl.png', 180, 192);
+		this.load.image('star', 'assets/img/elements/star.png');
+		// --- </ Load Elements > ---
 		
 		
 		this.load.spritesheet('alien', 'assets/img/alien_sprite.png', 250, 467);
@@ -135,6 +138,9 @@ GameObj.Preloader.prototype = {
 		
 		this.load.image('alien3', 'assets/img/alien3.png');
 		
+		
+		// TODO: Testing audio
+		this.load.audio('task1_audio', 'assets/audio/task1.mp3');
 		
 		// Load audio files
 		this.load.audio('whatDoINeed_audio', 'assets/audio/what_do_i_need.mp3');

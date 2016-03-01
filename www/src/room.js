@@ -32,6 +32,7 @@ GameObj.Room = function (game) {
 	// Layers
 	this._layer1 = null;
 	this._layer2 = null;
+	this._layer3 = null;
 	
 	// Overlay
 	this._overlay = null;
@@ -42,6 +43,11 @@ GameObj.Room = function (game) {
 	// Buttons
 	this._btnBack = null;
 	this._btnPlay = null;
+	
+	// Star
+	this._starOverly = null;
+	this._star = null;
+	this._btnOk = null;
 };
 
 GameObj.Room.prototype = {
@@ -129,10 +135,39 @@ GameObj.Room.prototype = {
 		this._overlay.alpha = 0;
 		this._layer2.add(this._overlay);
 		
+		
+		
+		// --- < Star stuff > ---
+		// Add extra layer
+		this._layer3 = this.add.group();
+		this._layer3.visible = false;
+		this._layer3.alpha = 0;
+		
+		// Add overlay
+		this._starOverlay = this.add.sprite(0, 0, overlayBitmap);
+		this._starOverlay.inputEnabled = true;
+		this._layer3.add(this._starOverlay);
+		
+		// Star
+		this._star = this.game.add.sprite(this.world.centerX, this.world.centerY - 60, 'star');
+		this._star.anchor.setTo(0.5);
+		this._star.scale.setTo(0.1);
+		this._layer3.add(this._star);
+		
+		// Ok button
+		this._btnOk = this.add.button(this.world.centerX, this.world.height - 80, 'btnOk', this.hideStar, this, 2, 0, 1);
+		this._btnOk.anchor.set(0.5);
+		this._layer3.add(this._btnOk);
+		// --- </ Star stuff > ---	
+		
+		
+		
+		
 		// Add slots/_boxes for items
 		this._box = new Box(this, 280);
 		this.add.existing(this._box);
 		this._layer2.add(this._box);
+		
 		
 		// Sound library
 		this._sound = new Sound(this);
@@ -295,8 +330,25 @@ GameObj.Room.prototype = {
 					// TODO: Hensi says something about better luck next time
 					// Update value
 					GameObj.task.value = -1;
-					// Update DB
 					GameObj.db.setTaskValue(GameObj.task.id, -1);
+					// Reset tasks cleared
+					GameObj.level.cleared = 0;
+					GameObj.db.clearLevelCleared(GameObj.level.id);
+					// Update Failed levels
+					GameObj.level.failed++;
+					// Check if should level down
+					if(GameObj.level.failed >= 3) {
+						// Reset tasks failed
+						GameObj.level.failed = 0;
+						GameObj.db.clearLevelFailed(GameObj.level.id);
+						// Level down
+						GameObj.level.level--;
+						GameObj.db.decLevel(GameObj.level.id);
+					}
+					else {
+						// Inc. tasks cleared
+						GameObj.db.incLevelFailed(GameObj.level.id);
+					}
 					
 					// Change state
 					this.resetState(0);
@@ -311,10 +363,32 @@ GameObj.Room.prototype = {
 			if(this.checkSecondAnswer() == true) {
 				// Correct
 				
-				// Update value
+				// Update task value
 				GameObj.task.value = 1;
-				// Update DB
 				GameObj.db.setTaskValue(GameObj.task.id, 1);
+				// Reset tasks failed
+				GameObj.level.failed = 0;
+				GameObj.db.clearLevelFailed(GameObj.level.id);
+				// Update level cleared
+				GameObj.level.cleared++;	
+				// Check if should level up
+				if(GameObj.level.cleared >= 3) {
+					// Reset tasks cleared
+					GameObj.level.cleared = 0;
+					GameObj.db.clearLevelCleared(GameObj.level.id);
+					// Level up
+					GameObj.level.level++;
+					GameObj.db.incLevel(GameObj.level.id);
+				}
+				else {
+					// Inc. tasks cleared
+					GameObj.db.incLevelCleared(GameObj.level.id);
+				}
+				
+				
+				// Show star
+				this.showStar();
+				
 				
 				// Feedback
 				this._alien.talk(true);
@@ -324,7 +398,7 @@ GameObj.Room.prototype = {
 					// Change state
 					self.changeState(0, function() {
 						// Start new task
-						self.startNewTask();
+						// self.startNewTask();
 					});		
 				});
 			
@@ -349,8 +423,25 @@ GameObj.Room.prototype = {
 					// TODO: Hensi says something about better luck next time
 					// Update value
 					GameObj.task.value = -1;
-					// Update DB
 					GameObj.db.setTaskValue(GameObj.task.id, -1);
+					// Reset tasks cleared
+					GameObj.level.cleared = 0;
+					GameObj.db.clearLevelCleared(GameObj.level.id);
+					// Update Failed levels
+					GameObj.level.failed++;
+					// Check if should level down
+					if(GameObj.level.failed >= 3) {
+						// Reset tasks failed
+						GameObj.level.failed = 0;
+						GameObj.db.clearLevelFailed(GameObj.level.id);
+						// Level down
+						GameObj.level.level--;
+						GameObj.db.decLevel(GameObj.level.id);
+					}
+					else {
+						// Inc. tasks cleared
+						GameObj.db.incLevelFailed(GameObj.level.id);
+					}
 					
 					// Change state
 					this.changeState(0, function() {
@@ -792,5 +883,37 @@ GameObj.Room.prototype = {
 
 	},
 	
+
+
+
+
+	showStar: function () {
+		this._layer3.visible = true;
+		// Animate
+		this.add.tween(this._layer3).to({alpha: 1}, 500, Phaser.Easing.Exponential.None, true);
+		this.add.tween(this._star.scale).to({x: 1, y: 1}, 500, Phaser.Easing.Exponential.None, true);
+	},
+	
+	hideStar: function (callback) {
+		
+		var self = this;
+		
+		// Animate
+		var tween = this.add.tween(this._layer3).to({alpha: 0}, 250, Phaser.Easing.Exponential.None, true);
+		
+		// One animation end
+		tween.onComplete.add(function() {
+		
+			// Hide layer
+			self._layer3.visible = false;
+			
+			// Start new task
+			self.startNewTask();
+			
+			// Callback to know that state change has been complete
+			typeof callback === 'function' && callback();
+			
+		}, this);
+	},
 
 };
