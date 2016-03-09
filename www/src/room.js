@@ -48,6 +48,10 @@ GameObj.Room = function (game) {
 	this._starOverly = null;
 	this._star = null;
 	this._btnOk = null;
+	
+	
+	// extra
+	this._room = null;
 };
 
 GameObj.Room.prototype = {
@@ -61,6 +65,7 @@ GameObj.Room.prototype = {
 		// Get main objects
 		var worldObj = worldsJson.worlds[GameObj.world];
 		var roomObj = worldObj.rooms[GameObj.room];
+		this._room = roomObj;
 		
 		// Make prefix
 		this.prefix = 'w'+worldObj.id+'_r'+roomObj.id;
@@ -296,6 +301,14 @@ GameObj.Room.prototype = {
 		case 0:
 			// Play result
 			if(this.checkFirstAnswer() == true) {
+				
+				
+				
+				
+				// TODO: Check difficulty and depending on that process result...
+				
+				
+				
 				// Correct
 				this._alien.talk(true);
 				this._sound.playSequence(['correct_audio', 500, 'order_audio'], 
@@ -313,48 +326,24 @@ GameObj.Room.prototype = {
 			else {
 				// -- Wrong --
 				
-				// Increase wrong counter
-				GameObj.task.wrong++;
-				// Update DB
-				GameObj.db.incTaskWrong(GameObj.task.id);
-				
-				// Check how many errors has been made
-				if(GameObj.task.wrong < 10) {
-					// Feedback
-					this._alien.talk(true);
-					this._sound.play('wrong_audio', function() { 
-						self._alien.talk(false); 
-					});
-				}
-				else {
-					// TODO: Hensi says something about better luck next time
-					// Update value
-					GameObj.task.value = -1;
-					GameObj.db.setTaskValue(GameObj.task.id, -1);
-					// Reset tasks cleared
-					GameObj.level.cleared = 0;
-					GameObj.db.clearLevelCleared(GameObj.level.id);
-					// Update Failed levels
-					GameObj.level.failed++;
-					// Check if should level down
-					if(GameObj.level.failed >= 3) {
-						// Reset tasks failed
-						GameObj.level.failed = 0;
-						GameObj.db.clearLevelFailed(GameObj.level.id);
-						// Level down
-						GameObj.level.level--;
-						GameObj.db.decLevel(GameObj.level.id);
+				this.processResult(false, function (newTask) {
+					
+					if(newTask == true) {
+						// TODO: Hensi says something about better luck next time
+						// Change state
+						self.resetState(0);
+						// Start new task
+						self.startNewTask();
 					}
 					else {
-						// Inc. tasks cleared
-						GameObj.db.incLevelFailed(GameObj.level.id);
+						// Just say that it is wrong
+						self._alien.talk(true);
+						self._sound.play('wrong_audio', function() { 
+							self._alien.talk(false); 
+						});
 					}
 					
-					// Change state
-					this.resetState(0);
-					// Start new task
-					this.startNewTask();
-				}
+				});
 			}
 			break;
 		case 1:
@@ -363,92 +352,49 @@ GameObj.Room.prototype = {
 			if(this.checkSecondAnswer() == true) {
 				// Correct
 				
-				// Update task value
-				GameObj.task.value = 1;
-				GameObj.db.setTaskValue(GameObj.task.id, 1);
-				// Reset tasks failed
-				GameObj.level.failed = 0;
-				GameObj.db.clearLevelFailed(GameObj.level.id);
-				// Update level cleared
-				GameObj.level.cleared++;	
-				// Check if should level up
-				if(GameObj.level.cleared >= 3) {
-					// Reset tasks cleared
-					GameObj.level.cleared = 0;
-					GameObj.db.clearLevelCleared(GameObj.level.id);
-					// Level up
-					GameObj.level.level++;
-					GameObj.db.incLevel(GameObj.level.id);
-				}
-				else {
-					// Inc. tasks cleared
-					GameObj.db.incLevelCleared(GameObj.level.id);
-				}
+				this.processResult(true, function (newTask) {
 				
+					// Show star
+					self.showStar();
 				
-				// Show star
-				this.showStar();
-				
-				
-				// Feedback
-				this._alien.talk(true);
-				this._sound.play('correct_audio', function() { 
-					self._alien.talk(false);
+					// Feedback
+					self._alien.talk(true);
+					self._sound.play('correct_audio', function() { 
+						self._alien.talk(false);
 					
-					// Change state
-					self.changeState(0, function() {
-						// Start new task
-						// self.startNewTask();
-					});		
+						// Change state
+						self.changeState(0, function() {
+							// Start new task
+							// self.startNewTask();
+						});		
+					});
 				});
 			
 			}
 			else {
 				// -- Wrong --
 				
-				// Increase wrong counter
-				GameObj.task.wrong++;
-				// Update DB
-				GameObj.db.incTaskWrong(GameObj.task.id);
-				
-				// Check how many errors has been made
-				if(GameObj.task.wrong < 10) {
-					// Feedback
-					this._alien.talk(true);
-					this._sound.play('wrong_audio', function() { 
-						self._alien.talk(false); 
-					});
-				}
-				else {
-					// TODO: Hensi says something about better luck next time
-					// Update value
-					GameObj.task.value = -1;
-					GameObj.db.setTaskValue(GameObj.task.id, -1);
-					// Reset tasks cleared
-					GameObj.level.cleared = 0;
-					GameObj.db.clearLevelCleared(GameObj.level.id);
-					// Update Failed levels
-					GameObj.level.failed++;
-					// Check if should level down
-					if(GameObj.level.failed >= 3) {
-						// Reset tasks failed
-						GameObj.level.failed = 0;
-						GameObj.db.clearLevelFailed(GameObj.level.id);
-						// Level down
-						GameObj.level.level--;
-						GameObj.db.decLevel(GameObj.level.id);
+				this.processResult(false, function (newTask) {
+					
+					if(newTask == true) {
+						// TODO: Hensi says something about better luck next time
+						
+						// Change state
+						self.changeState(0, function() {
+							// Start new task
+							self.startNewTask();
+						});
 					}
 					else {
-						// Inc. tasks cleared
-						GameObj.db.incLevelFailed(GameObj.level.id);
+						// Just say that it is wrong
+						self._alien.talk(true);
+						self._sound.play('wrong_audio', function() { 
+							self._alien.talk(false); 
+						});
 					}
 					
-					// Change state
-					this.changeState(0, function() {
-						// Start new task
-						self.startNewTask();
-					});
-				}
+				});
+	
 			}
 			break;
 			
@@ -915,5 +861,104 @@ GameObj.Room.prototype = {
 			
 		}, this);
 	},
+	
+	
+	
+	
+	
+	
+	processResult: function (correct, callback) {
+	
+		if(correct == true) {
+			// Correct answer
+			
+			// Update task value
+			GameObj.task.value = 1;
+			GameObj.db.setTaskValue(GameObj.task.id, 1);
+			// Reset tasks failed
+			GameObj.level.failed = 0;
+			GameObj.db.clearLevelFailed(GameObj.level.id);
+			// Update level cleared
+			GameObj.level.cleared++;	
+			// Check if should level up
+			if(GameObj.level.cleared >= 3) {
+				// Reset tasks cleared
+				GameObj.level.cleared = 0;
+				GameObj.db.clearLevelCleared(GameObj.level.id);
+				// Level up
+				GameObj.level.level++;
+				GameObj.db.incLevel(GameObj.level.id);
+			}
+			else {
+				// Inc. tasks cleared
+				GameObj.db.incLevelCleared(GameObj.level.id);
+			}
+			
+			// Update cleared total
+			GameObj.level.cleared_total++;
+			GameObj.db.incLevelClearedTotal(GameObj.level.id);
+			
+			// Check if should level up
+			if(GameObj.level.cleared_total >= 5 && GameObj.user.level <= this._room.level) {
+				GameObj.user.level++;
+				GameObj.db.incUserLevel(GameObj.user.id);
+			}
+			
+			// Give positiive feedback	
+			// Callback to know that state change has been complete
+			typeof callback === 'function' && callback(true)
+		}
+		else {
+			// Wrong answer
+			
+			// Increase wrong counter
+			GameObj.task.wrong++;
+			// Update DB
+			GameObj.db.incTaskWrong(GameObj.task.id);
+			
+			// Check how many errors has been made
+			if(GameObj.task.wrong < 10) {
+				
+				// Still ok to continue
+				// Feedback about wrong should be given
+				
+				// Callback to know that state change has been complete
+				typeof callback === 'function' && callback(false)
+			}
+			else {
+				// Update value
+				GameObj.task.value = -1;
+				GameObj.db.setTaskValue(GameObj.task.id, -1);
+				// Reset tasks cleared
+				GameObj.level.cleared = 0;
+				GameObj.db.clearLevelCleared(GameObj.level.id);
+				// Update failed total
+				GameObj.level.failed_total++;
+				GameObj.db.incLevelFailedTotal(GameObj.level.id);
+				// Update Failed levels
+				GameObj.level.failed++;
+				// Check if should level down
+				if(GameObj.level.failed >= 3) {
+					// Reset tasks failed
+					GameObj.level.failed = 0;
+					GameObj.db.clearLevelFailed(GameObj.level.id);
+					// Level down
+					GameObj.level.level--;
+					GameObj.db.decLevel(GameObj.level.id);
+				}
+				else {
+					// Inc. tasks cleared
+					GameObj.db.incLevelFailed(GameObj.level.id);
+				}
+				
+				// Hensi says something about better luck next time. Change state and give new task
+				// Callback to know that state change has been complete
+				typeof callback === 'function' && callback(true)
+			}
+		}
+	},
+	
+	
+	
 
 };

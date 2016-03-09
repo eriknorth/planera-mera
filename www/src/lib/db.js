@@ -64,6 +64,8 @@ Db.prototype = {
 				'level INTEGER, ' +
 				'cleared INTEGER, ' +
 				'failed INTEGER, ' +
+				'cleared_total INTEGER, ' +
+				'failed_total INTEGER, ' +
 				'timestamp TIMESTAMP)');
 		});
 	
@@ -93,8 +95,8 @@ Db.prototype = {
 		this.db.transaction(function(tx) {
 			tx.executeSql(
 				'UPDATE users ' +
-				'SET level = level + 1, timestamp = ?) ' +
-				'WHERE userId = ?', 
+				'SET level = level + 1, timestamp = ? ' +
+				'WHERE id = ?', 
 			[Date.now(), userId]);		
 		});
 	},
@@ -103,8 +105,8 @@ Db.prototype = {
 		this.db.transaction(function(tx) {
 			tx.executeSql(
 				'UPDATE users ' +
-				'SET level = level - 1, timestamp = ?) ' +
-				'WHERE userId = ?', 
+				'SET level = level - 1, timestamp = ? ' +
+				'WHERE id = ?', 
 			[Date.now(), userId]);		
 		});
 	},
@@ -171,9 +173,9 @@ Db.prototype = {
 	insertLevel: function (userId, room, callback) {
 		this.db.transaction(function(tx) {
 			tx.executeSql(
-				'INSERT INTO levels (user_id, room, level, cleared, failed, timestamp) ' +
-				'VALUES (?, ?, ?, ?, ?, ?)', 
-			[userId, room, 0, 0, 0, Date.now()], function(tx, res) {
+				'INSERT INTO levels (user_id, room, level, cleared, failed, cleared_total, failed_total, timestamp) ' +
+				'VALUES (?, ?, ?, ?, ?, ?, ?, ?)', 
+			[userId, room, 0, 0, 0, 0, 0, Date.now()], function(tx, res) {
 				// Run callback if defined
 				typeof callback === 'function' && callback(res.insertId);
 			});		
@@ -283,6 +285,26 @@ Db.prototype = {
 	},
 	
 	
+	// Increase level cleared total
+	incLevelClearedTotal: function (levelId) {
+		this.db.transaction(function(tx) {
+			tx.executeSql(
+				'UPDATE levels ' +
+				'SET cleared_total = cleared_total + 1, timestamp = ? ' +
+				'WHERE id = ?', 
+			[Date.now(), levelId]);		
+		});
+	},
 	
+	// Increase level failed total
+	incLevelFailedTotal: function (levelId) {
+		this.db.transaction(function(tx) {
+			tx.executeSql(
+				'UPDATE levels ' +
+				'SET failed_total = failed_total + 1, timestamp = ? ' +
+				'WHERE id = ?', 
+			[Date.now(), levelId]);		
+		});
+	},
 	
 }
