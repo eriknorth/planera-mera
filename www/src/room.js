@@ -786,12 +786,53 @@ GameObj.Room.prototype = {
 			if(res.rows.length == 0) {
 				
 				// Choose new task...
-				// TODO: This should be fixed to choose tasks better, not random...
-				// Choose randomly a task from a pool (if there is any)
+				
 				// Make sure there are any tasks to handle
 				if(self._taskArray.length > 0) {
-					var rndNum = self.rnd.integerInRange(0, self._taskArray.length-1);
-					self._currTask = self._taskArray[rndNum];
+				
+				var levelTasks = [];
+				
+				// Choose if it is current level or some of the old tasks
+					var rndNum = self.rnd.integerInRange(0, 10);
+					// If 80% current level OR level is 0 as there are now lower levels
+					if(rndNum > 2 || GameObj.level.level == 0) {
+						levelTasks = self._taskArray.filter(function (obj) {
+							return obj.difficulty === GameObj.level.level;
+						});
+					}
+					else {
+				
+						// If 20% then old ones...
+						levelTasks = self._taskArray.filter(function (obj) {
+							return obj.difficulty <= GameObj.level.level;
+						});
+					}
+								
+				
+					// TODO: Make sure that selected task is not the same as previous
+					// Try to do it 10 times if do not manage... continue with same task (maybe there is just one task)
+					// Check if there was any previous
+					if(self._currTask != null) {
+												
+						for(var i = 0; i < 10; i++) {
+					
+							var rndTask = self.rnd.integerInRange(0, levelTasks.length-1);
+					
+							if(self._currTask.id == levelTasks[rndTask].id) {
+								continue;
+							}
+							else {
+								self._currTask = levelTasks[rndTask];
+								break;
+							}
+						}
+					}
+					else {
+						var rndTask = self.rnd.integerInRange(0, levelTasks.length-1);
+						self._currTask = levelTasks[rndTask];
+					}
+					
+
 				}
 				
 				// Insert task entry in DB
