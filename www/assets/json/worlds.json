@@ -75,5 +75,11 @@
 			"enabled": true,
 			"rooms": []
 		}
-	]
+	],
+	"rocket": {
+		"item_atlas": "items/rocket.json",
+		"item_image": "items/rocket.png",
+		"items": "items/rocket_items.json",
+		"enabled": true
+	}
 }

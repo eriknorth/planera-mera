@@ -1,0 +1,160 @@
+{
+	"items": [
+		{
+			"name": "batman",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "bilbana",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "blomma",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "bord_litet",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "eldstad",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "flygplan",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "fotboll",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "fotolj",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "golv_lampa",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "hello_kitty",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "hund",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "kista",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "matta",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "mobiltelefon",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "nalle",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "cykel",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "robot",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "sang_raket",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "soff_bord",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "soffa",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "studsmatta",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "taklampa",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "tavla",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "tv",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "tv_bank",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "ur",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		}
+	]
+}

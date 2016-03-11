@@ -93,6 +93,13 @@ GameObj.Preloader.prototype = {
 			}
 		}
 		
+		// Load  Rocket items
+		if(worldsJson.rocket.enabled == true)
+		{
+			// Load item atlas and items
+			this.load.atlas('rocket_atlas', 'assets/img/'+worldsJson.rocket.item_image, 'assets/img/'+worldsJson.rocket.item_atlas, Phaser.Loader.TEXTURE_ATLAS_JSON_ARRAY);
+			this.load.json('rocket_items', 'assets/json/'+worldsJson.rocket.items);
+		}
 
 		// Load other general assets
 		this.load.image('cloud', 'assets/img/cloud.png');
@@ -119,6 +126,8 @@ GameObj.Preloader.prototype = {
 		this.load.spritesheet('btnBack', 'assets/img/buttons/button_back.png', 85, 90);
 		this.load.spritesheet('btnPlay', 'assets/img/buttons/button_play.png', 85, 90);
 		this.load.spritesheet('btnOk', 'assets/img/buttons/button_ok.png', 85, 90);
+		this.load.spritesheet('btnChest', 'assets/img/buttons/button_chest.png', 85, 90);
+		this.load.spritesheet('btnCloseChest', 'assets/img/buttons/button_close_chest.png', 85, 90);
 		// --- </ Load Buttons > ---
 		
 		// --- < Load Elements > ---

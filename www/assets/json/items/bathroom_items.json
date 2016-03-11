@@ -1,75 +1,93 @@
 {
 	"items": [
 		{
-			"name": "basket",
-			"x": 420,
-			"y": 252,
+			"name": "tvattkorg",
+			"x": 361,
+			"y": 255,
 			"categories": []
 		},
 		{
-			"name": "towel",
-			"x": 954,
-			"y": 512,
+			"name": "handduk",
+			"x": 900,
+			"y": 510,
 			"categories": ["clothes"]
 		},
 		{
-			"name": "toilet",
-			"x": 633,
-			"y": 325,
+			"name": "toalett",
+			"x": 552,
+			"y": 320,
 			"categories": []
 		},
 		{
-			"name": "washing-machine",
-			"x": 212,
+			"name": "tvattmaskin",
+			"x": 170,
 			"y": 308,
 			"categories": []
 		},
 		{
-			"name": "tumbler",
-			"x": 212,
+			"name": "torktumlare",
+			"x": 171,
 			"y": 518,
 			"categories": []
 		},
 		{
-			"name": "tooth-brush",
-			"x": 747,
-			"y": 446,
+			"name": "tandborste",
+			"x": 657,
+			"y": 563,
 			"categories": []
 		},
 		{
-			"name": "cloth",
-			"x": 420,
-			"y": 340,
+			"name": "smutstvatt",
+			"x": 361,
+			"y": 343,
 			"categories": ["clothes"]
 		},
 		{
-			"name": "shower",
-			"x": 1190,
-			"y": 594,
+			"name": "dusch",
+			"x": 1171,
+			"y": 583,
 			"categories": []
 		},
 		{
-			"name": "washing-liquid",
-			"x": 264,
-			"y": 660,
+			"name": "tvattmedel",
+			"x": 223,
+			"y": 661,
 			"categories": []
 		},
 		{
-			"name": "sink",
-			"x": 798,
-			"y": 396,
+			"name": "handfat",
+			"x": 725,
+			"y": 405,
 			"categories": []
 		},
 		{
-			"name": "tooth-paste",
-			"x": 858,
+			"name": "tandkram",
+			"x": 696,
+			"y": 564,
+			"categories": []
+		},
+		{
+			"name": "schampo",
+			"x": 1013,
+			"y": 590,
+			"categories": ["soap"]
+		},
+		{
+			"name": "duschtval",
+			"x": 1057,
+			"y": 580,
+			"categories": ["soap"]
+		},
+		{
+			"name": "handtval",
+			"x": 778,
+			"y": 573,
+			"categories": ["soap"]
+		},
+		{
+			"name": "vatten",
+			"x": 724,
 			"y": 441,
-			"categories": []
-		},
-		{
-			"name": "shower-liquids",
-			"x": 1102,
-			"y": 465,
 			"categories": []
 		}
 	]

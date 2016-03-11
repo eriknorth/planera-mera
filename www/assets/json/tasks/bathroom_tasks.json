@@ -3,11 +3,11 @@
 		{
 			"id": 1,
 			"name": "",
-			"difficulty": 0,
+			"difficulty": 3,
 			"audio": "tasks/wash_clothes.mp3",
 			"items": [
 				{
-					"item": "washing-machine",
+					"item": "tvattmaskin",
 					"category": "",
 					"order": 1
 				},
@@ -17,40 +17,40 @@
 					"order": 2
 				},
 				{
-					"item": "washing-liquid",
+					"item": "tvattmedel",
 					"category": "",
-					"order": 3
+					"order": 1
 				}
 			]
 		},
 		{
 			"id": 2,
 			"name": "",
-			"difficulty": 0,
+            "difficulty": 3,
 			"audio": "tasks/brush_teeth.mp3",
 			"items": [
 				{
-					"item": "tooth-brush",
+					"item": "tandborste",
 					"category": "",
 					"order": 1
 					
 				},
 				{
-					"item": "tooth-paste",
+					"item": "tandkram",
 					"category": "",
 					"order": 2
 				},
 				{
-					"item": "sink",
+					"item": "vatten",
 					"category": "",
-					"order": 2
+					"order": 1
 				}
 			]
 		},
 		{
 			"id": 3,
 			"name": "",
-			"difficulty": 1,
+			"difficulty": 4,
 			"audio": "tasks/shower.mp3",
 			"items": [
 				{
@@ -59,9 +59,14 @@
 					"order": 1
 					
 				},
-				{
-					"item": "shower-liquids",
-					"category": "",
+                {
+                    "item": "schampoo",
+                    "category": "",
+                    "order": 2
+                },
+                {
+					"item": "",
+					"category": "soap",
 					"order": 2
 				},
 				{
@@ -74,7 +79,7 @@
 		{
 			"id": 4,
 			"name": "",
-			"difficulty": 1,
+			"difficulty": 2,
 			"audio": "tasks/dry_laundry.mp3",
 			"items": [
 				{
@@ -84,14 +89,35 @@
 					
 				},
 				{
-					"item": "tumbler",
+					"item": "torktumlare",
 					"category": "",
 					"order": 2
 				}
 			]
+		},
+		{
+			"id": 4,
+			"name": "",
+			"difficulty": 1,
+			"audio": "tasks/wasch_hands.mp3",
+			"items": [
+				{
+					"item": "vatten",
+					"category": "",
+					"order": 1
+					
+				},
+				{
+					"item": "",
+					"category": "soap",
+					"order": 2
+				},
+				{
+					"item": "towel",
+					"category": "",
+					"order": 3
+				}
+			]
 		}
 	]
-	
-	
-	
 }
