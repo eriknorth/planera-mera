@@ -65,6 +65,17 @@ Item.prototype.setPos = function(x, y) {
 	this.yPos = y;
 };
 
+// Set position
+Item.prototype.reinitPos = function(x, y) {
+	this.x = x;
+	this.y = y;
+	
+	this.xPos = x;
+	this.yPos = y;
+	this.initX = x;
+	this.initY = y;
+};
+
 // Get last position
 Item.prototype.getLastPos = function() {	
 	return {x: this.xPos, y: this.yPos};

@@ -67,6 +67,15 @@ Db.prototype = {
 				'cleared_total INTEGER, ' +
 				'failed_total INTEGER, ' +
 				'timestamp TIMESTAMP)');
+			// Create rocket table
+			tx.executeSql('CREATE TABLE IF NOT EXISTS rocket (' +
+				'id INTEGER PRIMARY KEY, ' +
+				'user_id INTEGER, ' +
+				'x INTEGER, ' +
+				'y INTEGER, ' +
+				'item INTEGER, ' +
+				'state INTEGER, ' +
+				'timestamp TIMESTAMP)');
 		});
 	
 	},
@@ -306,5 +315,25 @@ Db.prototype = {
 			[Date.now(), levelId]);		
 		});
 	},
+	
+	// Inser rocket item
+	insertRocket: function (userId, item, callback) {
+		this.db.transaction(function(tx) {
+			tx.executeSql('INSERT INTO rocket (user_id, x, y, item, state, timestamp) VALUES (?, ?, ?, ?, ?, ?)', 
+			[
+				userId, 
+				0, 
+				0,
+				item,
+				0,
+				Date.now()
+			], 
+			function(tx, res) {
+				// Run callback if defined
+				typeof callback === 'function' && callback(res.insertId);
+			});		
+		});
+	},
+
 	
 }
