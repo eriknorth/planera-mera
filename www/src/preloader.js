@@ -51,7 +51,7 @@ GameObj.Preloader.prototype = {
 			}
 			else {
 				// Save user in game object
-				GameObj.user = res.rows[0];
+				GameObj.user = res.rows.item(0);
 			}
 		});
 		

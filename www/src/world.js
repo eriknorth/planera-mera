@@ -95,7 +95,7 @@ GameObj.World.prototype = {
 				}
 				else {
 					// Save room in game object
-					GameObj.level = res.rows[0];
+					GameObj.level = res.rows.item(0);
 					
 					// Go to room only when level stuff loaded
 					self.state.start('Room');

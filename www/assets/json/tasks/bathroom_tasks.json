@@ -3,7 +3,7 @@
 		{
 			"id": 1,
 			"name": "",
-			"difficulty": 3,
+			"difficulty": 2,
 			"audio": "tasks/wash_clothes.mp3",
 			"items": [
 				{
@@ -26,7 +26,7 @@
 		{
 			"id": 2,
 			"name": "",
-            "difficulty": 3,
+            "difficulty": 2,
 			"audio": "tasks/brush_teeth.mp3",
 			"items": [
 				{
@@ -50,17 +50,17 @@
 		{
 			"id": 3,
 			"name": "",
-			"difficulty": 4,
+			"difficulty": 3,
 			"audio": "tasks/shower.mp3",
 			"items": [
 				{
-					"item": "shower",
+					"item": "dusch",
 					"category": "",
 					"order": 1
 					
 				},
                 {
-                    "item": "schampoo",
+                    "item": "schampo",
                     "category": "",
                     "order": 2
                 },
@@ -70,7 +70,7 @@
 					"order": 2
 				},
 				{
-					"item": "towel",
+					"item": "handduk",
 					"category": "",
 					"order": 3
 				}
@@ -79,7 +79,7 @@
 		{
 			"id": 4,
 			"name": "",
-			"difficulty": 2,
+			"difficulty": 1,
 			"audio": "tasks/dry_laundry.mp3",
 			"items": [
 				{
@@ -96,10 +96,10 @@
 			]
 		},
 		{
-			"id": 4,
+			"id": 5,
 			"name": "",
-			"difficulty": 1,
-			"audio": "tasks/wasch_hands.mp3",
+			"difficulty": 0,
+			"audio": "tasks/wash_hands.mp3",
 			"items": [
 				{
 					"item": "vatten",
@@ -113,7 +113,7 @@
 					"order": 2
 				},
 				{
-					"item": "towel",
+					"item": "handduk",
 					"category": "",
 					"order": 3
 				}

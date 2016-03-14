@@ -513,7 +513,41 @@ GameObj.Room.prototype = {
 		var result = 0;
 		var correctItem = false;
 		var taskItem = null;
+		var itemsPresent = 0;
 		
+		
+		// Check if all task items are present
+		for(i = 0; i < this._currTask.items.length; i++)
+		{
+			for(j = 0; j < this._selectedItems.length; j++)
+			{
+				taskItem = this._currTask.items[i];
+				
+				// Check item
+				if(taskItem.item != '') {
+					if(this._itemArray[this._selectedItems[j]].name == taskItem.item) {
+						itemsPresent++;
+						break;
+					}
+				}
+				// Check category
+				else if(taskItem.category != '') {
+					var catMatch = 0;
+					for(k = 0; k < this._itemArray[this._selectedItems[j]].categories.length; k++) {
+						if(this._itemArray[this._selectedItems[j]].categories[k] == taskItem.category) {
+							catMatch++;
+						}
+					}
+					
+					if(catMatch == this._itemArray[this._selectedItems[j]].categories.length) {
+						itemsPresent++;
+						break;
+					}
+				}
+			}
+		}
+		
+		// Check if items are OK
 		for(i = 0; i < this._selectedItems.length; i++)
 		{
 			for(j = 0; j < this._currTask.items.length; j++)
@@ -536,7 +570,7 @@ GameObj.Room.prototype = {
 				}
 			}
 			
-			if(correctItem == false) {
+			if(correctItem == false || itemsPresent < this._currTask.items.length) {
 				result = -1;
 				break;
 			}
@@ -548,7 +582,7 @@ GameObj.Room.prototype = {
 		
 		
 		// Return result
-		if(result >= this._currTask.items.length) {
+		if(result >= this._selectedItems.length) {
 			// Correct
 			return true;
 		}
@@ -795,16 +829,22 @@ GameObj.Room.prototype = {
 				// Choose if it is current level or some of the old tasks
 					var rndNum = self.rnd.integerInRange(0, 10);
 					// If 80% current level OR level is 0 as there are now lower levels
-					if(rndNum > 2 || GameObj.level.level == 0) {
+					// Make sure that difficulty is not more than 3
+					var levelDifficulty = GameObj.level.level;
+					if(levelDifficulty > 3) {
+						levelDifficulty = 3;
+					}
+					
+					if(rndNum > 2 || levelDifficulty == 0) {
 						levelTasks = self._taskArray.filter(function (obj) {
-							return obj.difficulty === GameObj.level.level;
+							return obj.difficulty === levelDifficulty;
 						});
 					}
 					else {
 				
 						// If 20% then old ones...
 						levelTasks = self._taskArray.filter(function (obj) {
-							return obj.difficulty <= GameObj.level.level;
+							return obj.difficulty <= levelDifficulty;
 						});
 					}
 								
@@ -856,7 +896,7 @@ GameObj.Room.prototype = {
 			// There is a task started
 			else {
 				// Save task in game object
-				GameObj.task = res.rows[0];
+				GameObj.task = res.rows.item(0);
 				
 				// Load task in the object
 				self._currTask = self._taskArray.filter(function (obj) {

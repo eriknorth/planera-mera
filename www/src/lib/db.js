@@ -19,6 +19,7 @@ Db.prototype = {
 			// tx.executeSql('DROP TABLE IF EXISTS events');
 			// tx.executeSql('DROP TABLE IF EXISTS tasks');
 			// tx.executeSql('DROP TABLE IF EXISTS levels');
+			// tx.executeSql('DROP TABLE IF EXISTS rocket');
 			
 			// Create tables if they does not exist
 			// tx.executeSql('CREATE TABLE IF NOT EXISTS test_table (id INTEGER PRIMARY KEY, data TEXT, data_num INTEGER)', [], function(tx, res) {
@@ -84,7 +85,7 @@ Db.prototype = {
 	// Inser user
 	insertUser: function (identity, callback) {
 		this.db.transaction(function(tx) {
-			tx.executeSql('INSERT INTO users (identity, level, timestamp) VALUES (?, ?, ?)', [identity, 0, Date.now()], function(tx, res) {
+			tx.executeSql('INSERT INTO users (identity, timestamp) VALUES (?, ?, ?)', [identity, 0, Date.now()], function(tx, res) {
 				// Run callback if defined
 				typeof callback === 'function' && callback(res.insertId);
 			});		
@@ -335,5 +336,27 @@ Db.prototype = {
 		});
 	},
 
+	updateRocket: function (x, y, state, id) {
+		this.db.transaction(function(tx) {
+			tx.executeSql(
+				'UPDATE rocket ' +
+				'SET x = ?, y = ?, state = ? ' +
+				'WHERE id = ?', 
+			[x, y, state, id]);		
+		});
+	},
+	
+	getLastRocket: function (callback) {
+		this.db.transaction(function(tx) {
+			tx.executeSql(
+				'SELECT * FROM rocket ' + 
+				'ORDER BY id DESC ' + 
+				'LIMIT 1', 
+			[], function(tx, res) {
+				// Run callback if defined
+				typeof callback === 'function' && callback(res);
+			});		
+		});
+	}
 	
 }
