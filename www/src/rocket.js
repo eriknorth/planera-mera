@@ -20,6 +20,8 @@ GameObj.Rocket.prototype = {
 
 	create: function () {
 		
+		var self = this;
+		
 		// Get JSONs
 		var gameJson = this.cache.getJSON('game');
 		var worldsJson = this.cache.getJSON('worlds');
@@ -49,27 +51,48 @@ GameObj.Rocket.prototype = {
 		this._layer1.visible = true;
 		this._layer2.visible = true;
 		
-		// Add items
-		var space = 100;
-		for(i = 0; i < itemJson.items.length; i++)
-		{
-			// Create item
-			this._items[i] = new Item(this, 
-				0, 
-				0, 
-				'rocket_atlas', 
-				itemJson.items[i].name,
-				i
-			);
-			this.add.existing(this._items[i]);
-			this._layer2.add(this._items[i]);
-			// Add events
-			this._items[i].events.onInputDown.add(this.itemClickPress, this);
-			this._items[i].events.onInputUp.add(this.itemClickRelease, this);
+		
+		
+		// Get items from DB
+		var userItems = [];
+		GameObj.db.getRocketItems(GameObj.user.id, function (res) {
 			
-			// Increase distance
-			this._chest.setInChest(this._items[i]);
-		}
+			// If no result returned -> no items in rocket yet
+			if(res.rows.length == 0) {
+				
+			}
+			else {
+				// Save room in game object
+				for(var i = 0; i < res.rows.length; i++) {
+					var item = res.rows.item(i);
+					item.update = false;
+					userItems.push(item);
+				}
+			}
+		
+			// Add items
+			for(i = 0; i < itemJson.items.length; i++)
+			{
+				// Create item
+				self._items[i] = new Item(self, 
+					0,//userItems[i].x, 
+					0,//userItems[i].y, 
+					'rocket_atlas', 
+					itemJson.items[i].name,
+					i
+				);
+				self.add.existing(self._items[i]);
+				self._layer2.add(self._items[i]);
+				// Add events
+				self._items[i].events.onInputDown.add(self.itemClickPress, self);
+				self._items[i].events.onInputUp.add(self.itemClickRelease, self);
+			
+				// Increase distance
+				
+				self._chest.setInChest(self._items[i]);
+			}
+		
+		});
 
 		// Back button
 		this._btnBack = this.add.button(60, 60, 'btnBack', this.goToMenu, this, 2, 0, 1);

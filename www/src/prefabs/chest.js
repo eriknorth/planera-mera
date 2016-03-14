@@ -33,27 +33,20 @@ Chest.prototype.putInChest = function(item) {
 	
 	item.resetPos();
 	
-	// Scale to fit in
-	if(item.getWidth() > 140) {
-		var ratio = 140 / item.getWidth();
-		item.scale.setTo(ratio);
-	}
+	item.scaleItem(140);
 
 }
 
 Chest.prototype.setInChest = function(item) {
 	
-	this._spaceing += item.getHeight()/2 + this._prevHeight + 50;
+	//this._spaceing += item.getHeight()/2 + this._prevHeight + 50;
+	this._spaceing += 140 + 50;
 	
 	item.reinitPos(this.x + 100, this._spaceing);
 	
-	// Scale to fit in
-	if(item.getWidth() > 140) {
-		var ratio = 140 / item.getWidth();
-		item.scale.setTo(ratio);
-	}
+	item.scaleItem(140);
 	
-	this._prevHeight = item.getHeight()/2;
+	//this._prevHeight = item.getHeight()/2;
 }
 
 Chest.prototype.getLimit = function() {

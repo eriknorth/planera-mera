@@ -107,6 +107,23 @@ Item.prototype.getBounds = function() {
 	return bounds;
 };
 
+Item.prototype.scaleItem = function(size) {
+	
+	if(this.item.width >= this.item.height) {
+		// Scale to fit in width
+		if(this.item.width > size) {
+			var ratio = size / this.item.width;
+			this.scale.setTo(ratio);
+		}
+	}
+	else {
+		// Scale to fit in height
+		if(this.item.height > size) {
+			var ratio = size / this.item.height;
+			this.scale.setTo(ratio);
+		}
+	}
+};
 
 // Events
 // On mouse down

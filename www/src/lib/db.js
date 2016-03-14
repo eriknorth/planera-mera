@@ -318,7 +318,7 @@ Db.prototype = {
 	},
 	
 	// Inser rocket item
-	insertRocket: function (userId, item, callback) {
+	insertRocketItem: function (userId, item, callback) {
 		this.db.transaction(function(tx) {
 			tx.executeSql('INSERT INTO rocket (user_id, x, y, item, state, timestamp) VALUES (?, ?, ?, ?, ?, ?)', 
 			[
@@ -336,7 +336,7 @@ Db.prototype = {
 		});
 	},
 
-	updateRocket: function (x, y, state, id) {
+	updateRocketItem: function (x, y, state, id) {
 		this.db.transaction(function(tx) {
 			tx.executeSql(
 				'UPDATE rocket ' +
@@ -346,13 +346,27 @@ Db.prototype = {
 		});
 	},
 	
-	getLastRocket: function (callback) {
+	getRocketItems: function (userId, callback) {
+		this.db.transaction(function(tx) {
+			tx.executeSql(
+				'SELECT * FROM rocket ' + 
+				'WHERE user_id = ? ' +
+				'ORDER BY id ASC ',
+			[userId], function(tx, res) {
+				// Run callback if defined
+				typeof callback === 'function' && callback(res);
+			});		
+		});
+	},
+	
+	getLastRocketItem: function (userId, callback) {
 		this.db.transaction(function(tx) {
 			tx.executeSql(
 				'SELECT * FROM rocket ' + 
 				'ORDER BY id DESC ' + 
+				'WHERE user_id = ?', 
 				'LIMIT 1', 
-			[], function(tx, res) {
+			[userId], function(tx, res) {
 				// Run callback if defined
 				typeof callback === 'function' && callback(res);
 			});		

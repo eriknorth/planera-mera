@@ -49,6 +49,8 @@ GameObj.Room = function (game) {
 	this._star = null;
 	this._btnOk = null;
 	
+	// Rocket items
+	this._rocketItemArray = null;
 	
 	// extra
 	this._room = null;
@@ -76,6 +78,10 @@ GameObj.Room.prototype = {
 		// Get tasks
 		var taskJson = this.cache.getJSON(this.prefix + '_tasks');
 		this._taskArray = taskJson.tasks;
+		
+		// Get rocket items
+		var rocketItemJson = this.cache.getJSON('rocket_items');
+		this._rocketItemArray = rocketItemJson.items;
 		
 		// Create layers
 		this._layer1 = this.add.group();
@@ -985,6 +991,9 @@ GameObj.Room.prototype = {
 				GameObj.db.incUserLevel(GameObj.user.id);
 			}
 			
+			// Give present in the rocket
+			this.givePresent();
+			
 			// Give positiive feedback	
 			// Callback to know that state change has been complete
 			typeof callback === 'function' && callback(true)
@@ -1040,6 +1049,26 @@ GameObj.Room.prototype = {
 	},
 	
 	
-	
+	givePresent: function () {
+		
+		GameObj.db.getLastRocketItem(GameObj.user.id, function (res) {
+			
+			// If no result returned -> no items in rocket yet
+			if(res.rows.length == 0) {
+				// Insert new rocket item
+				GameObj.db.insertRocketItem(GameObj.user.id, 0);
+			}
+			else {
+				
+				// Save room in game object
+				var lastItem = res.rows.item(0);
+				// If 10 minutes have passed -> give a present
+				if(Date.now() - lastItem.timestamp > (1000 * 60 * 10)) {
+					GameObj.db.insertRocketItem(GameObj.user.id, lastItem.item + 1);
+				}
+
+			}
+		});
+	},
 
 };
