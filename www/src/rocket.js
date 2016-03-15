@@ -13,6 +13,10 @@ GameObj.Rocket = function (game) {
 	this._startX = null;
 	this._startY = null;
 	this._moveIndex = null;
+	
+	
+	// User items
+	this._userItems = [];
 
 };
 
@@ -67,7 +71,6 @@ GameObj.Rocket.prototype = {
 		
 		
 		// Get items from DB
-		var userItems = [];
 		GameObj.db.getRocketItems(GameObj.user.id, function (res) {
 			
 			// If no result returned -> no items in rocket yet
@@ -75,34 +78,36 @@ GameObj.Rocket.prototype = {
 				
 			}
 			else {
-				// Save room in game object
+				// 
 				for(var i = 0; i < res.rows.length; i++) {
 					var item = res.rows.item(i);
 					item.update = false;
-					userItems.push(item);
+					self._userItems.push(item);
 				}
 			}
 		
 			// Add items
-			for(i = 0; i < itemJson.items.length; i++)
+			for(i = 0; i < self._userItems.length; i++)
 			{
 				// Create item
 				self._items[i] = new Item(self, 
-					0,//userItems[i].x, 
-					0,//userItems[i].y, 
+					self._userItems[i].x, 
+					self._userItems[i].y, 
 					'rocket_atlas', 
 					itemJson.items[i].name,
 					i
 				);
+				self._items[i].state = self._userItems[i].state;
 				self.add.existing(self._items[i]);
-				self._chestLayer.add(self._items[i]);
 				// Add events
 				self._items[i].events.onInputDown.add(self.itemClickPress, self);
 				self._items[i].events.onInputUp.add(self.itemClickRelease, self);
 			
-				// Increase distance
-				
-				self._chest.setInChest(self._items[i]);
+				// Set in Chest
+				if(self._userItems[i].state == 0) {
+					self._chestLayer.add(self._items[i]);
+					self._chest.setInChest(self._items[i], 200);
+				}
 			}
 		
 		});
@@ -127,6 +132,13 @@ GameObj.Rocket.prototype = {
 
 
 
+	},
+	
+	// TODO: Need to fix
+	shutdown: function () {
+		
+		// User items
+		this._userItems = [];
 	},
 	
 	// 
@@ -176,32 +188,34 @@ GameObj.Rocket.prototype = {
 		//var index = this._selectedItems.indexOf(item.getId());
 		if(this._chest.checkOverlap(item) == true) {
 			
-			// Put in cloud
-			this._chest.putInChest(item);
-			
-			// item.resetPos();
 			
 			this._layer1.remove(item);
 			this._chestLayer.add(item);
 			
+			item.state = 0;
 			
-			
-			// Add item (if does not exist in the list)
-			// if(index == -1) {
-// 				this._selectedItems.push(item.getId());
-// 			}
 		}
 		else {
-			// Remove item (if exists in the list)
-			// if(index > -1) {
-// 				this._selectedItems.splice(index, 1);
-// 			}
-			// Move to initial position
-			//item.resetPos();
+
 			item.y = this.input.y;
 			
 			this._chestLayer.remove(item);
 			this._layer1.add(item);
+			
+			item.state = 1;
+		}
+		
+		// Rearange the chest
+		this._chest.resetChest();
+		// Loop through all the items
+		for(var i = 0; i < this._userItems.length; i++) {
+			
+			var item = this._userItems[i].item;
+			// Reposition items in chest
+			if(this._items[item].state == 0) {
+				
+				this._chest.setInChest(this._items[item], -100);
+			}
 		}
 		
 	},
@@ -239,7 +253,23 @@ GameObj.Rocket.prototype = {
 		}, this);
 	},
 	
+	updateItems: function () {
+
+		// TODO: Update only if moved!!!
+		// Loop through all the items
+		for(var i = 0; i < this._userItems.length; i++) {
+			// Update all items
+			var item = this._userItems[i].item;
+			GameObj.db.updateRocketItem(this._userItems[i].id, this._items[item].x, this._items[item].y, this._items[item].state);
+			
+		}
+
+	},
+	
 	goToMenu: function (pointer) {
+
+		// Run item update
+		this.updateItems();
 
 		//	Go back to Menu
 		this.state.start('Menu');

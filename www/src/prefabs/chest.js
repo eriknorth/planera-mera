@@ -37,17 +37,19 @@ Chest.prototype.putInChest = function(item) {
 
 }
 
-Chest.prototype.setInChest = function(item) {
+Chest.prototype.setInChest = function(item, offset) {
 	
-	//this._spaceing += item.getHeight()/2 + this._prevHeight + 50;
-	this._spaceing += 140 + 50;
-	
+	this._spaceing += 70 + 50;
 	// item.reinitPos(this.x + 100, this._spaceing);
-	item.reinitPos(this.x - 200, this._spaceing);
-	
+	item.setPos(this.x - offset, this._spaceing);
 	item.scaleItem(140);
+	this._spaceing += 70;
+
+}
+
+Chest.prototype.resetChest = function() {
 	
-	//this._prevHeight = item.getHeight()/2;
+	this._spaceing = 0;
 }
 
 Chest.prototype.getLimit = function() {

@@ -336,7 +336,7 @@ Db.prototype = {
 		});
 	},
 
-	updateRocketItem: function (x, y, state, id) {
+	updateRocketItem: function (id, x, y, state) {
 		this.db.transaction(function(tx) {
 			tx.executeSql(
 				'UPDATE rocket ' +
