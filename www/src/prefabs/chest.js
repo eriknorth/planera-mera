@@ -42,7 +42,8 @@ Chest.prototype.setInChest = function(item) {
 	//this._spaceing += item.getHeight()/2 + this._prevHeight + 50;
 	this._spaceing += 140 + 50;
 	
-	item.reinitPos(this.x + 100, this._spaceing);
+	// item.reinitPos(this.x + 100, this._spaceing);
+	item.reinitPos(this.x - 200, this._spaceing);
 	
 	item.scaleItem(140);
 	

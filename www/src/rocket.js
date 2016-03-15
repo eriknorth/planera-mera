@@ -37,19 +37,32 @@ GameObj.Rocket.prototype = {
 		this.add.sprite(0, 0, 'rocket_bg');
 		this.game.stage.backgroundColor = '#304656';
 
+		// Create layers
+		this._layer1 = this.add.group();
+		this._layer1.visible = true;
+
+		// Chest button
+		this._btnChest = this.add.button(this.world.width - 60, 60, 'btnChest', this.openChest, this, 2, 0, 1);
+		this._btnChest.anchor.set(0.5);
+		this._layer1.add(this._btnChest);
+		
 		// Chest
-		this._chest = new Chest(this, this.world.width-300, -10);
+		this._chest = new Chest(this, this.world.width, -10);
 		this.add.existing(this._chest);
+		this._layer1.add(this._chest);
 		this._chest.inputEnabled = true;
 		this._chest.events.onInputDown.add(this.chestClickPress, this);
 		this._chest.events.onInputUp.add(this.chestClickRelease, this);
-
+		this._chest.visible = false;
+		this._chest.alpha = 0;
 		
-		// Create layers
-		this._layer1 = this.add.group();
-		this._layer2 = this.add.group();
-		this._layer1.visible = true;
-		this._layer2.visible = true;
+		
+		// Chest
+		this._chestLayer = this.add.group();
+		this._chestLayer.visible = false;
+		this._chestLayer.alpha = 0;
+		this._chestLayer.x = 300;
+
 		
 		
 		
@@ -82,7 +95,7 @@ GameObj.Rocket.prototype = {
 					i
 				);
 				self.add.existing(self._items[i]);
-				self._layer2.add(self._items[i]);
+				self._chestLayer.add(self._items[i]);
 				// Add events
 				self._items[i].events.onInputDown.add(self.itemClickPress, self);
 				self._items[i].events.onInputUp.add(self.itemClickRelease, self);
@@ -97,13 +110,13 @@ GameObj.Rocket.prototype = {
 		// Back button
 		this._btnBack = this.add.button(60, 60, 'btnBack', this.goToMenu, this, 2, 0, 1);
 		this._btnBack.anchor.set(0.5);
-		
-		// Play button
-		this._btnChest = this.add.button(this.world.width - 60, 60, 'btnChest', this.openChest, this, 2, 0, 1);
-		this._btnChest.anchor.set(0.5);
 
-
-
+		// Close Chest button
+		this._btnCloseChest = this.add.button(this.world.width, 60, 'btnCloseChest', this.closeChest, this, 2, 0, 1);
+		this._btnCloseChest.anchor.set(0.5);
+		this._layer1.add(this._btnCloseChest);
+		this._btnCloseChest.visible = false;
+		this._btnCloseChest.alpha = 0;
 
 		// Chest
 		// var graphics = this.add.graphics(0, 0);
@@ -122,7 +135,7 @@ GameObj.Rocket.prototype = {
 		// saving touch start psoition
 		this._startX = this.input.worldX;
 		this._startY = this.input.worldY;
-		this._layer2.saveY = this._layer2.y;
+		this._chestLayer.saveY = this._chestLayer.y;
      	this._moveIndex = this.input.addMoveCallback(this.dragItems, this);
 	},
 	
@@ -136,14 +149,14 @@ GameObj.Rocket.prototype = {
 		var currentY = this.input.worldY;
 		var deltaY = this._startY - currentY; 
 
-		this._layer2.y = this._layer2.saveY - deltaY * 2;
+		this._chestLayer.y = this._chestLayer.saveY - deltaY * 2;
 
 		// Check limits
-		if(this._layer2.y < (-this._chest.getLimit() + this.world.height)){
-			this._layer2.y = -this._chest.getLimit() + this.world.height;
+		if(this._chestLayer.y < (-this._chest.getLimit() + this.world.height)){
+			this._chestLayer.y = -this._chest.getLimit() + this.world.height;
 		}
-		if(this._layer2.y > 0){
-			this._layer2.y = 0;
+		if(this._chestLayer.y > 0){
+			this._chestLayer.y = 0;
 		}
 	},
 	
@@ -152,6 +165,7 @@ GameObj.Rocket.prototype = {
 	itemClickPress: function (sprite) {
 		// Bring item to front
 		sprite.bringToTop();
+		
 	},
 	
 	// Put down item
@@ -168,7 +182,7 @@ GameObj.Rocket.prototype = {
 			// item.resetPos();
 			
 			this._layer1.remove(item);
-			this._layer2.add(item);
+			this._chestLayer.add(item);
 			
 			
 			
@@ -186,14 +200,43 @@ GameObj.Rocket.prototype = {
 			//item.resetPos();
 			item.y = this.input.y;
 			
-			this._layer2.remove(item);
+			this._chestLayer.remove(item);
 			this._layer1.add(item);
 		}
 		
 	},
 	
 	openChest: function (pointer) {
+
+		this._chest.bringToTop();
+		this._btnCloseChest.bringToTop();
+
+		this._chestLayer.visible = true;
+		this._chest.visible = true;
+		this._btnCloseChest.visible = true;
 		
+		// Tween
+		this.add.tween(this._btnCloseChest).to( { alpha: 1, x:  this.world.width-60 }, 200, Phaser.Easing.Linear.None, true, 0, 0, false);
+		this.add.tween(this._chest).to( { alpha: 1, x:  this.world.width-300 }, 200, Phaser.Easing.Linear.None, true, 0, 0, false);
+		this.add.tween(this._chestLayer).to( { alpha: 1, x: 0 }, 200, Phaser.Easing.Linear.None, true, 0, 0, false);
+		
+	},
+	
+	closeChest: function (pointer) {
+		
+		var self = this;
+		
+		// Tween
+		this.add.tween(this._btnCloseChest).to( { alpha: 0, x:  this.world.width }, 200, Phaser.Easing.Linear.None, true, 0, 0, false);
+		this.add.tween(this._chest).to( { alpha: 0, x:  this.world.width }, 200, Phaser.Easing.Linear.None, true, 0, 0, false);
+		var tween = this.add.tween(this._chestLayer).to( { alpha: 0, x: 300 }, 200, Phaser.Easing.Linear.None, true, 0, 0, false);
+		
+		// One animation end
+		tween.onComplete.add(function() {
+			self._btnCloseChest.visible = false;
+			self._chest.visible = false;
+			self._chestLayer.visible = false;
+		}, this);
 	},
 	
 	goToMenu: function (pointer) {
