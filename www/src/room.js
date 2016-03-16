@@ -93,17 +93,17 @@ GameObj.Room.prototype = {
 		var background = this.add.sprite(0, 0, this.prefix + '_bg');
 		this._layer1.add(background);
 		
-		// Alien
-		this._alien = new Alien(this, 1150, 550);
-		this.add.existing(this._alien);
-		this._alien.inputEnabled = true;
-		this._alien.events.onInputDown.add(this.alienClickRelease, this);
-		this._layer1.add(this._alien);
-	
 		// Cloud
 		this._cloud = new Cloud(this, 0, 600);
 		this.add.existing(this._cloud);
 		this._layer1.add(this._cloud);
+		
+		// Alien
+		this._alien = new Alien(this, 1150, 700);
+		this.add.existing(this._alien);
+		this._alien.inputEnabled = true;
+		this._alien.events.onInputDown.add(this.alienClickRelease, this);
+		this._layer1.add(this._alien);
 		
 		
 		// Add items
@@ -186,6 +186,10 @@ GameObj.Room.prototype = {
 		
 		// Start New Task
 		this.startNewTask();
+		
+		// TODO: testing
+		this._cloud.bringToTop();
+		this._alien.bringToTop();
 	},
 	
 	// TODO: This is for testing framerate
@@ -464,6 +468,7 @@ GameObj.Room.prototype = {
 			break;
 		}
 		
+		this._layer1.sort('y', Phaser.Group.SORT_ASCENDING);
 	},
 	
 	// Click on _alien (release)

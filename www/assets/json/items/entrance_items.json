@@ -1,5 +1,107 @@
 {
 	"items": [
-		
+		{
+			"name": "skor",
+			"x": 207,
+			"y": 198,
+			"categories": ["clothes"]
+		},
+		{
+			"name": "jacka",
+			"x": 306,
+			"y": 512,
+			"categories": ["clothes"]
+		},
+		{
+			"name": "planta",
+			"x": 480,
+			"y": 646,
+			"categories": ["plant"]
+		},
+		{
+			"name": "bok",
+			"x": 610,
+			"y": 606,
+			"categories": ["school_stuff"]
+		},
+		{
+			"name": "apple",
+			"x": 630,
+			"y": 643,
+			"categories": ["fruit"]
+		},
+		{
+			"name": "mossa",
+			"x": 628,
+			"y": 374,
+			"categories": ["clothes"]
+		},
+		{
+			"name": "vantar",
+			"x": 530,
+			"y": 374,
+			"categories": ["clothes"]
+		},
+		{
+			"name": "penna",
+			"x": 490,
+			"y": 456,
+			"categories": ["school_stuff"]
+		},
+		{
+			"name": "vattenkanna",
+			"x": 601,
+			"y": 257,
+			"categories": [""]
+		},
+		{
+			"name": "ryggsack",
+			"x": 366,
+			"y": 284,
+			"categories": ["school_stuff"]
+		},
+		{
+			"name": "dammsugare",
+			"x": 944,
+			"y": 484,
+			"categories": ["cleaning_products"]
+		},
+		{
+			"name": "mopp",
+			"x": 836,
+			"y": 479,
+			"categories": ["cleaning_products"]
+		},
+		{
+			"name": "rengoringsmedel",
+			"x": 839,
+			"y": 288,
+			"categories": ["cleaning_products"]
+		},
+		{
+			"name": "hink",
+			"x": 973,
+			"y": 271,
+			"categories": ["cleaning_products"]
+		},
+		{
+			"name": "vatten",
+			"x": 1174,
+			"y": 361,
+			"categories": ["cleaning_products"]
+		},
+		{
+			"name": "dorr_lador_hall",
+			"x": 572,
+			"y": 326,
+			"categories": ["door"]
+		},
+		{
+			"name": "dorr_garderob_hall",
+			"x": 910,
+			"y": 446,
+			"categories": ["door"]
+		}
+
 	]
 }

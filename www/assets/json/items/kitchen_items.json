@@ -1,5 +1,306 @@
 {
 	"items": [
+		{
+			"name": "paron",
+			"x": 88,
+			"y": 607,
+			"categories": ["edible", "sweet", "fruit"]
+		},
+		{
+			"name": "jordgubbe",
+			"x": 126,
+			"y": 604,
+			"categories": ["edible", "sweet", "fruit"]
+		},
+		{
+			"name": "apelsin",
+			"x": 172,
+			"y": 601,
+			"categories": ["edible", "sweet", "fruit"]
+		},
+		{
+			"name": "korsbar",
+			"x": 213,
+			"y": 616,
+			"categories": ["edible", "sweet", "fruit"]
+		},
+		{
+			"name": "saftglas",
+			"x": 138,
+			"y": 496,
+			"categories": ["drinkable", "drinking_vessel"]
+		},
+		{
+			"name": "ost",
+			"x": 193,
+			"y": 479,
+			"categories": ["edible", "topping"]
+		},
+		{
+			"name": "smor",
+			"x": 264,
+			"y": 474,
+			"categories": ["edible", "topping"]
+		},
+		{
+			"name": "ketchup",
+			"x": 265,
+			"y": 624,
+			"categories": ["edible", "topping"]
+		},
+		{
+			"name": "kaviar",
+			"x": 196,
+			"y": 262,
+			"categories": ["edible", "topping"]
+		},
+		{
+			"name": "agg",
+			"x": 272,
+			"y": 372,
+			"categories": ["edible"]
+		},
+		{
+			"name": "vattenglas",
+			"x": 91,
+			"y": 491,
+			"categories": ["drinkable", "drinking_vessel"]
+		},
+		{
+			"name": "leverpastej",
+			"x": 100,
+			"y": 245,
+			"categories": ["edible", "topping"]
+		},
+		{
+			"name": "mjolk",
+			"x": 157,
+			"y": 262,
+			"categories": ["drinkable"]
+		},
+		{
+			"name": "spagetti",
+			"x": 866,
+			"y": 450,
+			"categories": ["edible"]
+		},
+		{
+			"name": "prinsesstarta",
+			"x": 199,
+			"y": 372,
+			"categories": ["edible", "sweet"]
+		},
+		{
+			"name": "dammsugare",
+			"x": 782,
+			"y": 536,
+			"categories": ["edible", "sweet"]
+		},
+		{
+			"name": "donut",
+			"x": 871,
+			"y": 546,
+			"categories": ["edible", "sweet"]
+		},
+		{
+			"name": "kanelbulle",
+			"x": 958,
+			"y": 541,
+			"categories": ["edible", "sweet"]
+		},
+		{
+			"name": "brod",
+			"x": 1022,
+			"y": 546,
+			"categories": ["edible"]
+		},
+		{
+			"name": "te",
+			"x": 927,
+			"y": 651,
+			"categories": ["drinkable"]
+		},
+		{
+			"name": "korvbrod",
+			"x": 829,
+			"y": 633,
+			"categories": ["edible"]
+		},
+		{
+			"name": "senap",
+			"x": 240,
+			"y": 270,
+			"categories": ["edible", "topping"]
+		},
+		{
+			"name": "korv",
+			"x": 94,
+			"y": 394,
+			"categories": ["edible"]
+		},		
+		{
+			"name": "vatten",
+			"x": 455,
+			"y": 436,
+			"categories": ["drinkable", "doing_dishes"]
+		},
+		{
+			"name": "diskborste",
+			"x": 353,
+			"y": 462,
+			"categories": ["doing_dishes"]
+		},
+		{
+			"name": "diskmedel",
+			"x": 584,
+			"y": 455,
+			"categories": ["doing_dishes"]
+		},
+		{
+			"name": "diskstall",
+			"x": 672,
+			"y": 426,
+			"categories": ["doing_dishes"]
+		},
+		{
+			"name": "mugg",
+			"x": 348,
+			"y":638,
+			"categories": ["drinking_vessel"]
+		},
+		{
+			"name": "vinglas",
+			"x": 398,
+			"y": 646,
+			"categories": ["drinking_vessel"]
+		},
+		{
+			"name": "tallrik_djup",
+			"x": 472,
+			"y": 629,
+			"categories": ["plate"]
+		},
+		{
+			"name": "glas",
+			"x": 717,
+			"y": 646,
+			"categories": ["drinking_vessel"]
+		},
+		{
+			"name": "tallrik",
+			"x": 590,
+			"y": 628,
+			"categories": ["plate"]
+		},
+		{
+			"name": "brodrost",
+			"x": 675,
+			"y": 243,
+			"categories": [""]
+		},
+		{
+			"name": "smutsdisk",
+			"x": 785,
+			"y": 431,
+			"categories": ["plate", "doing_dishes"]
+		},
+		{
+			"name": "kniv",
+			"x": 404,
+			"y": 575,
+			"categories": ["cutlery", "knife"]
+		},
+		{
+			"name": "sked",
+			"x": 408,
+			"y": 540,
+			"categories": ["cutlery"]
+		},
+		{
+			"name": "gaffel",
+			"x": 577,
+			"y": 575,
+			"categories": ["cutlery"]
+		},
+		{
+			"name": "stekpanna",
+			"x": 673,
+			"y": 323,
+			"categories": ["cooking"]
+		},
+		{
+			"name": "stor_kastrull",
+			"x": 792,
+			"y": 333,
+			"categories": ["boiling"]
+		},
+		{
+			"name": "liten_kastrull",
+			"x": 780,
+			"y": 242,
+			"categories": ["boiling"]
+		},
+		{
+			"name": "aggkopp",
+			"x": 761,
+			"y": 638,
+			"categories": [""]
+		},
+		{
+			"name": "kniv_stor",
+			"x": 585,
+			"y": 535,
+			"categories": ["cutlery", "knife"]
+		},
+		{
+			"name": "kopp",
+			"x": 1007,
+			"y": 631,
+			"categories": ["drinking_vessel"]
+		},		
+		{
+			"name": "skarbrada",
+			"x": 553,
+			"y": 275,
+			"categories": [""]
+		},
+		{
+			"name": "sopor",
+			"x": 387,
+			"y": 338,
+			"categories": [""]
+		},
+		{
+			"name": "soptunna",
+			"x": 387,
+			"y": 291,
+			"categories": [""]
+		},
+		{
+			"name": "ny_soppase",
+			"x": 474,
+			"y": 282,
+			"categories": [""]
+		},
+		{
+			"name": "dorr_lador",
+			"x": 455,
+			"y": 303,
+			"categories": ["door"]
+		},
+		{
+			"name": "dorr_skap",
+			"x": 734,
+			"y": 305,
+			"categories": ["door"]
+		},
+		{
+			"name": "dorr_kylskap",
+			"x": 181,
+			"y": 454,
+			"categories": ["door"]
+	
+		}
 		
 	]
 }
