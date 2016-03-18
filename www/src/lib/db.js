@@ -363,8 +363,8 @@ Db.prototype = {
 		this.db.transaction(function(tx) {
 			tx.executeSql(
 				'SELECT * FROM rocket ' + 
+				'WHERE user_id = ? ' + 
 				'ORDER BY id DESC ' + 
-				'WHERE user_id = ?' + 
 				'LIMIT 1', 
 			[userId], function(tx, res) {
 				// Run callback if defined
