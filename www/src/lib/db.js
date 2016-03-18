@@ -15,11 +15,11 @@ Db.prototype = {
 		this.db.transaction(function(tx) {
 			// For testing
 			//tx.executeSql('DROP TABLE IF EXISTS test_table');
-			// tx.executeSql('DROP TABLE IF EXISTS users');
-			// tx.executeSql('DROP TABLE IF EXISTS events');
-			// tx.executeSql('DROP TABLE IF EXISTS tasks');
-			// tx.executeSql('DROP TABLE IF EXISTS levels');
-			// tx.executeSql('DROP TABLE IF EXISTS rocket');
+			tx.executeSql('DROP TABLE IF EXISTS users');
+			tx.executeSql('DROP TABLE IF EXISTS events');
+			tx.executeSql('DROP TABLE IF EXISTS tasks');
+			tx.executeSql('DROP TABLE IF EXISTS levels');
+			tx.executeSql('DROP TABLE IF EXISTS rocket');
 			
 			// Create tables if they does not exist
 			// tx.executeSql('CREATE TABLE IF NOT EXISTS test_table (id INTEGER PRIMARY KEY, data TEXT, data_num INTEGER)', [], function(tx, res) {
@@ -85,7 +85,7 @@ Db.prototype = {
 	// Inser user
 	insertUser: function (identity, callback) {
 		this.db.transaction(function(tx) {
-			tx.executeSql('INSERT INTO users (identity, timestamp) VALUES (?, ?, ?)', [identity, 0, Date.now()], function(tx, res) {
+			tx.executeSql('INSERT INTO users (identity, level, timestamp) VALUES (?, ?, ?)', [identity, 0, Date.now()], function(tx, res) {
 				// Run callback if defined
 				typeof callback === 'function' && callback(res.insertId);
 			});		
