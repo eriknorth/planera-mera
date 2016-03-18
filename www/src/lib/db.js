@@ -364,7 +364,7 @@ Db.prototype = {
 			tx.executeSql(
 				'SELECT * FROM rocket ' + 
 				'ORDER BY id DESC ' + 
-				'WHERE user_id = ?', 
+				'WHERE user_id = ?' + 
 				'LIMIT 1', 
 			[userId], function(tx, res) {
 				// Run callback if defined
