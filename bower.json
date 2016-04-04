@@ -1,0 +1,19 @@
+{
+  "name": "planeramera",
+  "authors": [
+    "Eriks Zaharans <erikszah@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "www/components/",
+    "test",
+    "tests"
+  ]
+}
