@@ -95,7 +95,8 @@ GameObj.Rocket.prototype = {
 					self._userItems[i].y, 
 					'rocket_atlas', 
 					itemJson.items[i].name,
-					i
+					i,
+					false
 				);
 				self._items[i].state = self._userItems[i].state;
 				self.add.existing(self._items[i]);
@@ -197,7 +198,7 @@ GameObj.Rocket.prototype = {
 		}
 		else {
 
-			item.y = this.input.y;
+			//item.y = this.input.y;
 			
 			this._chestLayer.remove(item);
 			this._layer1.add(item);

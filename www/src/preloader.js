@@ -105,12 +105,14 @@ GameObj.Preloader.prototype = {
 		this.load.image('cloud', 'assets/img/cloud.png');
 		
 		
-		// Alien
+		// --- < Load Alien > ---
 		this.load.image('alien-body', 'assets/img/alien/alien-body.png');
 		this.load.image('alien-eyes', 'assets/img/alien/alien-eyes.png');
 		this.load.image('alien-eye-balls', 'assets/img/alien/alien-eye-balls.png');
 		this.load.spritesheet('alien-mouth-talk', 'assets/img/alien/alien-mouth-talk.png', 63, 19, 2);
-		
+		this.load.image('alien-hands', 'assets/img/alien/alien-hands.png');
+		this.load.image('alien-legs', 'assets/img/alien/alien-legs.png');
+		// --- </ Load Alien > ---
 		
 		
 		// ---------- Load assets for Game ----------

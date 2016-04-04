@@ -1,7 +1,15 @@
 GameObj.World = function (game) {
 
-	this.btnBack = null;
+	this._btnBack = null;
 
+	// Alien
+	this._alien = null;
+	
+	// Sound
+	this._sound = null;
+	
+	// Room icons
+	this._roomIcons = [];
 };
 
 GameObj.World.prototype = {
@@ -19,7 +27,6 @@ GameObj.World.prototype = {
 		this.add.sprite(0, 0, 'w'+worldObj.id+'_bg');
 		
 		// Room icons
-		var roomIcons = [];
 		for(i = 0; i < worldObj.rooms.length; i++) 
 		{
 			// Check if room is enabled
@@ -28,37 +35,45 @@ GameObj.World.prototype = {
 				// Check if level is enough high to access
 				// TODO: Remove 1 == 1 ! TESTING...
 				if(GameObj.user.level >= worldObj.rooms[i].level || 1 == 1) {
-					roomIcons[i] = this.add.button(
+					this._roomIcons[i] = this.add.button(
 						worldObj.rooms[i].icon_x, 
 						worldObj.rooms[i].icon_y, 
 						'w'+worldObj.id+'_r'+worldObj.rooms[i].id+'_icon', 
 						this.goToRoom(i), this, 2, 0, 1);
 					
-					roomIcons[i].anchor.setTo(0.5);
-					roomIcons[i].scale.setTo(0.8);
+					this._roomIcons[i].anchor.setTo(0.5);
+					this._roomIcons[i].scale.setTo(0.8);
 				}
 				else {
 					// Add padlock
-					roomIcons[i] = this.add.sprite(worldObj.rooms[i].icon_x, worldObj.rooms[i].icon_y, 'padlock_icon');
-					roomIcons[i].anchor.setTo(0.5);
-					roomIcons[i].scale.setTo(0.8);
+					this._roomIcons[i] = this.add.sprite(worldObj.rooms[i].icon_x, worldObj.rooms[i].icon_y, 'padlock_icon');
+					this._roomIcons[i].anchor.setTo(0.5);
+					this._roomIcons[i].scale.setTo(0.8);
 				}
 			}
 		}
 		
 		// Back button
-		this.btnBack = this.add.button(60, 60, 'btnBack', this.goToMenu, this, 2, 0, 1);
-		this.btnBack.anchor.set(0.5);
+		this._btnBack = this.add.button(60, 60, 'btnBack', this.goToMenu, this, 2, 0, 1);
+		this._btnBack.anchor.set(0.5);
 
 		// Add alien
-		var alien = this.add.sprite(1080, 550, 'alien');
-		alien.frame = 0;
-		alien.anchor.setTo(0.5, 0.5);
+		// var alien = this.add.sprite(1080, 550, 'alien');
+		// alien.frame = 0;
+		// alien.anchor.setTo(0.5, 0.5);
 		
 		
+		// Alien
+		this._alien = new Alien(this, 1080, 550);
+		this.add.existing(this._alien);
+		this._alien.inputEnabled = true;
+		this._alien.events.onInputDown.add(this.alienClickRelease, this);
 		
-
+		// Sound library
+		this._sound = new Sound(this);
 		
+		// Give instruction
+		this.giveInstruction();
 	},
 	
 	goToMenu: function (pointer) {
@@ -103,7 +118,49 @@ GameObj.World.prototype = {
 				}
 			});
 		}
-	}
+	},
 
+	// Click on _alien (release)
+	alienClickRelease: function (sprite) {
 
+		// TODO: tell something
+		this.giveInstruction();
+	},
+	
+	giveInstruction: function () {
+		
+		var self = this;
+		
+		// Start talking animation
+		this._alien.talk(true);
+		this.setButtonsActive(false);
+		
+		this._sound.play('introTeachMeHowToPlan_audio', function() { 
+			self._alien.talk(false);
+			self.setButtonsActive(true);
+		});
+	},
+	
+	// Enable / Disable buttons
+	setButtonsActive: function (state) {
+		
+		if(state == true) {
+			for(var i = 0; i < this._roomIcons.length; i++) {
+				this._roomIcons[i].alpha = 1;
+				this._roomIcons[i].inputEnabled = true;
+			}
+			this._btnBack.alpha = 1;
+			this._btnBack.inputEnabled = true;
+		}
+		else {
+			for(var i = 0; i < this._roomIcons.length; i++) {
+				this._roomIcons[i].alpha = 0.5;
+				this._roomIcons[i].inputEnabled = false;
+			}
+			this._btnBack.alpha = 0.5;
+			this._btnBack.inputEnabled = false;
+		}
+	},
+	
+	
 };

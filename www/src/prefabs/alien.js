@@ -19,6 +19,16 @@ Alien = function(game, x, y) {
 	this.mouth.anchor.set(0.5);
 	this.addChild(this.mouth);
 	this.mouth.animations.add('talk');
+	
+	// Legs
+	this._legs = game.make.sprite(0, 195, 'alien-legs');
+	this._legs.anchor.set(0.5);
+	this.addChild(this._legs);
+	
+	// Hands
+	this._hands = game.make.sprite(0, 90, 'alien-hands');
+	this._hands.anchor.set(0.5);
+	this.addChild(this._hands);
 };
 
 Alien.prototype = Object.create(Phaser.Sprite.prototype);

@@ -60,6 +60,8 @@ GameObj.Room.prototype = {
 
 	create: function () {
 		
+		var self = this;
+		
 		// Get JSONs
 		var gameJson = this.cache.getJSON('game');
 		var worldsJson = this.cache.getJSON('worlds');
@@ -195,11 +197,11 @@ GameObj.Room.prototype = {
 		
 		
 		// Start New Task
-		this.startNewTask();
+		// this.startNewTask();
 		
 		// TODO: testing
-		this._cloud.bringToTop();
-		this._alien.bringToTop();
+		// this._cloud.bringToTop();
+		// this._alien.bringToTop();
 		
 		
 		
@@ -208,6 +210,16 @@ GameObj.Room.prototype = {
 		// setInterval(function() {
 		// 	self.game.debug.text(self.game.time.fps, 2, 14, "#00ff00");
 		// },1000);
+		
+		
+		// Give instruction
+		this.giveInstruction(function () {
+			// Start with delay
+			setTimeout(function () {
+				// Start New Task
+				self.startNewTask();
+			}, 1000);
+		});
 	},
 	
 	// TODO: This is for testing framerate
@@ -343,28 +355,56 @@ GameObj.Room.prototype = {
 				
 						// Feedback
 						self._alien.talk(true);
-						self._sound.play('positiveFeedback_audio', function() { 
-							self._alien.talk(false);
-							// Change state
-							self.resetState(0);
-						});
+						// Disable buttons
+						self.setButtonsActive(false);
+						
+						self._sound.playSequence(['playButton_audio', 500, 'positiveFeedback_audio'], 
+							function() { 
+								self._alien.talk(false);
+								self.setButtonsActive(true);
+					
+								// Change state
+								self.resetState(0);
+							},
+							function() { self._alien.talk(false); },
+							function() { self._alien.talk(true); }
+						);
+						
+						
+						// self._sound.play('positiveFeedback_audio', function() {
+						// 	self._alien.talk(false);
+						// 	// Change state
+						// 	self.resetState(0);
+						// });
 					});
 					
 				}
 				else {
 					// Correct
 					this._alien.talk(true);
-					this._sound.playSequence(['positiveFeedback_audio', 500, 'orderInstruction_audio'], 
-						function() { self._alien.talk(false); },
-						function() { self._alien.talk(false); },
-						function() { self._alien.talk(true); }
-					);
-			
-					// Generate boxes
-					this._box.setBoxes(this._selectedItems.length);
-				
-					// Change state
-					this.changeState(1);
+					// Disable buttons
+					this.setButtonsActive(false);
+					
+					this._sound.play('playButton_audio', function() {
+						self._alien.talk(false); 
+						// Run with delay
+						setTimeout(function () {
+							self._alien.talk(true);
+							self._sound.playSequence(['positiveFeedback_audio', 500, 'orderInstruction_audio'], 
+								function() { 
+									self._alien.talk(false);
+									self.setButtonsActive(true);
+								},
+								function() { self._alien.talk(false); },
+								function() { self._alien.talk(true); }
+							);
+							// Generate boxes
+							self._box.setBoxes(self._selectedItems.length);
+		
+							// Change state
+							self.changeState(1);
+						}, 500);
+					});
 				}
 			}
 			else {
@@ -375,9 +415,13 @@ GameObj.Room.prototype = {
 					if(newTask == true) {
 						// TODO: Hensi says something about better luck next time
 						self._alien.talk(true);
-						self._sound.playSequence(['negativeFeedback_audio', 500, 'betterLuckNextTime_audio'], 
+						// Disable buttons
+						self.setButtonsActive(false);
+						
+						self._sound.playSequence(['playButton_audio', 500, 'negativeFeedback_audio', 500, 'betterLuckNextTime_audio'], 
 							function() { 
 								self._alien.talk(false); 
+								self.setButtonsActive(true);
 						
 								// Change state
 								self.resetState(0);
@@ -392,9 +436,21 @@ GameObj.Room.prototype = {
 					else {
 						// Just say that it is wrong
 						self._alien.talk(true);
-						self._sound.play('negativeFeedback_audio', function() { 
-							self._alien.talk(false); 
-						});
+						// Disable buttons
+						self.setButtonsActive(false);
+						
+						self._sound.playSequence(['playButton_audio', 500, 'somethingIsMissing_audio'], 
+							function() { 
+								self._alien.talk(false); 
+								self.setButtonsActive(true); 
+							},
+							function() { self._alien.talk(false); },
+							function() { self._alien.talk(true); }
+						);
+					
+						// self._sound.play('somethingIsMissing_audio', function() {
+// 							self._alien.talk(false);
+// 						});
 					}
 					
 				});
@@ -413,8 +469,12 @@ GameObj.Room.prototype = {
 				
 					// Feedback
 					self._alien.talk(true);
+					// Disable buttons
+					self.setButtonsActive(false);
+					
 					self._sound.play('positiveFeedback_audio', function() { 
 						self._alien.talk(false);
+						self.setButtonsActive(true); 
 					
 						// Change state
 						self.changeState(0, function() {
@@ -433,9 +493,13 @@ GameObj.Room.prototype = {
 					if(newTask == true) {
 						// TODO: Hensi says something about better luck next time
 						self._alien.talk(true);
+						// Disable buttons
+						self.setButtonsActive(false);
+						
 						self._sound.playSequence(['negativeFeedback_audio', 500, 'betterLuckNextTime_audio'], 
 							function() { 
-								self._alien.talk(false); 
+								self._alien.talk(false);
+								self.setButtonsActive(true);
 					
 								// Change state
 								self.changeState(0, function() {
@@ -450,8 +514,12 @@ GameObj.Room.prototype = {
 					else {
 						// Just say that it is wrong
 						self._alien.talk(true);
-						self._sound.play('negativeFeedback_audio', function() { 
-							self._alien.talk(false); 
+						// Disable buttons
+						self.setButtonsActive(false);
+						
+						self._sound.play('theOrderIsNotCorrect_audio', function() { 
+							self._alien.talk(false);
+							self.setButtonsActive(true);
 						});
 					}
 					
@@ -534,21 +602,21 @@ GameObj.Room.prototype = {
 		this._alien.talk(true);
 		
 		// Disable buttons
-		this.disableButtons();
+		this.setButtonsActive(false);
 		
 		// Play audio depending on the gameplay state
 		switch(this._state)
 		{
 		case 0:
 			this._sound.playSequence(['doPlanning_audio', this.prefix + '_t' + this._currTask.id + '_audio', 200, 'whatThingsDoINeed_audio'], 
-				function() { self._alien.talk(false); self.enableButtons(); },
+				function() { self._alien.talk(false); self.setButtonsActive(true); },
 				function() { self._alien.talk(false); },
 				function() { self._alien.talk(true); }
 			);
 			break;
 		case 1:
 			this._sound.playSequence(['doPlanning_audio', this.prefix + '_t' + this._currTask.id + '_audio', 200, 'orderInstruction_audio'], 
-				function() { self._alien.talk(false); self.enableButtons(); },
+				function() { self._alien.talk(false); self.setButtonsActive(true); },
 				function() { self._alien.talk(false); },
 				function() { self._alien.talk(true); }
 			);
@@ -1139,6 +1207,39 @@ GameObj.Room.prototype = {
 		});
 	},
 
+	giveInstruction: function (callback) {
+		
+		var self = this;
+		
+		// Start talking animation
+		this._alien.talk(true);
+		this.setButtonsActive(false);
+		
+		this._sound.play('instructionRoom_audio', function() { 
+			self._alien.talk(false);
+			// self.setButtonsActive(true);
+			
+			// Callback to know that state change has been complete
+			typeof callback === 'function' && callback();
+		});
+	},
+	
+	// Enable / Disable buttons
+	setButtonsActive: function (state) {
+		
+		if(state == true) {
+			this._btnPlay.alpha = 1;
+			this._btnBack.alpha = 1;
+			this._btnPlay.inputEnabled = true;
+			this._btnBack.inputEnabled = true;
+		}
+		else {
+			this._btnPlay.alpha = 0.5;
+			this._btnBack.alpha = 0.5;
+			this._btnPlay.inputEnabled = false;
+			this._btnBack.inputEnabled = false;
+		}
+	},
 
 	render: function () {
 		this.game.debug.text(this.game.time.fps, 2, 14, "#00ff00");
