@@ -94,7 +94,7 @@ GameObj.Rocket.prototype = {
 					self._userItems[i].x, 
 					self._userItems[i].y, 
 					'rocket_atlas', 
-					itemJson.items[i].name,
+					itemJson.items[self._userItems[i].item].name,
 					i,
 					false
 				);
@@ -197,8 +197,10 @@ GameObj.Rocket.prototype = {
 			
 		}
 		else {
-
-			//item.y = this.input.y;
+			
+			if(item.state == 0) {
+				item.y = this.input.y;
+			}
 			
 			this._chestLayer.remove(item);
 			this._layer1.add(item);
@@ -209,13 +211,13 @@ GameObj.Rocket.prototype = {
 		// Rearange the chest
 		this._chest.resetChest();
 		// Loop through all the items
-		for(var i = 0; i < this._userItems.length; i++) {
+		for(var i = 0; i < this._items.length; i++) {
 			
-			var item = this._userItems[i].item;
+			//var item = this._userItems[i].item;
 			// Reposition items in chest
-			if(this._items[item].state == 0) {
+			if(this._items[i].state == 0) {
 				
-				this._chest.setInChest(this._items[item], -100);
+				this._chest.setInChest(this._items[i], -100);
 			}
 		}
 		
@@ -223,8 +225,8 @@ GameObj.Rocket.prototype = {
 	
 	openChest: function (pointer) {
 
-		this._chest.bringToTop();
-		this._btnCloseChest.bringToTop();
+		//this._chest.bringToTop();
+		//this._btnCloseChest.bringToTop();
 
 		this._chestLayer.visible = true;
 		this._chest.visible = true;
@@ -258,10 +260,10 @@ GameObj.Rocket.prototype = {
 
 		// TODO: Update only if moved!!!
 		// Loop through all the items
-		for(var i = 0; i < this._userItems.length; i++) {
+		for(var i = 0; i < this._items.length; i++) {
 			// Update all items
-			var item = this._userItems[i].item;
-			GameObj.db.updateRocketItem(this._userItems[i].id, this._items[item].x, this._items[item].y, this._items[item].state);
+			//var item = this._userItems[i].item;
+			GameObj.db.updateRocketItem(this._userItems[i].id, this._items[i].x, this._items[i].y, this._items[i].state);
 			
 		}
 

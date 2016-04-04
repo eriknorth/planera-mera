@@ -65,15 +65,6 @@
 					"enabled": true
 				}
 			]
-		},
-		{
-			"id": 2,
-			"name": "school",
-			"icon": "house.png",
-			"background": "home.png",
-			"level": 4,
-			"enabled": true,
-			"rooms": []
 		}
 	],
 	"rocket": {

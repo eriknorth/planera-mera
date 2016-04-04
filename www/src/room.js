@@ -1239,23 +1239,47 @@ GameObj.Room.prototype = {
 	
 	givePresent: function () {
 		
-		GameObj.db.getLastRocketItem(GameObj.user.id, function (res) {
-			
-			// If no result returned -> no items in rocket yet
-			if(res.rows.length == 0) {
-				// Insert new rocket item
-				GameObj.db.insertRocketItem(GameObj.user.id, 0);
-			}
-			else {
-				
-				// Save room in game object
-				var lastItem = res.rows.item(0);
-				// If 10 minutes have passed -> give a present
-				if(Date.now() - lastItem.timestamp > (1000 * 60 * 10)) {
-					GameObj.db.insertRocketItem(GameObj.user.id, lastItem.item + 1);
-				}
+		var self = this;
+		
+		// GameObj.db.getLastRocketItem(GameObj.user.id, function (res) {
+//
+// 			// If no result returned -> no items in rocket yet
+// 			if(res.rows.length == 0) {
+// 				// Insert new rocket item
+// 				GameObj.db.insertRocketItem(GameObj.user.id, 0);
+// 			}
+// 			else {
+//
+// 				// Save room in game object
+// 				var lastItem = res.rows.item(0);
+// 				// If 10 minutes have passed -> give a present
+// 				if(Date.now() - lastItem.timestamp > (1000 * 60 * 10)) {
+// 					GameObj.db.insertRocketItem(GameObj.user.id, lastItem.item + 1);
+// 				}
+//
+// 			}
+// 		});
 
+		GameObj.db.getRocketItems(GameObj.user.id, function (res) {
+			
+			console.log(res);
+			
+			var rocketItems = [];
+			for(var i = 0; i < res.rows.length; i++) {
+				rocketItems.push(res.rows.item(i).item);
 			}
+			
+			var rndNum = 0;
+			do {
+				rndNum = self.rnd.integerInRange(0, self._rocketItemArray.length-1);
+			}
+			while (rocketItems.indexOf(rndNum) > -1)
+
+			// If 10 minutes have passed -> give a present
+			if(Date.now() - res.rows.item(0).timestamp > (1000 * 60 * 10)) {
+				GameObj.db.insertRocketItem(GameObj.user.id, rndNum);
+			}
+
 		});
 	},
 
