@@ -3,6 +3,7 @@ GameObj.Menu = function (game) {
 	this.music = null;
 	this.btnAbout = null;
 	this.btnMovie = null;
+	this.btnExit = null;
 
 };
 
@@ -62,10 +63,12 @@ GameObj.Menu.prototype = {
 		}
 
 		// Add buttons
-		this.btnAbout = this.game.add.button(this.game.world.centerX - 60, this.game.world.height - 80, 'btnAbout', this.goToAbout, this, 2, 0, 1);
+		this.btnAbout = this.game.add.button(this.game.world.centerX - 120, this.game.world.height - 80, 'btnAbout', this.goToAbout, this, 2, 0, 1);
 		this.btnAbout.anchor.setTo(0.5);
-		this.btnMovie = this.game.add.button(this.game.world.centerX + 60, this.game.world.height - 80, 'btnMovie', this.goToMovie, this, 2, 0, 1);
+		this.btnMovie = this.game.add.button(this.game.world.centerX, this.game.world.height - 80, 'btnMovie', this.goToMovie, this, 2, 0, 1);
 		this.btnMovie.anchor.setTo(0.5);
+		this.btnExit = this.game.add.button(this.game.world.centerX + 120, this.game.world.height - 80, 'btnExit', this.exit, this, 2, 0, 1);
+		this.btnExit.anchor.setTo(0.5);
 
 	},
 
@@ -101,6 +104,16 @@ GameObj.Menu.prototype = {
 		return function () {
 			GameObj.world = world;
 			this.state.start('World');
+		}
+	},
+	
+	exit: function () {
+		
+		// Exit app
+		if(navigator.app){
+			navigator.app.exitApp();
+		}else if(navigator.device){
+			navigator.device.exitApp();
 		}
 	}
 

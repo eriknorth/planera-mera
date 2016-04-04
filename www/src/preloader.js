@@ -130,6 +130,7 @@ GameObj.Preloader.prototype = {
 		this.load.spritesheet('btnOk', 'assets/img/buttons/button_ok.png', 85, 90);
 		this.load.spritesheet('btnChest', 'assets/img/buttons/button_chest.png', 85, 90);
 		this.load.spritesheet('btnCloseChest', 'assets/img/buttons/button_close_chest.png', 85, 90);
+		this.load.spritesheet('btnExit', 'assets/img/buttons/button_exit.png', 85, 90);
 		// --- </ Load Buttons > ---
 		
 		// --- < Load Elements > ---

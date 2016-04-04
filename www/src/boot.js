@@ -33,7 +33,7 @@ GameObj.Boot.prototype = {
 		this.scale.pageAlignVertically = true;
 		
 		
-		this.time.advancedTiming = true;
+		//this.time.advancedTiming = true;
 		// Calculate background scaling
 		// var ratio = 1280 / 800;
 // 		var gameRatio = this.game.width / this.game.height;

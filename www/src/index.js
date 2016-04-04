@@ -50,7 +50,7 @@ var app = {
 
 		var w = 1280;
 		var h = 800;
-		var game = new Phaser.Game(w, h, Phaser.AUTO, '');
+		var game = new Phaser.Game(w, h, Phaser.CANVAS, '');
 		
 		// Add states
 		game.state.add('Boot', GameObj.Boot);
