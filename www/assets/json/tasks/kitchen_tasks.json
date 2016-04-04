@@ -1,5 +1,533 @@
 {
-	"tasks": [
-		
-	]
+    "tasks": [
+            {
+            "id": 1,
+            "name": "",
+            "difficulty": 0,
+            "audio": "tasks/kitchen/eat_and_drink.mp3",
+                "items": 
+                [
+                    {
+                        "item": "",
+                        "category": "edible",
+                        "order": 1
+                    },
+                    {
+                        "item": "",
+                        "category": "drinkable",
+                        "order": 1
+                    }
+                ]
+        },
+        {
+            "id": 2,
+            "name": "",
+            "difficulty": 1,
+            "audio": "tasks/kitchen/fika_with_fruit.mp3",
+            "items": 
+            [
+                {
+                    "item": "",
+                    "category": "drinkable",
+                    "order": 1
+                },
+                {
+                    "item": "",
+                    "category": "edible",
+                    "order": 1
+                },
+                {
+                    "item": "",
+                    "category": "fruit",
+                    "order": 1
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "",
+            "difficulty": 2,
+            "audio": "tasks/kitchen/boil_egg.mp3",
+            "items": [
+                {
+                    "item": "vatten",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "",
+                    "category": "boiling",
+                    "order": 1
+                },
+                {
+                    "item": "agg",
+                    "category": "",
+                    "order": 2
+                },
+                {
+                    "item": "aggkopp",
+                    "category": "",
+                    "order": 66
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "name": "",
+            "difficulty": 2,
+            "audio": "tasks/kitchen/make_tea.mp3",
+            "items": [
+                {
+                    "item": "vatten",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "",
+                    "category": "boiling",
+                    "order": 1
+                },
+                {
+                    "item": "te",
+                    "category": "",
+                    "order": 2
+                },
+                {
+                    "item": "",
+                    "category": "drinking_vessel",
+                    "order": 2
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "name": "",
+            "difficulty": 2,
+            "audio": "tasks/kitchen/lay_the_table.mp3",
+            "items": [
+                {
+                    "item": "",
+                    "category": "plate",
+                    "order": 1
+                },
+                {
+                    "item": "",
+                    "category": "cutlery",
+                    "order": 1
+                },
+                {
+                    "item": "",
+                    "category": "drinking_vessel",
+                    "order": 1
+                },
+                {
+                    "item": "",
+                    "category": "topping",
+                    "order": 1
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "name": "",
+            "difficulty": 3,
+            "audio": "tasks/kitchen/toast_with_cheese.mp3",
+            "items": [
+                {
+                    "item": "brodrost",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "brod",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "ost",
+                    "category": "",
+                    "order": 2
+                },
+                {
+                    "item": "smor",
+                    "category": "",
+                    "order": 66
+                },
+                {
+                    "item": "",
+                    "category": "plate",
+                    "order": 3
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "name": "",
+            "difficulty": 3,
+            "audio": "tasks/kitchen/do_the_dishes.mp3",
+            "items": [
+                {
+                    "item": "smutsdisk",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "diskmedel",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "vatten",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "diskborste",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "diskstall",
+                    "category": "",
+                    "order": 2
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "name": "",
+            "difficulty": 3,
+            "audio": "tasks/kitchen/fruit_sallad.mp3",
+            "items": [
+                {
+                    "item": "",
+                    "category": "fruit",
+                    "order": 1
+                },
+                {
+                    "item": "",
+                    "category": "knife",
+                    "order": 1
+                },
+                {
+                    "item": "skarbrada",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "tallrik",
+                    "category": "",
+                    "order": 2
+                },
+                {
+                    "item": "",
+                    "category": "cutlery",
+                    "order": 66
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "name": "",
+            "difficulty": 2,
+            "audio": "tasks/kitchen/sausage_with_bread.mp3",
+            "items": [
+                {
+                    "item": "",
+                    "category": "boiling",
+                    "order": 1
+                },
+                {
+                    "item": "korv",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "vatten",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "brod",
+                    "category": "",
+                    "order": 2
+                },
+                {
+                    "item": "",
+                    "category": "topping",
+                    "order": 66
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "name": "",
+            "difficulty": 1,
+            "audio": "tasks/kitchen/disposal_of_garbage.mp3",
+            "items": [
+                {
+                    "item": "sopor",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "soptunna",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "ny_soppase",
+                    "category": "",
+                    "order": 2
+                }
+            ]
+         },
+         {
+            "id": 11,
+            "name": "",
+            "difficulty": 2,
+            "audio": "tasks/kitchen/make_spagetti.mp3",
+            "items": [
+                {
+                    "item": "vatten",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "",
+                    "category": "boiling",
+                    "order": 1
+                },
+                {
+                    "item": "spagetti",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "",
+                    "category": "plate",
+                    "order": 2
+                },
+                {
+                    "item": "",
+                    "category": "cutlery",
+                    "order": 2
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "name": "",
+            "difficulty": 0,
+            "audio": "tasks/kitchen/drink.mp3",
+            "items": [
+                {
+                    "item": "",
+                    "category": "drinkable",
+                    "order": 1
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "name": "",
+            "difficulty": 0,
+            "audio": "tasks/kitchen/eat.mp3",
+            "items": [
+                {
+                    "item": "",
+                    "category": "edible",
+                    "order": 1
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "name": "",
+            "difficulty": 0,
+            "audio": "tasks/kitchen/a_fruit.mp3",
+            "items": [
+                {
+                    "item": "",
+                    "category": "fruit",
+                    "order": 1
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "name": "",
+            "difficulty": 1,
+            "audio": "tasks/kitchen/cut_an_orange.mp3",
+            "items": [
+                {
+                    "item": "apelsin",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "",
+                    "category": "knife",
+                    "order": 1
+                },
+                {
+                    "item": "skarbrada",
+                    "category": "",
+                    "order": 1
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "name": "",
+            "difficulty": 1,
+            "audio": "tasks/kitchen/glass_of_milk.mp3",
+            "items": 
+            [
+                {
+                    "item": "",
+                    "category": "drinking_vessel",
+                    "order": 1
+                },
+                {
+                    "item": "mjolk",
+                    "category": "",
+                    "order": 1
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "name": "",
+            "difficulty": 0,
+            "audio": "tasks/kitchen/something_sweet.mp3",
+            "items": 
+            [
+                {
+                    "item": "",
+                    "category": "sweet",
+                    "order": 1
+                }
+            ]
+        },
+        {
+            "id": 18,
+            "name": "",
+            "difficulty": 1,
+            "audio": "tasks/kitchen/a_piece_of_cake.mp3",
+            "items": 
+            [
+                {
+                    "item": "prinsesstarta",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "",
+                    "category": "plate",
+                    "order": 2
+                },
+                {
+                    "item": "",
+                    "category": "cutlery",
+                    "order": 2
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "name": "",
+            "difficulty": 3,
+            "audio": "tasks/kitchen/toast_with_something_tasty.mp3",
+            "items": [
+                {
+                    "item": "brodrost",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "brod",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "",
+                    "category": "topping",
+                    "order": 2
+                },
+                {
+                    "item": "",
+                    "category": "plate",
+                    "order": 3
+                }
+            ]
+        },
+        {
+            "id": 20,
+            "name": "",
+            "difficulty": 3,
+            "audio": "tasks/kitchen/fika_with_tea.mp3",
+            "items": [
+                {
+                    "item": "vatten",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "",
+                    "category": "boiling",
+                    "order": 1
+                },
+                {
+                    "item": "te",
+                    "category": "",
+                    "order": 2
+                },
+                {
+                    "item": "",
+                    "category": "drinking_vessel",
+                    "order": 2
+                },
+                {
+                    "item": "",
+                    "category": "edible",
+                    "order": 0
+                },
+                {
+                    "item": "",
+                    "category": "plate",
+                    "order": 66
+                }
+            ]
+        },
+        {
+            "id": 21,
+            "name": "",
+            "difficulty": 2,
+            "audio": "tasks/kitchen/fry_an_egg.mp3",
+            "items": [
+                {
+                    "item": "stekpanna",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "egg",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "",
+                    "category": "plate",
+                    "order": 2
+                },
+                {
+                    "item": "smor",
+                    "category": "",
+                    "order": 66
+                }
+            ]
+        }
+
+    ]
 }

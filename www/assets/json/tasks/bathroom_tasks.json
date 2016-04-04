@@ -4,7 +4,7 @@
 			"id": 1,
 			"name": "",
 			"difficulty": 2,
-			"audio": "tasks/wash_clothes.mp3",
+			"audio": "tasks/bathroom/wash_clothes.mp3",
 			"items": [
 				{
 					"item": "tvattmaskin",
@@ -19,7 +19,7 @@
 				{
 					"item": "tvattmedel",
 					"category": "",
-					"order": 1
+					"order": 0
 				}
 			]
 		},
@@ -27,7 +27,7 @@
 			"id": 2,
 			"name": "",
             "difficulty": 2,
-			"audio": "tasks/brush_teeth.mp3",
+			"audio": "tasks/bathroom/brush_teeth.mp3",
 			"items": [
 				{
 					"item": "tandborste",
@@ -43,7 +43,7 @@
 				{
 					"item": "vatten",
 					"category": "",
-					"order": 1
+					"order": 0
 				}
 			]
 		},
@@ -51,7 +51,7 @@
 			"id": 3,
 			"name": "",
 			"difficulty": 3,
-			"audio": "tasks/shower.mp3",
+			"audio": "tasks/bathroom/shower.mp3",
 			"items": [
 				{
 					"item": "dusch",
@@ -80,7 +80,7 @@
 			"id": 4,
 			"name": "",
 			"difficulty": 1,
-			"audio": "tasks/dry_laundry.mp3",
+			"audio": "tasks/bathroom/dry_laundry.mp3",
 			"items": [
 				{
 					"item": "",
@@ -88,18 +88,18 @@
 					"order": 1
 					
 				},
-				{
-					"item": "torktumlare",
-					"category": "",
-					"order": 2
-				}
-			]
+                {
+                    "item": "torktumlare",
+                    "category": "",
+                    "order": 2
+                }
+            ]
 		},
-		{
+        {
 			"id": 5,
 			"name": "",
-			"difficulty": 0,
-			"audio": "tasks/wash_hands.mp3",
+			"difficulty": 2,
+			"audio": "tasks/bathroom/wash_hands.mp3",
 			"items": [
 				{
 					"item": "vatten",
@@ -118,6 +118,200 @@
 					"order": 3
 				}
 			]
+		},
+        {
+			"id": 6,
+			"name": "",
+			"difficulty": 3,
+			"audio": "tasks/bathroom/use_toilet.mp3",
+			"items": [
+				{
+					"item": "toalett",
+					"category": "",
+					"order": 1
+				},
+				{
+					"item": "toalettpapper",
+					"category": "",
+					"order": 2
+				},
+                {
+					"item": "vatten",
+					"category": "",
+					"order": 3	
+				},
+				{
+					"item": "",
+					"category": "soap",
+					"order": 3
+				},
+				{
+					"item": "handduk",
+					"category": "",
+					"order": 3
+				}
+			]
+		},
+        {
+			"id": 7,
+			"name": "",
+			"difficulty": 2,
+			"audio": "tasks/bathroom/wash_face.mp3",
+			"items": [
+				{
+					"item": "vatten",
+					"category": "",
+					"order": 1			
+				},
+				{
+					"item": "",
+					"category": "soap",
+					"order": 2
+				},
+				{
+					"item": "handduk",
+					"category": "",
+					"order": 3
+				}
+			]
+		},
+        {
+			"id": 8,
+			"name": "",
+			"difficulty": 2,
+			"audio": "tasks/bathroom/wash_feet.mp3",
+			"items": [
+				{
+					"item": "dusch",
+					"category": "",
+					"order": 1
+				},
+				{
+					"item": "",
+					"category": "soap",
+					"order": 2
+				},
+				{
+					"item": "handduk",
+					"category": "",
+					"order": 3
+				}
+			]
+		},
+		{
+			"id": 9,
+			"name": "",
+			"difficulty": 0,
+			"audio": "tasks/bathroom/get_clothes.mp3",
+			"items": [
+				{
+					"item": "",
+					"category": "clothes",
+					"order": 1
+					
+				}
+            ]
+		},
+		{
+			"id": 10,
+			"name": "",
+			"difficulty": 0,
+			"audio": "tasks/bathroom/get_towel.mp3",
+			"items": [
+				{
+					"item": "handduk",
+					"category": "",
+					"order": 1
+					
+				}
+            ]
+		},
+		{
+			"id": 11,
+			"name": "",
+			"difficulty": 0,
+			"audio": "tasks/bathroom/get_soap.mp3",
+			"items": [
+				{
+					"item": "",
+					"category": "soap",
+					"order": 1
+					
+				}
+            ]
+		},
+		{
+			"id": 12,
+			"name": "",
+			"difficulty": 0,
+			"audio": "tasks/bathroom/get_washing_liquid.mp3",
+			"items": [
+				{
+					"item": "tvattmedel",
+					"category": "",
+					"order": 1
+					
+				}
+            ]
+		},
+        {
+            "id": 13,
+            "name": "",
+            "difficulty": 0,
+            "audio": "tasks/bathroom/get_tandborsten.mp3",
+            "items": [
+                {
+                    "item": "tandborste",
+                    "category": "",
+                    "order": 1
+
+                }
+            ]
+        },
+        {
+			"id": 14,
+			"name": "",
+			"difficulty": 2,
+			"audio": "tasks/bathroom/wash_towel.mp3",
+			"items": [
+				{
+					"item": "tvattmaskin",
+					"category": "",
+					"order": 1
+				},
+				{
+					"item": "handduk",
+					"category": "",
+					"order": 2
+				},
+				{
+					"item": "tvattmedel",
+					"category": "",
+					"order": 0
+				}
+			]
+		},
+		{
+			"id": 15,
+			"name": "",
+			"difficulty": 1,
+			"audio": "tasks/bathroom/dry_towel_in_dryer.mp3",
+			"items": [
+				{
+					"item": "handduk",
+					"category": "",
+					"order": 1
+					
+				},
+                {
+                    "item": "torktumlare",
+                    "category": "",
+                    "order": 2
+                }
+            ]
 		}
 	]
+	
+	
+	
 }

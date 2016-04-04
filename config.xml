@@ -25,9 +25,10 @@
     </platform>
     <preference name="xwalkVersion" value="14+" />
     <preference name="xwalkCommandLine" value="--disable-pull-to-refresh-effect" />
+	<preference name="xwalkCommandLine" value="--ignore-gpu-blacklist"/>
     <preference name="xwalkMode" value="embedded" />
-	
-	<preference name="Fullscreen" value="true" />
-	<preference name="Orientation" value="landscape" />
-	<preference name="BackupWebStorage" value="none"/>
+    <preference name="Fullscreen" value="true" />
+    <preference name="Orientation" value="landscape" />
+    <preference name="BackupWebStorage" value="none" />
+    <preference name="xwalkMultipleApk" value="true" />
 </widget>

@@ -1,4 +1,4 @@
-Item = function(game, x, y, atlas, sprite, id) {
+Item = function(game, x, y, atlas, sprite, id, door) {
 
 	this.game = game;
 	this.initX = x;
@@ -7,6 +7,8 @@ Item = function(game, x, y, atlas, sprite, id) {
 	this.name = sprite;
 	this.xPos = x;
 	this.yPos = y;
+	this.depth = id;
+	this._door = door;
 
 	// Make pixel
 	var graphicPixel = new Phaser.Graphics(this, 0, 0);
@@ -21,7 +23,10 @@ Item = function(game, x, y, atlas, sprite, id) {
 	
 	// Add events
 	this.inputEnabled = true;
-	this.input.enableDrag();
+	// Allow drag only if item is not door
+	if(this._door == false) {
+		this.input.enableDrag();
+	}
 	this.events.onInputDown.add(this.onInputDownHandler, this);
 	this.events.onInputUp.add(this.onInputUpHandler, this);
 	
@@ -145,4 +150,9 @@ Item.prototype.onInputUpHandler = function(pointer) {
 	
 	// Shadow
 	this.shadow.visible = false;
+	
+	// If door
+	if(this._door == true) {
+		this.visible = false;
+	}
 };

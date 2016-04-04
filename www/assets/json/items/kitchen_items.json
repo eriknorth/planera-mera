@@ -91,7 +91,7 @@
 			"categories": ["edible", "sweet"]
 		},
 		{
-			"name": "dammsugare",
+			"name": "dammsugare_kaka",
 			"x": 782,
 			"y": 536,
 			"categories": ["edible", "sweet"]
@@ -281,6 +281,12 @@
 			"x": 474,
 			"y": 282,
 			"categories": [""]
+		},
+		{
+			"name": "dorr_overskap",
+			"x": 687,
+			"y": 606,
+			"categories": ["door"]
 		},
 		{
 			"name": "dorr_lador",

@@ -6,7 +6,7 @@
 		"sourceSize": {"w":152,"h":128}
 	},
 	"duschtval": {
-		"frame": {"x":477, "y":411, "w":41, "h":110},
+		"frame": {"x":435, "y":411, "w":41, "h":110},
 		"spriteSourceSize": {"x":0,"y":0,"w":41,"h":110},
 		"sourceSize": {"w":41,"h":110}
 	},
@@ -21,12 +21,12 @@
 		"sourceSize": {"w":159,"h":92}
 	},
 	"handtval": {
-		"frame": {"x":217, "y":48, "w":51, "h":79},
+		"frame": {"x":290, "y":48, "w":51, "h":79},
 		"spriteSourceSize": {"x":0,"y":0,"w":51,"h":79},
 		"sourceSize": {"w":51,"h":79}
 	},
 	"schampo": {
-		"frame": {"x":435, "y":411, "w":41, "h":110},
+		"frame": {"x":477, "y":411, "w":41, "h":110},
 		"spriteSourceSize": {"x":0,"y":0,"w":41,"h":110},
 		"sourceSize": {"w":41,"h":110}
 	},
@@ -36,12 +36,12 @@
 		"sourceSize": {"w":164,"h":68}
 	},
 	"tandborste": {
-		"frame": {"x":269, "y":48, "w":30, "h":63},
+		"frame": {"x":490, "y":0, "w":30, "h":63},
 		"spriteSourceSize": {"x":0,"y":0,"w":30,"h":63},
 		"sourceSize": {"w":30,"h":63}
 	},
 	"tandkram": {
-		"frame": {"x":300, "y":48, "w":24, "h":63},
+		"frame": {"x":490, "y":64, "w":24, "h":63},
 		"spriteSourceSize": {"x":0,"y":0,"w":24,"h":63},
 		"sourceSize": {"w":24,"h":63}
 	},
@@ -49,6 +49,11 @@
 		"frame": {"x":352, "y":48, "w":137, "h":266},
 		"spriteSourceSize": {"x":0,"y":0,"w":137,"h":266},
 		"sourceSize": {"w":137,"h":266}
+	},
+	"toalettpapper": {
+		"frame": {"x":217, "y":48, "w":72, "h":74},
+		"spriteSourceSize": {"x":0,"y":0,"w":72,"h":74},
+		"sourceSize": {"w":72,"h":74}
 	},
 	"torktumlare": {
 		"frame": {"x":176, "y":128, "w":175, "h":221},
@@ -79,7 +84,7 @@
 },
 "meta": {
 	"image": "sprites.png",
-	"size": {"w": 519, "h": 522},
+	"size": {"w": 521, "h": 522},
 	"scale": "1"
 }
 }

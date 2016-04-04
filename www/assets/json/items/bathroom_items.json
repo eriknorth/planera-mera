@@ -89,6 +89,12 @@
             "x": 724,
             "y": 441,
             "categories": [ ]
+        },
+        {
+            "name": "toalettpapper",
+            "x": 442,
+            "y": 427,
+            "categories": [ ]
         }
     ]
 }

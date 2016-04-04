@@ -97,6 +97,7 @@ GameObj.Room.prototype = {
 		this._cloud = new Cloud(this, 0, 600);
 		this.add.existing(this._cloud);
 		this._layer1.add(this._cloud);
+		this._cloud.depth = 100;
 		
 		// Alien
 		this._alien = new Alien(this, 1150, 700);
@@ -104,18 +105,27 @@ GameObj.Room.prototype = {
 		this._alien.inputEnabled = true;
 		this._alien.events.onInputDown.add(this.alienClickRelease, this);
 		this._layer1.add(this._alien);
+		// TODO: testing
+		this._alien.depth = 101;
 		
 		
 		// Add items
 		for(i = 0; i < itemJson.items.length; i++)
 		{
+			// Check if item is door
+			var door = false;
+			if(itemJson.items[i].categories.indexOf('door') > -1) {
+				door = true;
+			}
+			
 			// Create item
 			this._items[i] = new Item(this, 
 				itemJson.items[i].x, 
 				800-itemJson.items[i].y, 
 				this.prefix + '_atlas', 
 				itemJson.items[i].name,
-				i
+				i,
+				door
 			);
 			this.add.existing(this._items[i]);
 			this._layer1.add(this._items[i]);
@@ -190,6 +200,14 @@ GameObj.Room.prototype = {
 		// TODO: testing
 		this._cloud.bringToTop();
 		this._alien.bringToTop();
+		
+		
+		
+		
+		// var self = this;
+		// setInterval(function() {
+		// 	self.game.debug.text(self.game.time.fps, 2, 14, "#00ff00");
+		// },1000);
 	},
 	
 	// TODO: This is for testing framerate
@@ -316,22 +334,38 @@ GameObj.Room.prototype = {
 				
 				
 				// TODO: Check difficulty and depending on that process result...
+				// Depending on difficulty, decide if should go to ordering
+				if(this._currTask.difficulty == 0) {
+					
+					this.processResult(true, function (newTask) {
+						// Show star
+						self.showStar();
 				
-				
-				
-				// Correct
-				this._alien.talk(true);
-				this._sound.playSequence(['correct_audio', 500, 'order_audio'], 
-					function() { self._alien.talk(false); },
-					function() { self._alien.talk(false); },
-					function() { self._alien.talk(true); }
-				);
+						// Feedback
+						self._alien.talk(true);
+						self._sound.play('positiveFeedback_audio', function() { 
+							self._alien.talk(false);
+							// Change state
+							self.resetState(0);
+						});
+					});
+					
+				}
+				else {
+					// Correct
+					this._alien.talk(true);
+					this._sound.playSequence(['positiveFeedback_audio', 500, 'orderInstruction_audio'], 
+						function() { self._alien.talk(false); },
+						function() { self._alien.talk(false); },
+						function() { self._alien.talk(true); }
+					);
 			
-				// Generate boxes
-				this._box.setBoxes(this._selectedItems.length);
+					// Generate boxes
+					this._box.setBoxes(this._selectedItems.length);
 				
-				// Change state
-				this.changeState(1);
+					// Change state
+					this.changeState(1);
+				}
 			}
 			else {
 				// -- Wrong --
@@ -340,15 +374,25 @@ GameObj.Room.prototype = {
 					
 					if(newTask == true) {
 						// TODO: Hensi says something about better luck next time
-						// Change state
-						self.resetState(0);
-						// Start new task
-						self.startNewTask();
+						self._alien.talk(true);
+						self._sound.playSequence(['negativeFeedback_audio', 500, 'betterLuckNextTime_audio'], 
+							function() { 
+								self._alien.talk(false); 
+						
+								// Change state
+								self.resetState(0);
+								// Start new task
+								self.startNewTask();
+							},
+							function() { self._alien.talk(false); },
+							function() { self._alien.talk(true); }
+						);
+
 					}
 					else {
 						// Just say that it is wrong
 						self._alien.talk(true);
-						self._sound.play('wrong_audio', function() { 
+						self._sound.play('negativeFeedback_audio', function() { 
 							self._alien.talk(false); 
 						});
 					}
@@ -369,7 +413,7 @@ GameObj.Room.prototype = {
 				
 					// Feedback
 					self._alien.talk(true);
-					self._sound.play('correct_audio', function() { 
+					self._sound.play('positiveFeedback_audio', function() { 
 						self._alien.talk(false);
 					
 						// Change state
@@ -388,17 +432,25 @@ GameObj.Room.prototype = {
 					
 					if(newTask == true) {
 						// TODO: Hensi says something about better luck next time
-						
-						// Change state
-						self.changeState(0, function() {
-							// Start new task
-							self.startNewTask();
-						});
+						self._alien.talk(true);
+						self._sound.playSequence(['negativeFeedback_audio', 500, 'betterLuckNextTime_audio'], 
+							function() { 
+								self._alien.talk(false); 
+					
+								// Change state
+								self.changeState(0, function() {
+									// Start new task
+									self.startNewTask();
+								});
+							},
+							function() { self._alien.talk(false); },
+							function() { self._alien.talk(true); }
+						);
 					}
 					else {
 						// Just say that it is wrong
 						self._alien.talk(true);
-						self._sound.play('wrong_audio', function() { 
+						self._sound.play('negativeFeedback_audio', function() { 
 							self._alien.talk(false); 
 						});
 					}
@@ -435,6 +487,7 @@ GameObj.Room.prototype = {
 				
 				// Put in cloud
 				this._cloud.putInCloud(item);
+				item.depth = 200;
 				
 				// Add item (if does not exist in the list)
 				if(index == -1) {
@@ -448,6 +501,7 @@ GameObj.Room.prototype = {
 				}
 				// Move to initial position
 				item.resetPos();
+				item.depth = item.id;
 			}
 			
 			break;
@@ -468,7 +522,7 @@ GameObj.Room.prototype = {
 			break;
 		}
 		
-		this._layer1.sort('y', Phaser.Group.SORT_ASCENDING);
+		this._layer1.sort('depth', Phaser.Group.SORT_ASCENDING);
 	},
 	
 	// Click on _alien (release)
@@ -486,14 +540,14 @@ GameObj.Room.prototype = {
 		switch(this._state)
 		{
 		case 0:
-			this._sound.playSequence([this.prefix + '_t' + this._currTask.id + '_audio', 200, 'whatDoINeed_audio'], 
+			this._sound.playSequence(['doPlanning_audio', this.prefix + '_t' + this._currTask.id + '_audio', 200, 'whatThingsDoINeed_audio'], 
 				function() { self._alien.talk(false); self.enableButtons(); },
 				function() { self._alien.talk(false); },
 				function() { self._alien.talk(true); }
 			);
 			break;
 		case 1:
-			this._sound.playSequence([this.prefix + '_t' + this._currTask.id + '_audio', 200, 'order_audio'], 
+			this._sound.playSequence(['doPlanning_audio', this.prefix + '_t' + this._currTask.id + '_audio', 200, 'orderInstruction_audio'], 
 				function() { self._alien.talk(false); self.enableButtons(); },
 				function() { self._alien.talk(false); },
 				function() { self._alien.talk(true); }
@@ -526,6 +580,11 @@ GameObj.Room.prototype = {
 		var taskItem = null;
 		var itemsPresent = 0;
 		
+		if(this._selectedItems.length == 0) {
+			// Wrong	
+			return false;
+		}
+		
 		
 		// Check if all task items are present
 		for(i = 0; i < this._currTask.items.length; i++)
@@ -550,7 +609,12 @@ GameObj.Room.prototype = {
 						}
 					}
 					
-					if(catMatch == this._itemArray[this._selectedItems[j]].categories.length) {
+					// TODO: Debug this
+					// if(catMatch == this._itemArray[this._selectedItems[j]].categories.length) {
+// 						itemsPresent++;
+// 						break;
+// 					}
+					if(catMatch > 0) {
 						itemsPresent++;
 						break;
 					}
@@ -738,10 +802,10 @@ GameObj.Room.prototype = {
 		if(this._state == 0) {
 			
 			// Switch layers for alien and cloud
-			this._layer1.remove(this._alien);
 			this._layer1.remove(this._cloud);
-			this._layer2.add(this._alien);
+			this._layer1.remove(this._alien);
 			this._layer2.add(this._cloud);
+			this._layer2.add(this._alien);
 			// Bring _box on top
 			this._layer2.bringToTop(this._box);
 		
@@ -774,10 +838,10 @@ GameObj.Room.prototype = {
 			this._layer1.add(this._overlay);	
 			
 			// Switch layers for alien and cloud
-			this._layer2.remove(this._alien);
 			this._layer2.remove(this._cloud);
-			this._layer1.add(this._alien);
-			this._layer1.add(this._cloud);			
+			this._layer2.remove(this._alien);
+			this._layer1.add(this._cloud);	
+			this._layer1.add(this._alien);		
 		
 			// Animate
 			var tween = this.add.tween(this._layer2).to( { alpha: 0 }, 500, Phaser.Easing.Linear.None, true, 0, 0, false);
@@ -852,10 +916,9 @@ GameObj.Room.prototype = {
 						});
 					}
 					else {
-				
 						// If 20% then old ones...
 						levelTasks = self._taskArray.filter(function (obj) {
-							return obj.difficulty <= levelDifficulty;
+							return obj.difficulty < levelDifficulty;
 						});
 					}
 								
@@ -1076,4 +1139,8 @@ GameObj.Room.prototype = {
 		});
 	},
 
+
+	render: function () {
+		this.game.debug.text(this.game.time.fps, 2, 14, "#00ff00");
+	}
 };

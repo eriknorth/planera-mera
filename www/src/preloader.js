@@ -162,6 +162,48 @@ GameObj.Preloader.prototype = {
 		this.load.audio('order_audio', 'assets/audio/order.mp3');
 		this.audioList.push('order_audio');
 		
+		
+		
+		
+		// --- < Load Audio > ---
+		
+		this.load.audio('aTip_audio', 'assets/audio/game/a_tip.mp3');
+		this.audioList.push('aTip_audio');
+		this.load.audio('betterLuckNextTime_audio', 'assets/audio/game/better_luck_next_time.mp3');
+		this.audioList.push('betterLuckNextTime_audio');
+		this.load.audio('clickOnDoor_audio', 'assets/audio/game/click_on_door.mp3');
+		this.audioList.push('clickOnDoor_audio');
+		this.load.audio('clickOnMe_audio', 'assets/audio/game/click_on_me.mp3');
+		this.audioList.push('clickOnMe_audio');
+		this.load.audio('doPlanning_audio', 'assets/audio/game/do_planning.mp3');
+		this.audioList.push('doPlanning_audio');
+		this.load.audio('giggle_audio', 'assets/audio/game/giggle.mp3');
+		this.audioList.push('giggle_audio');
+		this.load.audio('instructionRoom_audio', 'assets/audio/game/instruction_room.mp3');
+		this.audioList.push('instructionRoom_audio');
+		this.load.audio('introTeachMeHowToPlan_audio', 'assets/audio/game/intro_teach_me_how_to_plan.mp3');
+		this.audioList.push('introTeachMeHowToPlan_audio');
+		this.load.audio('negativeFeedback_audio', 'assets/audio/game/negative_feedback.mp3');
+		this.audioList.push('negativeFeedback_audio');
+		this.load.audio('orderInstruction_audio', 'assets/audio/game/order_instruction.mp3');
+		this.audioList.push('orderInstruction_audio');
+		this.load.audio('positiveFeedback_audio', 'assets/audio/game/positive_feedback.mp3');
+		this.audioList.push('positiveFeedback_audio');
+		this.load.audio('somethingIsMissing_audio', 'assets/audio/game/something_is_missing.mp3');
+		this.audioList.push('somethingIsMissing_audio');
+		this.load.audio('theOrderIsNotCorrect_audio', 'assets/audio/game/the_order_is_not_correct.mp3');
+		this.audioList.push('theOrderIsNotCorrect_audio');
+		this.load.audio('whatThingsDoINeed_audio', 'assets/audio/game/what_things_do_I_need.mp3');
+		this.audioList.push('whatThingsDoINeed_audio');
+		this.load.audio('playButton_audio', 'assets/audio/game/when_pressing_play_button.mp3');
+		this.audioList.push('playButton_audio');
+		
+		// --- </ Load Audio > ---
+		
+		
+		
+		
+		
 		// Load task audio files
 		// Wait for task files to be loaded
 		// TODO: Some problems with loading
