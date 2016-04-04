@@ -91,6 +91,9 @@ Item.prototype.resetPos = function() {
 	this.x = this.initX;
 	this.y = this.initY;
 	
+	// Reset depth
+	this.depth = this.id;
+	
 	// Scale to normal
 	this.scale.setTo(1);
 };
@@ -129,6 +132,16 @@ Item.prototype.scaleItem = function(size) {
 		}
 	}
 };
+
+// For doors
+Item.prototype.closeDoor = function() {
+	// If door
+	if(this._door == true) {
+		this.alpha = 0;
+		this.visible = true;
+		this.game.add.tween(this).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, true, 0, 0, false);
+	}
+}
 
 // Events
 // On mouse down

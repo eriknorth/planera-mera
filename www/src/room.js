@@ -54,6 +54,10 @@ GameObj.Room = function (game) {
 	
 	// extra
 	this._room = null;
+	
+	// Level has door
+	this._hasDoor = false;
+	this._doors = [];
 };
 
 GameObj.Room.prototype = {
@@ -118,6 +122,7 @@ GameObj.Room.prototype = {
 			var door = false;
 			if(itemJson.items[i].categories.indexOf('door') > -1) {
 				door = true;
+				this._hasDoor = true;
 			}
 			
 			// Create item
@@ -134,6 +139,10 @@ GameObj.Room.prototype = {
 			// Add events
 			this._items[i].events.onInputDown.add(this.itemClickPress, this);
 			this._items[i].events.onInputUp.add(this.itemClickRelease, this);
+			
+			if(door == true) {
+				this._doors.push(this._items[i]);
+			}
 		}
 		
 		// Back button
@@ -195,22 +204,9 @@ GameObj.Room.prototype = {
 		// Sound library
 		this._sound = new Sound(this);
 		
-		
-		// Start New Task
-		// this.startNewTask();
-		
-		// TODO: testing
-		// this._cloud.bringToTop();
-		// this._alien.bringToTop();
-		
-		
-		
-		
-		// var self = this;
-		// setInterval(function() {
-		// 	self.game.debug.text(self.game.time.fps, 2, 14, "#00ff00");
-		// },1000);
-		
+		// Bring to top
+		this._cloud.bringToTop();
+		this._alien.bringToTop();
 		
 		// Give instruction
 		this.giveInstruction(function () {
@@ -221,11 +217,6 @@ GameObj.Room.prototype = {
 			}, 1000);
 		});
 	},
-	
-	// TODO: This is for testing framerate
-	// render: function () {
-	// 	this.game.debug.text(this.time.fps || '--', 2, 14, "#00ff00");
-	// },
 	
 	// TODO: Need to fix
 	shutdown: function () {
@@ -285,6 +276,10 @@ GameObj.Room.prototype = {
 			this._btnPlay.destroy();
 			this._btnPlay = null;
 		}
+		
+		// Doors
+		this._hasDoor = null;
+		this._doors = [];
 	},
 	
 	// TODO: Need to fix
@@ -350,25 +345,45 @@ GameObj.Room.prototype = {
 				if(this._currTask.difficulty == 0) {
 					
 					this.processResult(true, function (newTask) {
-						// Show star
-						self.showStar();
-				
 						// Feedback
 						self._alien.talk(true);
 						// Disable buttons
 						self.setButtonsActive(false);
 						
-						self._sound.playSequence(['playButton_audio', 500, 'positiveFeedback_audio'], 
-							function() { 
-								self._alien.talk(false);
-								self.setButtonsActive(true);
-					
-								// Change state
-								self.resetState(0);
-							},
-							function() { self._alien.talk(false); },
-							function() { self._alien.talk(true); }
-						);
+						
+						self._sound.play('playButton_audio', function() {
+							self._alien.talk(false); 
+							// Run with delay
+							setTimeout(function () {
+								
+								// Show star
+								self.showStar();
+								// Feedback
+								self._alien.talk(true);
+								self._sound.play('positiveFeedback_audio', function() {
+									self._alien.talk(false);
+									self.setButtonsActive(true);
+									
+									// Change state
+									self.resetState(0);
+								});
+								
+							}, 500);
+						});
+						
+						// self._sound.playSequence(['playButton_audio', 500, 'positiveFeedback_audio'],
+// 							function() {
+// 								self._alien.talk(false);
+// 								self.setButtonsActive(true);
+//
+// 								// Show star
+// 								self.showStar();
+// 								// Change state
+// 								self.resetState(0);
+// 							},
+// 							function() { self._alien.talk(false); },
+// 							function() { self._alien.talk(true); }
+// 						);
 						
 						
 						// self._sound.play('positiveFeedback_audio', function() {
@@ -569,7 +584,6 @@ GameObj.Room.prototype = {
 				}
 				// Move to initial position
 				item.resetPos();
-				item.depth = item.id;
 			}
 			
 			break;
@@ -608,11 +622,28 @@ GameObj.Room.prototype = {
 		switch(this._state)
 		{
 		case 0:
-			this._sound.playSequence(['doPlanning_audio', this.prefix + '_t' + this._currTask.id + '_audio', 200, 'whatThingsDoINeed_audio'], 
-				function() { self._alien.talk(false); self.setButtonsActive(true); },
-				function() { self._alien.talk(false); },
-				function() { self._alien.talk(true); }
-			);
+			
+			if(this._hasDoor == true && GameObj.level.level == 0) {
+				this._sound.playSequence([
+					'clickOnDoor_audio',
+					200,
+					'doPlanning_audio', 
+					this.prefix + '_t' + this._currTask.id + '_audio', 
+					200, 
+					'whatThingsDoINeed_audio'
+				], 
+					function() { self._alien.talk(false); self.setButtonsActive(true); },
+					function() { self._alien.talk(false); },
+					function() { self._alien.talk(true); }
+				);
+			}
+			else {
+				this._sound.playSequence(['doPlanning_audio', this.prefix + '_t' + this._currTask.id + '_audio', 200, 'whatThingsDoINeed_audio'], 
+					function() { self._alien.talk(false); self.setButtonsActive(true); },
+					function() { self._alien.talk(false); },
+					function() { self._alien.talk(true); }
+				);
+			}
 			break;
 		case 1:
 			this._sound.playSequence(['doPlanning_audio', this.prefix + '_t' + this._currTask.id + '_audio', 200, 'orderInstruction_audio'], 
@@ -625,20 +656,6 @@ GameObj.Room.prototype = {
 			break;
 		}
 	},
-	
-	// Enable / Disable buttons
-	enableButtons: function () {
-		this._btnPlay.alpha = 1;
-		this._btnBack.alpha = 1;
-		this._btnPlay.inputEnabled = true;
-		this._btnBack.inputEnabled = true;
-	},
-	disableButtons: function () {
-		this._btnPlay.alpha = 0.5;
-		this._btnBack.alpha = 0.5;
-		this._btnPlay.inputEnabled = false;
-		this._btnBack.inputEnabled = false;
-	},
 
 	// Check first part answer
 	checkFirstAnswer: function () {
@@ -647,6 +664,7 @@ GameObj.Room.prototype = {
 		var correctItem = false;
 		var taskItem = null;
 		var itemsPresent = 0;
+		var itemIsHere = false;
 		
 		if(this._selectedItems.length == 0) {
 			// Wrong	
@@ -655,16 +673,25 @@ GameObj.Room.prototype = {
 		
 		
 		// Check if all task items are present
+		
+		var usedItems = [];
 		for(i = 0; i < this._currTask.items.length; i++)
 		{
+			taskItem = this._currTask.items[i];
+			itemIsHere = false;
+			
 			for(j = 0; j < this._selectedItems.length; j++)
 			{
-				taskItem = this._currTask.items[i];
+				if(usedItems.indexOf(j) > -1) {
+					continue;
+				}
 				
 				// Check item
 				if(taskItem.item != '') {
 					if(this._itemArray[this._selectedItems[j]].name == taskItem.item) {
 						itemsPresent++;
+						usedItems.push(j);
+						itemIsHere = true;
 						break;
 					}
 				}
@@ -684,9 +711,16 @@ GameObj.Room.prototype = {
 // 					}
 					if(catMatch > 0) {
 						itemsPresent++;
+						usedItems.push(j);
+						itemIsHere = true;
 						break;
 					}
 				}
+			}
+			
+			// Check the 66 case (item optional)
+			if(taskItem.order == 66 && itemIsHere == false) {
+				itemsPresent++;
 			}
 		}
 		
@@ -761,6 +795,11 @@ GameObj.Room.prototype = {
 		// Check all boxes
 		for(i = 0; i < itemOrder.length; i++)
 		{
+			// Current order
+			while(currPos == 0 || currPos == 66) {
+				currPosI++;
+				currPos = this._currTask.items[currPosI].order;
+			}
 			currPos = this._currTask.items[currPosI].order;
 			
 			for(j = 0; j < this._currTask.items.length; j++)
@@ -771,7 +810,10 @@ GameObj.Room.prototype = {
 				if(taskItem.item != '') {
 					if(this._itemArray[itemOrder[i]].name == taskItem.item) {
 						correctItem = true;
-						currPosI++;
+						
+						if(taskItem.order != 0 && taskItem.order != 66) {
+							currPosI++;
+						}
 					}
 				}
 				// Check category
@@ -783,18 +825,22 @@ GameObj.Room.prototype = {
 					}
 					
 					// Increment position only if next items are not same category
-					var correct = false;
-					for(var n = i+1; n < itemOrder.length; n++) {
-						for(k = 0; k < this._itemArray[itemOrder[n]].categories.length; k++) {
-							if(this._itemArray[itemOrder[n]].categories[k] == taskItem.category) {
-								correct = true;
+					if(correctItem == true) {
+						var correct = false;
+						for(var n = i+1; n < itemOrder.length; n++) {
+							for(k = 0; k < this._itemArray[itemOrder[n]].categories.length; k++) {
+								if(this._itemArray[itemOrder[n]].categories[k] == taskItem.category) {
+									correct = true;
+								}
 							}
 						}
-					}
 					
-					// Increment only if there are no other with the same category
-					if(correct == false) {
-						currPosI++;
+						// Increment only if there are no other with the same category
+						if(correct == false) {
+							if(taskItem.order != 0 && taskItem.order != 66) {
+								currPosI++;
+							}
+						}
 					}
 
 				}
@@ -802,6 +848,9 @@ GameObj.Room.prototype = {
 				
 				if(correctItem == true) {
 					if(currPos == taskItem.order) {
+						correctOrder = true;
+					}
+					else if(taskItem.order == 0 || taskItem.order == 66) {
 						correctOrder = true;
 					}
 					else {
@@ -832,7 +881,6 @@ GameObj.Room.prototype = {
 		}
 	},
 	
-	
 	resetState: function (state) {
 		
 		// Return if no current state
@@ -842,19 +890,27 @@ GameObj.Room.prototype = {
 		if(this._state == 0) {
 			
 			// Move items
-			for(i = 0; i < this._selectedItems.length; i++)
+			for(var i = 0; i < this._selectedItems.length; i++)
 			{
 				this._layer2.remove(this._items[this._selectedItems[i]]);
 				this._layer1.add(this._items[this._selectedItems[i]]);
 			
 				this._items[this._selectedItems[i]].resetPos();
 				this._items[this._selectedItems[i]].alpha = 0;
+				
 				this.add.tween(this._items[this._selectedItems[i]]).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, true, 0, 0, false);
 			}
 			
 			// Clear selected item list
 			this._selectedItems = [];
 			
+			// Close door
+			for(var i = 0; i < this._doors.length; i++)
+			{
+				this._doors[i].closeDoor();
+			}
+			
+			this._layer1.sort('depth', Phaser.Group.SORT_ASCENDING);
 		}
 		
 	},
@@ -925,22 +981,24 @@ GameObj.Room.prototype = {
 				self._layer2.visible = false;
 				self._layer2.alpha = 1;	
 				
-				// Move items
-				for(i = 0; i < this._selectedItems.length; i++)
-				{
-					this._layer2.remove(this._items[this._selectedItems[i]]);
-					this._layer1.add(this._items[this._selectedItems[i]]);
-				
-					this._items[this._selectedItems[i]].resetPos();
-					this._items[this._selectedItems[i]].alpha = 0;
-					this.add.tween(this._items[this._selectedItems[i]]).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, true, 0, 0, false);
-				}
-				
-				// Clear selected item list
-				this._selectedItems = [];
+				// // Move items
+// 				for(i = 0; i < this._selectedItems.length; i++)
+// 				{
+// 					this._layer2.remove(this._items[this._selectedItems[i]]);
+// 					this._layer1.add(this._items[this._selectedItems[i]]);
+//
+// 					this._items[this._selectedItems[i]].resetPos();
+// 					this._items[this._selectedItems[i]].alpha = 0;
+// 					this.add.tween(this._items[this._selectedItems[i]]).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, true, 0, 0, false);
+// 				}
+//
+// 				// Clear selected item list
+// 				this._selectedItems = [];
 				
 				// Set new state
 				self._state = 0;
+				
+				self.resetState(self._state);
 				
 				// Callback to know that state change has been complete
 				typeof callback === 'function' && callback();
@@ -949,8 +1007,6 @@ GameObj.Room.prototype = {
 		}
 	},
 
-
-	
 	// TODO: Need to implement this
 	chooseTask: function (callback) {
 		
@@ -1037,6 +1093,12 @@ GameObj.Room.prototype = {
 			}
 			// There is a task started
 			else {
+				
+				// TODO: test
+				// var task = res.rows.item(0);
+// 				task.task = 20;
+// 				GameObj.task = task;
+				
 				// Save task in game object
 				GameObj.task = res.rows.item(0);
 				
@@ -1052,10 +1114,6 @@ GameObj.Room.prototype = {
 
 	},
 	
-
-
-
-
 	showStar: function () {
 		this._layer3.visible = true;
 		// Animate
@@ -1084,11 +1142,6 @@ GameObj.Room.prototype = {
 			
 		}, this);
 	},
-	
-	
-	
-	
-	
 	
 	processResult: function (correct, callback) {
 	
@@ -1184,7 +1237,6 @@ GameObj.Room.prototype = {
 		}
 	},
 	
-	
 	givePresent: function () {
 		
 		GameObj.db.getLastRocketItem(GameObj.user.id, function (res) {
@@ -1241,7 +1293,8 @@ GameObj.Room.prototype = {
 		}
 	},
 
-	render: function () {
-		this.game.debug.text(this.game.time.fps, 2, 14, "#00ff00");
-	}
+	// TODO: This is for testing framerate
+	// render: function () {
+	// 	this.game.debug.text(this.game.time.fps, 2, 14, "#00ff00");
+	// }
 };

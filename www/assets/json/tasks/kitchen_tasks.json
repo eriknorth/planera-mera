@@ -33,12 +33,12 @@
                 },
                 {
                     "item": "",
-                    "category": "edible",
+                    "category": "fruit",
                     "order": 1
                 },
                 {
                     "item": "",
-                    "category": "fruit",
+                    "category": "edible",
                     "order": 1
                 }
             ]
@@ -512,7 +512,7 @@
                     "order": 1
                 },
                 {
-                    "item": "egg",
+                    "item": "agg",
                     "category": "",
                     "order": 1
                 },
