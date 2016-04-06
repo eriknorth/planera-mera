@@ -224,7 +224,8 @@ GameObj.Rocket.prototype = {
 	},
 	
 	openChest: function (pointer) {
-
+		
+		// TODO: Problem with items getting pushed down
 		//this._chest.bringToTop();
 		//this._btnCloseChest.bringToTop();
 

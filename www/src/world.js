@@ -10,9 +10,18 @@ GameObj.World = function (game) {
 	
 	// Room icons
 	this._roomIcons = [];
+	
+	// Giggle
+	this._giggle = false;
 };
 
 GameObj.World.prototype = {
+
+	init: function (prevState) {
+		if(prevState == 'room') {
+			this._giggle = true;
+		}
+	},
 
 	create: function () {
 		
@@ -131,14 +140,31 @@ GameObj.World.prototype = {
 		
 		var self = this;
 		
-		// Start talking animation
-		this._alien.talk(true);
-		this.setButtonsActive(false);
+		// Choose audio
+		// Allow only one giggle
+		if(this._giggle == true) {
+			this._giggle = false;
+			
+			// Start audio with delay
+			setTimeout(function () {
+				// Start talking animation
+				self._alien.talk(true);
+				self._sound.play('giggle_audio', function() { 
+					self._alien.talk(false);
+				});
+			}, 1000);
+		}
+		else {
+			// Start talking animation
+			this._alien.talk(true);
+			this.setButtonsActive(false);
 		
-		this._sound.play('introTeachMeHowToPlan_audio', function() { 
-			self._alien.talk(false);
-			self.setButtonsActive(true);
-		});
+			this._sound.play('introTeachMeHowToPlan_audio', function() { 
+				self._alien.talk(false);
+				self.setButtonsActive(true);
+			});
+
+		}
 	},
 	
 	// Enable / Disable buttons

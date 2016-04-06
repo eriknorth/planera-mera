@@ -103,7 +103,7 @@ GameObj.Menu.prototype = {
 	goToWorld: function (world) {
 		return function () {
 			GameObj.world = world;
-			this.state.start('World');
+			this.state.start('World', true, false, 'world');
 		}
 	},
 	

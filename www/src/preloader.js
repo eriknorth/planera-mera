@@ -138,6 +138,7 @@ GameObj.Preloader.prototype = {
 		this.load.image('arrow', 'assets/img/elements/arrow.png');
 		this.load.image('star', 'assets/img/elements/star.png');
 		this.load.image('chest', 'assets/img/elements/chest.png');
+		this.load.image('starArrow', 'assets/img/elements/star_arrow.png');
 		// --- </ Load Elements > ---
 		
 		

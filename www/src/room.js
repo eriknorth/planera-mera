@@ -58,6 +58,11 @@ GameObj.Room = function (game) {
 	// Level has door
 	this._hasDoor = false;
 	this._doors = [];
+	
+	// Star item
+	this._starItem = null;
+	this._starRocket = null;
+	this._starArrow = null;
 };
 
 GameObj.Room.prototype = {
@@ -181,15 +186,31 @@ GameObj.Room.prototype = {
 		this._layer3.add(this._starOverlay);
 		
 		// Star
-		this._star = this.game.add.sprite(this.world.centerX, this.world.centerY - 60, 'star');
+		this._star = this.game.add.sprite(this.world.centerX, this.world.centerY - 160, 'star');
 		this._star.anchor.setTo(0.5);
 		this._star.scale.setTo(0.1);
+		this._star.y = this.world.centerY - 60;
 		this._layer3.add(this._star);
 		
 		// Ok button
 		this._btnOk = this.add.button(this.world.centerX, this.world.height - 80, 'btnOk', this.hideStar, this, 2, 0, 1);
 		this._btnOk.anchor.set(0.5);
 		this._layer3.add(this._btnOk);
+		
+		
+		
+		this._starRocket = this.game.add.sprite(this.world.centerX - 170, this.world.height - 250, 'rocket_icon');
+		this._starRocket.anchor.setTo(0.5);
+		this._starRocket.scale.setTo(0.5);
+		this._layer3.add(this._starRocket);
+		this._starRocket.visible = false;
+		
+		this._starArrow = this.game.add.sprite(this.world.centerX, this.world.height - 250, 'starArrow');
+		this._starArrow.anchor.setTo(0.5);
+		this._layer3.add(this._starArrow);
+		this._starArrow.visible = false;
+		
+		
 		// --- </ Star stuff > ---	
 		
 		
@@ -315,7 +336,7 @@ GameObj.Room.prototype = {
 		// If in the first state of the game -> can leave to world
 		if (this._state == 0) {
 			//	Go back to world
-			this.state.start('World');
+			this.state.start('World', true, false, 'room');
 		}
 		// Otherwise go back to state 1
 		else {
@@ -344,7 +365,7 @@ GameObj.Room.prototype = {
 				// Depending on difficulty, decide if should go to ordering
 				if(this._currTask.difficulty == 0) {
 					
-					this.processResult(true, function (newTask) {
+					this.processResult(true, function (newTask, presentItem) {
 						// Feedback
 						self._alien.talk(true);
 						// Disable buttons
@@ -357,7 +378,7 @@ GameObj.Room.prototype = {
 							setTimeout(function () {
 								
 								// Show star
-								self.showStar();
+								self.showStar(presentItem);
 								// Feedback
 								self._alien.talk(true);
 								self._sound.play('positiveFeedback_audio', function() {
@@ -477,10 +498,10 @@ GameObj.Room.prototype = {
 			if(this.checkSecondAnswer() == true) {
 				// Correct
 				
-				this.processResult(true, function (newTask) {
+				this.processResult(true, function (newTask, presentItem) {
 				
 					// Show star
-					self.showStar();
+					self.showStar(presentItem);
 				
 					// Feedback
 					self._alien.talk(true);
@@ -568,13 +589,20 @@ GameObj.Room.prototype = {
 			
 			if(this._cloud.checkOverlap(item) == true || this._alien.checkOverlap(item) == true) {
 				
-				// Put in cloud
-				this._cloud.putInCloud(item);
-				item.depth = 200;
+				// Put in the cloud only if there are less than 6 items
+				if(this._selectedItems.length < 6) {
+					// Put in cloud
+					this._cloud.putInCloud(item);
+					item.depth = 200;
 				
-				// Add item (if does not exist in the list)
-				if(index == -1) {
-					this._selectedItems.push(item.getId());
+					// Add item (if does not exist in the list)
+					if(index == -1) {
+						this._selectedItems.push(item.getId());
+					}
+				}
+				else {
+					// Move to initial position
+					item.resetPos();
 				}
 			}
 			else {
@@ -1114,8 +1142,47 @@ GameObj.Room.prototype = {
 
 	},
 	
-	showStar: function () {
+	showStar: function (presentItem) {
+				
+		if(presentItem != -1) {
+			
+			// Move star upwards
+			this._star.y = this.world.centerY - 160;
+			
+			// Item
+			this._starItem = this.game.add.sprite(this.world.centerX + 200, this.world.height - 250, 'rocket_atlas', this._rocketItemArray[presentItem].name);
+			this._starItem.anchor.setTo(0.5);
+			this._layer3.add(this._starItem);
+			
+			// Scale to fit
+			var size = 200;
+			if(this._starItem.width >= this._starItem.height) {
+				// Scale to fit in width
+				if(this._starItem.width > size) {
+					var ratio = size / this._starItem.width;
+					this._starItem.scale.setTo(ratio);
+				}
+			}
+			else {
+				// Scale to fit in height
+				if(this._starItem.height > size) {
+					var ratio = size / this._starItem.height;
+					this._starItem.scale.setTo(ratio);
+				}
+			}
+			
+			this._starRocket.visible = true;
+			this._starArrow.visible = true;
+		}
+		else {
+			this._star.y = this.world.centerY - 60;
+			this._starRocket.visible = false;
+			this._starArrow.visible = false;
+		}
+		
+		
 		this._layer3.visible = true;
+		
 		// Animate
 		this.add.tween(this._layer3).to({alpha: 1}, 500, Phaser.Easing.Exponential.None, true);
 		this.add.tween(this._star.scale).to({x: 1, y: 1}, 500, Phaser.Easing.Exponential.None, true);
@@ -1130,6 +1197,13 @@ GameObj.Room.prototype = {
 		
 		// One animation end
 		tween.onComplete.add(function() {
+		
+			// Destroy present item
+			if(this._starItem != null) {
+				// TODO: testing
+				//console.log('destroy item');
+				this._starItem.destroy();
+			}
 		
 			// Hide layer
 			self._layer3.visible = false;
@@ -1181,11 +1255,11 @@ GameObj.Room.prototype = {
 			}
 			
 			// Give present in the rocket
-			this.givePresent();
-			
-			// Give positiive feedback	
-			// Callback to know that state change has been complete
-			typeof callback === 'function' && callback(true)
+			this.givePresent(function (presentItem) {
+				// Give positiive feedback	
+				// Callback to know that state change has been complete
+				typeof callback === 'function' && callback(true, presentItem);
+			});
 		}
 		else {
 			// Wrong answer
@@ -1202,7 +1276,7 @@ GameObj.Room.prototype = {
 				// Feedback about wrong should be given
 				
 				// Callback to know that state change has been complete
-				typeof callback === 'function' && callback(false)
+				typeof callback === 'function' && callback(false, -1)
 			}
 			else {
 				// Update value
@@ -1232,54 +1306,51 @@ GameObj.Room.prototype = {
 				
 				// Hensi says something about better luck next time. Change state and give new task
 				// Callback to know that state change has been complete
-				typeof callback === 'function' && callback(true)
+				typeof callback === 'function' && callback(true, -1)
 			}
 		}
 	},
 	
-	givePresent: function () {
+	givePresent: function (callback) {
 		
 		var self = this;
-		
-		// GameObj.db.getLastRocketItem(GameObj.user.id, function (res) {
-//
-// 			// If no result returned -> no items in rocket yet
-// 			if(res.rows.length == 0) {
-// 				// Insert new rocket item
-// 				GameObj.db.insertRocketItem(GameObj.user.id, 0);
-// 			}
-// 			else {
-//
-// 				// Save room in game object
-// 				var lastItem = res.rows.item(0);
-// 				// If 10 minutes have passed -> give a present
-// 				if(Date.now() - lastItem.timestamp > (1000 * 60 * 10)) {
-// 					GameObj.db.insertRocketItem(GameObj.user.id, lastItem.item + 1);
-// 				}
-//
-// 			}
-// 		});
 
 		GameObj.db.getRocketItems(GameObj.user.id, function (res) {
 			
-			console.log(res);
+			var rndNum = -1;
 			
-			var rocketItems = [];
-			for(var i = 0; i < res.rows.length; i++) {
-				rocketItems.push(res.rows.item(i).item);
-			}
-			
-			var rndNum = 0;
-			do {
+			// If no result returned -> no items in rocket yet
+			if(res.rows.length == 0) {
 				rndNum = self.rnd.integerInRange(0, self._rocketItemArray.length-1);
-			}
-			while (rocketItems.indexOf(rndNum) > -1)
-
-			// If 10 minutes have passed -> give a present
-			if(Date.now() - res.rows.item(0).timestamp > (1000 * 60 * 10)) {
 				GameObj.db.insertRocketItem(GameObj.user.id, rndNum);
+				
+				// Run callback
+				typeof callback === 'function' && callback(rndNum);
 			}
+			else {
+				// If there is an item, then randomly try to pick one that is not there already
+				var rocketItems = [];
+				for(var i = 0; i < res.rows.length; i++) {
+					rocketItems.push(res.rows.item(i).item);
+				}
+			
+				do {
+					rndNum = self.rnd.integerInRange(0, self._rocketItemArray.length-1);
+				}
+				while (rocketItems.indexOf(rndNum) > -1)
 
+				// If 10 minutes have passed -> give a present
+				if(Date.now() - res.rows.item(0).timestamp > (1000 * 60 * 10)) {
+					GameObj.db.insertRocketItem(GameObj.user.id, rndNum);
+					
+					// Run callback
+					typeof callback === 'function' && callback(rndNum);
+				}
+				else {
+					// Else run callback with no item
+					typeof callback === 'function' && callback(-1);
+				}
+			}
 		});
 	},
 
