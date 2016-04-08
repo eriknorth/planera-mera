@@ -4,7 +4,7 @@
 			"id": 1,
 			"name": "",
 			"difficulty": 2,
-			"audio": "tasks/bathroom/wash_clothes.mp3",
+			"audio": "wav/wash_clothes.wav",
 			"items": [
 				{
 					"item": "tvattmaskin",
@@ -27,7 +27,7 @@
 			"id": 2,
 			"name": "",
             "difficulty": 2,
-			"audio": "tasks/bathroom/brush_teeth.mp3",
+			"audio": "wav/brush_teeth.wav",
 			"items": [
 				{
 					"item": "tandborste",
@@ -51,7 +51,7 @@
 			"id": 3,
 			"name": "",
 			"difficulty": 3,
-			"audio": "tasks/bathroom/shower.mp3",
+			"audio": "wav/shower.wav",
 			"items": [
 				{
 					"item": "dusch",
@@ -80,7 +80,7 @@
 			"id": 4,
 			"name": "",
 			"difficulty": 1,
-			"audio": "tasks/bathroom/dry_laundry.mp3",
+			"audio": "wav/dry_laundry.wav",
 			"items": [
 				{
 					"item": "",
@@ -99,7 +99,7 @@
 			"id": 5,
 			"name": "",
 			"difficulty": 2,
-			"audio": "tasks/bathroom/wash_hands.mp3",
+			"audio": "wav/wash_hands.wav",
 			"items": [
 				{
 					"item": "vatten",
@@ -123,7 +123,7 @@
 			"id": 6,
 			"name": "",
 			"difficulty": 3,
-			"audio": "tasks/bathroom/use_toilet.mp3",
+			"audio": "wav/use_toilet.wav",
 			"items": [
 				{
 					"item": "toalett",
@@ -156,7 +156,7 @@
 			"id": 7,
 			"name": "",
 			"difficulty": 2,
-			"audio": "tasks/bathroom/wash_face.mp3",
+			"audio": "wav/wash_face.wav",
 			"items": [
 				{
 					"item": "vatten",
@@ -179,7 +179,7 @@
 			"id": 8,
 			"name": "",
 			"difficulty": 2,
-			"audio": "tasks/bathroom/wash_feet.mp3",
+			"audio": "wav/wash_feet.wav",
 			"items": [
 				{
 					"item": "dusch",
@@ -202,7 +202,7 @@
 			"id": 9,
 			"name": "",
 			"difficulty": 0,
-			"audio": "tasks/bathroom/get_clothes.mp3",
+			"audio": "wav/get_clothes.wav",
 			"items": [
 				{
 					"item": "",
@@ -216,7 +216,7 @@
 			"id": 10,
 			"name": "",
 			"difficulty": 0,
-			"audio": "tasks/bathroom/get_towel.mp3",
+			"audio": "wav/get_towel.wav",
 			"items": [
 				{
 					"item": "handduk",
@@ -230,7 +230,7 @@
 			"id": 11,
 			"name": "",
 			"difficulty": 0,
-			"audio": "tasks/bathroom/get_soap.mp3",
+			"audio": "wav/get_soap.wav",
 			"items": [
 				{
 					"item": "",
@@ -244,7 +244,7 @@
 			"id": 12,
 			"name": "",
 			"difficulty": 0,
-			"audio": "tasks/bathroom/get_washing_liquid.mp3",
+			"audio": "wav/get_washing_liquid.wav",
 			"items": [
 				{
 					"item": "tvattmedel",
@@ -258,7 +258,7 @@
             "id": 13,
             "name": "",
             "difficulty": 0,
-            "audio": "tasks/bathroom/get_tandborsten.mp3",
+            "audio": "wav/get_tandborsten.wav",
             "items": [
                 {
                     "item": "tandborste",
@@ -272,7 +272,7 @@
 			"id": 14,
 			"name": "",
 			"difficulty": 2,
-			"audio": "tasks/bathroom/wash_towel.mp3",
+			"audio": "wav/wash_towel.wav",
 			"items": [
 				{
 					"item": "tvattmaskin",
@@ -295,7 +295,7 @@
 			"id": 15,
 			"name": "",
 			"difficulty": 1,
-			"audio": "tasks/bathroom/dry_towel_in_dryer.mp3",
+			"audio": "wav/dry_towel_in_dryer.wav",
 			"items": [
 				{
 					"item": "handduk",

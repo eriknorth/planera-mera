@@ -64,7 +64,7 @@ GameObj.Boot.prototype = {
 		this.load.image('loaderBack', 'assets/img/loader-back.png');
 		this.load.image('loader', 'assets/img/loader.png');
 		
-		this.load.audio('backgroundMusic', 'assets/audio/music_background.mp3');
+		//this.load.audio('backgroundMusic', 'assets/audio/music_background.mp3');
 		
 		// Load JSON files
 		this.load.json('game', 'assets/json/game.json');
@@ -79,12 +79,12 @@ GameObj.Boot.prototype = {
 	update: function () {
 		
 		// Check if audio has been decoded
-		if (this.cache.isSoundDecoded('backgroundMusic') && this.ready == false)
-		{
+		//if (this.cache.isSoundDecoded('backgroundMusic') && this.ready == false)
+		//{
 			this.ready = true;
 			// Start preloader
 			this.state.start('Preloader');
-		}
+		//}
 
 	}
 };

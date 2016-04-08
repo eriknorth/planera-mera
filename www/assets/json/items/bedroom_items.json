@@ -135,20 +135,20 @@
 		},
 		{
 			"name": "tennisracket",
-			"x": 1154,
-			"y": 282,
+			"x": 696,
+			"y": 601,
 			"categories": ["toy"]
 		},
 		{
 			"name": "boll_1",
-			"x": 1193,
-			"y": 193,
+			"x": 783,
+			"y": 723,
 			"categories": ["toy", "ball"]
 		},
 		{
 			"name": "boll_2",
-			"x": 1247,
-			"y": 192,
+			"x": 836,
+			"y": 723,
 			"categories": ["toy", "ball"]
 		},
 		{

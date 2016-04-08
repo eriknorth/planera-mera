@@ -35,6 +35,20 @@ var app = {
 	onDeviceReady: function() {
 		app.receivedEvent('deviceready');
 		
+		// 	    var deferred = $.Deferred();
+		// var timeOut = 0;
+		//
+		//
+		// //set a 1sec timeOut when App was send to suspendMode. SomeTimes PhoneGap needs it's time...
+		// if (!window.device){
+		// 	console.log("PhoneGap seems not to be ready yet!!!")
+		// 	timeOut = 1000;
+		// }
+		//
+		// setTimeout(function() {
+		// 	deferred.resolve();
+		// }, timeOut);
+
 		
 		
 		// Fast click
@@ -50,7 +64,7 @@ var app = {
 
 		var w = 1280;
 		var h = 800;
-		var game = new Phaser.Game(w, h, Phaser.AUTO, '');
+		var game = new Phaser.Game(w, h, Phaser.CANVAS, '');
 		
 		// Add states
 		game.state.add('Boot', GameObj.Boot);
@@ -64,7 +78,10 @@ var app = {
 		//	Now start the Boot state.
 		game.state.start('Boot');
 		
-		console.log('hello!')
+		console.log('hello!');
+		
+		
+		//return deferred.promise();
 	},
 	// Update DOM on a Received Event
 	receivedEvent: function(id) {

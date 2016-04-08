@@ -208,16 +208,19 @@ GameObj.Rocket.prototype = {
 			item.state = 1;
 		}
 		
-		// Rearange the chest
-		this._chest.resetChest();
-		// Loop through all the items
-		for(var i = 0; i < this._items.length; i++) {
+		// TODO: This is kinda workaround :P
+		if(this._chestLayer.visible == true) {
+			// Rearange the chest
+			this._chest.resetChest();
+			// Loop through all the items
+			for(var i = 0; i < this._items.length; i++) {
 			
-			//var item = this._userItems[i].item;
-			// Reposition items in chest
-			if(this._items[i].state == 0) {
+				//var item = this._userItems[i].item;
+				// Reposition items in chest
+				if(this._items[i].state == 0) {
 				
-				this._chest.setInChest(this._items[i], -100);
+					this._chest.setInChest(this._items[i], -100);
+				}
 			}
 		}
 		
@@ -228,6 +231,7 @@ GameObj.Rocket.prototype = {
 		// TODO: Problem with items getting pushed down
 		//this._chest.bringToTop();
 		//this._btnCloseChest.bringToTop();
+		
 
 		this._chestLayer.visible = true;
 		this._chest.visible = true;
@@ -237,7 +241,7 @@ GameObj.Rocket.prototype = {
 		this.add.tween(this._btnCloseChest).to( { alpha: 1, x:  this.world.width-60 }, 200, Phaser.Easing.Linear.None, true, 0, 0, false);
 		this.add.tween(this._chest).to( { alpha: 1, x:  this.world.width-300 }, 200, Phaser.Easing.Linear.None, true, 0, 0, false);
 		this.add.tween(this._chestLayer).to( { alpha: 1, x: 0 }, 200, Phaser.Easing.Linear.None, true, 0, 0, false);
-		
+
 	},
 	
 	closeChest: function (pointer) {

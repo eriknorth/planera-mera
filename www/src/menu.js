@@ -79,8 +79,8 @@ GameObj.Menu.prototype = {
 	},
 
 	goToAbout: function (pointer) {
-
-		GameObj.db.insertEvent(1, 'about');
+		// Save event
+		GameObj.db.insertEvent(GameObj.user.id, 'click', 'menu', 'about');
 
 		//	Go to About page
 		this.state.start('About');
@@ -88,15 +88,20 @@ GameObj.Menu.prototype = {
 	},
 	
 	goToRocket: function (pointer) {
-
+		// Save event
+		GameObj.db.insertEvent(GameObj.user.id, 'click', 'menu', 'rocket');
+		
 		//	Go to About page
 		this.state.start('Rocket');
 
 	},
 	
 	goToMovie: function (pointer) {
-
-		GameObj.music.stop();
+		// Save event
+		GameObj.db.insertEvent(GameObj.user.id, 'click', 'menu', 'movie');
+		
+		
+		//GameObj.music.stop();
 
 	},
 	
@@ -108,13 +113,13 @@ GameObj.Menu.prototype = {
 	},
 	
 	exit: function () {
-		
-		// Exit app
-		if(navigator.app){
+		// Save event
+		GameObj.db.insertEvent(GameObj.user.id, 'click', 'menu', 'exit');
+		GameObj.db.insertEvent(GameObj.user.id, 'game', 'menu', 'exit', function() {
+			//
 			navigator.app.exitApp();
-		}else if(navigator.device){
-			navigator.device.exitApp();
-		}
+		});
+
 	}
 
 };

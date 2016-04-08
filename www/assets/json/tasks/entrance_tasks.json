@@ -4,7 +4,7 @@
 			"id": 300,
 			"name": "",
 			"difficulty": 2,
-			"audio": "tasks/entrance/pack_bag_for_school.mp3",
+			"audio": "wav/pack_bag_for_school.wav",
 			"items": [
 				{
 					"item": "ryggsack",
@@ -32,7 +32,7 @@
 			"id": 301,
 			"name": "",
 			"difficulty": 3,
-			"audio": "tasks/entrance/get_dressed_for_going_to_school.mp3",
+			"audio": "wav/get_dressed_for_going_to_school.wav",
 			"items": [
 				{
 					"item": "skor",
@@ -66,7 +66,7 @@
 			"id": 302,
 			"name": "",
 			"difficulty": 2,
-			"audio": "tasks/entrance/water_the_plants.mp3",
+			"audio": "wav/water_the_plants.wav",
 			"items": [
 				{
 					"item": "vatten",
@@ -90,7 +90,7 @@
 			"id": 303,
 			"name": "",
 			"difficulty": 3,
-			"audio": "tasks/entrance/clean.mp3",
+			"audio": "wav/clean.wav",
 			"items": [
 				{
 					"item": "dammsugare",
@@ -124,7 +124,7 @@
 			"id": 304,
 			"name": "",
 			"difficulty": 0,
-			"audio": "tasks/entrance/vacuum.mp3",
+			"audio": "wav/vacuum.wav",
 			"items": [
 				{
 					"item": "dammsugare",
@@ -137,7 +137,7 @@
             "id": 305,
             "name": "",
             "difficulty": 1,
-            "audio": "tasks/entrance/fill_waterpot.mp3",
+            "audio": "wav/fill_waterpot.wav",
             "items": [
                 {
                     "item": "vattenkanna",
@@ -155,7 +155,7 @@
 			"id": 306,
 			"name": "",
 			"difficulty": 2,
-			"audio": "tasks/entrance/pack_bag_with_warm_clothes.mp3",
+			"audio": "wav/pack_bag_with_warm_clothes.wav",
 			"items": [
 				{
 					"item": "ryggsack",
@@ -178,7 +178,7 @@
 			"id": 307,
 			"name": "",
 			"difficulty": 1,
-			"audio": "tasks/entrance/write_in_book.mp3",
+			"audio": "wav/write_in_book.wav",
 			"items": [
 				{
 					"item": "bok",
@@ -196,7 +196,7 @@
 			"id": 308,
 			"name": "",
 			"difficulty": 1,
-			"audio": "tasks/entrance/wash_gloves_in_sink.mp3",
+			"audio": "wav/wash_gloves_in_sink.wav",
 			"items": [
 				{
 					"item": "vantar",
@@ -214,7 +214,7 @@
 			"id": 309,
 			"name": "",
 			"difficulty": 2,
-			"audio": "tasks/entrance/fill_bucket_with_water_and_soap.mp3",
+			"audio": "wav/fill_bucket_with_water_and_soap.wav",
 			"items": [
 				{
 					"item": "hink",
@@ -237,7 +237,7 @@
 			"id": 310,
 			"name": "",
 			"difficulty": 0,
-			"audio": "tasks/entrance/get_gloves.mp3",
+			"audio": "wav/get_gloves.wav",
 			"items": [
 				{
 					"item": "vantar",
@@ -250,7 +250,7 @@
 			"id": 311,
 			"name": "",
 			"difficulty": 0,
-			"audio": "tasks/entrance/eat_apple.mp3",
+			"audio": "wav/eat_apple.wav",
 			"items": [
 				{
 					"item": "apple",
@@ -263,7 +263,7 @@
 			"id": 312,
 			"name": "",
 			"difficulty": 0,
-			"audio": "tasks/entrance/get_shoes.mp3",
+			"audio": "wav/get_shoes.wav",
 			"items": [
 				{
 					"item": "skor",
@@ -276,7 +276,7 @@
 			"id": 313,
 			"name": "",
 			"difficulty": 0,
-			"audio": "tasks/entrance/get_bucket.mp3",
+			"audio": "wav/get_bucket.wav",
 			"items": [
 				{
 					"item": "hink",

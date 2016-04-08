@@ -379,15 +379,32 @@ GameObj.Room.prototype = {
 								
 								// Show star
 								self.showStar(presentItem);
-								// Feedback
-								self._alien.talk(true);
-								self._sound.play('positiveFeedback_audio', function() {
-									self._alien.talk(false);
-									self.setButtonsActive(true);
+								if(presentItem != -1) {
+									// Feedback + present
+									self._alien.talk(true);
+									self._sound.playSequence(['positiveFeedback_audio', 500, 'gotRocketItem_audio'], 
+										function() { 
+											self._alien.talk(false); 
+											self.setButtonsActive(true);
+											
+											// Change state
+											self.resetState(0);
+										},
+										function() { self._alien.talk(false); },
+										function() { self._alien.talk(true); }
+									);
+								}
+								else {
+									// Feedback
+									self._alien.talk(true);
+									self._sound.play('positiveFeedback_audio', function() {
+										self._alien.talk(false);
+										self.setButtonsActive(true);
 									
-									// Change state
-									self.resetState(0);
-								});
+										// Change state
+										self.resetState(0);
+									});
+								}
 								
 							}, 500);
 						});
@@ -416,6 +433,10 @@ GameObj.Room.prototype = {
 					
 				}
 				else {
+					
+					// TODO: maybe this should be in a better place
+					this.saveAnswer(1);
+					
 					// Correct
 					this._alien.talk(true);
 					// Disable buttons
@@ -475,7 +496,7 @@ GameObj.Room.prototype = {
 						// Disable buttons
 						self.setButtonsActive(false);
 						
-						self._sound.playSequence(['playButton_audio', 500, 'somethingIsMissing_audio'], 
+						self._sound.playSequence(['playButton_audio', 500, 'negativeFeedback_audio'], 
 							function() { 
 								self._alien.talk(false); 
 								self.setButtonsActive(true); 
@@ -508,16 +529,36 @@ GameObj.Room.prototype = {
 					// Disable buttons
 					self.setButtonsActive(false);
 					
-					self._sound.play('positiveFeedback_audio', function() { 
-						self._alien.talk(false);
-						self.setButtonsActive(true); 
+					if(presentItem != -1) {
+						// Feedback + present
+						self._alien.talk(true);
+						self._sound.playSequence(['positiveFeedback_audio', 500, 'gotRocketItem_audio'], 
+							function() { 
+								self._alien.talk(false); 
+								self.setButtonsActive(true); 
+								
+								// Change state
+								self.changeState(0, function() {
+									// Start new task
+									// self.startNewTask();
+								});	
+							},
+							function() { self._alien.talk(false); },
+							function() { self._alien.talk(true); }
+						);
+					}
+					else {
+						self._sound.play('positiveFeedback_audio', function() { 
+							self._alien.talk(false);
+							self.setButtonsActive(true); 
 					
-						// Change state
-						self.changeState(0, function() {
-							// Start new task
-							// self.startNewTask();
-						});		
-					});
+							// Change state
+							self.changeState(0, function() {
+								// Start new task
+								// self.startNewTask();
+							});		
+						});
+					}
 				});
 			
 			}
@@ -579,6 +620,8 @@ GameObj.Room.prototype = {
 	// Put down item
 	itemClickRelease: function (item) {
 
+		var self = this;
+
 		// Play audio depending on the gameplay state
 		switch(this._state)
 		{
@@ -601,6 +644,16 @@ GameObj.Room.prototype = {
 					}
 				}
 				else {
+					// Too many items
+					// Feedback
+					self._alien.talk(true);
+					// Disable buttons
+					self.setButtonsActive(false);
+					self._sound.play('tooManyItems_audio', function() {
+						self._alien.talk(false);
+						self.setButtonsActive(true);
+					});
+					
 					// Move to initial position
 					item.resetPos();
 				}
@@ -653,8 +706,6 @@ GameObj.Room.prototype = {
 			
 			if(this._hasDoor == true && GameObj.level.level == 0) {
 				this._sound.playSequence([
-					'clickOnDoor_audio',
-					200,
 					'doPlanning_audio', 
 					this.prefix + '_t' + this._currTask.id + '_audio', 
 					200, 
@@ -1102,7 +1153,7 @@ GameObj.Room.prototype = {
 				}
 				
 				// Insert task entry in DB
-				GameObj.db.insertTask(GameObj.user.id, GameObj.level.id, self._currTask.id, function (id) {
+				GameObj.db.insertTask(GameObj.user.id, GameObj.level.id, self._currTask.id, self._currTask.difficulty, function (id) {
 					// Save task in game object
 					GameObj.task = {
 						id: id, 
@@ -1143,7 +1194,9 @@ GameObj.Room.prototype = {
 	},
 	
 	showStar: function (presentItem) {
-				
+		
+		var self = this;
+		
 		if(presentItem != -1) {
 			
 			// Move star upwards
@@ -1173,6 +1226,7 @@ GameObj.Room.prototype = {
 			
 			this._starRocket.visible = true;
 			this._starArrow.visible = true;
+			
 		}
 		else {
 			this._star.y = this.world.centerY - 60;
@@ -1221,6 +1275,7 @@ GameObj.Room.prototype = {
 	
 		if(correct == true) {
 			// Correct answer
+			this.saveAnswer(1);
 			
 			// Update task value
 			GameObj.task.value = 1;
@@ -1263,6 +1318,7 @@ GameObj.Room.prototype = {
 		}
 		else {
 			// Wrong answer
+			this.saveAnswer(0);
 			
 			// Increase wrong counter
 			GameObj.task.wrong++;
@@ -1309,6 +1365,34 @@ GameObj.Room.prototype = {
 				typeof callback === 'function' && callback(true, -1)
 			}
 		}
+	},
+	
+	saveAnswer: function (answer) {
+		
+		var self = this;
+		
+		var tempSelect = this._selectedItems;
+		var tempOrder = this._box.getOrder();;
+		var state = this._state;
+		
+		GameObj.db.insertAnswer(GameObj.user.id, GameObj.task.id, state, answer, function (answerId) {
+			
+			// Save all selected items
+			if(state == 0) {
+				for(var i = 0; i < tempSelect.length; i++) {
+					GameObj.db.insertAnswerItem(GameObj.user.id, answerId, 0, self._itemArray[tempSelect[i]].name);
+				}
+			}
+			else {
+				for(var i = 0; i < tempOrder.length; i++) {
+					if(tempOrder[i] != -1) {
+						GameObj.db.insertAnswerItem(GameObj.user.id, answerId, i, self._itemArray[tempOrder[i]].name);
+					}
+				}
+			}
+			
+		});
+		
 	},
 	
 	givePresent: function (callback) {
@@ -1377,14 +1461,18 @@ GameObj.Room.prototype = {
 		if(state == true) {
 			this._btnPlay.alpha = 1;
 			this._btnBack.alpha = 1;
+			this._btnOk.alpha = 1;
 			this._btnPlay.inputEnabled = true;
 			this._btnBack.inputEnabled = true;
+			this._btnOk.inputEnabled = true;
 		}
 		else {
 			this._btnPlay.alpha = 0.5;
 			this._btnBack.alpha = 0.5;
+			this._btnOk.alpha = 0.2;
 			this._btnPlay.inputEnabled = false;
 			this._btnBack.inputEnabled = false;
+			this._btnOk.inputEnabled = false;
 		}
 	},
 

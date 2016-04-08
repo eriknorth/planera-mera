@@ -25,8 +25,8 @@ GameObj.Preloader.prototype = {
 		loadingBar.x = this.game.world.centerX - (loadingBar.width/2);
 		this.load.setPreloadSprite(loadingBar);
 		
-		GameObj.music = this.add.audio('backgroundMusic');
-		GameObj.music.loop = true;
+		//GameObj.music = this.add.audio('backgroundMusic');
+		//GameObj.music.loop = true;
 		//GameObj.music.play();
 		
 		// --- </ Set up the preloader > ---
@@ -153,24 +153,22 @@ GameObj.Preloader.prototype = {
 		this.load.image('alien3', 'assets/img/alien3.png');
 		
 		
-		// TODO: Testing audio
-		this.load.audio('task1_audio', 'assets/audio/task1.mp3');
 		
 		// Load audio files
-		this.load.audio('whatDoINeed_audio', 'assets/audio/what_do_i_need.mp3');
-		this.audioList.push('whatDoINeed_audio');
-		this.load.audio('correct_audio', 'assets/audio/correct.mp3');
-		this.audioList.push('correct_audio');
-		this.load.audio('wrong_audio', 'assets/audio/wrong.mp3');
-		this.audioList.push('wrong_audio');
-		this.load.audio('order_audio', 'assets/audio/order.mp3');
-		this.audioList.push('order_audio');
+		// this.load.audio('whatDoINeed_audio', 'assets/audio/what_do_i_need.mp3');
+		// this.audioList.push('whatDoINeed_audio');
+		// this.load.audio('correct_audio', 'assets/audio/correct.mp3');
+		// this.audioList.push('correct_audio');
+		// this.load.audio('wrong_audio', 'assets/audio/wrong.mp3');
+		// this.audioList.push('wrong_audio');
+		// this.load.audio('order_audio', 'assets/audio/order.mp3');
+		// this.audioList.push('order_audio');
 		
 		
 		
 		
 		// --- < Load Audio > ---
-		
+		/*
 		this.load.audio('aTip_audio', 'assets/audio/game/a_tip.mp3');
 		this.audioList.push('aTip_audio');
 		this.load.audio('betterLuckNextTime_audio', 'assets/audio/game/better_luck_next_time.mp3');
@@ -201,7 +199,42 @@ GameObj.Preloader.prototype = {
 		this.audioList.push('whatThingsDoINeed_audio');
 		this.load.audio('playButton_audio', 'assets/audio/game/when_pressing_play_button.mp3');
 		this.audioList.push('playButton_audio');
+		*/
 		
+		this.load.audio('aTip_audio', 'assets/audio/wav/a_tip.wav');
+		this.audioList.push('aTip_audio');
+		this.load.audio('betterLuckNextTime_audio', 'assets/audio/wav/better_luck_next_time.wav');
+		this.audioList.push('betterLuckNextTime_audio');
+		this.load.audio('clickOnDoor_audio', 'assets/audio/wav/click_on_door.wav');
+		this.audioList.push('clickOnDoor_audio');
+		this.load.audio('clickOnMe_audio', 'assets/audio/wav/click_on_me.wav');
+		this.audioList.push('clickOnMe_audio');
+		this.load.audio('doPlanning_audio', 'assets/audio/wav/do_planning.wav');
+		this.audioList.push('doPlanning_audio');
+		this.load.audio('giggle_audio', 'assets/audio/wav/giggle.wav');
+		this.audioList.push('giggle_audio');
+		this.load.audio('instructionRoom_audio', 'assets/audio/wav/instruction_room.wav');
+		this.audioList.push('instructionRoom_audio');
+		this.load.audio('introTeachMeHowToPlan_audio', 'assets/audio/wav/intro_teach_me_how_to_plan.wav');
+		this.audioList.push('introTeachMeHowToPlan_audio');
+		this.load.audio('negativeFeedback_audio', 'assets/audio/wav/negative_feedback.wav');
+		this.audioList.push('negativeFeedback_audio');
+		this.load.audio('orderInstruction_audio', 'assets/audio/wav/order_instruction.wav');
+		this.audioList.push('orderInstruction_audio');
+		this.load.audio('positiveFeedback_audio', 'assets/audio/wav/positive_feedback.wav');
+		this.audioList.push('positiveFeedback_audio');
+		this.load.audio('somethingIsMissing_audio', 'assets/audio/wav/you_have_taken_too_many_or_too_few_items.wav');
+		this.audioList.push('somethingIsMissing_audio');
+		this.load.audio('theOrderIsNotCorrect_audio', 'assets/audio/wav/the_order_is_not_correct.wav');
+		this.audioList.push('theOrderIsNotCorrect_audio');
+		this.load.audio('whatThingsDoINeed_audio', 'assets/audio/wav/what_things_do_I_need.wav');
+		this.audioList.push('whatThingsDoINeed_audio');
+		this.load.audio('playButton_audio', 'assets/audio/wav/when_pressing_play_button.wav');
+		this.audioList.push('playButton_audio');
+		this.load.audio('tooManyItems_audio', 'assets/audio/wav/no_more_items_in_cloud_possible.wav');
+		this.audioList.push('tooManyItems_audio');
+		this.load.audio('gotRocketItem_audio', 'assets/audio/wav/you_got_a_rocket_item.wav');
+		this.audioList.push('gotRocketItem_audio');
 		// --- </ Load Audio > ---
 		
 		
@@ -212,7 +245,7 @@ GameObj.Preloader.prototype = {
 		// Wait for task files to be loaded
 		// TODO: Some problems with loading
 		this.load.onFileComplete.add(function(progress, key) {
-			
+
 			var pos = key.indexOf('_tasks');
 			if(pos > -1) {
 				var prefix = key.substring(0, pos);
@@ -225,7 +258,7 @@ GameObj.Preloader.prototype = {
 					}
 				}
 			}
-			
+
 		}, this);
 
 	},
@@ -241,8 +274,10 @@ GameObj.Preloader.prototype = {
 		console.log('Decoding MP3...');
 		
 		// Enable Physics
-		this.physics.startSystem(Phaser.Physics.ARCADE);
-
+		//this.physics.startSystem(Phaser.Physics.ARCADE);
+		
+		// Save event
+		GameObj.db.insertEvent(GameObj.user.id, 'game', 'system', 'start');
 	},
 	
 	audioDecoded: function () {

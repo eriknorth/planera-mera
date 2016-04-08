@@ -15,9 +15,12 @@ Db.prototype = {
 		this.db.transaction(function(tx) {
 			// For testing
 			//tx.executeSql('DROP TABLE IF EXISTS test_table');
+			
 			tx.executeSql('DROP TABLE IF EXISTS users');
 			tx.executeSql('DROP TABLE IF EXISTS events');
 			tx.executeSql('DROP TABLE IF EXISTS tasks');
+			tx.executeSql('DROP TABLE IF EXISTS answers');
+			tx.executeSql('DROP TABLE IF EXISTS answer_items');
 			tx.executeSql('DROP TABLE IF EXISTS levels');
 			tx.executeSql('DROP TABLE IF EXISTS rocket');
 			
@@ -41,22 +44,45 @@ Db.prototype = {
 				'identity VARCHAR(16), ' +
 				'level INTEGER, ' +
 				'timestamp TIMESTAMP)');
+				
 			// Create event table
 			tx.executeSql('CREATE TABLE IF NOT EXISTS events (' +
 				'id INTEGER PRIMARY KEY, ' +
 				'user_id INTEGER, ' +
-				'event INTEGER, ' +
+				'event VARCHAR(64), ' +
+				'location VARCHAR(64), ' +
 				'value VARCHAR(64), ' +
 				'timestamp TIMESTAMP)');
+				
 			// Create task table
 			tx.executeSql('CREATE TABLE IF NOT EXISTS tasks (' +
 				'id INTEGER PRIMARY KEY, ' +
 				'user_id INTEGER, ' +
 				'level_id INTEGER, ' +
 				'task INTEGER, ' +
+				'difficulty INTEGER, ' +
 				'wrong INTEGER, ' +
 				'value INTEGER, ' +
 				'timestamp TIMESTAMP)');
+				
+			// Create answer table
+			tx.executeSql('CREATE TABLE IF NOT EXISTS answers (' +
+				'id INTEGER PRIMARY KEY, ' +
+				'user_id INTEGER, ' +
+				'task_id INTEGER, ' +
+				'state INTEGER, ' +
+				'answer INTEGER, ' +
+				'timestamp TIMESTAMP)');
+				
+			// Create answer items table
+			tx.executeSql('CREATE TABLE IF NOT EXISTS answer_items (' +
+				'id INTEGER PRIMARY KEY, ' +
+				'user_id INTEGER, ' +
+				'answer_id INTEGER, ' +
+				'itemOrder INTEGER, ' +
+				'item VARCHAR(64), ' +
+				'timestamp TIMESTAMP)');
+				
 			// Create level table
 			tx.executeSql('CREATE TABLE IF NOT EXISTS levels (' +
 				'id INTEGER PRIMARY KEY, ' +
@@ -68,6 +94,7 @@ Db.prototype = {
 				'cleared_total INTEGER, ' +
 				'failed_total INTEGER, ' +
 				'timestamp TIMESTAMP)');
+				
 			// Create rocket table
 			tx.executeSql('CREATE TABLE IF NOT EXISTS rocket (' +
 				'id INTEGER PRIMARY KEY, ' +
@@ -80,6 +107,7 @@ Db.prototype = {
 		});
 	
 	},
+	
 	
 	
 	// Inser user
@@ -123,22 +151,25 @@ Db.prototype = {
 	
 	
 	// Insert event
-	insertEvent: function (userId, event, value) {
+	insertEvent: function (userId, event, loc, value, callback) {
 		this.db.transaction(function(tx) {
 			tx.executeSql(
-				'INSERT INTO events (user_id, event, value, timestamp) ' +
-				'VALUES (?, ?, ?, ?)', 
-			[userId, event, value, Date.now()]);		
+				'INSERT INTO events (user_id, event, location, value, timestamp) ' +
+				'VALUES (?, ?, ?, ?, ?)', 
+			[userId, event, loc, value, Date.now()], function(tx, res) {
+				// Run callback if defined
+				typeof callback === 'function' && callback(res.insertId);
+			});		
 		});
 	},
 	
 	// Insert task
-	insertTask: function (userId, levelId, task, callback) {
+	insertTask: function (userId, levelId, task, difficulty, callback) {
 		this.db.transaction(function(tx) {
 			tx.executeSql(
-				'INSERT INTO tasks (user_id, level_id, task, wrong, value, timestamp) ' +
-				'VALUES (?, ?, ?, ?, ?, ?)', 
-			[userId, levelId, task, 0, 0, Date.now()], function(tx, res) {
+				'INSERT INTO tasks (user_id, level_id, task, difficulty, wrong, value, timestamp) ' +
+				'VALUES (?, ?, ?, ?, ?, ?, ?)', 
+			[userId, levelId, task, difficulty, 0, 0, Date.now()], function(tx, res) {
 				// Run callback if defined
 				typeof callback === 'function' && callback(res.insertId);
 			});	
@@ -371,6 +402,29 @@ Db.prototype = {
 				typeof callback === 'function' && callback(res);
 			});		
 		});
-	}
+	},
 	
+	
+	// Insert answer
+	insertAnswer: function (userId, taskId, state, answer, callback) {
+		this.db.transaction(function(tx) {
+			tx.executeSql(
+				'INSERT INTO answers (user_id, task_id, state, answer, timestamp) ' +
+				'VALUES (?, ?, ?, ?, ?)',
+			[userId, taskId, state, answer, Date.now()], function(tx, res) {
+				// Run callback if defined
+				typeof callback === 'function' && callback(res.insertId);
+			});
+		});
+	},
+
+	// Insert answer item
+	insertAnswerItem: function (userId, answerId, order, item) {
+		this.db.transaction(function(tx) {
+			tx.executeSql(
+				'INSERT INTO answer_items (user_id, answer_id, itemOrder, item, timestamp) ' +
+				'VALUES (?, ?, ?, ?, ?)',
+			[userId, answerId, order, item, Date.now()]);
+		});
+	}
 }

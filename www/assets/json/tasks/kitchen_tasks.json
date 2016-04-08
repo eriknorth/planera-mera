@@ -4,7 +4,7 @@
             "id": 1,
             "name": "",
             "difficulty": 0,
-            "audio": "tasks/kitchen/eat_and_drink.mp3",
+            "audio": "wav/eat_and_drink.wav",
                 "items": 
                 [
                     {
@@ -23,7 +23,7 @@
             "id": 2,
             "name": "",
             "difficulty": 1,
-            "audio": "tasks/kitchen/fika_with_fruit.mp3",
+            "audio": "wav/fika_with_fruit.wav",
             "items": 
             [
                 {
@@ -47,7 +47,7 @@
             "id": 3,
             "name": "",
             "difficulty": 2,
-            "audio": "tasks/kitchen/boil_egg.mp3",
+            "audio": "wav/boil_egg.wav",
             "items": [
                 {
                     "item": "vatten",
@@ -75,7 +75,7 @@
             "id": 4,
             "name": "",
             "difficulty": 2,
-            "audio": "tasks/kitchen/make_tea.mp3",
+            "audio": "wav/make_tea.wav",
             "items": [
                 {
                     "item": "vatten",
@@ -103,7 +103,7 @@
             "id": 5,
             "name": "",
             "difficulty": 2,
-            "audio": "tasks/kitchen/lay_the_table.mp3",
+            "audio": "wav/lay_the_table.wav",
             "items": [
                 {
                     "item": "",
@@ -131,7 +131,7 @@
             "id": 6,
             "name": "",
             "difficulty": 3,
-            "audio": "tasks/kitchen/toast_with_cheese.mp3",
+            "audio": "wav/toast_with_cheese.wav",
             "items": [
                 {
                     "item": "brodrost",
@@ -164,7 +164,7 @@
             "id": 7,
             "name": "",
             "difficulty": 3,
-            "audio": "tasks/kitchen/do_the_dishes.mp3",
+            "audio": "wav/do_the_dishes.wav",
             "items": [
                 {
                     "item": "smutsdisk",
@@ -197,7 +197,7 @@
             "id": 8,
             "name": "",
             "difficulty": 3,
-            "audio": "tasks/kitchen/fruit_sallad.mp3",
+            "audio": "wav/fruit_sallad.wav",
             "items": [
                 {
                     "item": "",
@@ -230,7 +230,7 @@
             "id": 9,
             "name": "",
             "difficulty": 2,
-            "audio": "tasks/kitchen/sausage_with_bread.mp3",
+            "audio": "wav/sausage_with_bread.wav",
             "items": [
                 {
                     "item": "",
@@ -263,7 +263,7 @@
             "id": 10,
             "name": "",
             "difficulty": 1,
-            "audio": "tasks/kitchen/disposal_of_garbage.mp3",
+            "audio": "wav/disposal_of_garbage.wav",
             "items": [
                 {
                     "item": "sopor",
@@ -286,7 +286,7 @@
             "id": 11,
             "name": "",
             "difficulty": 2,
-            "audio": "tasks/kitchen/make_spagetti.mp3",
+            "audio": "wav/make_spagetti.wav",
             "items": [
                 {
                     "item": "vatten",
@@ -319,7 +319,7 @@
             "id": 12,
             "name": "",
             "difficulty": 0,
-            "audio": "tasks/kitchen/drink.mp3",
+            "audio": "wav/drink.wav",
             "items": [
                 {
                     "item": "",
@@ -332,7 +332,7 @@
             "id": 13,
             "name": "",
             "difficulty": 0,
-            "audio": "tasks/kitchen/eat.mp3",
+            "audio": "wav/eat.wav",
             "items": [
                 {
                     "item": "",
@@ -345,7 +345,7 @@
             "id": 14,
             "name": "",
             "difficulty": 0,
-            "audio": "tasks/kitchen/a_fruit.mp3",
+            "audio": "wav/a_fruit.wav",
             "items": [
                 {
                     "item": "",
@@ -358,7 +358,7 @@
             "id": 15,
             "name": "",
             "difficulty": 1,
-            "audio": "tasks/kitchen/cut_an_orange.mp3",
+            "audio": "wav/cut_an_orange.wav",
             "items": [
                 {
                     "item": "apelsin",
@@ -381,7 +381,7 @@
             "id": 16,
             "name": "",
             "difficulty": 1,
-            "audio": "tasks/kitchen/glass_of_milk.mp3",
+            "audio": "wav/glass_of_milk.wav",
             "items": 
             [
                 {
@@ -400,7 +400,7 @@
             "id": 17,
             "name": "",
             "difficulty": 0,
-            "audio": "tasks/kitchen/something_sweet.mp3",
+            "audio": "wav/something_sweet.wav",
             "items": 
             [
                 {
@@ -414,7 +414,7 @@
             "id": 18,
             "name": "",
             "difficulty": 1,
-            "audio": "tasks/kitchen/a_piece_of_cake.mp3",
+            "audio": "wav/a_piece_of_cake.wav",
             "items": 
             [
                 {
@@ -438,7 +438,7 @@
             "id": 19,
             "name": "",
             "difficulty": 3,
-            "audio": "tasks/kitchen/toast_with_something_tasty.mp3",
+            "audio": "wav/toast_with_something_tasty.wav",
             "items": [
                 {
                     "item": "brodrost",
@@ -466,7 +466,7 @@
             "id": 20,
             "name": "",
             "difficulty": 3,
-            "audio": "tasks/kitchen/fika_with_tea.mp3",
+            "audio": "wav/fika_with_tea.wav",
             "items": [
                 {
                     "item": "vatten",
@@ -504,7 +504,7 @@
             "id": 21,
             "name": "",
             "difficulty": 2,
-            "audio": "tasks/kitchen/fry_an_egg.mp3",
+            "audio": "wav/fry_an_egg.wav",
             "items": [
                 {
                     "item": "stekpanna",

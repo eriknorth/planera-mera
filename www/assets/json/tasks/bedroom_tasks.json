@@ -4,7 +4,7 @@
             "id": 200,
             "name": "",
             "difficulty": 3,
-            "audio": "tasks/bedroom/get_dressed_for_party.mp3",
+            "audio": "wav/get_dressed_for_party.wav",
             "items": [
                 {
                     "item": "",
@@ -37,7 +37,7 @@
             "id": 201,
             "name": "",
             "difficulty": 3,
-            "audio": "tasks/bedroom/get_dressed_for_school.mp3",
+            "audio": "wav/get_dressed_for_school.wav",
             "items": [
                 {
                     "item": "",
@@ -70,7 +70,7 @@
             "id": 202,
             "name": "",
             "difficulty": 1,
-            "audio": "tasks/bedroom/make_bed.mp3",
+            "audio": "wav/make_bed.wav",
             "items": [
                 {
                     "item": "sang",
@@ -88,7 +88,7 @@
             "id": 203,
             "name": "",
             "difficulty": 1,
-            "audio": "tasks/bedroom/homework.mp3",
+            "audio": "wav/homework.wav",
             "items": [
                 {
                     "item": "skrivbord",
@@ -111,7 +111,7 @@
             "id": 204,
             "name": "",
             "difficulty": 1,
-            "audio": "tasks/bedroom/read_book_in_bed.mp3",
+            "audio": "wav/read_book_in_bed.wav",
             "items": [
                 {
                     "item": "sang",
@@ -129,7 +129,7 @@
             "id": 205,
             "name": "",
             "difficulty": 1,
-            "audio": "tasks/bedroom/play_tennis.mp3",
+            "audio": "wav/play_tennis.wav",
             "items": [
                 {
                     "item": "",
@@ -147,7 +147,7 @@
             "id": 206,
             "name": "",
             "difficulty": 3,
-            "audio": "tasks/bedroom/get_dressed_for_sports.mp3",
+            "audio": "wav/get_dressed_for_sports.wav",
             "items": [
                 {
                     "item": "",
@@ -175,7 +175,7 @@
             "id": 207,
             "name": "",
             "difficulty": 1,
-            "audio": "tasks/bedroom/play_for_20.mp3",
+            "audio": "wav/play_for_20.wav",
             "items": [
                 {
                     "item": "",
@@ -193,7 +193,7 @@
             "id": 208,
             "name": "",
             "difficulty": 1,
-            "audio": "tasks/bedroom/write_in_magazine.mp3",
+            "audio": "wav/write_in_magazine.wav",
             "items": [
                 {
                     "item": "tidning",
@@ -211,7 +211,7 @@
             "id": 209,
             "name": "",
             "difficulty": 1,
-            "audio": "tasks/bedroom/play_computer_20_min.mp3",
+            "audio": "wav/play_computer_20_min.wav",
             "items": [
                 {
                     "item": "dator",
@@ -229,7 +229,7 @@
             "id": 210,
             "name": "",
             "difficulty": 2,
-            "audio": "tasks/bedroom/put_on_jeans_and_shirt.mp3",
+            "audio": "wav/put_on_jeans_and_shirt.wav",
             "items": [
                 {
                     "item": "jeans",
@@ -252,7 +252,7 @@
             "id": 211,
             "name": "",
             "difficulty": 2,
-            "audio": "tasks/bedroom/pack_bag_for_school.mp3",
+            "audio": "wav/pack_bag_for_school.wav",
             "items": [
                 {
                     "item": "ryggsack",
@@ -275,7 +275,7 @@
             "id": 212,
             "name": "",
             "difficulty": 2,
-            "audio": "tasks/bedroom/write_in_magazine_for_20.mp3",
+            "audio": "wav/write_in_magazine_for_20.wav",
             "items": [
                 {
                     "item": "tidning",
@@ -298,7 +298,7 @@
             "id": 213,
             "name": "",
             "difficulty": 2,
-            "audio": "tasks/bedroom/dressed_for_summer.mp3",
+            "audio": "wav/dressed_for_summer.wav",
             "items": [
                 {
                     "item": "",
@@ -321,7 +321,7 @@
             "id": 214,
             "name": "",
             "difficulty": 2,
-            "audio": "tasks/bedroom/pack_bag_for_tennis.mp3",
+            "audio": "wav/pack_bag_for_tennis.wav",
             "items": [
                 {
                     "item": "backpack",
@@ -344,7 +344,7 @@
             "id": 215,
             "name": "",
             "difficulty": 0,
-            "audio": "tasks/bedroom/get_books.mp3",
+            "audio": "wav/get_books.wav",
             "items": [
                 {
                     "item": "bok",
@@ -357,7 +357,7 @@
             "id": 216,
             "name": "",
             "difficulty": 0,
-            "audio": "tasks/bedroom/get_robot.mp3",
+            "audio": "wav/get_robot.wav",
             "items": [
                 {
                     "item": "robot",
@@ -370,7 +370,7 @@
             "id": 217,
             "name": "",
             "difficulty": 0,
-            "audio": "tasks/bedroom/move_bedside_table.mp3",
+            "audio": "wav/move_bedside_table.wav",
             "items": [
                 {
                     "item": "sangbord",
@@ -383,7 +383,7 @@
             "id": 218,
             "name": "",
             "difficulty": 0,
-            "audio": "tasks/bedroom/turn_on_lamp.mp3",
+            "audio": "wav/turn_on_lamp.wav",
             "items": [
                 {
                     "item": "lampa",
@@ -396,7 +396,7 @@
             "id": 219,
             "name": "",
             "difficulty": 0,
-            "audio": "tasks/bedroom/check_the_time.mp3",
+            "audio": "wav/check_the_time.wav",
             "items": [
                 {
                     "item": "vackarklocka",
