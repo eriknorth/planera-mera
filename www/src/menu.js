@@ -63,13 +63,24 @@ GameObj.Menu.prototype = {
 		}
 
 		// Add buttons
-		this.btnAbout = this.game.add.button(this.game.world.centerX - 120, this.game.world.height - 80, 'btnAbout', this.goToAbout, this, 2, 0, 1);
+		// this.btnAbout = this.game.add.button(this.game.world.centerX - 120, this.game.world.height - 80, 'btnAbout', this.goToAbout, this, 2, 0, 1);
+// 		this.btnAbout.anchor.setTo(0.5);
+// 		this.btnMovie = this.game.add.button(this.game.world.centerX, this.game.world.height - 80, 'btnMovie', this.goToMovie, this, 2, 0, 1);
+// 		this.btnMovie.anchor.setTo(0.5);
+// 		this.btnExit = this.game.add.button(this.game.world.centerX + 120, this.game.world.height - 80, 'btnExit', this.exit, this, 2, 0, 1);
+// 		this.btnExit.anchor.setTo(0.5);
+
+
+		this.btnAbout = this.game.add.button(this.game.world.centerX - 60, this.game.world.height - 80, 'btnAbout', this.goToAbout, this, 2, 0, 1);
 		this.btnAbout.anchor.setTo(0.5);
-		this.btnMovie = this.game.add.button(this.game.world.centerX, this.game.world.height - 80, 'btnMovie', this.goToMovie, this, 2, 0, 1);
-		this.btnMovie.anchor.setTo(0.5);
-		this.btnExit = this.game.add.button(this.game.world.centerX + 120, this.game.world.height - 80, 'btnExit', this.exit, this, 2, 0, 1);
+		this.btnExit = this.game.add.button(this.game.world.centerX + 60, this.game.world.height - 80, 'btnExit', this.exit, this, 2, 0, 1);
 		this.btnExit.anchor.setTo(0.5);
 
+
+
+		// setInterval(function() {
+		// 	GameObj.db.insertEvent(GameObj.user.id, 'write', 'menu', 'test');
+		// },100);
 	},
 
 	update: function () {

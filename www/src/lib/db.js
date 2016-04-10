@@ -16,13 +16,13 @@ Db.prototype = {
 			// For testing
 			//tx.executeSql('DROP TABLE IF EXISTS test_table');
 			
-			tx.executeSql('DROP TABLE IF EXISTS users');
-			tx.executeSql('DROP TABLE IF EXISTS events');
-			tx.executeSql('DROP TABLE IF EXISTS tasks');
-			tx.executeSql('DROP TABLE IF EXISTS answers');
-			tx.executeSql('DROP TABLE IF EXISTS answer_items');
-			tx.executeSql('DROP TABLE IF EXISTS levels');
-			tx.executeSql('DROP TABLE IF EXISTS rocket');
+			// tx.executeSql('DROP TABLE IF EXISTS users');
+			// tx.executeSql('DROP TABLE IF EXISTS events');
+			// tx.executeSql('DROP TABLE IF EXISTS tasks');
+			// tx.executeSql('DROP TABLE IF EXISTS answers');
+			// tx.executeSql('DROP TABLE IF EXISTS answer_items');
+			// tx.executeSql('DROP TABLE IF EXISTS levels');
+			// tx.executeSql('DROP TABLE IF EXISTS rocket');
 			
 			// Create tables if they does not exist
 			// tx.executeSql('CREATE TABLE IF NOT EXISTS test_table (id INTEGER PRIMARY KEY, data TEXT, data_num INTEGER)', [], function(tx, res) {
@@ -171,7 +171,10 @@ Db.prototype = {
 				'VALUES (?, ?, ?, ?, ?, ?, ?)', 
 			[userId, levelId, task, difficulty, 0, 0, Date.now()], function(tx, res) {
 				// Run callback if defined
+				console.log('insert', res);
 				typeof callback === 'function' && callback(res.insertId);
+			}, function(err) {
+				console.log('error', res);
 			});	
 		});
 	},

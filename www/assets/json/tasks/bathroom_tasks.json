@@ -53,21 +53,21 @@
 			"difficulty": 3,
 			"audio": "wav/shower.wav",
 			"items": [
-				{
-					"item": "dusch",
-					"category": "",
-					"order": 1
-					
-				},
                 {
                     "item": "schampo",
                     "category": "",
-                    "order": 2
+                    "order": 1
                 },
                 {
-					"item": "",
-					"category": "soap",
+					"item": "duschtval",
+					"category": "",
+					"order": 1
+				},
+				{
+					"item": "dusch",
+					"category": "",
 					"order": 2
+					
 				},
 				{
 					"item": "handduk",

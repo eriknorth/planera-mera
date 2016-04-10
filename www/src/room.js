@@ -235,7 +235,7 @@ GameObj.Room.prototype = {
 			setTimeout(function () {
 				// Start New Task
 				self.startNewTask();
-			}, 1000);
+			}, 500);
 		});
 	},
 	
@@ -766,6 +766,7 @@ GameObj.Room.prototype = {
 				}
 				
 				// Check item
+				console.log(this._itemArray[this._selectedItems[j]].name, taskItem.item);
 				if(taskItem.item != '') {
 					if(this._itemArray[this._selectedItems[j]].name == taskItem.item) {
 						itemsPresent++;
@@ -782,6 +783,19 @@ GameObj.Room.prototype = {
 							catMatch++;
 						}
 					}
+					
+					
+					// TODO: THIS IS A BIG HACK
+					var correct = false;
+					for(var n = i+1; n < this._currTask.items.length; n++) {
+						if(this._currTask.items[n].item == this._itemArray[this._selectedItems[j]].name) {
+							correct = true;
+						}
+					}
+					if(correct == true) {
+						continue;
+					}
+					
 					
 					// TODO: Debug this
 					// if(catMatch == this._itemArray[this._selectedItems[j]].categories.length) {
@@ -903,23 +917,39 @@ GameObj.Room.prototype = {
 						}
 					}
 					
-					// Increment position only if next items are not same category
-					if(correctItem == true) {
-						var correct = false;
-						for(var n = i+1; n < itemOrder.length; n++) {
-							for(k = 0; k < this._itemArray[itemOrder[n]].categories.length; k++) {
-								if(this._itemArray[itemOrder[n]].categories[k] == taskItem.category) {
-									correct = true;
+					// Check if next item in task has same cattegory but it has item name defined
+					// is there a next item?
+					if((currPosI+1) < this._currTask.items.length) {
+						// Has same category but has also item name?
+						if(this._currTask.items[currPosI+1].item == '') {
+							
+							// If not, only then consider it as duplicate...
+							// Increment position only if next items are not same category
+							if(correctItem == true) {
+								var correct = false;
+								for(var n = i+1; n < itemOrder.length; n++) {
+									for(k = 0; k < this._itemArray[itemOrder[n]].categories.length; k++) {
+										if(this._itemArray[itemOrder[n]].categories[k] == taskItem.category) {
+											correct = true;
+										}
+									}
+								}
+					
+								// Increment only if there are no other with the same category
+								if(correct == false) {
+									if(taskItem.order != 0 && taskItem.order != 66) {
+										currPosI++;
+									}
 								}
 							}
+							
 						}
-					
-						// Increment only if there are no other with the same category
-						if(correct == false) {
+						else {
 							if(taskItem.order != 0 && taskItem.order != 66) {
 								currPosI++;
 							}
 						}
+							
 					}
 
 				}
@@ -1173,13 +1203,13 @@ GameObj.Room.prototype = {
 			// There is a task started
 			else {
 				
-				// TODO: test
-				// var task = res.rows.item(0);
-// 				task.task = 20;
-// 				GameObj.task = task;
+				// TODO: Test tasks... always gets this...
+				var task = res.rows.item(0);
+				task.task = 3;
+				GameObj.task = task;
 				
 				// Save task in game object
-				GameObj.task = res.rows.item(0);
+				//GameObj.task = res.rows.item(0);
 				
 				// Load task in the object
 				self._currTask = self._taskArray.filter(function (obj) {

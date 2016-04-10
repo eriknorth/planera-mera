@@ -6,12 +6,21 @@ GameObj.Preloader = function (game) {
 	this.ready = false;
 	this.audioList = [];
 
+	this._secret = null;
+	this._secretCount = 0;
 };
 
 GameObj.Preloader.prototype = {
 
-	preload: function () {
+	
 
+	preload: function () {
+		
+		
+		this._secret = new Phaser.Rectangle(0,0,100,100);
+		this.input.onDown.add(this.handlePointerDown, this);
+		
+		
 		// --- < Set up the preloader > ---
 		// These are the assets we loaded in Boot.js
 		this.background = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'splashScreen');
@@ -30,6 +39,8 @@ GameObj.Preloader.prototype = {
 		//GameObj.music.play();
 		
 		// --- </ Set up the preloader > ---
+		
+		
 		
 		
 		// --- < Configure and Run DB > ---
@@ -288,6 +299,84 @@ GameObj.Preloader.prototype = {
 	
 	goToMenu: function () {
 		this.state.start('Menu');
-	}
+	},
+	
+	
+	
+	
+	
+	exportDatabase: function () {
+		
+		var errorHandler = function (err) {
+			console.log(err);
+		}
+
+		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
+			fs.root.getFile('db.json', {create: true}, function(fileEntry) {
+				
+				var pathToFile = fileEntry.toURL(); 
+				//pathToFile = pathToFile.replace('file://',''); 
+				
+				// Create a FileWriter object for our FileEntry (log.txt).
+				fileEntry.createWriter(function(fileWriter) {
+
+					fileWriter.onwriteend = function(e) {
+						console.log('Write completed.');
+						console.log(pathToFile);
+						cordova.plugins.email.open({
+							app: 'gmail',
+							to: 'eriza653@student.liu.se',
+							attachments: pathToFile,
+							subject: 'PlaneraMera - DB',
+							isHtml: false
+						}, function () {
+							console.log('email view dismissed');
+						}); 
+					};
+
+					fileWriter.onerror = function(e) {
+						console.log('Write failed: ' + e.toString());
+					};
+
+
+					cordova.plugins.sqlitePorter.exportDbToJson(GameObj.db.db, {
+					    successFn: function (sql, count) {
+							var blob = new Blob([JSON.stringify(sql)], {type: 'text/plain'});
+
+							fileWriter.write(blob);
+					    }
+					});
+					
+
+
+					// Create a new Blob and write it to log.txt.
+					//var blob = new Blob(['Lorem Ipsum'], {type: 'text/plain'});
+
+					//fileWriter.write(blob);
+
+				}, errorHandler);
+			}, errorHandler);
+		}, errorHandler);
+		
+	},
+	
+	
+	handlePointerDown: function (pointer) {
+
+		var inside = this._secret.contains(pointer.x, pointer.y);
+		
+		if(inside == true) {
+			
+			this._secretCount++;
+			if(this._secretCount >= 3) {
+				// Export DB
+				this.exportDatabase();
+			}
+		}
+	} 
+	
+	
+	
+	
 
 };

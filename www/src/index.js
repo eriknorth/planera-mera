@@ -78,7 +78,50 @@ var app = {
 		//	Now start the Boot state.
 		game.state.start('Boot');
 		
+		
 		console.log('hello!');
+		
+		
+		// TESTING FILE
+		/*var errorHandler = function (err) {
+			console.log(err);
+		}
+
+		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
+			fs.root.getFile('log.txt', {create: true}, function(fileEntry) {
+				
+				var pathToFile = fileEntry.toURL(); 
+				//pathToFile = pathToFile.replace('file://',''); 
+				
+				// Create a FileWriter object for our FileEntry (log.txt).
+				fileEntry.createWriter(function(fileWriter) {
+
+					fileWriter.onwriteend = function(e) {
+						console.log('Write completed.');
+						console.log(pathToFile);
+						cordova.plugins.email.open({
+							app: 'gmail',
+							to: 'eriza653@student.liu.se',
+							attachments: pathToFile,
+							subject: 'PlaneraMera - DB',
+							isHtml: false
+						}, function () {
+							console.log('email view dismissed');
+						}); 
+					};
+
+					fileWriter.onerror = function(e) {
+						console.log('Write failed: ' + e.toString());
+					};
+
+					// Create a new Blob and write it to log.txt.
+					var blob = new Blob(['Lorem Ipsum'], {type: 'text/plain'});
+
+					fileWriter.write(blob);
+
+				}, errorHandler);
+			}, errorHandler);
+		}, errorHandler);*/
 		
 		
 		//return deferred.promise();
