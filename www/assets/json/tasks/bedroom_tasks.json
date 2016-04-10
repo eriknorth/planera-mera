@@ -347,7 +347,7 @@
             "audio": "wav/get_books.wav",
             "items": [
                 {
-                    "item": "bok",
+                    "item": "bocker_sovrum",
                     "category": "",
                     "order": 1
                 }

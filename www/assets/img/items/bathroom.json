@@ -1,17 +1,17 @@
 {
 "frames": {
 	"dusch": {
-		"frame": {"x":165, "y":350, "w":152, "h":128},
+		"frame": {"x":316, "y":350, "w":152, "h":128},
 		"spriteSourceSize": {"x":0,"y":0,"w":152,"h":128},
 		"sourceSize": {"w":152,"h":128}
 	},
 	"duschtval": {
-		"frame": {"x":435, "y":411, "w":41, "h":110},
+		"frame": {"x":490, "y":0, "w":41, "h":110},
 		"spriteSourceSize": {"x":0,"y":0,"w":41,"h":110},
 		"sourceSize": {"w":41,"h":110}
 	},
 	"handduk": {
-		"frame": {"x":318, "y":350, "w":116, "h":112},
+		"frame": {"x":217, "y":0, "w":116, "h":112},
 		"spriteSourceSize": {"x":0,"y":0,"w":116,"h":112},
 		"sourceSize": {"w":116,"h":112}
 	},
@@ -21,12 +21,12 @@
 		"sourceSize": {"w":159,"h":92}
 	},
 	"handtval": {
-		"frame": {"x":290, "y":48, "w":51, "h":79},
+		"frame": {"x":469, "y":363, "w":51, "h":79},
 		"spriteSourceSize": {"x":0,"y":0,"w":51,"h":79},
 		"sourceSize": {"w":51,"h":79}
 	},
 	"schampo": {
-		"frame": {"x":477, "y":411, "w":41, "h":110},
+		"frame": {"x":490, "y":111, "w":41, "h":110},
 		"spriteSourceSize": {"x":0,"y":0,"w":41,"h":110},
 		"sourceSize": {"w":41,"h":110}
 	},
@@ -36,22 +36,22 @@
 		"sourceSize": {"w":164,"h":68}
 	},
 	"tandborste": {
-		"frame": {"x":490, "y":0, "w":30, "h":63},
+		"frame": {"x":165, "y":350, "w":30, "h":63},
 		"spriteSourceSize": {"x":0,"y":0,"w":30,"h":63},
 		"sourceSize": {"w":30,"h":63}
 	},
 	"tandkram": {
-		"frame": {"x":490, "y":64, "w":24, "h":63},
+		"frame": {"x":196, "y":350, "w":24, "h":63},
 		"spriteSourceSize": {"x":0,"y":0,"w":24,"h":63},
 		"sourceSize": {"w":24,"h":63}
 	},
 	"toalett": {
-		"frame": {"x":352, "y":48, "w":137, "h":266},
+		"frame": {"x":352, "y":0, "w":137, "h":266},
 		"spriteSourceSize": {"x":0,"y":0,"w":137,"h":266},
 		"sourceSize": {"w":137,"h":266}
 	},
 	"toalettpapper": {
-		"frame": {"x":217, "y":48, "w":72, "h":74},
+		"frame": {"x":352, "y":267, "w":72, "h":74},
 		"spriteSourceSize": {"x":0,"y":0,"w":72,"h":74},
 		"sourceSize": {"w":72,"h":74}
 	},
@@ -71,20 +71,20 @@
 		"sourceSize": {"w":175,"h":221}
 	},
 	"tvattmedel": {
-		"frame": {"x":435, "y":315, "w":69, "h":95},
+		"frame": {"x":469, "y":267, "w":69, "h":95},
 		"spriteSourceSize": {"x":0,"y":0,"w":69,"h":95},
 		"sourceSize": {"w":69,"h":95}
 	},
 	"vatten": {
-		"frame": {"x":217, "y":0, "w":140, "h":47},
-		"spriteSourceSize": {"x":0,"y":0,"w":140,"h":47},
-		"sourceSize": {"w":140,"h":47}
+		"frame": {"x":160, "y":419, "w":155, "h":65},
+		"spriteSourceSize": {"x":0,"y":0,"w":155,"h":65},
+		"sourceSize": {"w":155,"h":65}
 	}
 
 },
 "meta": {
 	"image": "sprites.png",
-	"size": {"w": 521, "h": 522},
+	"size": {"w": 539, "h": 512},
 	"scale": "1"
 }
 }

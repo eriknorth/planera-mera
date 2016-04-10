@@ -51,7 +51,7 @@
         {
             "name": "tvattmedel",
             "x": 223,
-            "y": 661,
+            "y": 665,
             "categories": [ ]
         },
         {
@@ -75,7 +75,7 @@
         {
             "name": "duschtval",
             "x": 1057,
-            "y": 580,
+            "y": 590,
             "categories": [ "soap" ]
         },
         {

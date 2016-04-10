@@ -265,15 +265,15 @@
 			"categories": [""]
 		},
 		{
-			"name": "sopor",
-			"x": 387,
-			"y": 338,
-			"categories": [""]
-		},
-		{
 			"name": "soptunna",
 			"x": 387,
 			"y": 291,
+			"categories": [""]
+		},
+		{
+			"name": "sopor",
+			"x": 387,
+			"y": 338,
 			"categories": [""]
 		},
 		{

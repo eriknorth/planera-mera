@@ -63,6 +63,8 @@ GameObj.Room = function (game) {
 	this._starItem = null;
 	this._starRocket = null;
 	this._starArrow = null;
+	
+	this._tipCounter = 0;
 };
 
 GameObj.Room.prototype = {
@@ -234,7 +236,7 @@ GameObj.Room.prototype = {
 			// Start with delay
 			setTimeout(function () {
 				// Start New Task
-				self.startNewTask();
+				self.startNewTask(true);
 			}, 500);
 		});
 	},
@@ -304,7 +306,7 @@ GameObj.Room.prototype = {
 	},
 	
 	// TODO: Need to fix
-	startNewTask: function () {
+	startNewTask: function (playTask) {
 		
 		var self = this;
 		
@@ -319,11 +321,17 @@ GameObj.Room.prototype = {
 		// 	this.alienClickRelease();
 		// }
 		
+		// Increment tip counter
+		this._tipCounter++;
+		
+		
 		// Choose task
 		this.chooseTask(function () {
 			// TODO: This should be done better
 			// Say task
-			self.alienClickRelease();
+			if(typeof playTask !== 'undefined' && playTask == true) {
+				self.alienTalk();
+			}
 		});
 		
 		
@@ -332,6 +340,9 @@ GameObj.Room.prototype = {
 	goBack: function (pointer) {
 
 		var self = this;
+		
+		// Save event
+		GameObj.db.insertEvent(GameObj.user.id, 'click', 'room:' + GameObj.room, 'back');
 
 		// If in the first state of the game -> can leave to world
 		if (this._state == 0) {
@@ -350,6 +361,9 @@ GameObj.Room.prototype = {
 	play: function (pointer) {
 		
 		var self = this;
+		
+		// Save event
+		GameObj.db.insertEvent(GameObj.user.id, 'click', 'room:' + GameObj.room, 'play');
 		
 		// Play audio depending on the gameplay state
 		switch(this._state)
@@ -633,7 +647,7 @@ GameObj.Room.prototype = {
 			if(this._cloud.checkOverlap(item) == true || this._alien.checkOverlap(item) == true) {
 				
 				// Put in the cloud only if there are less than 6 items
-				if(this._selectedItems.length < 6) {
+				if(this._selectedItems.length < 6 || index > -1) {
 					// Put in cloud
 					this._cloud.putInCloud(item);
 					item.depth = 200;
@@ -688,8 +702,18 @@ GameObj.Room.prototype = {
 		this._layer1.sort('depth', Phaser.Group.SORT_ASCENDING);
 	},
 	
-	// Click on _alien (release)
+	
 	alienClickRelease: function (sprite) {
+		
+		// Save event
+		GameObj.db.insertEvent(GameObj.user.id, 'click', 'room:' + GameObj.room, 'alien');
+		
+		this.alienTalk();
+	},
+	
+	
+	// Click on _alien (release)
+	alienTalk: function () {
 
 		var self = this;
 
@@ -704,25 +728,36 @@ GameObj.Room.prototype = {
 		{
 		case 0:
 			
-			if(this._hasDoor == true && GameObj.level.level == 0) {
-				this._sound.playSequence([
-					'doPlanning_audio', 
-					this.prefix + '_t' + this._currTask.id + '_audio', 
-					200, 
-					'whatThingsDoINeed_audio'
-				], 
-					function() { self._alien.talk(false); self.setButtonsActive(true); },
-					function() { self._alien.talk(false); },
-					function() { self._alien.talk(true); }
-				);
-			}
-			else {
-				this._sound.playSequence(['doPlanning_audio', this.prefix + '_t' + this._currTask.id + '_audio', 200, 'whatThingsDoINeed_audio'], 
-					function() { self._alien.talk(false); self.setButtonsActive(true); },
-					function() { self._alien.talk(false); },
-					function() { self._alien.talk(true); }
-				);
-			}
+			// if(this._hasDoor == true && GameObj.level.level == 0) {
+	// 			this._sound.playSequence([
+	// 				'doPlanning_audio',
+	// 				this.prefix + '_t' + this._currTask.id + '_audio'
+	// 			],
+	// 				function() { self._alien.talk(false); self.setButtonsActive(true); },
+	// 				function() { self._alien.talk(false); },
+	// 				function() { self._alien.talk(true); }
+	// 			);
+	// 		}
+	// 		else {
+				if(this._tipCounter > 3) {
+					// Reset tip counter
+					this._tipCounter = 0;
+					
+					this._sound.playSequence(['doPlanning_audio', this.prefix + '_t' + this._currTask.id + '_audio', 200,'aTip_audio'], 
+						function() { self._alien.talk(false); self.setButtonsActive(true); },
+						function() { self._alien.talk(false); },
+						function() { self._alien.talk(true); }
+					);
+				}
+				else {
+					this._sound.playSequence(['doPlanning_audio', this.prefix + '_t' + this._currTask.id + '_audio'], 
+						function() { self._alien.talk(false); self.setButtonsActive(true); },
+						function() { self._alien.talk(false); },
+						function() { self._alien.talk(true); }
+					);
+				}
+				
+			// }
 			break;
 		case 1:
 			this._sound.playSequence(['doPlanning_audio', this.prefix + '_t' + this._currTask.id + '_audio', 200, 'orderInstruction_audio'], 
@@ -766,7 +801,7 @@ GameObj.Room.prototype = {
 				}
 				
 				// Check item
-				console.log(this._itemArray[this._selectedItems[j]].name, taskItem.item);
+				//console.log(this._itemArray[this._selectedItems[j]].name, taskItem.item);
 				if(taskItem.item != '') {
 					if(this._itemArray[this._selectedItems[j]].name == taskItem.item) {
 						itemsPresent++;
@@ -891,9 +926,14 @@ GameObj.Room.prototype = {
 			// Current order
 			while(currPos == 0 || currPos == 66) {
 				currPosI++;
+				//if(currPosI < this._currTask.items.length) {
+					currPos = this._currTask.items[currPosI].order;
+					//}
+			}
+			
+			if(currPosI < this._currTask.items.length) {
 				currPos = this._currTask.items[currPosI].order;
 			}
-			currPos = this._currTask.items[currPosI].order;
 			
 			for(j = 0; j < this._currTask.items.length; j++)
 			{
@@ -917,39 +957,42 @@ GameObj.Room.prototype = {
 						}
 					}
 					
-					// Check if next item in task has same cattegory but it has item name defined
-					// is there a next item?
-					if((currPosI+1) < this._currTask.items.length) {
-						// Has same category but has also item name?
-						if(this._currTask.items[currPosI+1].item == '') {
+					
+					if(correctItem == true) {
+						// Check if next item in task has same cattegory but it has item name defined
+						// is there a next item?
+						if((currPosI+1) < this._currTask.items.length) {
+							// Has same category but has also item name?
+							if(this._currTask.items[currPosI+1].item == '') {
 							
-							// If not, only then consider it as duplicate...
-							// Increment position only if next items are not same category
-							if(correctItem == true) {
-								var correct = false;
-								for(var n = i+1; n < itemOrder.length; n++) {
-									for(k = 0; k < this._itemArray[itemOrder[n]].categories.length; k++) {
-										if(this._itemArray[itemOrder[n]].categories[k] == taskItem.category) {
-											correct = true;
+								// If not, only then consider it as duplicate...
+								// Increment position only if next items are not same category
+								if(correctItem == true) {
+									var correct = false;
+									for(var n = i+1; n < itemOrder.length; n++) {
+										for(k = 0; k < this._itemArray[itemOrder[n]].categories.length; k++) {
+											if(this._itemArray[itemOrder[n]].categories[k] == taskItem.category) {
+												correct = true;
+											}
+										}
+									}
+					
+									// Increment only if there are no other with the same category
+									if(correct == false) {
+										if(taskItem.order != 0 && taskItem.order != 66) {
+											currPosI++;
 										}
 									}
 								}
-					
-								// Increment only if there are no other with the same category
-								if(correct == false) {
-									if(taskItem.order != 0 && taskItem.order != 66) {
-										currPosI++;
-									}
+							
+							}
+							else {
+								if(taskItem.order != 0 && taskItem.order != 66) {
+									currPosI++;
 								}
 							}
 							
 						}
-						else {
-							if(taskItem.order != 0 && taskItem.order != 66) {
-								currPosI++;
-							}
-						}
-							
 					}
 
 				}
@@ -1204,12 +1247,12 @@ GameObj.Room.prototype = {
 			else {
 				
 				// TODO: Test tasks... always gets this...
-				var task = res.rows.item(0);
-				task.task = 3;
-				GameObj.task = task;
+				// var task = res.rows.item(0);
+				// task.task = 305;
+				// GameObj.task = task;
 				
 				// Save task in game object
-				//GameObj.task = res.rows.item(0);
+				GameObj.task = res.rows.item(0);
 				
 				// Load task in the object
 				self._currTask = self._taskArray.filter(function (obj) {
@@ -1275,6 +1318,9 @@ GameObj.Room.prototype = {
 	hideStar: function (callback) {
 		
 		var self = this;
+		
+		// Save event
+		GameObj.db.insertEvent(GameObj.user.id, 'click', 'room:' + GameObj.room, 'star');
 		
 		// Animate
 		var tween = this.add.tween(this._layer3).to({alpha: 0}, 250, Phaser.Easing.Exponential.None, true);

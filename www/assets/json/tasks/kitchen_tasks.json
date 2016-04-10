@@ -16,6 +16,11 @@
                         "item": "",
                         "category": "drinkable",
                         "order": 1
+                    },
+                    {
+                        "item": "",
+                        "category": "drinking_vessel",
+                        "order": 66
                     }
                 ]
         },
@@ -33,13 +38,28 @@
                 },
                 {
                     "item": "",
+                    "category": "edible",
+                    "order": 1
+                },
+                {
+                    "item": "",
                     "category": "fruit",
                     "order": 1
                 },
                 {
                     "item": "",
-                    "category": "edible",
-                    "order": 1
+                    "category": "cutlery",
+                    "order": 66
+                },
+                {
+                    "item": "",
+                    "category": "plate",
+                    "order": 66
+                },
+                {
+                    "item": "",
+                    "category": "drinking_vessel",
+                    "order": 66
                 }
             ]
         },
@@ -306,12 +326,12 @@
                 {
                     "item": "",
                     "category": "plate",
-                    "order": 2
+                    "order": 66
                 },
                 {
                     "item": "",
                     "category": "cutlery",
-                    "order": 2
+                    "order": 66
                 }
             ]
         },
@@ -338,7 +358,22 @@
                     "item": "",
                     "category": "edible",
                     "order": 1
-                }
+                },
+      		  	{
+                    "item": "",
+                    "category": "cutlery",
+                    "order": 66
+       		 	},
+       		 	{
+                    "item": "",
+                    "category": "cutlery",
+                    "order": 66
+        		},
+        		{
+                    "item": "",
+                    "category": "plate",
+                    "order": 66
+        		 }
             ]
         },
         {
@@ -399,7 +434,7 @@
         {
             "id": 17,
             "name": "",
-            "difficulty": 0,
+            "difficulty": 2,
             "audio": "wav/something_sweet.wav",
             "items": 
             [
@@ -512,7 +547,7 @@
                     "order": 1
                 },
                 {
-                    "item": "agg",
+                    "item": "egg",
                     "category": "",
                     "order": 1
                 },

@@ -37,6 +37,8 @@ GameObj.Rocket.prototype = {
 		var itemJson = this.cache.getJSON('rocket_items');
 		this._itemArray = itemJson.items;
 		
+		//console.log(itemJson.items.length);
+		
 		// Background
 		this.add.sprite(0, 0, 'rocket_bg');
 		this.game.stage.backgroundColor = '#304656';
@@ -232,6 +234,9 @@ GameObj.Rocket.prototype = {
 		//this._chest.bringToTop();
 		//this._btnCloseChest.bringToTop();
 		
+		// Save event
+		GameObj.db.insertEvent(GameObj.user.id, 'click', 'rocket', 'chest_open');
+		
 
 		this._chestLayer.visible = true;
 		this._chest.visible = true;
@@ -247,6 +252,9 @@ GameObj.Rocket.prototype = {
 	closeChest: function (pointer) {
 		
 		var self = this;
+		
+		// Save event
+		GameObj.db.insertEvent(GameObj.user.id, 'click', 'rocket', 'chest_close');
 		
 		// Tween
 		this.add.tween(this._btnCloseChest).to( { alpha: 0, x:  this.world.width }, 200, Phaser.Easing.Linear.None, true, 0, 0, false);
@@ -275,6 +283,9 @@ GameObj.Rocket.prototype = {
 	},
 	
 	goToMenu: function (pointer) {
+
+		// Save event
+		GameObj.db.insertEvent(GameObj.user.id, 'click', 'rocket', 'back');
 
 		// Run item update
 		this.updateItems();

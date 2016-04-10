@@ -117,7 +117,11 @@ GameObj.Menu.prototype = {
 	},
 	
 	goToWorld: function (world) {
+		
 		return function () {
+			// Save event
+			GameObj.db.insertEvent(GameObj.user.id, 'click', 'menu', 'world:' + world);
+			// Go to world
 			GameObj.world = world;
 			this.state.start('World', true, false, 'world');
 		}

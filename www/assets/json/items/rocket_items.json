@@ -13,6 +13,12 @@
 			"categories": []
 		},
 		{
+			"name": "bowlingklot",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
 			"name": "blomma",
 			"x": 0,
 			"y": 0,
@@ -49,7 +55,19 @@
 			"categories": []
 		},
 		{
+			"name": "forsta_hjalpen",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
 			"name": "golv_lampa",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "hatt",
 			"x": 0,
 			"y": 0,
 			"categories": []
@@ -67,7 +85,7 @@
 			"categories": []
 		},
 		{
-			"name": "kista",
+			"name": "kamera",
 			"x": 0,
 			"y": 0,
 			"categories": []
@@ -152,6 +170,72 @@
 		},
 		{
 			"name": "ur",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "kolv",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "snogubbe",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "apple",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "dammsugare_kaka",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "prinsesstarta",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "lampa",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "ryggsack",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "tennisracket",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "vackarklocka",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "schampo",
+			"x": 0,
+			"y": 0,
+			"categories": []
+		},
+		{
+			"name": "ballong",
 			"x": 0,
 			"y": 0,
 			"categories": []

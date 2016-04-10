@@ -145,8 +145,8 @@
                     "order": 1
                 },
                 {
-                    "item": "",
-                    "category": "vatten",
+                    "item": "vatten",
+                    "category": "",
                     "order": 2
                 }
             ]
@@ -188,7 +188,7 @@
 				{
 					"item": "penna",
 					"category": "",
-					"order": 2
+					"order": 1
 				}
 			]
 		},

@@ -171,7 +171,7 @@ Db.prototype = {
 				'VALUES (?, ?, ?, ?, ?, ?, ?)', 
 			[userId, levelId, task, difficulty, 0, 0, Date.now()], function(tx, res) {
 				// Run callback if defined
-				console.log('insert', res);
+				//console.log('insert', res);
 				typeof callback === 'function' && callback(res.insertId);
 			}, function(err) {
 				console.log('error', res);

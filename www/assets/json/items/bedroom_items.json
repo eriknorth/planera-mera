@@ -1,4 +1,4 @@
-﻿{
+{
 	"items": [
 		{
 			"name": "sang",
@@ -117,8 +117,8 @@
 		},
 		{
 			"name": "lakan",
-			"x": 938,
-			"y": 287,
+			"x": 983,
+			"y": 291,
 			"categories": []
 		},
 		{
@@ -135,8 +135,8 @@
 		},
 		{
 			"name": "tennisracket",
-			"x": 696,
-			"y": 601,
+			"x": 663,
+			"y": 702,
 			"categories": ["toy"]
 		},
 		{
@@ -184,7 +184,7 @@
 		{
 			"name": "dorr_garderob_sovrum",
 			"x": 934,
-			"y": 455,
+			"y": 451,
 			"categories": ["door"]
 	
 		}

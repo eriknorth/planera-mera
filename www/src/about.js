@@ -44,12 +44,18 @@ GameObj.About.prototype = {
 	
 	goToMenu: function (pointer) {
 
+		// Save event
+		GameObj.db.insertEvent(GameObj.user.id, 'click', 'about', 'back');
+
 		//	Go back to Menu
 		this.state.start('Menu');
 
 	},
 	
 	alienDown: function () {
+
+		// Save event
+		GameObj.db.insertEvent(GameObj.user.id, 'click', 'about', 'alien');
 
 		this.alien.frame = 3;
 		

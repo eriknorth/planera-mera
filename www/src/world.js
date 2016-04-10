@@ -43,7 +43,7 @@ GameObj.World.prototype = {
 			{
 				// Check if level is enough high to access
 				// TODO: Remove 1 == 1 ! TESTING...
-				// if(GameObj.user.level >= worldObj.rooms[i].level || 1 == 1) {
+				//if(GameObj.user.level >= worldObj.rooms[i].level || 1 == 1) {
 				if(GameObj.user.level >= worldObj.rooms[i].level) {
 					this._roomIcons[i] = this.add.button(
 						worldObj.rooms[i].icon_x, 
@@ -88,6 +88,9 @@ GameObj.World.prototype = {
 	
 	goToMenu: function (pointer) {
 
+		// Save event
+		GameObj.db.insertEvent(GameObj.user.id, 'click', 'world:' + GameObj.world, 'back');
+
 		//	Go back to Menu
 		this.state.start('Menu');
 
@@ -98,6 +101,9 @@ GameObj.World.prototype = {
 			
 			var self = this;
 			GameObj.room = room;
+			
+			// Save event
+			GameObj.db.insertEvent(GameObj.user.id, 'click', 'world:' + GameObj.world, 'room:' + room);
 			
 			// Get JSONs
 			var worldsJson = this.cache.getJSON('worlds');
@@ -132,6 +138,9 @@ GameObj.World.prototype = {
 
 	// Click on _alien (release)
 	alienClickRelease: function (sprite) {
+
+		// Save event
+		GameObj.db.insertEvent(GameObj.user.id, 'click', 'world:' + GameObj.world, 'alien');
 
 		// TODO: tell something
 		this.giveInstruction();
