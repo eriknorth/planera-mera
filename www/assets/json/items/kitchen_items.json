@@ -1,6 +1,13 @@
 {
 	"items": [
 		{
+			"name": "juice",
+			"x": 116,
+			"y": 503,
+			"categories": ["drinkable"]
+	
+		},
+		{
 			"name": "paron",
 			"x": 88,
 			"y": 607,

@@ -65,6 +65,14 @@ GameObj.Room = function (game) {
 	this._starArrow = null;
 	
 	this._tipCounter = 0;
+	
+	
+	
+	
+	this.LEVEL_DOWN_LIMIT = 1;
+	this.TASK_WRONG_LIMIT = 5;
+	this.OPEN_ROOM_LIMIT = 8;
+	this.OLDER_TASK_PROBABILITY = 4;
 };
 
 GameObj.Room.prototype = {
@@ -379,21 +387,21 @@ GameObj.Room.prototype = {
 				// Depending on difficulty, decide if should go to ordering
 				if(this._currTask.difficulty == 0) {
 					
-					this.processResult(true, function (newTask, presentItem) {
+					this.processResult(true, function (newTask, presentItem, firstPresent) {
 						// Feedback
-						self._alien.talk(true);
+						//self._alien.talk(true);
 						// Disable buttons
-						self.setButtonsActive(false);
+						//self.setButtonsActive(false);
 						
 						
-						self._sound.play('playButton_audio', function() {
-							self._alien.talk(false); 
+						//self._sound.play('playButton_audio', function() {
+							//self._alien.talk(false); 
 							// Run with delay
-							setTimeout(function () {
+							//setTimeout(function () {
 								
 								// Show star
 								self.showStar(presentItem);
-								if(presentItem != -1) {
+								if(presentItem != -1 && firstPresent == false) {
 									// Feedback + present
 									self._alien.talk(true);
 									self._sound.playSequence(['positiveFeedback_audio', 500, 'gotRocketItem_audio'], 
@@ -420,8 +428,8 @@ GameObj.Room.prototype = {
 									});
 								}
 								
-							}, 500);
-						});
+								//}, 500);
+						//});
 						
 						// self._sound.playSequence(['playButton_audio', 500, 'positiveFeedback_audio'],
 // 							function() {
@@ -452,14 +460,14 @@ GameObj.Room.prototype = {
 					this.saveAnswer(1);
 					
 					// Correct
-					this._alien.talk(true);
+					//this._alien.talk(true);
 					// Disable buttons
-					this.setButtonsActive(false);
+					//this.setButtonsActive(false);
 					
-					this._sound.play('playButton_audio', function() {
-						self._alien.talk(false); 
+					//this._sound.play('playButton_audio', function() {
+						//self._alien.talk(false); 
 						// Run with delay
-						setTimeout(function () {
+						//setTimeout(function () {
 							self._alien.talk(true);
 							self._sound.playSequence(['positiveFeedback_audio', 500, 'orderInstruction_audio'], 
 								function() { 
@@ -474,8 +482,8 @@ GameObj.Room.prototype = {
 		
 							// Change state
 							self.changeState(1);
-						}, 500);
-					});
+							//}, 500);
+					//});
 				}
 			}
 			else {
@@ -533,7 +541,7 @@ GameObj.Room.prototype = {
 			if(this.checkSecondAnswer() == true) {
 				// Correct
 				
-				this.processResult(true, function (newTask, presentItem) {
+				this.processResult(true, function (newTask, presentItem, firstPresent) {
 				
 					// Show star
 					self.showStar(presentItem);
@@ -543,7 +551,7 @@ GameObj.Room.prototype = {
 					// Disable buttons
 					self.setButtonsActive(false);
 					
-					if(presentItem != -1) {
+					if(presentItem != -1 && firstPresent == false) {
 						// Feedback + present
 						self._alien.talk(true);
 						self._sound.playSequence(['positiveFeedback_audio', 500, 'gotRocketItem_audio'], 
@@ -1186,7 +1194,7 @@ GameObj.Room.prototype = {
 						levelDifficulty = 3;
 					}
 					
-					if(rndNum > 2 || levelDifficulty == 0) {
+					if(rndNum > this.OLDER_TASK_PROBABILITY || levelDifficulty == 0) {
 						levelTasks = self._taskArray.filter(function (obj) {
 							return obj.difficulty === levelDifficulty;
 						});
@@ -1248,7 +1256,7 @@ GameObj.Room.prototype = {
 				
 				// TODO: Test tasks... always gets this...
 				// var task = res.rows.item(0);
-				// task.task = 305;
+				// task.task = 200;
 				// GameObj.task = task;
 				
 				// Save task in game object
@@ -1380,16 +1388,16 @@ GameObj.Room.prototype = {
 			GameObj.db.incLevelClearedTotal(GameObj.level.id);
 			
 			// Check if should level up
-			if(GameObj.level.cleared_total >= 5 && GameObj.user.level <= this._room.level) {
+			if(GameObj.level.cleared_total >= this.OPEN_ROOM_LIMIT && GameObj.user.level <= this._room.level) {
 				GameObj.user.level++;
 				GameObj.db.incUserLevel(GameObj.user.id);
 			}
 			
 			// Give present in the rocket
-			this.givePresent(function (presentItem) {
+			this.givePresent(function (presentItem, firstPresent) {
 				// Give positiive feedback	
 				// Callback to know that state change has been complete
-				typeof callback === 'function' && callback(true, presentItem);
+				typeof callback === 'function' && callback(true, presentItem, firstPresent);
 			});
 		}
 		else {
@@ -1402,7 +1410,7 @@ GameObj.Room.prototype = {
 			GameObj.db.incTaskWrong(GameObj.task.id);
 			
 			// Check how many errors has been made
-			if(GameObj.task.wrong < 10) {
+			if(GameObj.task.wrong < this.TASK_WRONG_LIMIT) {
 				
 				// Still ok to continue
 				// Feedback about wrong should be given
@@ -1423,7 +1431,7 @@ GameObj.Room.prototype = {
 				// Update Failed levels
 				GameObj.level.failed++;
 				// Check if should level down
-				if(GameObj.level.failed >= 3) {
+				if(GameObj.level.failed >= this.LEVEL_DOWN_LIMIT) {
 					// Reset tasks failed
 					GameObj.level.failed = 0;
 					GameObj.db.clearLevelFailed(GameObj.level.id);
@@ -1485,7 +1493,7 @@ GameObj.Room.prototype = {
 				GameObj.db.insertRocketItem(GameObj.user.id, rndNum);
 				
 				// Run callback
-				typeof callback === 'function' && callback(rndNum);
+				typeof callback === 'function' && callback(rndNum, true);
 			}
 			else {
 				// If there is an item, then randomly try to pick one that is not there already
@@ -1504,11 +1512,11 @@ GameObj.Room.prototype = {
 					GameObj.db.insertRocketItem(GameObj.user.id, rndNum);
 					
 					// Run callback
-					typeof callback === 'function' && callback(rndNum);
+					typeof callback === 'function' && callback(rndNum, false);
 				}
 				else {
 					// Else run callback with no item
-					typeof callback === 'function' && callback(-1);
+					typeof callback === 'function' && callback(-1, false);
 				}
 			}
 		});
