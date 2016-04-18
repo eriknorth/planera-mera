@@ -401,7 +401,7 @@ GameObj.Room.prototype = {
 								
 								// Show star
 								self.showStar(presentItem);
-								if(presentItem != -1 && firstPresent == false) {
+								if(presentItem != -1 && firstPresent == true) {
 									// Feedback + present
 									self._alien.talk(true);
 									self._sound.playSequence(['positiveFeedback_audio', 500, 'gotRocketItem_audio'], 
@@ -551,7 +551,7 @@ GameObj.Room.prototype = {
 					// Disable buttons
 					self.setButtonsActive(false);
 					
-					if(presentItem != -1 && firstPresent == false) {
+					if(presentItem != -1 && firstPresent == true) {
 						// Feedback + present
 						self._alien.talk(true);
 						self._sound.playSequence(['positiveFeedback_audio', 500, 'gotRocketItem_audio'], 
