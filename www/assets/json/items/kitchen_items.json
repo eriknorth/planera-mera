@@ -25,12 +25,6 @@
 			"categories": ["edible", "sweet", "fruit"]
 		},
 		{
-			"name": "saftglas",
-			"x": 138,
-			"y": 496,
-			"categories": ["drinkable", "drinking_vessel"]
-		},
-		{
 			"name": "ost",
 			"x": 193,
 			"y": 479,
@@ -59,12 +53,6 @@
 			"x": 272,
 			"y": 372,
 			"categories": ["edible"]
-		},
-		{
-			"name": "vattenglas",
-			"x": 91,
-			"y": 491,
-			"categories": ["drinkable", "drinking_vessel"]
 		},
 		{
 			"name": "leverpastej",
@@ -112,7 +100,7 @@
 			"name": "brod",
 			"x": 1022,
 			"y": 546,
-			"categories": ["edible"]
+			"categories": ["edible", "bread"]
 		},
 		{
 			"name": "te",
@@ -124,7 +112,7 @@
 			"name": "korvbrod",
 			"x": 829,
 			"y": 633,
-			"categories": ["edible"]
+			"categories": ["edible", "bread"]
 		},
 		{
 			"name": "senap",
@@ -200,8 +188,8 @@
 		},
 		{
 			"name": "smutsdisk",
-			"x": 785,
-			"y": 431,
+			"x": 792,
+			"y": 424,
 			"categories": ["plate", "doing_dishes"]
 		},
 		{

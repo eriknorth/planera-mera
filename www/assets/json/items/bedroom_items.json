@@ -10,7 +10,7 @@
 			"name": "tidning",
 			"x": 160,
 			"y": 257,
-			"categories": ["homework", "fun"]
+			"categories": ["homework", "fun", "book"]
 		},
 		{
 			"name": "sangbord",
@@ -40,7 +40,7 @@
 			"name": "bocker_sovrum",
 			"x": 470,
 			"y": 575,
-			"categories": ["homework"]
+			"categories": ["homework", "book"]
 		},
 		{
 			"name": "vaxt",

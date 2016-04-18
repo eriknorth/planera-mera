@@ -57,7 +57,7 @@
                 {
                     "item": "",
                     "category": "top",
-                    "order": 2
+                    "order": 0
                 },
                 {
                     "item": "",
@@ -119,8 +119,8 @@
                     "order": 1
                 },
                 {
-                    "item": "bocker_sovrum",
-                    "category": "",
+                    "item": "",
+                    "category": "book",
                     "order": 1
                 }
             ]
@@ -167,7 +167,7 @@
                 {
                     "item": "t-shirt",
                     "category": "",
-                    "order": 2
+                    "order": 0
                 }
             ]
         },
@@ -222,6 +222,11 @@
                     "item": "vackarklocka",
                     "category": "",
                     "order": 1
+                },
+                {
+                    "item": "",
+                    "category": "furniture",
+                    "order": 1
                 }
             ]
         },
@@ -244,7 +249,7 @@
                 {
                     "item": "skarp",
                     "category": "",
-                    "order": 1
+                    "order": 2
                 }
             ]
         },
@@ -307,12 +312,12 @@
                 },
                 {
                     "item": "",
-                    "category": "summer",
+                    "category": "bottom",
                     "order": 1
                 },
                 {
-                    "item": "vackarklocka",
-                    "category": "",
+                    "item": "",
+                    "category": "underwear",
                     "order": 1
                 }
              ]
@@ -324,7 +329,7 @@
             "audio": "wav/pack_bag_for_tennis.wav",
             "items": [
                 {
-                    "item": "backpack",
+                    "item": "ryggsack",
                     "category": "",
                     "order": 1
                 },
@@ -337,6 +342,11 @@
                     "item": "",
                     "category": "ball",
                     "order": 1
+                },
+                {
+                    "item": "",
+                    "category": "clothes",
+                    "order": 66
                 }
             ]
         },

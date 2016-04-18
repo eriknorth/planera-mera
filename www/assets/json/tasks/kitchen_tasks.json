@@ -3,7 +3,7 @@
             {
             "id": 1,
             "name": "",
-            "difficulty": 0,
+            "difficulty": 1,
             "audio": "wav/eat_and_drink.wav",
                 "items": 
                 [
@@ -59,7 +59,7 @@
                 {
                     "item": "",
                     "category": "drinking_vessel",
-                    "order": 66
+                    "order": 1
                 }
             ]
         },
@@ -72,7 +72,7 @@
                 {
                     "item": "vatten",
                     "category": "",
-                    "order": 1
+                    "order": 2
                 },
                 {
                     "item": "",
@@ -144,6 +144,11 @@
                     "item": "",
                     "category": "topping",
                     "order": 1
+                },
+                {
+                    "item": "",
+                    "category": "drinkable",
+                    "order": 66
                 }
             ]
         },
@@ -177,6 +182,11 @@
                     "item": "",
                     "category": "plate",
                     "order": 3
+                },
+                {
+                    "item": "",
+                    "category": "cutlery",
+                    "order": 66
                 }
             ]
         },
@@ -189,7 +199,7 @@
                 {
                     "item": "smutsdisk",
                     "category": "",
-                    "order": 1
+                    "order": 2
                 },
                 {
                     "item": "diskmedel",
@@ -204,12 +214,12 @@
                 {
                     "item": "diskborste",
                     "category": "",
-                    "order": 1
+                    "order": 2
                 },
                 {
                     "item": "diskstall",
                     "category": "",
-                    "order": 2
+                    "order": 3
                 }
             ]
         },
@@ -235,8 +245,8 @@
                     "order": 1
                 },
                 {
-                    "item": "tallrik",
-                    "category": "",
+                    "item": "",
+                    "category": "plate",
                     "order": 2
                 },
                 {
@@ -260,7 +270,7 @@
                 {
                     "item": "korv",
                     "category": "",
-                    "order": 1
+                    "order": 2
                 },
                 {
                     "item": "vatten",
@@ -268,8 +278,8 @@
                     "order": 1
                 },
                 {
-                    "item": "brod",
-                    "category": "",
+                    "item": "",
+                    "category": "bread",
                     "order": 2
                 },
                 {
@@ -321,7 +331,7 @@
                 {
                     "item": "spagetti",
                     "category": "",
-                    "order": 1
+                    "order": 2
                 },
                 {
                     "item": "",
@@ -332,20 +342,30 @@
                     "item": "",
                     "category": "cutlery",
                     "order": 66
+                },
+                {
+                    "item": "",
+                    "category": "topping",
+                    "order": 66
                 }
             ]
         },
         {
             "id": 12,
             "name": "",
-            "difficulty": 0,
+            "difficulty": 1,
             "audio": "wav/drink.wav",
             "items": [
                 {
                     "item": "",
                     "category": "drinkable",
                     "order": 1
-                }
+                },
+      		  	{
+                    "item": "",
+                    "category": "drinking_vessel",
+                    "order": 1
+       		 	}
             ]
         },
         {
@@ -434,7 +454,7 @@
         {
             "id": 17,
             "name": "",
-            "difficulty": 2,
+            "difficulty": 1,
             "audio": "wav/something_sweet.wav",
             "items": 
             [
@@ -442,6 +462,16 @@
                     "item": "",
                     "category": "sweet",
                     "order": 1
+                },
+                {
+                    "item": "",
+                    "category": "plate",
+                    "order": 66
+                },
+                {
+                    "item": "",
+                    "category": "cutlery",
+                    "order": 66
                 }
             ]
         },
@@ -494,6 +524,11 @@
                     "item": "",
                     "category": "plate",
                     "order": 3
+                },
+                {
+                    "item": "",
+                    "category": "cutlery",
+                    "order": 66
                 }
             ]
         },
@@ -516,7 +551,7 @@
                 {
                     "item": "te",
                     "category": "",
-                    "order": 2
+                    "order": 3
                 },
                 {
                     "item": "",
@@ -531,6 +566,11 @@
                 {
                     "item": "",
                     "category": "plate",
+                    "order": 66
+                },
+                {
+                    "item": "",
+                    "category": "cutlery",
                     "order": 66
                 }
             ]
@@ -547,7 +587,7 @@
                     "order": 1
                 },
                 {
-                    "item": "egg",
+                    "item": "agg",
                     "category": "",
                     "order": 1
                 },
@@ -559,6 +599,11 @@
                 {
                     "item": "smor",
                     "category": "",
+                    "order": 66
+                },
+                {
+                    "item": "",
+                    "category": "cutlery",
                     "order": 66
                 }
             ]

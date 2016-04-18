@@ -24,7 +24,7 @@
 				{
 					"item": "",
 					"category": "fruit",
-					"order": 2
+					"order": 66
 				}
 			]
 		},
@@ -32,7 +32,7 @@
 			"id": 301,
 			"name": "",
 			"difficulty": 3,
-			"audio": "wav/get_dressed_for_going_to_school.wav",
+			"audio": "wav/get_dressed_for_cold_outside.wav",
 			"items": [
 				{
 					"item": "skor",
@@ -58,7 +58,7 @@
 				{
 					"item": "ryggsack",
 					"category": "",
-					"order": 2
+					"order": 66
 				}
 			]
 		},
@@ -100,7 +100,7 @@
                 {
                     "item": "vatten",
                     "category": "",
-                    "order": 2
+                    "order": 3
                 },
                 {
 					"item": "hink",
@@ -111,12 +111,12 @@
 				{
 					"item": "rengoringsmedel",
 					"category": "",
-					"order": 2
+					"order": 3
 				},
 				{
 					"item": "mopp",
 					"category": "",
-					"order": 2
+					"order": 4
 				}
 			]
 		},
@@ -284,9 +284,41 @@
                     "order": 1
 				}
 			]		
-		}
-	]
-	
-	
-	
+		},
+		{
+			"id": 314,
+			"name": "",
+			"difficulty": 3,
+			"audio": "wav/get_dressed_for_school.wav",
+			"items": [
+				{
+					"item": "skor",
+					"category": "",
+					"order": 1
+					
+				},
+				{
+                    "item": "jacka",
+					"category": "",
+					"order": 1
+				},
+				{
+					"item": "vantar",
+					"category": "",
+					"order": 66
+				},
+				{
+					"item": "mossa",
+					"category": "",
+					"order": 66
+				},
+				{
+					"item": "ryggsack",
+					"category": "",
+					"order": 2
+				}
+            ]
+        }
+
+    ]
 }

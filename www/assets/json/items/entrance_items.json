@@ -88,7 +88,7 @@
 			"name": "vatten",
 			"x": 1174,
 			"y": 361,
-			"categories": ["cleaning_products"]
+			"categories": ["cleaning_products"]	
 		},
 		{
 			"name": "dorr_lador_hall",
@@ -100,8 +100,8 @@
 			"name": "dorr_garderob_hall",
 			"x": 910,
 			"y": 446,
-			"categories": ["door"]
+			"categories": ["door"]	
 		}
-
+			
 	]
 }
