@@ -497,7 +497,8 @@ GameObj.Room.prototype = {
 						// Disable buttons
 						self.setButtonsActive(false);
 						
-						self._sound.playSequence(['playButton_audio', 500, 'negativeFeedback_audio', 500, 'betterLuckNextTime_audio'], 
+						self._sound.playSequence(['negativeFeedback_audio', 500, 'betterLuckNextTime_audio'], 
+						//self._sound.playSequence(['playButton_audio', 500, 'negativeFeedback_audio', 500, 'betterLuckNextTime_audio'], 
 							function() { 
 								self._alien.talk(false); 
 								self.setButtonsActive(true);
@@ -518,14 +519,18 @@ GameObj.Room.prototype = {
 						// Disable buttons
 						self.setButtonsActive(false);
 						
-						self._sound.playSequence(['playButton_audio', 500, 'negativeFeedback_audio'], 
+						self._sound.play('negativeFeedback_audio', function() { 
+							self._alien.talk(false); 
+							self.setButtonsActive(true); 
+						}
+						/*self._sound.playSequence(['playButton_audio', 500, 'negativeFeedback_audio'], 
 							function() { 
 								self._alien.talk(false); 
 								self.setButtonsActive(true); 
 							},
 							function() { self._alien.talk(false); },
 							function() { self._alien.talk(true); }
-						);
+						);*/
 					
 						// self._sound.play('somethingIsMissing_audio', function() {
 // 							self._alien.talk(false);
