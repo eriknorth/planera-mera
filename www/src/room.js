@@ -522,7 +522,7 @@ GameObj.Room.prototype = {
 						self._sound.play('negativeFeedback_audio', function() { 
 							self._alien.talk(false); 
 							self.setButtonsActive(true); 
-						}
+						});
 						/*self._sound.playSequence(['playButton_audio', 500, 'negativeFeedback_audio'], 
 							function() { 
 								self._alien.talk(false); 
