@@ -1,0 +1,324 @@
+{
+	"tasks": [
+		{
+			"id": 300,
+			"name": "",
+			"difficulty": 2,
+			"audio": "wav/pack_bag_for_school.wav",
+			"items": [
+				{
+					"item": "ryggsack",
+					"category": "",
+					"order": 1
+				},
+				{
+					"item": "",
+					"category": "school_stuff",
+					"order": 2
+				},
+				{
+					"item": "",
+					"category": "school_stuff",
+					"order": 2
+				},
+				{
+					"item": "",
+					"category": "fruit",
+					"order": 66
+				}
+			]
+		},
+		{
+			"id": 301,
+			"name": "",
+			"difficulty": 3,
+			"audio": "wav/get_dressed_for_cold_outside.wav",
+			"items": [
+				{
+					"item": "skor",
+					"category": "",
+					"order": 1
+					
+				},
+				{
+                    "item": "jacka",
+					"category": "",
+					"order": 1
+				},
+				{
+					"item": "vantar",
+					"category": "",
+					"order": 2
+				},
+				{
+					"item": "mossa",
+					"category": "",
+					"order": 2
+				},
+				{
+					"item": "ryggsack",
+					"category": "",
+					"order": 66
+				}
+			]
+		},
+		{
+			"id": 302,
+			"name": "",
+			"difficulty": 2,
+			"audio": "wav/water_the_plants.wav",
+			"items": [
+				{
+					"item": "vatten",
+					"category": "",
+					"order": 1
+					
+				},
+				{
+					"item": "vattenkanna",
+					"category": "",
+					"order": 1
+				},
+				{
+					"item": "",
+					"category": "plant",
+					"order": 2
+				}
+			]
+		},
+		{
+			"id": 303,
+			"name": "",
+			"difficulty": 3,
+			"audio": "wav/clean.wav",
+			"items": [
+				{
+					"item": "dammsugare",
+					"category": "",
+					"order": 1				
+				},
+                {
+                    "item": "vatten",
+                    "category": "",
+                    "order": 3
+                },
+                {
+					"item": "hink",
+					"category": "",
+					"order": 2
+					
+				},
+				{
+					"item": "rengoringsmedel",
+					"category": "",
+					"order": 3
+				},
+				{
+					"item": "mopp",
+					"category": "",
+					"order": 4
+				}
+			]
+		},
+		{
+			"id": 304,
+			"name": "",
+			"difficulty": 0,
+			"audio": "wav/vacuum.wav",
+			"items": [
+				{
+					"item": "dammsugare",
+					"category": "",
+                    "order": 1
+				}
+			]		
+		},
+        {
+            "id": 305,
+            "name": "",
+            "difficulty": 1,
+            "audio": "wav/fill_waterpot.wav",
+            "items": [
+                {
+                    "item": "vattenkanna",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "vatten",
+                    "category": "",
+                    "order": 2
+                }
+            ]
+        },
+        {
+			"id": 306,
+			"name": "",
+			"difficulty": 2,
+			"audio": "wav/pack_bag_with_warm_clothes.wav",
+			"items": [
+				{
+					"item": "ryggsack",
+					"category": "",
+					"order": 1
+				},
+				{
+					"item": "",
+					"category": "clothes",
+					"order": 2
+				},
+				{
+					"item": "",
+					"category": "clothes",
+					"order": 2
+				}
+			]
+		},
+        {
+			"id": 307,
+			"name": "",
+			"difficulty": 1,
+			"audio": "wav/write_in_book.wav",
+			"items": [
+				{
+					"item": "bok",
+					"category": "",
+					"order": 1
+				},
+				{
+					"item": "penna",
+					"category": "",
+					"order": 1
+				}
+			]
+		},
+        {
+			"id": 308,
+			"name": "",
+			"difficulty": 1,
+			"audio": "wav/wash_gloves_in_sink.wav",
+			"items": [
+				{
+					"item": "vantar",
+					"category": "",
+					"order": 1
+				},
+				{
+					"item": "vatten",
+					"category": "",
+					"order": 1
+				}
+			]
+		},
+        {
+			"id": 309,
+			"name": "",
+			"difficulty": 2,
+			"audio": "wav/fill_bucket_with_water_and_soap.wav",
+			"items": [
+				{
+					"item": "hink",
+					"category": "",
+					"order": 1
+				},
+				{
+					"item": "vatten",
+					"category": "",
+					"order": 2
+				},
+				{
+					"item": "rengoringsmedel",
+					"category": "",
+					"order": 2
+				}
+			]
+		},
+		{
+			"id": 310,
+			"name": "",
+			"difficulty": 0,
+			"audio": "wav/get_gloves.wav",
+			"items": [
+				{
+					"item": "vantar",
+					"category": "",
+                    "order": 1
+				}
+			]		
+		},
+		{
+			"id": 311,
+			"name": "",
+			"difficulty": 0,
+			"audio": "wav/eat_apple.wav",
+			"items": [
+				{
+					"item": "apple",
+					"category": "",
+                    "order": 1
+				}
+			]		
+		},
+		{
+			"id": 312,
+			"name": "",
+			"difficulty": 0,
+			"audio": "wav/get_shoes.wav",
+			"items": [
+				{
+					"item": "skor",
+					"category": "",
+                    "order": 1
+				}
+			]		
+		},
+		{
+			"id": 313,
+			"name": "",
+			"difficulty": 0,
+			"audio": "wav/get_bucket.wav",
+			"items": [
+				{
+					"item": "hink",
+					"category": "",
+                    "order": 1
+				}
+			]		
+		},
+		{
+			"id": 314,
+			"name": "",
+			"difficulty": 3,
+			"audio": "wav/get_dressed_for_school.wav",
+			"items": [
+				{
+					"item": "skor",
+					"category": "",
+					"order": 1
+					
+				},
+				{
+                    "item": "jacka",
+					"category": "",
+					"order": 1
+				},
+				{
+					"item": "vantar",
+					"category": "",
+					"order": 66
+				},
+				{
+					"item": "mossa",
+					"category": "",
+					"order": 66
+				},
+				{
+					"item": "ryggsack",
+					"category": "",
+					"order": 2
+				}
+            ]
+        }
+
+    ]
+}

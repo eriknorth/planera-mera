@@ -2,3 +2,17 @@
 /plugins
 /hooks
 .DS_Store
+
+
+www/assets/img/items/before_monday/
+www/assets/img/items/old_kitchen/
+www/assets/img/items_old/
+www/assets/img/items_old2/
+www/assets/img/rooms/bathroom_old.png
+www/assets/img/rooms/old/
+www/assets/json/items/before_monday/
+www/assets/json/items/old/
+www/assets/json/items/old2/
+www/assets/json/tasks/before_moday/
+www/assets/json/tasks/mpthree/
+www/assets/json/tasks/old/

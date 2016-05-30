@@ -1,0 +1,193 @@
+{
+	"items": [
+		{
+			"name": "sang",
+			"x": 132,
+			"y": 245,
+			"categories": ["furniture"]
+		},
+		{
+			"name": "tidning",
+			"x": 160,
+			"y": 257,
+			"categories": ["homework", "fun", "book"]
+		},
+		{
+			"name": "sangbord",
+			"x": 364,
+			"y": 264,
+			"categories": ["furniture"]
+		},
+		{
+			"name": "robot",
+			"x": 346,
+			"y": 256,
+			"categories": ["toy"]
+		},
+		{
+			"name": "vackarklocka",
+			"x": 336,
+			"y": 358,
+			"categories": ["homework"]
+		},
+		{
+			"name": "skrivbord",
+			"x": 587,
+			"y": 264,
+			"categories": ["furniture"]
+		},
+		{
+			"name": "bocker_sovrum",
+			"x": 470,
+			"y": 575,
+			"categories": ["homework", "book"]
+		},
+		{
+			"name": "vaxt",
+			"x": 601,
+			"y": 575,
+			"categories": ["plant"]
+		},
+		{
+			"name": "troja",
+			"x": 817,
+			"y": 591,
+			"categories": ["clothes", "top"]
+		},
+		{
+			"name": "skjorta",
+			"x": 887,
+			"y": 591,
+			"categories": ["clothes", "nice", "top"]
+		},
+		{
+			"name": "klanning_1",
+			"x": 819,
+			"y": 473,
+			"categories": ["clothes", "nice", "top", "bottom"]
+		},
+		{
+			"name": "klanning_2",
+			"x": 887,
+			"y": 481,
+			"categories": ["clothes", "nice", "top", "bottom"]
+		},
+		
+		{
+			"name": "finbyxor",
+			"x": 817,
+			"y": 328,
+			"categories": ["clothes", "nice", "bottom"]
+		},
+		{
+			"name": "jeans",
+			"x": 889,
+			"y": 330,
+			"categories": ["clothes", "nice", "bottom"]
+		},
+		{
+			"name": "trosor",
+			"x": 977,
+			"y": 619,
+			"categories": ["clothes", "underwear"]
+		},
+		{
+			"name": "kalsonger",
+			"x": 977,
+			"y": 566,
+			"categories": ["clothes", "underwear"]
+		},
+		{
+			"name": "skarp",
+			"x": 1050,
+			"y": 560,
+			"categories": ["clothes", "nice"]
+		},
+		{
+			"name": "kjol",
+			"x": 1058,
+			"y": 437,
+			"categories": ["clothes", "nice", "bottom", "summer"]
+		},
+		{
+			"name": "strumpor",
+			"x": 988,
+			"y": 424,
+			"categories": ["clothes"]
+		},
+		{
+			"name": "lakan",
+			"x": 983,
+			"y": 291,
+			"categories": []
+		},
+		{
+			"name": "shorts",
+			"x": 1062,
+			"y": 298,
+			"categories": ["clothes", "bottom", "summer"]
+		},
+		{
+			"name": "t-shirt",
+			"x": 1050,
+			"y": 644,
+			"categories": ["clothes", "top"]
+		},
+		{
+			"name": "tennisracket",
+			"x": 663,
+			"y": 702,
+			"categories": ["toy"]
+		},
+		{
+			"name": "boll_1",
+			"x": 783,
+			"y": 723,
+			"categories": ["toy", "ball"]
+		},
+		{
+			"name": "boll_2",
+			"x": 836,
+			"y": 723,
+			"categories": ["toy", "ball"]
+		},
+		{
+			"name": "pennor",
+			"x": 487,
+			"y": 353,
+			"categories": ["homework"]
+		},
+		{
+			"name": "dator",
+			"x": 581,
+			"y": 392,
+			"categories": ["homework"]
+		},
+		{
+            "name": "stol",
+			"x": 589,
+			"y": 291,
+			"categories": ["furniture"]
+		},
+		{
+			"name": "ryggsack",
+			"x": 696,
+			"y": 241,
+			"categories": ["homework"]
+		},
+		{
+			"name": "lampa",
+			"x": 674,
+			"y": 403,
+			"categories": ["furniture"]
+		},
+		{
+			"name": "dorr_garderob_sovrum",
+			"x": 934,
+			"y": 451,
+			"categories": ["door"]
+	
+		}
+		
+	]
+}

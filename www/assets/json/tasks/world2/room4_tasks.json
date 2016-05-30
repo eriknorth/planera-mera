@@ -1,0 +1,419 @@
+{
+    "tasks": [
+        {
+            "id": 200,
+            "name": "",
+            "difficulty": 3,
+            "audio": "wav/get_dressed_for_party.wav",
+            "items": [
+                {
+                    "item": "",
+                    "category": "underwear",
+                    "order": 1
+                },
+                {
+                    "item": "strumpor",
+                    "category": "",
+                    "order": 0
+                },
+                {
+                    "item": "",
+                    "category": [ "bottom", "nice"],
+                    "order": 2
+                },
+                {
+                    "item": "",
+                    "category": [ "top", "nice"],
+                    "order": 2
+                },
+                {
+                    "item": "",
+                    "category": "clothes",
+                    "order": 66
+                }
+            ]
+        },
+        {
+            "id": 201,
+            "name": "",
+            "difficulty": 3,
+            "audio": "wav/get_dressed_for_school.wav",
+            "items": [
+                {
+                    "item": "",
+                    "category": "underwear",
+                    "order": 1
+                },
+                {
+                    "item": "strumpor",
+                    "category": "",
+                    "order": 0
+                },
+                {
+                    "item": "",
+                    "category": "bottom",
+                    "order": 2
+                },
+                {
+                    "item": "",
+                    "category": "top",
+                    "order": 0
+                },
+                {
+                    "item": "",
+                    "category": "clothes",
+                    "order": 66
+                }
+            ]
+        },
+        {
+            "id": 202,
+            "name": "",
+            "difficulty": 1,
+            "audio": "wav/make_bed.wav",
+            "items": [
+                {
+                    "item": "sang",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "lakan",
+                    "category": "",
+                    "order": 1
+                }
+            ]
+        },
+        {
+            "id": 203,
+            "name": "",
+            "difficulty": 1,
+            "audio": "wav/homework.wav",
+            "items": [
+                {
+                    "item": "skrivbord",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "",
+                    "category": "homework",
+                    "order": 1
+                },
+                {
+                    "item": "",
+                    "category": "furniture",
+                    "order": 66
+                }
+            ]
+        },
+        {
+            "id": 204,
+            "name": "",
+            "difficulty": 1,
+            "audio": "wav/read_book_in_bed.wav",
+            "items": [
+                {
+                    "item": "sang",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "",
+                    "category": "book",
+                    "order": 1
+                }
+            ]
+        },
+        {
+            "id": 205,
+            "name": "",
+            "difficulty": 1,
+            "audio": "wav/play_tennis.wav",
+            "items": [
+                {
+                    "item": "",
+                    "category": "ball",
+                    "order": 1
+                },
+                {
+                    "item": "tennisracket",
+                    "category": "",
+                    "order": 1
+                }
+            ]
+        },
+        {
+            "id": 206,
+            "name": "",
+            "difficulty": 3,
+            "audio": "wav/get_dressed_for_sports.wav",
+            "items": [
+                {
+                    "item": "",
+                    "category": "underwear",
+                    "order": 1
+                },
+                {
+                    "item": "strumpor",
+                    "category": "",
+                    "order": 0
+                },
+                {
+                    "item": "shorts",
+                    "category": "",
+                    "order": 2
+                },
+                {
+                    "item": "t-shirt",
+                    "category": "",
+                    "order": 0
+                }
+            ]
+        },
+        {
+            "id": 207,
+            "name": "",
+            "difficulty": 1,
+            "audio": "wav/play_for_20.wav",
+            "items": [
+                {
+                    "item": "",
+                    "category": "toy",
+                    "order": 1
+                },
+                {
+                    "item": "vackarklocka",
+                    "category": "",
+                    "order": 1
+                }
+            ]
+        },
+        {
+            "id": 208,
+            "name": "",
+            "difficulty": 1,
+            "audio": "wav/write_in_magazine.wav",
+            "items": [
+                {
+                    "item": "tidning",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "pennor",
+                    "category": "",
+                    "order": 1
+                }
+            ]
+        },
+        {
+            "id": 209,
+            "name": "",
+            "difficulty": 1,
+            "audio": "wav/play_computer_20_min.wav",
+            "items": [
+                {
+                    "item": "dator",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "vackarklocka",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "",
+                    "category": "furniture",
+                    "order": 1
+                }
+            ]
+        },
+        {
+            "id": 210,
+            "name": "",
+            "difficulty": 2,
+            "audio": "wav/put_on_jeans_and_shirt.wav",
+            "items": [
+                {
+                    "item": "jeans",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "skjorta",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "skarp",
+                    "category": "",
+                    "order": 2
+                }
+            ]
+        },
+        {
+            "id": 211,
+            "name": "",
+            "difficulty": 2,
+            "audio": "wav/pack_bag_for_school.wav",
+            "items": [
+                {
+                    "item": "ryggsack",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "",
+                    "category": "homework",
+                    "order": 2
+                },
+                {
+                    "item": "",
+                    "category": "homework",
+                    "order": 2
+                }
+            ]
+        },
+        {
+            "id": 212,
+            "name": "",
+            "difficulty": 2,
+            "audio": "wav/write_in_magazine_for_20.wav",
+            "items": [
+                {
+                    "item": "tidning",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "pennor",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "vackarklocka",
+                    "category": "",
+                    "order": 1
+                }
+            ]
+        },
+        {
+            "id": 213,
+            "name": "",
+            "difficulty": 2,
+            "audio": "wav/dressed_for_summer.wav",
+            "items": [
+                {
+                    "item": "",
+                    "category": "top",
+                    "order": 1
+                },
+                {
+                    "item": "",
+                    "category": "bottom",
+                    "order": 1
+                },
+                {
+                    "item": "",
+                    "category": "underwear",
+                    "order": 1
+                }
+             ]
+        },
+        {
+            "id": 214,
+            "name": "",
+            "difficulty": 2,
+            "audio": "wav/pack_bag_for_tennis.wav",
+            "items": [
+                {
+                    "item": "ryggsack",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "tennisracket",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "",
+                    "category": "ball",
+                    "order": 1
+                },
+                {
+                    "item": "",
+                    "category": "clothes",
+                    "order": 66
+                }
+            ]
+        },
+        {
+            "id": 215,
+            "name": "",
+            "difficulty": 0,
+            "audio": "wav/get_books.wav",
+            "items": [
+                {
+                    "item": "bocker_sovrum",
+                    "category": "",
+                    "order": 1
+                }
+            ]
+        },
+        {
+            "id": 216,
+            "name": "",
+            "difficulty": 0,
+            "audio": "wav/get_robot.wav",
+            "items": [
+                {
+                    "item": "robot",
+                    "category": "",
+                    "order": 1
+                }
+            ]
+        },
+        {
+            "id": 217,
+            "name": "",
+            "difficulty": 0,
+            "audio": "wav/move_bedside_table.wav",
+            "items": [
+                {
+                    "item": "sangbord",
+                    "category": "",
+                    "order": 1
+                }
+            ]
+        },
+        {
+            "id": 218,
+            "name": "",
+            "difficulty": 0,
+            "audio": "wav/turn_on_lamp.wav",
+            "items": [
+                {
+                    "item": "lampa",
+                    "category": "",
+                    "order": 1
+                }
+            ]
+        },
+        {
+            "id": 219,
+            "name": "",
+            "difficulty": 0,
+            "audio": "wav/check_the_time.wav",
+            "items": [
+                {
+                    "item": "vackarklocka",
+                    "category": "",
+                    "order": 1
+                }
+            ]
+        }
+    ]
+}

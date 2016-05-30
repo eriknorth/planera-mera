@@ -65,6 +65,72 @@
 					"enabled": true
 				}
 			]
+		},
+		{
+			"id": 2,
+			"name": "school",
+			"icon": "school.png",
+			"background": "home.png",
+			"level": 0,
+			"enabled": true,
+			"rooms": [
+				{
+					"id": 1,
+					"name": "bathroom",
+					"icon": "rooms/btn/btn_bathroom.png",
+					"icon_x": 540,
+					"icon_y": 340,
+					"background": "rooms/bathroom.png",
+					"item_atlas": "items/bathroom.json",
+					"item_image": "items/bathroom.png",
+					"items": "items/world2/room1_items.json",
+					"tasks": "tasks/world2/room1_tasks.json",
+					"level": 0,
+					"enabled": true
+				},
+				{
+					"id": 2,
+					"name": "entrance",
+					"icon": "rooms/btn/btn_entrance.png",
+					"icon_x": 740,
+					"icon_y": 340,
+					"background": "rooms/entrance.png",
+					"item_atlas": "items/entrance.json",
+					"item_image": "items/entrance.png",
+					"items": "items/world2/room2_items.json",
+					"tasks": "tasks/world2/room2_tasks.json",
+					"level": 1,
+					"enabled": true
+				},
+				{
+					"id": 3,
+					"name": "kitchen",
+					"icon": "rooms/btn/btn_kitchen.png",
+					"icon_x": 540,
+					"icon_y": 520,
+					"background": "rooms/kitchen.png",
+					"item_atlas": "items/kitchen.json",
+					"item_image": "items/kitchen.png",
+					"items": "items/world2/room3_items.json",
+					"tasks": "tasks/world2/room3_tasks.json",
+					"level": 2,
+					"enabled": true
+				},
+				{
+					"id": 4,
+					"name": "bedroom",
+					"icon": "rooms/btn/btn_bedroom.png",
+					"icon_x": 740,
+					"icon_y": 520,
+					"background": "rooms/bedroom.png",
+					"item_atlas": "items/bedroom.json",
+					"item_image": "items/bedroom.png",
+					"items": "items/world2/room4_items.json",
+					"tasks": "tasks/world2/room4_tasks.json",
+					"level": 3,
+					"enabled": true
+				}
+			]
 		}
 	],
 	"rocket": {

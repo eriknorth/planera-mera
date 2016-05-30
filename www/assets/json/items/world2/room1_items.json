@@ -1,0 +1,94 @@
+{
+    "items": [
+        {
+            "name": "tvattkorg",
+            "x": 361,
+            "y": 255,
+            "categories": [ ]
+        },
+        {
+            "name": "handduk",
+            "x": 900,
+            "y": 510,
+            "categories": [ "clothes" ]
+        },
+        {
+            "name": "toalett",
+            "x": 552,
+            "y": 320,
+            "categories": [ ]
+        },
+        {
+            "name": "tvattmaskin",
+            "x": 170,
+            "y": 308,
+            "categories": [ ]
+        },
+        {
+            "name": "torktumlare",
+            "x": 171,
+            "y": 518,
+            "categories": [ ]
+        },
+        {
+            "name": "tandborste",
+            "x": 657,
+            "y": 563,
+            "categories": [ ]
+        },
+        {
+            "name": "smutstvatt",
+            "x": 361,
+            "y": 343,
+            "categories": [ "clothes" ]
+        },
+        {
+            "name": "dusch",
+            "x": 1171,
+            "y": 583,
+            "categories": [ ]
+        },
+        {
+            "name": "tvattmedel",
+            "x": 223,
+            "y": 665,
+            "categories": [ ]
+        },
+        {
+            "name": "tandkram",
+            "x": 696,
+            "y": 564,
+            "categories": [ ]
+        },
+        {
+            "name": "schampo",
+            "x": 1013,
+            "y": 590,
+            "categories": [ "soap" ]
+        },
+        {
+            "name": "duschtval",
+            "x": 1057,
+            "y": 590,
+            "categories": [ "soap" ]
+        },
+        {
+            "name": "handtval",
+            "x": 778,
+            "y": 573,
+            "categories": [ "soap" ]
+        },
+        {
+            "name": "vatten",
+            "x": 724,
+            "y": 441,
+            "categories": [ ]
+        },
+        {
+            "name": "toalettpapper",
+            "x": 442,
+            "y": 427,
+            "categories": [ ]
+        }
+    ]
+}
