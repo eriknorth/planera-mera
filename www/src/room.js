@@ -65,7 +65,7 @@ GameObj.Room = function (game) {
 	this._starArrow = null;
 	
 	this._tipCounter = 0;
-	
+	this._lastWasWrong = false;
 	
 	
 	
@@ -752,11 +752,11 @@ GameObj.Room.prototype = {
 	// 			);
 	// 		}
 	// 		else {
-				if(this._tipCounter > 3) {
-					// Reset tip counter
-					this._tipCounter = 0;
-					
-					this._sound.playSequence(['doPlanning_audio', this.prefix + '_t' + this._currTask.id + '_audio', 200,'aTip_audio'], 
+				if(this._lastWasWrong == true) {
+					// Reset
+					this._lastWasWrong = false;
+
+					this._sound.playSequence(['doPlanning_audio', this.prefix + '_t' + this._currTask.id + '_audio', 200,'aTip_audio'],
 						function() { self._alien.talk(false); self.setButtonsActive(true); },
 						function() { self._alien.talk(false); },
 						function() { self._alien.talk(true); }
@@ -1448,6 +1448,9 @@ GameObj.Room.prototype = {
 					// Inc. tasks cleared
 					GameObj.db.incLevelFailed(GameObj.level.id);
 				}
+				
+				// Wrong
+				this._lastWasWrong = true;
 				
 				// Hensi says something about better luck next time. Change state and give new task
 				// Callback to know that state change has been complete
