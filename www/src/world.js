@@ -116,8 +116,15 @@ GameObj.World.prototype = {
 				
 				// If no result returned -> first time this room has been opened
 				if(res.rows.length == 0) {
+					
+					// If room id is higher then One, start from higher level
+					var startLevel = 0;
+					if(roomObj.id > 1) {
+						startLevel = 1;
+					}
+					
 					// Insert new clean room entry
-					GameObj.db.insertLevel(GameObj.user.id, roomObj.id, function (id) {
+					GameObj.db.insertLevel(GameObj.user.id, roomObj.id, startLevel, function (id) {
 						// Save user in game object
 						GameObj.level = {id: id, user_id: GameObj.user.id, room: roomObj.id, level: 0, cleared: 0, failed: 0, timestamp: Date.now()};
 						

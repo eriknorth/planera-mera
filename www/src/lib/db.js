@@ -214,12 +214,12 @@ Db.prototype = {
 	},
 	
 	// Insert level
-	insertLevel: function (userId, room, callback) {
+	insertLevel: function (userId, room, level, callback) {
 		this.db.transaction(function(tx) {
 			tx.executeSql(
 				'INSERT INTO levels (user_id, room, level, cleared, failed, cleared_total, failed_total, timestamp) ' +
 				'VALUES (?, ?, ?, ?, ?, ?, ?, ?)', 
-			[userId, room, 0, 0, 0, 0, 0, Date.now()], function(tx, res) {
+			[userId, room, level, 0, 0, 0, 0, Date.now()], function(tx, res) {
 				// Run callback if defined
 				typeof callback === 'function' && callback(res.insertId);
 			});		
