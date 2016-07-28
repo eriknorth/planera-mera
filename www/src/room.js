@@ -1275,7 +1275,8 @@ GameObj.Room.prototype = {
 									continue;
 								}
 								else {
-									self._currTask = levelTasks[rndTask];
+									// TODO: Make sure this is correct!
+									//self._currTask = levelTasks[rndTask];
 									break;
 								}
 							}
