@@ -1,87 +1,97 @@
 {
 "frames": {
 	"apple": {
-		"frame": {"x":46, "y":641, "w":40, "h":52},
+		"frame": {"x":189, "y":672, "w":40, "h":52},
 		"spriteSourceSize": {"x":0,"y":0,"w":40,"h":52},
 		"sourceSize": {"w":40,"h":52}
 	},
 	"bok": {
-		"frame": {"x":144, "y":570, "w":138, "h":99},
+		"frame": {"x":345, "y":479, "w":138, "h":99},
 		"spriteSourceSize": {"x":0,"y":0,"w":138,"h":99},
 		"sourceSize": {"w":138,"h":99}
 	},
 	"dammsugare": {
-		"frame": {"x":564, "y":0, "w":154, "h":228},
+		"frame": {"x":282, "y":250, "w":154, "h":228},
 		"spriteSourceSize": {"x":0,"y":0,"w":154,"h":228},
 		"sourceSize": {"w":154,"h":228}
 	},
 	"dorr_garderob_hall": {
-		"frame": {"x":282, "y":0, "w":281, "h":526},
+		"frame": {"x":0, "y":0, "w":281, "h":526},
 		"spriteSourceSize": {"x":0,"y":0,"w":281,"h":526},
 		"sourceSize": {"w":281,"h":526}
 	},
 	"dorr_lador_hall": {
-		"frame": {"x":0, "y":0, "w":281, "h":249},
+		"frame": {"x":282, "y":0, "w":281, "h":249},
 		"spriteSourceSize": {"x":0,"y":0,"w":281,"h":249},
 		"sourceSize": {"w":281,"h":249}
 	},
 	"hink": {
-		"frame": {"x":401, "y":527, "w":99, "h":124},
+		"frame": {"x":564, "y":0, "w":99, "h":124},
 		"spriteSourceSize": {"x":0,"y":0,"w":116,"h":146},
 		"sourceSize": {"w":116,"h":146}
 	},
 	"jacka": {
-		"frame": {"x":0, "y":250, "w":188, "h":174},
+		"frame": {"x":0, "y":527, "w":188, "h":174},
 		"spriteSourceSize": {"x":0,"y":0,"w":188,"h":174},
 		"sourceSize": {"w":188,"h":174}
 	},
 	"mopp": {
-		"frame": {"x":564, "y":229, "w":64, "h":214},
+		"frame": {"x":664, "y":0, "w":64, "h":214},
 		"spriteSourceSize": {"x":0,"y":0,"w":64,"h":214},
 		"sourceSize": {"w":64,"h":214}
 	},
 	"mossa": {
-		"frame": {"x":189, "y":250, "w":92, "h":86},
+		"frame": {"x":484, "y":487, "w":92, "h":86},
 		"spriteSourceSize": {"x":0,"y":0,"w":92,"h":86},
 		"sourceSize": {"w":92,"h":86}
 	},
+	"paraply": {
+		"frame": {"x":600, "y":313, "w":72, "h":246},
+		"spriteSourceSize": {"x":0,"y":0,"w":72,"h":246},
+		"sourceSize": {"w":72,"h":246}
+	},
 	"penna": {
-		"frame": {"x":0, "y":641, "w":45, "h":26},
+		"frame": {"x":0, "y":702, "w":45, "h":26},
 		"spriteSourceSize": {"x":0,"y":0,"w":45,"h":26},
 		"sourceSize": {"w":45,"h":26}
 	},
 	"planta": {
-		"frame": {"x":501, "y":527, "w":92, "h":187},
+		"frame": {"x":564, "y":125, "w":92, "h":187},
 		"spriteSourceSize": {"x":0,"y":0,"w":92,"h":187},
 		"sourceSize": {"w":92,"h":187}
 	},
 	"rengoringsmedel": {
-		"frame": {"x":594, "y":444, "w":59, "h":138},
+		"frame": {"x":599, "y":560, "w":59, "h":138},
 		"spriteSourceSize": {"x":0,"y":0,"w":59,"h":138},
 		"sourceSize": {"w":59,"h":138}
 	},
 	"ryggsack": {
-		"frame": {"x":283, "y":527, "w":117, "h":144},
+		"frame": {"x":481, "y":579, "w":117, "h":144},
 		"spriteSourceSize": {"x":0,"y":0,"w":117,"h":144},
 		"sourceSize": {"w":117,"h":144}
 	},
 	"skor": {
-		"frame": {"x":0, "y":570, "w":143, "h":70},
+		"frame": {"x":337, "y":593, "w":143, "h":70},
 		"spriteSourceSize": {"x":0,"y":0,"w":143,"h":70},
 		"sourceSize": {"w":143,"h":70}
 	},
+	"stovlar": {
+		"frame": {"x":484, "y":337, "w":115, "h":149},
+		"spriteSourceSize": {"x":0,"y":0,"w":115,"h":149},
+		"sourceSize": {"w":115,"h":149}
+	},
 	"vantar": {
-		"frame": {"x":156, "y":425, "w":118, "h":86},
+		"frame": {"x":437, "y":250, "w":118, "h":86},
 		"spriteSourceSize": {"x":0,"y":0,"w":118,"h":86},
 		"sourceSize": {"w":118,"h":86}
 	},
 	"vatten": {
-		"frame": {"x":0, "y":425, "w":155, "h":65},
+		"frame": {"x":189, "y":527, "w":155, "h":65},
 		"spriteSourceSize": {"x":0,"y":0,"w":155,"h":65},
 		"sourceSize": {"w":155,"h":65}
 	},
 	"vattenkanna": {
-		"frame": {"x":0, "y":491, "w":147, "h":78},
+		"frame": {"x":189, "y":593, "w":147, "h":78},
 		"spriteSourceSize": {"x":0,"y":0,"w":147,"h":78},
 		"sourceSize": {"w":147,"h":78}
 	}
@@ -89,7 +99,7 @@
 },
 "meta": {
 	"image": "sprites.png",
-	"size": {"w": 719, "h": 715},
+	"size": {"w": 729, "h": 729},
 	"scale": "1"
 }
 }
