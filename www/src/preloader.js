@@ -246,6 +246,8 @@ GameObj.Preloader.prototype = {
 		this.audioList.push('tooManyItems_audio');
 		this.load.audio('gotRocketItem_audio', 'assets/audio/wav/you_got_a_rocket_item.wav');
 		this.audioList.push('gotRocketItem_audio');
+		this.load.audio('newRoomOpen_audio', 'assets/audio/wav/nytt_rum_oppnades.wav');
+		this.audioList.push('newRoomOpen_audio');
 		// --- </ Load Audio > ---
 		
 		

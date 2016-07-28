@@ -67,12 +67,18 @@ GameObj.Room = function (game) {
 	this._tipCounter = 0;
 	this._lastWasWrong = false;
 	
+	// Task history
+	this._taskHistory = [];
+	this._taskHistoryPtr = 0;
+	
 	
 	
 	this.LEVEL_DOWN_LIMIT = 1;
 	this.TASK_WRONG_LIMIT = 5;
 	this.OPEN_ROOM_LIMIT = 8;
 	this.OLDER_TASK_PROBABILITY = 4;
+	
+	this.TASK_HISTORY_SIZE = 4;
 };
 
 GameObj.Room.prototype = {
@@ -387,11 +393,11 @@ GameObj.Room.prototype = {
 				// Depending on difficulty, decide if should go to ordering
 				if(this._currTask.difficulty == 0) {
 					
-					this.processResult(true, function (newTask, presentItem, firstPresent) {
+					this.processResult(true, function (newTask, presentItem, firstPresent, levelUp) {
 						// Feedback
 						//self._alien.talk(true);
 						// Disable buttons
-						//self.setButtonsActive(false);
+						self.setButtonsActive(false);
 						
 						
 						//self._sound.play('playButton_audio', function() {
@@ -404,7 +410,13 @@ GameObj.Room.prototype = {
 								if(presentItem != -1 && firstPresent == true) {
 									// Feedback + present
 									self._alien.talk(true);
-									self._sound.playSequence(['positiveFeedback_audio', 500, 'gotRocketItem_audio'], 
+									// Check if a new room has opened
+									let audioList = ['positiveFeedback_audio', 500, 'gotRocketItem_audio'];
+									if(levelUp) {
+										audioList = ['positiveFeedback_audio', 500, 'gotRocketItem_audio', 500, 'newRoomOpen_audio'];
+									}
+									
+									self._sound.playSequence(audioList, 
 										function() { 
 											self._alien.talk(false); 
 											self.setButtonsActive(true);
@@ -419,13 +431,30 @@ GameObj.Room.prototype = {
 								else {
 									// Feedback
 									self._alien.talk(true);
-									self._sound.play('positiveFeedback_audio', function() {
-										self._alien.talk(false);
-										self.setButtonsActive(true);
+									// Check if a new room has opened
+									let audioList = ['positiveFeedback_audio'];
+									if(levelUp) {
+										audioList = ['positiveFeedback_audio', 500, 'newRoomOpen_audio'];
+									}
 									
-										// Change state
-										self.resetState(0);
-									});
+									self._sound.playSequence(audioList, 
+										function() { 
+											self._alien.talk(false); 
+											self.setButtonsActive(true);
+											
+											// Change state
+											self.resetState(0);
+										},
+										function() { self._alien.talk(false); },
+										function() { self._alien.talk(true); }
+									);
+									// self._sound.play('positiveFeedback_audio', function() {
+// 										self._alien.talk(false);
+// 										self.setButtonsActive(true);
+//
+// 										// Change state
+// 										self.resetState(0);
+// 									});
 								}
 								
 								//}, 500);
@@ -462,7 +491,7 @@ GameObj.Room.prototype = {
 					// Correct
 					//this._alien.talk(true);
 					// Disable buttons
-					//this.setButtonsActive(false);
+					this.setButtonsActive(false);
 					
 					//this._sound.play('playButton_audio', function() {
 						//self._alien.talk(false); 
@@ -546,7 +575,7 @@ GameObj.Room.prototype = {
 			if(this.checkSecondAnswer() == true) {
 				// Correct
 				
-				this.processResult(true, function (newTask, presentItem, firstPresent) {
+				this.processResult(true, function (newTask, presentItem, firstPresent, levelUp) {
 				
 					// Show star
 					self.showStar(presentItem);
@@ -1215,18 +1244,55 @@ GameObj.Room.prototype = {
 					// TODO: Make sure that selected task is not the same as previous
 					// Try to do it 10 times if do not manage... continue with same task (maybe there is just one task)
 					// Check if there was any previous
+					var selectionFailed = true;
+					
 					if(self._currTask != null) {
 												
 						for(var i = 0; i < 10; i++) {
 					
 							var rndTask = self.rnd.integerInRange(0, levelTasks.length-1);
 					
-							if(self._currTask.id == levelTasks[rndTask].id) {
-								continue;
+							// Choose tasks with history only if there are many tasks
+							if(levelTasks.length > 2) {
+					
+								// Check if task has been played recently
+								if(self._taskHistory.indexOf(levelTasks[rndTask].id) > -1) {
+									continue;
+								}
+								else {
+									selectionFailed = false;
+									//console.log(self._taskHistory);
+									self._taskHistory[self._taskHistoryPtr] = levelTasks[rndTask].id;
+									self._taskHistoryPtr = (self._taskHistoryPtr + 1) % self.TASK_HISTORY_SIZE;
+								
+									self._currTask = levelTasks[rndTask];
+									break;
+								}
 							}
+							// Otherwise choose the tasks by taking possibly well
 							else {
-								self._currTask = levelTasks[rndTask];
-								break;
+								if(self._currTask.id == levelTasks[rndTask].id) {
+									continue;
+								}
+								else {
+									self._currTask = levelTasks[rndTask];
+									break;
+								}
+							}
+						}
+						
+						// TODO: This is a hack! Selection failed...
+						if(selectionFailed == true) {
+							// Pick a task the old way
+							for(var i = 0; i < 10; i++) {
+								var rndTask = self.rnd.integerInRange(0, levelTasks.length-1);
+								if(self._currTask.id == levelTasks[rndTask].id) {
+									continue;
+								}
+								else {
+									self._currTask = levelTasks[rndTask];
+									break;
+								}
 							}
 						}
 					}
@@ -1362,6 +1428,8 @@ GameObj.Room.prototype = {
 	
 	processResult: function (correct, callback) {
 	
+		var levelUp = false;
+	
 		if(correct == true) {
 			// Correct answer
 			this.saveAnswer(1);
@@ -1396,13 +1464,15 @@ GameObj.Room.prototype = {
 			if(GameObj.level.cleared_total >= this.OPEN_ROOM_LIMIT && GameObj.user.level <= this._room.level) {
 				GameObj.user.level++;
 				GameObj.db.incUserLevel(GameObj.user.id);
+				levelUp = true;
+				console.log("LEVEL UP");
 			}
 			
 			// Give present in the rocket
 			this.givePresent(function (presentItem, firstPresent) {
 				// Give positiive feedback	
 				// Callback to know that state change has been complete
-				typeof callback === 'function' && callback(true, presentItem, firstPresent);
+				typeof callback === 'function' && callback(true, presentItem, firstPresent, levelUp);
 			});
 		}
 		else {
