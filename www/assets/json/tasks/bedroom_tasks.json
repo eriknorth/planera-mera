@@ -1,39 +1,6 @@
 {
     "tasks": [
         {
-            "id": 200,
-            "name": "",
-            "difficulty": 3,
-            "audio": "wav/get_dressed_for_party.wav",
-            "items": [
-                {
-                    "item": "",
-                    "category": "underwear",
-                    "order": 1
-                },
-                {
-                    "item": "strumpor",
-                    "category": "",
-                    "order": 0
-                },
-                {
-                    "item": "",
-                    "category": [ "bottom", "nice"],
-                    "order": 2
-                },
-                {
-                    "item": "",
-                    "category": [ "top", "nice"],
-                    "order": 2
-                },
-                {
-                    "item": "",
-                    "category": "clothes",
-                    "order": 66
-                }
-            ]
-        },
-        {
             "id": 201,
             "name": "",
             "difficulty": 3,
@@ -45,14 +12,14 @@
                     "order": 1
                 },
                 {
-                    "item": "strumpor",
-                    "category": "",
-                    "order": 0
-                },
-                {
                     "item": "",
                     "category": "bottom",
                     "order": 2
+                },
+                {
+                    "item": "strumpor",
+                    "category": "",
+                    "order": 0
                 },
                 {
                     "item": "",
@@ -155,14 +122,14 @@
                     "order": 1
                 },
                 {
-                    "item": "strumpor",
-                    "category": "",
-                    "order": 0
-                },
-                {
                     "item": "shorts",
                     "category": "",
                     "order": 2
+                },
+                {
+                    "item": "strumpor",
+                    "category": "",
+                    "order": 0
                 },
                 {
                     "item": "t-shirt",
@@ -249,7 +216,12 @@
                 {
                     "item": "skarp",
                     "category": "",
-                    "order": 2
+                    "order": 1
+                },
+                {
+                    "item": "",
+                    "category": "underwear",
+                    "order": 66
                 }
             ]
         },
@@ -262,17 +234,17 @@
                 {
                     "item": "ryggsack",
                     "category": "",
+                    "order": 2
+                },
+                {
+                    "item": "",
+                    "category": "homework",
                     "order": 1
                 },
                 {
                     "item": "",
                     "category": "homework",
-                    "order": 2
-                },
-                {
-                    "item": "",
-                    "category": "homework",
-                    "order": 2
+                    "order": 1
                 }
             ]
         },
@@ -308,12 +280,12 @@
                 {
                     "item": "",
                     "category": "top",
-                    "order": 1
+                    "order": 0
                 },
                 {
                     "item": "",
-                    "category": "bottom",
-                    "order": 1
+                    "category": "bottom_cold",
+                    "order": 2
                 },
                 {
                     "item": "",
@@ -331,7 +303,7 @@
                 {
                     "item": "ryggsack",
                     "category": "",
-                    "order": 1
+                    "order": 2
                 },
                 {
                     "item": "tennisracket",
@@ -412,6 +384,464 @@
                     "item": "vackarklocka",
                     "category": "",
                     "order": 1
+                }
+            ]
+        },
+        {
+            "id": 220,
+            "name": "",
+            "difficulty": 0,
+            "audio": "wav/get_book.wav",
+            "items": [
+                {
+                    "item": "",
+                    "category": "book",
+                    "order": 1
+                }
+            ]
+        },
+        {
+            "id": 221,
+            "name": "",
+            "difficulty": 0,
+            "audio": "wav/get_paper.wav",
+            "items": [
+                {
+                    "item": "tidning",
+                    "category": "",
+                    "order": 1
+                }
+            ]
+        },
+        {
+            "id": 222,
+            "name": "",
+            "difficulty": 0,
+            "audio": "wav/get_backpack.wav",
+            "items": [
+                {
+                    "item": "ryggsack",
+                    "category": "",
+                    "order": 1
+                }
+            ]
+        },
+        {
+            "id": 223,
+            "name": "",
+            "difficulty": 0,
+            "audio": "wav/get_racket.wav",
+            "items": [
+                {
+                    "item": "tennisracket",
+                    "category": "",
+                    "order": 1
+                }
+            ]
+        },
+        {
+            "id": 224,
+            "name": "",
+            "difficulty": 0,
+            "audio": "wav/get_belt.wav",
+            "items": [
+                {
+                    "item": "skarp",
+                    "category": "",
+                    "order": 1
+                }
+            ]
+        },
+        {
+            "id": 225,
+            "name": "",
+            "difficulty": 0,
+            "audio": "wav/get_ball.wav",
+            "items": [
+                {
+                    "item": "",
+                    "category": "ball",
+                    "order": 1
+                }
+            ]
+        },
+        {
+            "id": 226,
+            "name": "",
+            "difficulty": 0,
+            "audio": "wav/get_pen.wav",
+            "items": [
+                {
+                    "item": "pennor",
+                    "category": "",
+                    "order": 1
+                }
+            ]
+        },
+        {
+            "id": 227,
+            "name": "",
+            "difficulty": 0,
+            "audio": "wav/get_lamp.wav",
+            "items": [
+                {
+                    "item": "lampa",
+                    "category": "",
+                    "order": 1
+                }
+            ]
+        },
+        {
+            "id": 228,
+            "name": "",
+            "difficulty": 0,
+            "audio": "wav/get_plant.wav",
+            "items": [
+                {
+                    "item": "",
+                    "category": "plant",
+                    "order": 1
+                }
+            ]
+        },
+        {
+            "id": 229,
+            "name": "",
+            "difficulty": 0,
+            "audio": "wav/get_socks.wav",
+            "items": [
+                {
+                    "item": "strumpor",
+                    "category": "",
+                    "order": 1
+                }
+            ]
+        },
+        {
+            "id": 230,
+            "name": "",
+            "difficulty": 0,
+            "audio": "wav/get_sheets.wav",
+            "items": [
+                {
+                    "item": "lakan",
+                    "category": "",
+                    "order": 1
+                }
+            ]
+        },
+        {
+            "id": 231,
+            "name": "",
+            "difficulty": 1,
+            "audio": "wav/put_on_sock_and_pants.wav",
+            "items": [
+                {
+                    "item": "strumpor",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "",
+                    "category": "bottom",
+                    "order": 1
+                }
+            ]
+        },
+        {
+            "id": 232,
+            "name": "",
+            "difficulty": 1,
+            "audio": "wav/put_on_t_shirt_and_sweater.wav",
+            "items": [
+                {
+                    "item": "t-shirt",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "troja",
+                    "category": "",
+                    "order": 2
+                }
+            ]
+        },
+        {
+            "id": 233,
+            "name": "",
+            "difficulty": 1,
+            "audio": "wav/put_sheets_in_backpack.wav",
+            "items": [
+                {
+                    "item": "lakan",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "ryggsack",
+                    "category": "",
+                    "order": 2
+                }
+            ]
+        },
+        {
+            "id": 234,
+            "name": "",
+            "difficulty": 1,
+            "audio": "wav/play_tennis.wav",
+            "items": [
+                {
+                    "item": "",
+                    "category": "ball",
+                    "order": 1
+                },
+                {
+                    "item": "tennisracket",
+                    "category": "",
+                    "order": 1
+                }
+            ]
+        },
+        {
+            "id": 235,
+            "name": "",
+            "difficulty": 3,
+            "audio": "wav/get_dressed_with_skirt.wav",
+            "items": [
+                {
+                    "item": "",
+                    "category": "underwear",
+                    "order": 1
+                },
+                {
+                    "item": "kjol",
+                    "category": "",
+                    "order": 2
+                },
+                {
+                    "item": "strumpor",
+                    "category": "",
+                    "order": 66
+                },
+                {
+                    "item": "",
+                    "category": "top",
+                    "order": 0
+                }
+            ]
+        },
+        {
+            "id": 236,
+            "name": "",
+            "difficulty": 1,
+            "audio": "wav/pack_toy_in_backpack.wav",
+            "items": [
+                {
+                    "item": "",
+                    "category": "toy",
+                    "order": 1
+                },
+                {
+                    "item": "ryggsack",
+                    "category": "",
+                    "order": 2
+                }
+            ]
+        },
+        {
+            "id": 237,
+            "name": "",
+            "difficulty": 2,
+            "audio": "wav/play_computer_for_20.wav",
+            "items": [
+                {
+                    "item": "dator",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "vackarklocka",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "",
+                    "category": "furniture",
+                    "order": 66
+                }
+            ]
+        }, 
+		{
+            "id": 238,
+            "name": "",
+            "difficulty": 3,
+            "audio": "wav/get_dressed_warm.wav",
+            "items": [
+                {
+                    "item": "",
+                    "category": "underwear",
+                    "order": 1
+                },
+                {
+                    "item": "",
+                    "category": "bottom_warm",
+                    "order": 2
+                },
+                {
+                    "item": "",
+                    "category": "top_warm",
+                    "order": 3
+                },
+                {
+                    "item": "",
+                    "category": "top_cold",
+                    "order": 2
+                },
+                {
+                    "item": "strumpor",
+                    "category": "",
+                    "order": 0
+                },
+                {
+                    "item": "",
+                    "category": "clothes",
+                    "order": 66
+                }
+	        ]
+        },		
+        {
+            "id": 239,
+            "name": "",
+            "difficulty": 2,
+            "audio": "wav/play_tennis_for_20.wav",
+            "items": [
+                {
+                    "item": "tennisracket",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "",
+                    "category": "ball",
+                    "order": 1
+                },
+                {
+                    "item": "vackarklocka",
+                    "category": "",
+                    "order": 1
+                }
+            ]
+        },
+        {
+            "id": 240,
+            "name": "",
+            "difficulty": 2,
+            "audio": "wav/write_in_magazine_for_20.wav",
+            "items": [
+                {
+                    "item": "tidning",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "pennor",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "vackarklocka",
+                    "category": "",
+                    "order": 1
+                }
+            ]
+        },
+        {
+            "id": 241,
+            "name": "",
+            "difficulty": 2,
+            "audio": "wav/read_in_bed_when_its_dark.wav",
+            "items": [
+                {
+                    "item": "",
+                    "category": "book",
+                    "order": 1
+                },
+                {
+                    "item": "sang",
+                    "category": "",
+                    "order": 1
+                },
+                {
+                    "item": "lampa",
+                    "category": "",
+                    "order": 1
+                }
+            ]
+ 
+        },
+        {
+            "id": 242,
+            "name": "",
+            "difficulty": 2,
+            "audio": "wav/pack_backpack_for_change_of_clothes.wav",
+            "items": [
+                {
+                    "item": "",
+                    "category": "bottom",
+                    "order": 1
+                },
+                {
+                    "item": "",
+                    "category": "top",
+                    "order": 1
+                },
+                {
+                    "item": "",
+                    "category": "underwear",
+                    "order": 1
+                },
+                {
+                    "item": "strumpor",
+                    "category": "",
+                    "order": 66
+                },
+                {
+                    "item": "ryggsack",
+                    "category": "",
+                    "order": 2
+                }
+            ]
+        },
+		{
+            "id": 243,
+            "name": "",
+            "difficulty": 3,
+            "audio": "wav/get_dressed_for_party.wav",
+            "items": [
+                {
+                    "item": "",
+                    "category": "underwear",
+                    "order": 1
+                },
+                {
+                    "item": "",
+                    "category": "nice_bottom",
+                    "order": 2
+                },
+                {
+                    "item": "",
+                    "category": "nice_top",
+                    "order": 2
+                },
+                {
+                    "item": "strumpor",
+                    "category": "",
+                    "order": 0
+                },
+                {
+                    "item": "",
+                    "category": "clothes",
+                    "order": 66
                 }
             ]
         }

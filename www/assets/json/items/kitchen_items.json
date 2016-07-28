@@ -41,7 +41,7 @@
 			"name": "smor",
 			"x": 264,
 			"y": 474,
-			"categories": ["edible", "topping"]
+			"categories": ["edible", "topping", "frying_fat"]
 		},
 		{
 			"name": "ketchup",
@@ -57,7 +57,7 @@
 		},
 		{
 			"name": "agg",
-			"x": 272,
+			"x": 277,
 			"y": 372,
 			"categories": ["edible"]
 		},
@@ -81,7 +81,7 @@
 		},
 		{
 			"name": "prinsesstarta",
-			"x": 199,
+			"x": 184,
 			"y": 372,
 			"categories": ["edible", "sweet"]
 		},
@@ -147,13 +147,13 @@
 		},
 		{
 			"name": "diskmedel",
-			"x": 584,
+			"x": 559,
 			"y": 455,
 			"categories": ["doing_dishes"]
 		},
 		{
 			"name": "diskstall",
-			"x": 672,
+			"x": 628,
 			"y": 426,
 			"categories": ["doing_dishes"]
 		},
@@ -190,14 +190,14 @@
 		{
 			"name": "brodrost",
 			"x": 675,
-			"y": 243,
+			"y": 250,
 			"categories": [""]
 		},
 		{
 			"name": "smutsdisk",
-			"x": 792,
-			"y": 424,
-			"categories": ["plate", "doing_dishes"]
+			"x": 736,
+			"y": 428,
+			"categories": ["doing_dishes"]
 		},
 		{
 			"name": "kniv",
@@ -219,21 +219,21 @@
 		},
 		{
 			"name": "stekpanna",
-			"x": 673,
-			"y": 323,
+			"x": 648,
+			"y": 335,
 			"categories": ["cooking"]
 		},
 		{
 			"name": "stor_kastrull",
 			"x": 792,
 			"y": 333,
-			"categories": ["boiling"]
+			"categories": ["boiler"]
 		},
 		{
 			"name": "liten_kastrull",
 			"x": 780,
 			"y": 242,
-			"categories": ["boiling"]
+			"categories": ["boiler"]
 		},
 		{
 			"name": "aggkopp",
@@ -276,6 +276,24 @@
 			"x": 474,
 			"y": 282,
 			"categories": [""]
+		},
+		{
+			"name": "salt",
+			"x": 713,
+			"y": 546,
+			"categories": ["topping", "seasoning"]
+		},
+		{
+			"name": "olja",
+			"x": 820,
+			"y": 440,
+			"categories": ["topping", "frying_fat"]
+		},
+		{
+			"name": "stekspade",
+			"x": 711,
+			"y": 335,
+			"categories": ["cutlery"]
 		},
 		{
 			"name": "dorr_overskap",

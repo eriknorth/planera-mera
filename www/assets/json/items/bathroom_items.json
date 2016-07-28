@@ -52,7 +52,7 @@
             "name": "tvattmedel",
             "x": 223,
             "y": 665,
-            "categories": [ ]
+            "categories": [ "soap" ]
         },
         {
             "name": "tandkram",

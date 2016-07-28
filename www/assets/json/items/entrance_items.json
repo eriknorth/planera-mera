@@ -4,7 +4,7 @@
 			"name": "skor",
 			"x": 207,
 			"y": 198,
-			"categories": ["clothes"]
+			"categories": ["clothes", "shoes"]
 		},
 		{
 			"name": "jacka",
@@ -89,6 +89,18 @@
 			"x": 1174,
 			"y": 361,
 			"categories": ["cleaning_products"]	
+		},
+		{
+			"name": "paraply",
+			"x": 738,
+			"y": 360,
+			"categories": ["rain"]
+		},
+		{
+			"name": "stovlar",
+			"x": 191,
+			"y": 287,
+			"categories": ["rain", "shoes", "clothes"]
 		},
 		{
 			"name": "dorr_lador_hall",

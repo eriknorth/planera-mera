@@ -10,7 +10,7 @@
 			"name": "tidning",
 			"x": 160,
 			"y": 257,
-			"categories": ["homework", "fun", "book"]
+			"categories": ["homework", "toy", "book"]
 		},
 		{
 			"name": "sangbord",
@@ -52,38 +52,25 @@
 			"name": "troja",
 			"x": 817,
 			"y": 591,
-			"categories": ["clothes", "top"]
+			"categories": ["clothes", "top", "top_warm"]
 		},
 		{
 			"name": "skjorta",
 			"x": 887,
 			"y": 591,
-			"categories": ["clothes", "nice", "top"]
-		},
-		{
-			"name": "klanning_1",
-			"x": 819,
-			"y": 473,
-			"categories": ["clothes", "nice", "top", "bottom"]
-		},
-		{
-			"name": "klanning_2",
-			"x": 887,
-			"y": 481,
-			"categories": ["clothes", "nice", "top", "bottom"]
-		},
-		
+			"categories": ["clothes", "nice_top", "top", "top_cold"]
+		},	
 		{
 			"name": "finbyxor",
 			"x": 817,
 			"y": 328,
-			"categories": ["clothes", "nice", "bottom"]
+			"categories": ["clothes", "nice_bottom", "bottom", "bottom_warm"]
 		},
 		{
 			"name": "jeans",
 			"x": 889,
 			"y": 330,
-			"categories": ["clothes", "nice", "bottom"]
+			"categories": ["clothes", "nice_bottom", "bottom", "bottom_warm"]
 		},
 		{
 			"name": "trosor",
@@ -101,13 +88,13 @@
 			"name": "skarp",
 			"x": 1050,
 			"y": 560,
-			"categories": ["clothes", "nice"]
+			"categories": ["clothes"]
 		},
 		{
 			"name": "kjol",
 			"x": 1058,
 			"y": 437,
-			"categories": ["clothes", "nice", "bottom", "summer"]
+			"categories": ["clothes", "nice_bottom", "summer", "bottom", "bottom_cold"]
 		},
 		{
 			"name": "strumpor",
@@ -125,13 +112,13 @@
 			"name": "shorts",
 			"x": 1062,
 			"y": 298,
-			"categories": ["clothes", "bottom", "summer"]
+			"categories": ["clothes", "bottom", "summer", "bottom_cold"]
 		},
 		{
 			"name": "t-shirt",
 			"x": 1050,
 			"y": 644,
-			"categories": ["clothes", "top"]
+			"categories": ["clothes", "top", "top_cold"]
 		},
 		{
 			"name": "tennisracket",
