@@ -25,6 +25,8 @@ GameObj.World.prototype = {
 
 	create: function () {
 		
+		var self = this;
+		
 		// Get JSONs
 		var gameJson = this.cache.getJSON('game');
 		var worldsJson = this.cache.getJSON('worlds');
@@ -43,8 +45,8 @@ GameObj.World.prototype = {
 			{
 				// Check if level is enough high to access
 				// TODO: Remove 1 == 1 ! TESTING...
-				if(GameObj.user.level >= worldObj.rooms[i].level || 1 == 1) {
-				// if(GameObj.user.level >= worldObj.rooms[i].level) {
+				// if(GameObj.user.level >= worldObj.rooms[i].level || 1 == 1) {
+				if(GameObj.user.level >= worldObj.rooms[i].level) {
 					this._roomIcons[i] = this.add.button(
 						worldObj.rooms[i].icon_x, 
 						worldObj.rooms[i].icon_y, 
@@ -83,7 +85,19 @@ GameObj.World.prototype = {
 		this._sound = new Sound(this);
 		
 		// Give instruction
-		this.giveInstruction();
+		// Get Stuff from DB
+		// Check first room level...
+		var roomObj = worldsJson.worlds[GameObj.world].rooms[0];
+		GameObj.db.getLevel(GameObj.user.id, roomObj.id, function (res) {
+			
+			// If no result returned -> first time this room has been opened
+			if(res.rows.length == 0) {
+				self.giveInstruction(false);
+			}
+			else {
+				self.giveInstruction(true);
+			}
+		});
 	},
 	
 	goToMenu: function (pointer) {
@@ -150,16 +164,16 @@ GameObj.World.prototype = {
 		GameObj.db.insertEvent(GameObj.user.id, 'click', 'world:' + GameObj.world, 'alien');
 
 		// TODO: tell something
-		this.giveInstruction();
+		this.giveInstruction(false);
 	},
 	
-	giveInstruction: function () {
+	giveInstruction: function (doGiggle) {
 		
 		var self = this;
 		
 		// Choose audio
 		// Allow only one giggle
-		if(this._giggle == true) {
+		if(this._giggle == true || doGiggle == true) {
 			this._giggle = false;
 			
 			// Start audio with delay

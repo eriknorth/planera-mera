@@ -132,6 +132,10 @@ GameObj.Preloader.prototype = {
 		this.load.image('background', 'assets/img/background.png');
 		// --- </ Load Menu Background > ---
 		
+		// --- < Load Credits > ---
+		this.load.image('credits', 'assets/img/credits.png');
+		// --- </ Load Credits > ---
+		
 		// --- < Load Buttons > ---
 		this.load.spritesheet('btnAbout', 'assets/img/buttons/button_about.png', 85, 90);
 		this.load.spritesheet('btnMovie', 'assets/img/buttons/button_movie.png',  85, 90);

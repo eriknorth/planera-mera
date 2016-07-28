@@ -74,11 +74,11 @@ GameObj.Room = function (game) {
 	
 	
 	this.LEVEL_DOWN_LIMIT = 1;
-	this.TASK_WRONG_LIMIT = 5;
+	this.TASK_WRONG_LIMIT = 8;
 	this.OPEN_ROOM_LIMIT = 8;
 	this.OLDER_TASK_PROBABILITY = 4;
 	
-	this.TASK_HISTORY_SIZE = 4;
+	this.TASK_HISTORY_SIZE = 3;
 };
 
 GameObj.Room.prototype = {
@@ -1217,12 +1217,12 @@ GameObj.Room.prototype = {
 			else {
 				
 				// TODO: Test tasks... always gets this...
-				var task = res.rows.item(0);
-				task.task = 8;
-				GameObj.task = task;
+				// var task = res.rows.item(0);
+// 				task.task = 409;
+// 				GameObj.task = task;
 				
 				// Save task in game object
-				// GameObj.task = res.rows.item(0);
+				GameObj.task = res.rows.item(0);
 				
 				// Load task in the object
 				self._currTask = self._taskArray.filter(function (obj) {

@@ -13,6 +13,8 @@ GameObj.About.prototype = {
 		// Set backgound
 		this.stage.backgroundColor = '#304656';
 		this.add.sprite(0, 0, 'background');
+		
+		this.add.sprite(0, 0, 'credits');
 
 		// Back button
 		this.btnBack = this.add.button(60, 60, 'btnBack', this.goToMenu, this, 2, 0, 1);
@@ -25,12 +27,13 @@ GameObj.About.prototype = {
 		this.shadow.tint = 0x000000;
 		this.shadow.alpha = 0.4;
 		this.shadow.visible = false;
+		this.shadow.scale.setTo(0.6);
 
 		// Alien
-		this.alien = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'alien');
+		this.alien = this.game.add.sprite(this.game.world.width - 100, 120, 'alien');
 		this.alien.frame = 1;
 		this.alien.anchor.setTo(0.5, 0.5);
-		this.alien.scale.setTo(0.9);
+		this.alien.scale.setTo(0.5);
 		this.alien.inputEnabled = true;
 		this.alien.input.enableDrag();
 		this.alien.events.onInputDown.add(this.alienDown, this);
@@ -68,7 +71,7 @@ GameObj.About.prototype = {
 	alienUp: function () {
 
 		this.alien.frame = 1;
-		this.alien.scale.setTo(0.9);
+		this.alien.scale.setTo(0.5);
 		
 		// Shadow
 		this.shadow.visible = false;
@@ -80,7 +83,7 @@ GameObj.About.prototype = {
 		// Shadow
 		this.shadow.x = this.alien.x+10;
 		this.shadow.y = this.alien.y+10;
-		this.alien.scale.setTo(1);
+		this.alien.scale.setTo(0.6);
 
 	},
 
