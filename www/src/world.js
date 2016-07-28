@@ -43,8 +43,8 @@ GameObj.World.prototype = {
 			{
 				// Check if level is enough high to access
 				// TODO: Remove 1 == 1 ! TESTING...
-				// if(GameObj.user.level >= worldObj.rooms[i].level || 1 == 1) {
-				if(GameObj.user.level >= worldObj.rooms[i].level) {
+				if(GameObj.user.level >= worldObj.rooms[i].level || 1 == 1) {
+				// if(GameObj.user.level >= worldObj.rooms[i].level) {
 					this._roomIcons[i] = this.add.button(
 						worldObj.rooms[i].icon_x, 
 						worldObj.rooms[i].icon_y, 

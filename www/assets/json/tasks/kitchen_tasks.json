@@ -1,969 +1,1093 @@
 {
-    "tasks": [
-            {
-            "id": 401,
-            "name": "",
-            "difficulty": 1,
-            "audio": "wav/eat_and_drink.wav",
-                "items": 
-                [
-                    {
-                        "item": "",
-                        "category": "edible",
-                        "order": 1
-                    },
-                    {
-                        "item": "",
-                        "category": "drinkable",
-                        "order": 1
-                    },
-                    {
-                        "item": "",
-                        "category": "drinking_vessel",
-                        "order": 2
-                    }
-                ]
-        },
-        {
-            "id": 402,
-            "name": "",
-            "difficulty": 1,
-            "audio": "wav/fika_with_fruit.wav",
-            "items": 
-            [
-                {
-                    "item": "",
-                    "category": "drinkable",
-                    "order": 1
-                },
-                {
-                    "item": "",
-                    "category": "fruit",
-                    "order": 1
-                },
-                {
-                    "item": "",
-                    "category": "edible",
-                    "order": 1
+	"tasks": [
+		{
+			"id": 401,
+			"name": "",
+			"difficulty": 1,
+			"audio": "wav/eat_and_drink.wav",
+			"items": 
+			[
+				{
+					"item": "",
+					"category": "edible",
+					"order": 1,
+					"optional": false
 				},
-                {
-                    "item": "",
-                    "category": "drinking_vessel",
-                    "order": 1
-                },
-                {
-                    "item": "",
-                    "category": "cutlery",
-                    "order": 66
-                },
-                {
-                    "item": "",
-                    "category": "plate",
-                    "order": 66
-                }
-            ]
-        },
-        {
-            "id": 403,
-            "name": "",
-            "difficulty": 2,
-            "audio": "wav/boil_egg.wav",
-            "items": [
-                {
-                    "item": "vatten",
-                    "category": "",
-                    "order": 1
-                },
-                {
-                    "item": "",
-                    "category": "boiler",
-                    "order": 2
-                },
-                {
-                    "item": "agg",
-                    "category": "",
-                    "order": 1
-                },
-                {
-                    "item": "aggkopp",
-                    "category": "",
-                    "order": 66
-                }
-            ]
-        },
-        {
-            "id": 404,
-            "name": "",
-            "difficulty": 2,
-            "audio": "wav/make_tea.wav",
-            "items": [
-                {
-                    "item": "vatten",
-                    "category": "",
-                    "order": 1
-                },
-                {
-                    "item": "",
-                    "category": "boiler",
-                    "order": 2
-                },
-                {
-                    "item": "te",
-                    "category": "",
-                    "order": 3
-                },
-                {
-                    "item": "",
-                    "category": "drinking_vessel",
-                    "order": 3
-                }
-            ]
-        },
-        {
-            "id": 405,
-            "name": "",
-            "difficulty": 2,
-            "audio": "wav/lay_the_table.wav",
-            "items": [
-                {
-                    "item": "",
-                    "category": "plate",
-                    "order": 1
-                },
-                {
-                    "item": "",
-                    "category": "cutlery",
-                    "order": 1
-                },
-                {
-                    "item": "",
-                    "category": "drinking_vessel",
-                    "order": 1
-                },
-                {
-                    "item": "",
-                    "category": "topping",
-                    "order": 1
-                },
-                {
-                    "item": "",
-                    "category": "drinkable",
-                    "order": 66
-                }
-            ]
-        },
-        {
-            "id": 406,
-            "name": "",
-            "difficulty": 3,
-            "audio": "wav/toast_with_cheese.wav",
-            "items": [
-                {
-                    "item": "brodrost",
-                    "category": "",
-                    "order": 2
-                },
-                {
-                    "item": "brod",
-                    "category": "",
-                    "order": 1
-                },
-                {
-                    "item": "ost",
-                    "category": "",
-                    "order": 3
-                },
-                {
-                    "item": "smor",
-                    "category": "",
-                    "order": 66
-                },
-                {
-                    "item": "",
-                    "category": "plate",
-                    "order": 0
-                },
-                {
-                    "item": "",
-                    "category": "cutlery",
-                    "order": 66
-                }
-            ]
-        },
-        {
-            "id": 407,
-            "name": "",
-            "difficulty": 3,
-            "audio": "wav/do_the_dishes.wav",
-            "items": [
-                {
-                    "item": "smutsdisk",
-                    "category": "",
-                    "order": 2
-                },
-                {
-                    "item": "diskmedel",
-                    "category": "",
-                    "order": 1
-                },
-                {
-                    "item": "vatten",
-                    "category": "",
-                    "order": 3
-                },
-                {
-                    "item": "diskborste",
-                    "category": "",
-                    "order": 2
-                },
-                {
-                    "item": "diskstall",
-                    "category": "",
-                    "order": 4
-                }
-            ]
-        },
-        {
-            "id": 408,
-            "name": "",
-            "difficulty": 3,
-            "audio": "wav/fruit_sallad.wav",
-            "items": [
-                {
-                    "item": "",
-                    "category": "fruit",
-                    "order": 1
-                },
-                {
-                    "item": "",
-                    "category": "knife",
-                    "order": 1
-                },
-                {
-                    "item": "skarbrada",
-                    "category": "",
-                    "order": 1
-                },
-                {
-                    "item": "",
-                    "category": "plate",
-                    "order": 2
-                },
-                {
-                    "item": "",
-                    "category": "cutlery",
-                    "order": 66
-                }
-            ]
-        },
-        {
-            "id": 409,
-            "name": "",
-            "difficulty": 2,
-            "audio": "wav/sausage_with_bread.wav",
-            "items": [
-                {
-                    "item": "",
-                    "category": "boiler",
-                    "order": 2
-                },
-                {
-                    "item": "korv",
-                    "category": "",
-                    "order": 1
-                },
-                {
-                    "item": "vatten",
-                    "category": "",
-                    "order": 1
-                },
-                {
-                    "item": "",
-                    "category": "bread",
-                    "order": 3
-                },
-                {
-                    "item": "",
-                    "category": "topping",
-                    "order": 66
-                }
-            ]
-        },
-        {
-            "id": 410,
-            "name": "",
-            "difficulty": 1,
-            "audio": "wav/disposal_of_garbage.wav",
-            "items": [
-                {
-                    "item": "sopor",
-                    "category": "",
-                    "order": 1
-                },
-                {
-                    "item": "soptunna",
-                    "category": "",
-                    "order": 1
-                },
-                {
-                    "item": "ny_soppase",
-                    "category": "",
-                    "order": 2
-                }
-            ]
-         },
-         {
-            "id": 411,
-            "name": "",
-            "difficulty": 2,
-            "audio": "wav/make_spagetti.wav",
-            "items": [
-                {
-                    "item": "vatten",
-                    "category": "",
-                    "order": 1
-                },
-                {
-                    "item": "",
-                    "category": "boiler",
-                    "order": 2
-                },
-                {
-                    "item": "spagetti",
-                    "category": "",
-                    "order": 1
-                },
-                {
-                    "item": "",
-                    "category": "plate",
-                    "order": 66
-                },
-                {
-                    "item": "",
-                    "category": "cutlery",
-                    "order": 66
-                },
-                {
-                    "item": "salt",
-                    "category": "",
-                    "order": 66
-                }
-            ]
-        },
-        {
-            "id": 412,
-            "name": "",
-            "difficulty": 1,
-            "audio": "wav/drink.wav",
-            "items": [
-                {
-                    "item": "",
-                    "category": "drinkable",
-                    "order": 1
-                },
-      		  	{
-                    "item": "",
-                    "category": "drinking_vessel",
-                    "order": 2
-       		 	}
-            ]
-        },
-        {
-            "id": 413,
-            "name": "",
-            "difficulty": 0,
-            "audio": "wav/eat.wav",
-            "items": [
-                {
-                    "item": "",
-                    "category": "edible",
-                    "order": 1
-                },
-      		  	{
-                    "item": "",
-                    "category": "cutlery",
-                    "order": 66
-       		 	},
-       		 	{
-                    "item": "",
-                    "category": "cutlery",
-                    "order": 66
-        		},
-        		{
-                    "item": "",
-                    "category": "plate",
-                    "order": 66
-        		 }
-            ]
-        },
-        {
-            "id": 414,
-            "name": "",
-            "difficulty": 0,
-            "audio": "wav/a_fruit.wav",
-            "items": [
-                {
-                    "item": "",
-                    "category": "fruit",
-                    "order": 1
-                }
-            ]
-        },
-        {
-            "id": 415,
-            "name": "",
-            "difficulty": 1,
-            "audio": "wav/cut_an_orange.wav",
-            "items": [
-                {
-                    "item": "apelsin",
-                    "category": "",
-                    "order": 1
-                },
-                {
-                    "item": "",
-                    "category": "knife",
-                    "order": 1
-                },
-                {
-                    "item": "skarbrada",
-                    "category": "",
-                    "order": 1
-                }
-            ]
-        },
-        {
-            "id": 416,
-            "name": "",
-            "difficulty": 1,
-            "audio": "wav/glass_of_milk.wav",
-            "items": 
-            [
-                {
-                    "item": "",
-                    "category": "drinking_vessel",
-                    "order": 2
-                },
-                {
-                    "item": "mjolk",
-                    "category": "",
-                    "order": 1
-                }
-            ]
-        },
-        {
-            "id": 417,
-            "name": "",
-            "difficulty": 1,
-            "audio": "wav/something_sweet.wav",
-            "items": 
-            [
-                {
-                    "item": "",
-                    "category": "sweet",
-                    "order": 1
-                },
-                {
-                    "item": "",
-                    "category": "plate",
-                    "order": 66
-                },
-                {
-                    "item": "",
-                    "category": "cutlery",
-                    "order": 66
-                }
-            ]
-        },
-        {
-            "id": 418,
-            "name": "",
-            "difficulty": 1,
-            "audio": "wav/a_piece_of_cake.wav",
-            "items": 
-            [
-                {
-                    "item": "prinsesstarta",
-                    "category": "",
-                    "order": 1
-                },
-                {
-                    "item": "",
-                    "category": "plate",
-                    "order": 1
-                },
-                {
-                    "item": "",
-                    "category": "knife",
-                    "order": 66
-                },
-                {
-                    "item": "",
-                    "category": "cutlery",
-                    "order": 1
-                }
-            ]
-        },
-        {
-            "id": 419,
-            "name": "",
-            "difficulty": 3,
-            "audio": "wav/toast_with_something_tasty.wav",
-            "items": [
-                {
-                    "item": "brodrost",
-                    "category": "",
-                    "order": 2
-                },
-                {
-                    "item": "brod",
-                    "category": "",
-                    "order": 1
-                },
-                {
-                    "item": "",
-                    "category": "topping",
-                    "order": 3
-                },
-                {
-                    "item": "",
-                    "category": "plate",
-                    "order": 0
-                },
-                {
-                    "item": "",
-                    "category": "cutlery",
-                    "order": 66
-                }
-            ]
-        },
-        {
-            "id": 420,
-            "name": "",
-            "difficulty": 3,
-            "audio": "wav/fika_with_tea.wav",
-            "items": [
-                {
-                    "item": "vatten",
-                    "category": "",
-                    "order": 1
-                },
-                {
-                    "item": "",
-                    "category": "boiler",
-                    "order": 2
-                },
-                {
-                    "item": "te",
-                    "category": "",
-                    "order": 3
-                },
-                {
-                    "item": "",
-                    "category": "drinking_vessel",
-                    "order": 3
-                },
-                {
-                    "item": "",
-                    "category": "edible",
-                    "order": 0
-                },
-                {
-                    "item": "",
-                    "category": "plate",
-                    "order": 66
-                },
-                {
-                    "item": "",
-                    "category": "cutlery",
-                    "order": 66
-                }
-            ]
-        },
-        {
-            "id": 421,
-            "name": "",
-            "difficulty": 2,
-            "audio": "wav/fry_an_egg.wav",
-            "items": [
-                {
-                    "item": "stekpanna",
-                    "category": "",
-                    "order": 2
-                },
-                {
-                    "item": "agg",
-                    "category": "",
-                    "order": 1
-                },
-                {
-                    "item": "",
-                    "category": "plate",
-                    "order": 66
-                },
-                {
-                    "item": "",
-                    "category": "frying_fat",
-                    "order": 66
-                },
-                {
-                    "item": "",
-                    "category": "cutlery",
-                    "order": 66
-                }
-            ]
-        },
-        {
-            "id": 422,
-            "name": "",
-            "difficulty": 0,
-            "audio": "wav/get_garbage.wav",
-            "items": [
-                {
-                    "item": "sopor",
-                    "category": "",
-                    "order": 1
-                }
-            ]
-        },
-        {
-            "id": 423,
-            "name": "",
-            "difficulty": 0,
-            "audio": "wav/get_ketchup.wav",
-            "items": [
-                {
-                    "item": "ketchup",
-                    "category": "",
-                    "order": 1
-                }
-            ]
-        },
-        {
-            "id": 424,
-            "name": "",
-            "difficulty": 0,
-            "audio": "wav/get_cuttingboard.wav",
-            "items": [
-                {
-                    "item": "skarbrada",
-                    "category": "",
-                    "order": 1
-                }
-            ]
-        },
-        {
-            "id": 425,
-            "name": "",
-            "difficulty": 0,
-            "audio": "wav/get_bag.wav",
-            "items": [
-                {
-                    "item": "ny_soppase",
-                    "category": "",
-                    "order": 1
-                }
-            ]
-        },
-        {
-            "id": 426,
-            "name": "",
-            "difficulty": 0,
-            "audio": "wav/get_toaster.wav",
-            "items": [
-                {
-                    "item": "brodrost",
-                    "category": "",
-                    "order": 1
-                }
-            ]
-        },
-        {
-            "id": 427,
-            "name": "",
-            "difficulty": 0,
-            "audio": "wav/get_mug.wav",
-            "items": [
-                {
-                    "item": "mugg",
-                    "category": "",
-                    "order": 1
-                }
-            ]
-        },
-        {
-            "id": 428,
-            "name": "",
-            "difficulty": 0,
-            "audio": "wav/something_to_drink_with.wav",
-            "items": [
-                {
-                    "item": "",
-                    "category": "drinking_vessel",
-                    "order": 1
-                }
-            ]
-        },
-        {
-            "id": 429,
-            "name": "",
-            "difficulty": 0,
-            "audio": "wav/something_to_eat_on.wav",
-            "items": [
-                {
-                    "item": "",
-                    "category": "plate",
-                    "order": 1
-                }
-            ]
-        },
-        {
-            "id": 430,
-            "name": "",
-            "difficulty": 0,
-            "audio": "wav/get_a_cutlery.wav",
-            "items": [
-                {
-                    "item": "",
-                    "category": "cutlery",
-                    "order": 1
-                }
-            ]
-        },
-        {
-            "id": 431,
-            "name": "",
-            "difficulty": 1,
-            "audio": "wav/cut_an_apple.wav",
-            "items": [
-                {
-                    "item": "jordgubbe",
-                    "category": "",
-                    "order": 1
-                },
-                {
-                    "item": "",
-                    "category": "knife",
-                    "order": 1
-                },
-                {
-                    "item": "skarbrada",
-                    "category": "",
-                    "order": 1
-                }
-            ]
-        },
-        {
-            "id": 432,
-            "name": "",
-            "difficulty": 1,
-            "audio": "wav/cut_a_pear.wav",
-            "items": [
-                {
-                    "item": "paron",
-                    "category": "",
-                    "order": 1
-                },
-                {
-                    "item": "",
-                    "category": "knife",
-                    "order": 1
-                },
-                {
-                    "item": "skarbrada",
-                    "category": "",
-                    "order": 1
-                }
-            ]
-        },
-        {
-            "id": 433,
-            "name": "",
-            "difficulty": 1,
-            "audio": "wav/cut_cheese.wav",
-            "items": [
-                {
-                    "item": "ost",
-                    "category": "",
-                    "order": 1
-                },
-                {
-                    "item": "",
-                    "category": "knife",
-                    "order": 1
-                },
-                {
-                    "item": "skarbrada",
-                    "category": "",
-                    "order": 1
-                }
-            ]
-        },
-        {
-            "id": 434,
-            "name": "",
-            "difficulty": 1,
-            "audio": "wav/glass_of_water.wav",
-            "items": 
-            [
-                {
-                    "item": "",
-                    "category": "drinking_vessel",
-                    "order": 2
-                },
-                {
-                    "item": "vatten",
-                    "category": "",
-                    "order": 1
-                }
-            ]
-        },
-        {
-            "id": 435,
-            "name": "",
-            "difficulty": 1,
-            "audio": "wav/glass_of_juice.wav",
-            "items": 
-            [
-                {
-                    "item": "",
-                    "category": "drinking_vessel",
-                    "order": 2
-                },
-                {
-                    "item": "juice",
-                    "category": "",
-                    "order": 1
-                }
-            ]
-        },
-        {
-            "id": 436,
-            "name": "",
-            "difficulty": 0,
-            "audio": "wav/a_bun.wav",
-            "items": [
-                {
-                    "item": "kanelbulle",
-                    "category": "",
-                    "order": 1
-                }
-            ]
-        },
-        {
-            "id": 437,
-            "name": "",
-            "difficulty": 2,
-            "audio": "wav/lay_the_table_for_soup.wav",
-            "items": [
-                {
-                    "item": "tallrik_djup",
-                    "category": "",
-                    "order": 1
-                },
-                {
-                    "item": "sked",
-                    "category": "",
-                    "order": 1
-                },
-                {
-                    "item": "",
-                    "category": "drinking_vessel",
-                    "order": 1
-                },
-                {
-                    "item": "",
-                    "category": "drinkable",
-                    "order": 66
-                }
-            ]
-        },
-        {
-            "id": 438,
-            "name": "",
-            "difficulty": 2,
-            "audio": "wav/offer_fika.wav",
-            "items": 
-            [
-                {
-                    "item": "",
-                    "category": "drinkable",
-                    "order": 1
-                },
-                {
-                    "item": "",
-                    "category": "edible",
-                    "order": 1
-                },
-                {
-                    "item": "",
-                    "category": "drinking_vessel",
-                    "order": 1
-                },
-                {
-                    "item": "",
-                    "category": "cutlery",
-                    "order": 66
-                },
-                {
-                    "item": "",
-                    "category": "plate",
-                    "order": 66
-                }
-            ]
-        },
-        {
-            "id": 439,
-            "name": "",
-            "difficulty": 0,
-            "audio": "wav/get_dishsoap.wav",
-            "items": [
-                {
-                    "item": "diskmedel",
-                    "category": "",
-                    "order": 1
-                }
-            ]
-        },
-        {
-            "id": 440,
-            "name": "",
-            "difficulty": 0,
-            "audio": "wav/get_dirtydish.wav",
-            "items": [
-                {
-                    "item": "smutsdisk",
-                    "category": "",
-                    "order": 1
-                }
-            ]
-        },
-        {
-            "id": 441,
-            "name": "",
-            "difficulty": 0,
-            "audio": "wav/get_juice.wav",
-            "items": [
-                {
-                    "item": "juice",
-                    "category": "",
-                    "order": 1
-                }
-            ]
-        },
-        {
-            "id": 442,
-            "name": "",
-            "difficulty": 0,
-            "audio": "wav/get_fryingpan.wav",
-            "items": [
-                {
-                    "item": "stekpanna",
-                    "category": "",
-                    "order": 1
-                }
-            ]
-        }
+				{
+					"item": "",
+					"category": "drinkable",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "drinking_vessel",
+					"order": 2,
+					"optional": false
+				}
+			]
+		},
+		{
+			"id": 402,
+			"name": "",
+			"difficulty": 1,
+			"audio": "wav/fika_with_fruit.wav",
+			"items": 
+			[
+				{
+					"item": "",
+					"category": "drinkable",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "fruit",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "edible",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "drinking_vessel",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "cutlery",
+					"order": 0,
+					"optional": true
+				},
+				{
+					"item": "",
+					"category": "plate",
+					"order": 0,
+					"optional": true
+				}
+			]
+		},
+		{
+			"id": 403,
+			"name": "",
+			"difficulty": 2,
+			"audio": "wav/boil_egg.wav",
+			"items": [
+				{
+					"item": "vatten",
+					"category": "",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "boiler",
+					"order": 2,
+					"optional": false
+				},
+				{
+					"item": "agg",
+					"category": "",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "aggkopp",
+					"category": "",
+					"order": 0,
+					"optional": true
+				}
+			]
+		},
+		{
+			"id": 404,
+			"name": "",
+			"difficulty": 2,
+			"audio": "wav/make_tea.wav",
+			"items": [
+				{
+					"item": "vatten",
+					"category": "",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "boiler",
+					"order": 2,
+					"optional": false
+				},
+				{
+					"item": "te",
+					"category": "",
+					"order": 3,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "drinking_vessel",
+					"order": 3,
+					"optional": false
+				}
+			]
+		},
+		{
+			"id": 405,
+			"name": "",
+			"difficulty": 2,
+			"audio": "wav/lay_the_table.wav",
+			"items": [
+				{
+					"item": "",
+					"category": "plate",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "cutlery",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "drinking_vessel",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "topping",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "drinkable",
+					"order": 0,
+					"optional": true
+				}
+			]
+		},
+		{
+			"id": 406,
+			"name": "",
+			"difficulty": 3,
+			"audio": "wav/toast_with_cheese.wav",
+			"items": [
+				{
+					"item": "brodrost",
+					"category": "",
+					"order": 2,
+					"optional": false
+				},
+				{
+					"item": "brod",
+					"category": "",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "ost",
+					"category": "",
+					"order": 3,
+					"optional": false
+				},
+				{
+					"item": "smor",
+					"category": "",
+					"order": 0,
+					"optional": true
+				},
+				{
+					"item": "",
+					"category": "plate",
+					"order": 0,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "cutlery",
+					"order": 0,
+					"optional": true
+				}
+			]
+		},
+		{
+			"id": 407,
+			"name": "",
+			"difficulty": 3,
+			"audio": "wav/do_the_dishes.wav",
+			"items": [
+				{
+					"item": "smutsdisk",
+					"category": "",
+					"order": 2,
+					"optional": false
+				},
+				{
+					"item": "diskmedel",
+					"category": "",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "vatten",
+					"category": "",
+					"order": 3,
+					"optional": false
+				},
+				{
+					"item": "diskborste",
+					"category": "",
+					"order": 2,
+					"optional": false
+				},
+				{
+					"item": "diskstall",
+					"category": "",
+					"order": 4,
+					"optional": false
+				}
+			]
+		},
+		{
+			"id": 408,
+			"name": "",
+			"difficulty": 3,
+			"audio": "wav/fruit_sallad.wav",
+			"items": [
+				{
+					"item": "",
+					"category": "fruit",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "knife",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "skarbrada",
+					"category": "",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "plate",
+					"order": 2,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "cutlery",
+					"order": 0,
+					"optional": true
+				}
+			]
+		},
+		{
+			"id": 409,
+			"name": "",
+			"difficulty": 2,
+			"audio": "wav/sausage_with_bread.wav",
+			"items": [
+				{
+					"item": "",
+					"category": "boiler",
+					"order": 2,
+					"optional": false
+				},
+				{
+					"item": "korv",
+					"category": "",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "vatten",
+					"category": "",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "bread",
+					"order": 3,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "topping",
+					"order": 0,
+					"optional": true
+				}
+			]
+		},
+		{
+			"id": 410,
+			"name": "",
+			"difficulty": 1,
+			"audio": "wav/disposal_of_garbage.wav",
+			"items": [
+				{
+					"item": "sopor",
+					"category": "",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "soptunna",
+					"category": "",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "ny_soppase",
+					"category": "",
+					"order": 2,
+					"optional": false
+				}
+			]
+		},
+		{
+			"id": 411,
+			"name": "",
+			"difficulty": 2,
+			"audio": "wav/make_spagetti.wav",
+			"items": [
+				{
+					"item": "vatten",
+					"category": "",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "boiler",
+					"order": 2,
+					"optional": false
+				},
+				{
+					"item": "spagetti",
+					"category": "",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "plate",
+					"order": 0,
+					"optional": true
+				},
+				{
+					"item": "",
+					"category": "cutlery",
+					"order": 0,
+					"optional": true
+				},
+				{
+					"item": "salt",
+					"category": "",
+					"order": 0,
+					"optional": true
+				}
+			]
+		},
+		{
+			"id": 412,
+			"name": "",
+			"difficulty": 1,
+			"audio": "wav/drink.wav",
+			"items": [
+				{
+					"item": "",
+					"category": "drinkable",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "drinking_vessel",
+					"order": 2,
+					"optional": false
+				}
+			]
+		},
+		{
+			"id": 413,
+			"name": "",
+			"difficulty": 0,
+			"audio": "wav/eat.wav",
+			"items": [
+				{
+					"item": "",
+					"category": "edible",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "cutlery",
+					"order": 0,
+					"optional": true
+				},
+				{
+					"item": "",
+					"category": "cutlery",
+					"order": 0,
+					"optional": true
+				},
+				{
+					"item": "",
+					"category": "plate",
+					"order": 0,
+					"optional": true
+				}
+			]
+		},
+		{
+			"id": 414,
+			"name": "",
+			"difficulty": 0,
+			"audio": "wav/a_fruit.wav",
+			"items": [
+				{
+					"item": "",
+					"category": "fruit",
+					"order": 1,
+					"optional": false
+				}
+			]
+		},
+		{
+			"id": 415,
+			"name": "",
+			"difficulty": 1,
+			"audio": "wav/cut_an_orange.wav",
+			"items": [
+				{
+					"item": "apelsin",
+					"category": "",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "knife",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "skarbrada",
+					"category": "",
+					"order": 1,
+					"optional": false
+				}
+			]
+		},
+		{
+			"id": 416,
+			"name": "",
+			"difficulty": 1,
+			"audio": "wav/glass_of_milk.wav",
+			"items": 
+			[
+				{
+					"item": "",
+					"category": "drinking_vessel",
+					"order": 2,
+					"optional": false
+				},
+				{
+					"item": "mjolk",
+					"category": "",
+					"order": 1,
+					"optional": false
+				}
+			]
+		},
+		{
+			"id": 417,
+			"name": "",
+			"difficulty": 1,
+			"audio": "wav/something_sweet.wav",
+			"items": 
+			[
+				{
+					"item": "",
+					"category": "sweet",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "plate",
+					"order": 0,
+					"optional": true
+				},
+				{
+					"item": "",
+					"category": "cutlery",
+					"order": 0,
+					"optional": true
+				}
+			]
+		},
+		{
+			"id": 418,
+			"name": "",
+			"difficulty": 1,
+			"audio": "wav/a_piece_of_cake.wav",
+			"items": 
+			[
+				{
+					"item": "prinsesstarta",
+					"category": "",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "plate",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "knife",
+					"order": 0,
+					"optional": true
+				},
+				{
+					"item": "",
+					"category": "cutlery",
+					"order": 1,
+					"optional": false
+				}
+			]
+		},
+		{
+			"id": 419,
+			"name": "",
+			"difficulty": 3,
+			"audio": "wav/toast_with_something_tasty.wav",
+			"items": [
+				{
+					"item": "brodrost",
+					"category": "",
+					"order": 2,
+					"optional": false
+				},
+				{
+					"item": "brod",
+					"category": "",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "topping",
+					"order": 3,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "plate",
+					"order": 0,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "cutlery",
+					"order": 0,
+					"optional": true
+				}
+			]
+		},
+		{
+			"id": 420,
+			"name": "",
+			"difficulty": 3,
+			"audio": "wav/fika_with_tea.wav",
+			"items": [
+				{
+					"item": "vatten",
+					"category": "",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "boiler",
+					"order": 2,
+					"optional": false
+				},
+				{
+					"item": "te",
+					"category": "",
+					"order": 3,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "drinking_vessel",
+					"order": 3,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "edible",
+					"order": 0,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "plate",
+					"order": 0,
+					"optional": true
+				},
+				{
+					"item": "",
+					"category": "cutlery",
+					"order": 0,
+					"optional": true
+				}
+			]
+		},
+		{
+			"id": 421,
+			"name": "",
+			"difficulty": 2,
+			"audio": "wav/fry_an_egg.wav",
+			"items": [
+				{
+					"item": "stekpanna",
+					"category": "",
+					"order": 2,
+					"optional": false
+				},
+				{
+					"item": "agg",
+					"category": "",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "plate",
+					"order": 0,
+					"optional": true
+				},
+				{
+					"item": "",
+					"category": "frying_fat",
+					"order": 0,
+					"optional": true
+				},
+				{
+					"item": "",
+					"category": "cutlery",
+					"order": 0,
+					"optional": true
+				}
+			]
+		},
+		{
+			"id": 422,
+			"name": "",
+			"difficulty": 0,
+			"audio": "wav/get_garbage.wav",
+			"items": [
+				{
+					"item": "sopor",
+					"category": "",
+					"order": 1,
+					"optional": false
+				}
+			]
+		},
+		{
+			"id": 423,
+			"name": "",
+			"difficulty": 0,
+			"audio": "wav/get_ketchup.wav",
+			"items": [
+				{
+					"item": "ketchup",
+					"category": "",
+					"order": 1,
+					"optional": false
+				}
+			]
+		},
+		{
+			"id": 424,
+			"name": "",
+			"difficulty": 0,
+			"audio": "wav/get_cuttingboard.wav",
+			"items": [
+				{
+					"item": "skarbrada",
+					"category": "",
+					"order": 1,
+					"optional": false
+				}
+			]
+		},
+		{
+			"id": 425,
+			"name": "",
+			"difficulty": 0,
+			"audio": "wav/get_bag.wav",
+			"items": [
+				{
+					"item": "ny_soppase",
+					"category": "",
+					"order": 1,
+					"optional": false
+				}
+			]
+		},
+		{
+			"id": 426,
+			"name": "",
+			"difficulty": 0,
+			"audio": "wav/get_toaster.wav",
+			"items": [
+				{
+					"item": "brodrost",
+					"category": "",
+					"order": 1,
+					"optional": false
+				}
+			]
+		},
+		{
+			"id": 427,
+			"name": "",
+			"difficulty": 0,
+			"audio": "wav/get_mug.wav",
+			"items": [
+				{
+					"item": "mugg",
+					"category": "",
+					"order": 1,
+					"optional": false
+				}
+			]
+		},
+		{
+			"id": 428,
+			"name": "",
+			"difficulty": 0,
+			"audio": "wav/something_to_drink_with.wav",
+			"items": [
+				{
+					"item": "",
+					"category": "drinking_vessel",
+					"order": 1,
+					"optional": false
+				}
+			]
+		},
+		{
+			"id": 429,
+			"name": "",
+			"difficulty": 0,
+			"audio": "wav/something_to_eat_on.wav",
+			"items": [
+				{
+					"item": "",
+					"category": "plate",
+					"order": 1,
+					"optional": false
+				}
+			]
+		},
+		{
+			"id": 430,
+			"name": "",
+			"difficulty": 0,
+			"audio": "wav/get_a_cutlery.wav",
+			"items": [
+				{
+					"item": "",
+					"category": "cutlery",
+					"order": 1,
+					"optional": false
+				}
+			]
+		},
+		{
+			"id": 431,
+			"name": "",
+			"difficulty": 1,
+			"audio": "wav/cut_an_apple.wav",
+			"items": [
+				{
+					"item": "jordgubbe",
+					"category": "",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "knife",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "skarbrada",
+					"category": "",
+					"order": 1,
+					"optional": false
+				}
+			]
+		},
+		{
+			"id": 432,
+			"name": "",
+			"difficulty": 1,
+			"audio": "wav/cut_a_pear.wav",
+			"items": [
+				{
+					"item": "paron",
+					"category": "",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "knife",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "skarbrada",
+					"category": "",
+					"order": 1,
+					"optional": false
+				}
+			]
+		},
+		{
+			"id": 433,
+			"name": "",
+			"difficulty": 1,
+			"audio": "wav/cut_cheese.wav",
+			"items": [
+				{
+					"item": "ost",
+					"category": "",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "knife",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "skarbrada",
+					"category": "",
+					"order": 1,
+					"optional": false
+				}
+			]
+		},
+		{
+			"id": 434,
+			"name": "",
+			"difficulty": 1,
+			"audio": "wav/glass_of_water.wav",
+			"items": 
+			[
+				{
+					"item": "",
+					"category": "drinking_vessel",
+					"order": 2,
+					"optional": false
+				},
+				{
+					"item": "vatten",
+					"category": "",
+					"order": 1,
+					"optional": false
+				}
+			]
+		},
+		{
+			"id": 435,
+			"name": "",
+			"difficulty": 1,
+			"audio": "wav/glass_of_juice.wav",
+			"items": 
+			[
+				{
+					"item": "",
+					"category": "drinking_vessel",
+					"order": 2,
+					"optional": false
+				},
+				{
+					"item": "juice",
+					"category": "",
+					"order": 1,
+					"optional": false
+				}
+			]
+		},
+		{
+			"id": 436,
+			"name": "",
+			"difficulty": 0,
+			"audio": "wav/a_bun.wav",
+			"items": [
+				{
+					"item": "kanelbulle",
+					"category": "",
+					"order": 1,
+					"optional": false
+				}
+			]
+		},
+		{
+			"id": 437,
+			"name": "",
+			"difficulty": 2,
+			"audio": "wav/lay_the_table_for_soup.wav",
+			"items": [
+				{
+					"item": "tallrik_djup",
+					"category": "",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "sked",
+					"category": "",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "drinking_vessel",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "drinkable",
+					"order": 0,
+					"optional": true
+				}
+			]
+		},
+		{
+			"id": 438,
+			"name": "",
+			"difficulty": 2,
+			"audio": "wav/offer_fika.wav",
+			"items": 
+			[
+				{
+					"item": "",
+					"category": "drinkable",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "edible",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "drinking_vessel",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "cutlery",
+					"order": 0,
+					"optional": true
+				},
+				{
+					"item": "",
+					"category": "plate",
+					"order": 0,
+					"optional": true
+				}
+			]
+		},
+		{
+			"id": 439,
+			"name": "",
+			"difficulty": 0,
+			"audio": "wav/get_dishsoap.wav",
+			"items": [
+				{
+					"item": "diskmedel",
+					"category": "",
+					"order": 1,
+					"optional": false
+				}
+			]
+		},
+		{
+			"id": 440,
+			"name": "",
+			"difficulty": 0,
+			"audio": "wav/get_dirtydish.wav",
+			"items": [
+				{
+					"item": "smutsdisk",
+					"category": "",
+					"order": 1,
+					"optional": false
+				}
+			]
+		},
+		{
+			"id": 441,
+			"name": "",
+			"difficulty": 0,
+			"audio": "wav/get_juice.wav",
+			"items": [
+				{
+					"item": "juice",
+					"category": "",
+					"order": 1,
+					"optional": false
+				}
+			]
+		},
+		{
+			"id": 442,
+			"name": "",
+			"difficulty": 0,
+			"audio": "wav/get_fryingpan.wav",
+			"items": [
+				{
+					"item": "stekpanna",
+					"category": "",
+					"order": 1,
+					"optional": false
+				}
+			]
+		}
 
-    ]
+	]
 }

@@ -816,263 +816,153 @@ GameObj.Room.prototype = {
 	// Check first part answer
 	checkFirstAnswer: function () {
 		
-		var result = 0;
-		var correctItem = false;
-		var taskItem = null;
-		var itemsPresent = 0;
-		var itemIsHere = false;
+		var self = this;
 		
-		if(this._selectedItems.length == 0) {
+		if(self._selectedItems.length == 0) {
 			// Wrong	
 			return false;
 		}
 		
-		
-		// Check if all task items are present
-		
-		var usedItems = [];
-		for(i = 0; i < this._currTask.items.length; i++)
-		{
-			taskItem = this._currTask.items[i];
-			itemIsHere = false;
-			
-			for(j = 0; j < this._selectedItems.length; j++)
-			{
-				if(usedItems.indexOf(j) > -1) {
-					continue;
-				}
-				
-				// Check item
-				//console.log(this._itemArray[this._selectedItems[j]].name, taskItem.item);
-				if(taskItem.item != '') {
-					if(this._itemArray[this._selectedItems[j]].name == taskItem.item) {
-						itemsPresent++;
-						usedItems.push(j);
-						itemIsHere = true;
-						break;
-					}
-				}
-				// Check category
-				else if(taskItem.category != '') {
-					var catMatch = 0;
-					for(k = 0; k < this._itemArray[this._selectedItems[j]].categories.length; k++) {
-						if(this._itemArray[this._selectedItems[j]].categories[k] == taskItem.category) {
-							catMatch++;
-						}
-					}
-					
-					
-					// TODO: THIS IS A BIG HACK
-					var correct = false;
-					for(var n = i+1; n < this._currTask.items.length; n++) {
-						if(this._currTask.items[n].item == this._itemArray[this._selectedItems[j]].name) {
-							correct = true;
-						}
-					}
-					if(correct == true) {
-						continue;
-					}
-					
-					
-					// TODO: Debug this
-					// if(catMatch == this._itemArray[this._selectedItems[j]].categories.length) {
-// 						itemsPresent++;
-// 						break;
-// 					}
-					if(catMatch > 0) {
-						itemsPresent++;
-						usedItems.push(j);
-						itemIsHere = true;
-						break;
-					}
-				}
-			}
-			
-			// Check the 66 case (item optional)
-			if(taskItem.order == 66 && itemIsHere == false) {
-				itemsPresent++;
-			}
-		}
-		
-		// Check if items are OK
-		for(i = 0; i < this._selectedItems.length; i++)
-		{
-			for(j = 0; j < this._currTask.items.length; j++)
-			{
-				taskItem = this._currTask.items[j];
-				
-				// Check item
-				if(taskItem.item != '') {
-					if(this._itemArray[this._selectedItems[i]].name == taskItem.item) {
-						correctItem = true;
-					}
-				}
-				// Check category
-				else if(taskItem.category != '') {
-					for(k = 0; k < this._itemArray[this._selectedItems[i]].categories.length; k++) {
-						if(this._itemArray[this._selectedItems[i]].categories[k] == taskItem.category) {
-							correctItem = true;
-						}
-					}
-				}
-			}
-			
-			if(correctItem == false || itemsPresent < this._currTask.items.length) {
-				result = -1;
-				break;
+		// Reset task item status
+		var taskItemStatus = [];
+		for(var i = 0; i < self._currTask.items.length; i++) {
+			if(self._currTask.items[i].optional == true) {
+				// Optional are covered...
+				taskItemStatus[i] = 1;
 			}
 			else {
-				result++;
-				correctItem = false;
+				taskItemStatus[i] = 0;
 			}
 		}
 		
 		
-		// Return result
-		if(result >= this._selectedItems.length) {
-			// Correct
-			return true;
+		// Loop through all selected items
+		for(var i = 0; i < self._selectedItems.length; i++)
+		{
+			// Get item
+			var selectedItem = self._itemArray[self._selectedItems[i]];
+			var valid = false;
+			
+			// Check if item is valid within the task
+			for(var j = 0; j < self._currTask.items.length; j++) {
+				
+				var taskItem = self._currTask.items[j];
+				
+				// Check items name
+				if(taskItem.item != "") {
+					if(taskItem.item == selectedItem.name) {
+						valid = true;
+						taskItemStatus[j]++;
+					}
+				}
+				// Check category
+				else {
+					if(selectedItem.categories.indexOf(taskItem.category) > -1) {
+						valid = true;
+						taskItemStatus[j]++;
+					}
+				}
+			}
+		
+			if(valid == false) {
+				// Wrong
+				return false
+			}
 		}
-		else {
-			// Wrong	
+		
+		if(taskItemStatus.indexOf(0) > -1) {
 			return false;
 		}
+		
+		return true;
 		
 	},
 	
 	// Check second part answer
 	checkSecondAnswer: function () {
 		
-		var itemOrder = this._box.getOrder();
+		var self = this;
 		
+		var itemOrder = this._box.getOrder();
+	
 		// Check if all items has been used
 		if(itemOrder.indexOf(-1) != -1) {
 			return false;
 		}
-		
+	
+	
+		// Reset item order status
+		var itemOrderStatus = [];
+		for(var i = 0; i < itemOrder.length; i++) {
+			itemOrderStatus[i] = 0;
+		}
+	
+	
 		// Sort by order
-		this._currTask.items.sort(function(a, b){
+		self._currTask.items.sort(function(a, b) {
 			return a.order - b.order;
-		})
-		
-		// Set initial order position
-		var currPosI = 0;
-		var currPos = this._currTask.items[currPosI].order;
-		var result = 0;
-		var correctItem = false;
-		var correctOrder = false;
-		
-		// Check all boxes
-		for(i = 0; i < itemOrder.length; i++)
-		{
-			// Current order
-			while(currPos == 0 || currPos == 66) {
-				currPosI++;
-				//if(currPosI < this._currTask.items.length) {
-					currPos = this._currTask.items[currPosI].order;
-					//}
-			}
-			
-			if(currPosI < this._currTask.items.length) {
-				currPos = this._currTask.items[currPosI].order;
-			}
-			
-			for(j = 0; j < this._currTask.items.length; j++)
-			{
-				taskItem = this._currTask.items[j];
+		});
+	
+		// Remove optional
+		var taskItems = self._currTask.items.filter(function(obj) {
+			return obj.order != 0;
+		});
+	
+		// Check items with names
+		for(var i = 0; i < taskItems.length; i++) {
+			// Check items with name
+			if(taskItems[i].item != "") {
+				// Find where is the item
+				for(var j = 0; j < itemOrder.length; j++) {
 				
-				// Check item
-				if(taskItem.item != '') {
-					if(this._itemArray[itemOrder[i]].name == taskItem.item) {
-						correctItem = true;
-						
-						if(taskItem.order != 0 && taskItem.order != 66) {
-							currPosI++;
-						}
+					if(taskItems[i].item == self._itemArray[itemOrder[j]].name) {
+						itemOrderStatus[j] = taskItems[i].order;
 					}
 				}
-				// Check category
-				else if(taskItem.category != '') {
-					for(k = 0; k < this._itemArray[itemOrder[i]].categories.length; k++) {
-						if(this._itemArray[itemOrder[i]].categories[k] == taskItem.category) {
-							correctItem = true;
-						}
-					}
+			}
+		}
+	
+		// Check items with category
+		for(var i = 0; i < taskItems.length; i++) {
+			// Check items with category
+			if(taskItems[i].item == "") {
+				// Find where is the item
+				for(var j = 0; j < itemOrder.length; j++) {
+					// Consider only if empty
+					if(itemOrderStatus[j] == 0) {
 					
-					
-					if(correctItem == true) {
-						// Check if next item in task has same cattegory but it has item name defined
-						// is there a next item?
-						if((currPosI+1) < this._currTask.items.length) {
-							// Has same category but has also item name?
-							if(this._currTask.items[currPosI+1].item == '') {
+						var itemCategories = self._itemArray[itemOrder[j]].categories;
+						for(var k = 0; k < itemCategories.length; k++) {
+							if(taskItems[i].category == itemCategories[k]) {
 							
-								// If not, only then consider it as duplicate...
-								// Increment position only if next items are not same category
-								if(correctItem == true) {
-									var correct = false;
-									for(var n = i+1; n < itemOrder.length; n++) {
-										for(k = 0; k < this._itemArray[itemOrder[n]].categories.length; k++) {
-											if(this._itemArray[itemOrder[n]].categories[k] == taskItem.category) {
-												correct = true;
-											}
-										}
-									}
-					
-									// Increment only if there are no other with the same category
-									if(correct == false) {
-										if(taskItem.order != 0 && taskItem.order != 66) {
-											currPosI++;
-										}
-									}
-								}
-							
+								itemOrderStatus[j] = taskItems[i].order;
+								break;
 							}
-							else {
-								if(taskItem.order != 0 && taskItem.order != 66) {
-									currPosI++;
-								}
-							}
-							
 						}
+					
 					}
+				}
+			}
+		}
+	
+		// console.log(itemOrderStatus);
 
-				}
-				
-				
-				if(correctItem == true) {
-					if(currPos == taskItem.order) {
-						correctOrder = true;
-					}
-					else if(taskItem.order == 0 || taskItem.order == 66) {
-						correctOrder = true;
-					}
-					else {
-						// Not right
-					}
-					break;
-				}
+		// Check if correct
+		var currOrder = 0;
+		for(var i = 0; i < (itemOrderStatus.length-1); i++) {
+			if(itemOrderStatus[i] == 0) {
+				continue;
 			}
-			
-			if(correctOrder == false) {
-				result = -1;
-				break;
+		
+			if((itemOrderStatus[i] - currOrder) > 1 || (itemOrderStatus[i] - currOrder) < 0) {
+				return false;
 			}
 			else {
-				result++;
-				correctItem = false;
-				correctOrder = false;
+				currOrder = itemOrderStatus[i];
 			}
 		}
-		
-		
-		// Play result
-		if(result >= itemOrder.length) {
-			return true;
-		}
-		else {
-			return false;
-		}
+
+		return true;
 	},
 	
 	resetState: function (state) {
@@ -1228,7 +1118,7 @@ GameObj.Room.prototype = {
 						levelDifficulty = 3;
 					}
 					
-					if(rndNum > this.OLDER_TASK_PROBABILITY || levelDifficulty == 0) {
+					if(rndNum > self.OLDER_TASK_PROBABILITY || levelDifficulty == 0) {
 						levelTasks = self._taskArray.filter(function (obj) {
 							return obj.difficulty === levelDifficulty;
 						});
@@ -1327,12 +1217,12 @@ GameObj.Room.prototype = {
 			else {
 				
 				// TODO: Test tasks... always gets this...
-				// var task = res.rows.item(0);
-				// task.task = 200;
-				// GameObj.task = task;
+				var task = res.rows.item(0);
+				task.task = 8;
+				GameObj.task = task;
 				
 				// Save task in game object
-				GameObj.task = res.rows.item(0);
+				// GameObj.task = res.rows.item(0);
 				
 				// Load task in the object
 				self._currTask = self._taskArray.filter(function (obj) {
@@ -1512,8 +1402,10 @@ GameObj.Room.prototype = {
 					GameObj.level.failed = 0;
 					GameObj.db.clearLevelFailed(GameObj.level.id);
 					// Level down
-					GameObj.level.level--;
-					GameObj.db.decLevel(GameObj.level.id);
+					if(GameObj.level.level > 0) {
+						GameObj.level.level--;
+						GameObj.db.decLevel(GameObj.level.id);
+					}
 				}
 				else {
 					// Inc. tasks cleared

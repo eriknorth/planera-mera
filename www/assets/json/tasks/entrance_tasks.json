@@ -9,28 +9,33 @@
 				{
 					"item": "",
 					"category": "shoes",
-					"order": 1
+					"order": 1,
+					"optional": false
 					
 				},
 				{
                     "item": "jacka",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 				},
 				{
 					"item": "vantar",
 					"category": "",
-					"order": 2
+					"order": 2,
+					"optional": false
 				},
 				{
 					"item": "mossa",
 					"category": "",
-					"order": 2
+					"order": 2,
+					"optional": false
 				},
 				{
 					"item": "ryggsack",
 					"category": "",
-					"order": 66
+					"order": 0,
+					"optional": true
 				}
 			]
 		},
@@ -43,18 +48,21 @@
 				{
 					"item": "vatten",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 					
 				},
 				{
 					"item": "vattenkanna",
 					"category": "",
-					"order": 2
+					"order": 2,
+					"optional": false
 				},
 				{
 					"item": "",
 					"category": "plant",
-					"order": 3
+					"order": 3,
+					"optional": false
 				}
 			]
 		},
@@ -67,28 +75,33 @@
 				{
 					"item": "dammsugare",
 					"category": "",
-					"order": 1				
+					"order": 1,
+					"optional": false				
 				},
                 {
                     "item": "vatten",
                     "category": "",
-                    "order": 2
+                    "order": 2,
+					"optional": false
                 },
                 {
 					"item": "hink",
 					"category": "",
-					"order": 3
+					"order": 3,
+					"optional": false
 					
 				},
 				{
 					"item": "rengoringsmedel",
 					"category": "",
-					"order": 2
+					"order": 2,
+					"optional": false
 				},
 				{
 					"item": "mopp",
 					"category": "",
-					"order": 4
+					"order": 4,
+					"optional": false
 				}
 			]
 		},
@@ -101,7 +114,8 @@
 				{
 					"item": "dammsugare",
 					"category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
 				}
 			]		
 		},
@@ -114,12 +128,14 @@
                 {
                     "item": "vattenkanna",
                     "category": "",
-                    "order": 2
+                    "order": 2,
+					"optional": false
                 },
                 {
                     "item": "vatten",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 }
             ]
         },
@@ -132,17 +148,20 @@
 				{
 					"item": "ryggsack",
 					"category": "",
-					"order": 2
+					"order": 2,
+					"optional": false
 				},
 				{
 					"item": "",
 					"category": "clothes",
-					"order": 1
+					"order": 1,
+					"optional": false
 				},
 				{
 					"item": "",
 					"category": "clothes",
-					"order": 1
+					"order": 1,
+					"optional": false
 				}
 			]
 		},
@@ -155,12 +174,14 @@
 				{
 					"item": "bok",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 				},
 				{
 					"item": "penna",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 				}
 			]
 		},
@@ -173,12 +194,14 @@
 				{
 					"item": "vantar",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 				},
 				{
 					"item": "vatten",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 				}
 			]
 		},
@@ -191,17 +214,20 @@
 				{
 					"item": "hink",
 					"category": "",
-					"order": 2
+					"order": 2,
+					"optional": false
 				},
 				{
 					"item": "vatten",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 				},
 				{
 					"item": "rengoringsmedel",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 				}
 			]
 		},
@@ -214,7 +240,8 @@
 				{
 					"item": "vantar",
 					"category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
 				}
 			]		
 		},
@@ -227,7 +254,8 @@
 				{
 					"item": "apple",
 					"category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
 				}
 			]		
 		},
@@ -240,7 +268,8 @@
 				{
 					"item": "",
 					"category": "shoes",
-                    "order": 1
+                    "order": 1,
+					"optional": false
 				}
 			]		
 		},
@@ -253,7 +282,8 @@
 				{
 					"item": "paraply",
 					"category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
 				}
 			]		
 		},
@@ -266,34 +296,40 @@
 				{
 					"item": "",
 					"category": "shoes",
-					"order": 1
+					"order": 1,
+					"optional": false
 					
 				},
 				{
                     "item": "jacka",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 				
 				},
 				{
 					"item": "ryggsack",
 					"category": "",
-					"order": 2
+					"order": 2,
+					"optional": false
 				},
 				{
 					"item": "vantar",
 					"category": "",
-					"order": 66
+					"order": 0,
+					"optional": true
 				},
 				{
 					"item": "mossa",
 					"category": "",
-					"order": 66
+					"order": 0,
+					"optional": true
 				},
 				{
 					"item": "paraply",
 					"category": "",
-                    "order": 66
+                    "order": 0,
+					"optional": true
 				}
             ]
         },
@@ -306,7 +342,8 @@
 				{
 					"item": "mossa",
 					"category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
 				}
 			]		
 		},
@@ -319,7 +356,8 @@
 				{
 					"item": "jacka",
 					"category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
 				}
 			]		
 		},
@@ -332,7 +370,8 @@
 				{
 					"item": "ryggsack",
 					"category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
 				}
 			]		
 		},
@@ -345,7 +384,8 @@
 				{
 					"item": "penna",
 					"category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
 				}
 			]		
 		},
@@ -358,7 +398,8 @@
 				{
 					"item": "hink",
 					"category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
 				}
 			]		
 		},
@@ -371,7 +412,8 @@
 				{
 					"item": "vattenkanna",
 					"category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
 				}
 			]		
 		},
@@ -384,7 +426,8 @@
 				{
 					"item": "bok",
 					"category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
 				}
 			]		
 		},
@@ -397,7 +440,8 @@
 				{
 					"item": "planta",
 					"category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
 				}
 			]		
 		},
@@ -410,7 +454,8 @@
 				{
 					"item": "mopp",
 					"category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
 				}
 			]		
 		},
@@ -423,7 +468,8 @@
 				{
 					"item": "rengoringsmedel",
 					"category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
 				}
 			]		
 		},
@@ -436,7 +482,8 @@
 				{
 					"item": "vatten",
 					"category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
 				}
 			]		
 		},
@@ -449,22 +496,26 @@
 				{
 					"item": "ryggsack",
 					"category": "",
-					"order": 2
+					"order": 2,
+					"optional": false
 				},
 				{
 					"item": "",
 					"category": "school_stuff",
-					"order": 1
+					"order": 1,
+					"optional": false
 				},
 				{
 					"item": "",
 					"category": "school_stuff",
-					"order": 1
+					"order": 1,
+					"optional": false
 				},
 				{
 					"item": "",
 					"category": "fruit",
-					"order": 66
+					"order": 0,
+					"optional": true
 				}
 			]
 		},
@@ -477,38 +528,45 @@
 				{
 					"item": "ryggsack",
 					"category": "",
-					"order": 2
+					"order": 2,
+					"optional": false
 				},
 				{
 					"item": "",
 					"category": "school_stuff",
-					"order": 1
+					"order": 1,
+					"optional": false
 				},
 				{
 					"item": "",
 					"category": "school_stuff",
-					"order": 1
+					"order": 1,
+					"optional": false
 				},
 				{
 					"item": "vattenkanna",
 					"category": "",
-					"order": 4
+					"order": 4,
+					"optional": false
 				},
 				{
 					"item": "vatten",
 					"category": "",
-					"order": 3
+					"order": 3,
+					"optional": false
 					
 				},
 				{
 					"item": "",
 					"category": "plant",
-					"order": 5
+					"order": 5,
+					"optional": false
 				},
 				{
 					"item": "",
 					"category": "fruit",
-					"order": 66
+					"order": 0,
+					"optional": true
 				}
 			]
 		},
@@ -521,32 +579,38 @@
 				{
 					"item": "ryggsack",
 					"category": "",
-					"order": 2
+					"order": 2,
+					"optional": false
 				},
 				{
 					"item": "",
 					"category": "clothes",
-					"order": 1
+					"order": 1,
+					"optional": false
 				},
 				{
 					"item": "",
 					"category": "clothes",
-					"order": 1
+					"order": 1,
+					"optional": false
 				},
 				{
 					"item": "hink",
 					"category": "",
-					"order": 4
+					"order": 4,
+					"optional": false
 				},
 				{
 					"item": "vatten",
 					"category": "",
-					"order": 3
+					"order": 3,
+					"optional": false
 				},
 				{
 					"item": "rengoringsmedel",
 					"category": "",
-					"order": 3
+					"order": 3,
+					"optional": false
 				}
 				
 			]
@@ -560,23 +624,27 @@
 				{
 					"item": "stovlar",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 					
 				},
 				{
                     "item": "jacka",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 				},
 				{
 					"item": "paraply",
 					"category": "",
-					"order": 0
+					"order": 0,
+					"optional": false
 				},
 				{
 					"item": "ryggsack",
 					"category": "",
-					"order": 66
+					"order": 0,
+					"optional": true
 				}
 			]
 		},
@@ -589,12 +657,14 @@
 				{
 					"item": "mossa",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 				},
 				{
 					"item": "vatten",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 				}
 			]
 		},
@@ -607,12 +677,14 @@
 				{
 					"item": "hink",
 					"category": "",
-					"order": 2
+					"order": 2,
+					"optional": false
 				},
 				{
 					"item": "vatten",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 				}
 			]
 		},
@@ -625,17 +697,20 @@
 				{
 					"item": "ryggsack",
 					"category": "",
-					"order": 2
+					"order": 2,
+					"optional": false
 				},
 				{
 					"item": "vantar",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 				},
 				{
 					"item": "mossa",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 				}
 			]
 		},
@@ -648,12 +723,14 @@
 				{
 					"item": "apple",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 				},
 				{
 					"item": "ryggsack",
 					"category": "",
-					"order": 2
+					"order": 2,
+					"optional": false
 				}
 			]
 		},
@@ -666,12 +743,14 @@
 				{
 					"item": "ryggsack",
 					"category": "",
-					"order": 2
+					"order": 2,
+					"optional": false
 				},
 				{
 					"item": "",
 					"category": "shoes",
-					"order": 1
+					"order": 1,
+					"optional": false
 				}
 			]
 		}

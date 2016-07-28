@@ -9,27 +9,32 @@
                 {
                     "item": "",
                     "category": "underwear",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "",
                     "category": "bottom",
-                    "order": 2
+                    "order": 2,
+					"optional": false
                 },
                 {
                     "item": "strumpor",
                     "category": "",
-                    "order": 0
+                    "order": 0,
+					"optional": false
                 },
                 {
                     "item": "",
                     "category": "top",
-                    "order": 0
+                    "order": 0,
+					"optional": false
                 },
                 {
                     "item": "",
                     "category": "clothes",
-                    "order": 66
+                    "order": 0,
+					"optional": true
                 }
             ]
         },
@@ -42,12 +47,14 @@
                 {
                     "item": "sang",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "lakan",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 }
             ]
         },
@@ -60,17 +67,20 @@
                 {
                     "item": "skrivbord",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "",
                     "category": "homework",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "",
                     "category": "furniture",
-                    "order": 66
+                    "order": 0,
+					"optional": true
                 }
             ]
         },
@@ -83,12 +93,14 @@
                 {
                     "item": "sang",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "",
                     "category": "book",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 }
             ]
         },
@@ -101,12 +113,14 @@
                 {
                     "item": "",
                     "category": "ball",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "tennisracket",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 }
             ]
         },
@@ -119,22 +133,26 @@
                 {
                     "item": "",
                     "category": "underwear",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "shorts",
                     "category": "",
-                    "order": 2
+                    "order": 2,
+					"optional": false
                 },
                 {
                     "item": "strumpor",
                     "category": "",
-                    "order": 0
+                    "order": 0,
+					"optional": false
                 },
                 {
                     "item": "t-shirt",
                     "category": "",
-                    "order": 0
+                    "order": 0,
+					"optional": false
                 }
             ]
         },
@@ -147,12 +165,14 @@
                 {
                     "item": "",
                     "category": "toy",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "vackarklocka",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 }
             ]
         },
@@ -165,12 +185,14 @@
                 {
                     "item": "tidning",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "pennor",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 }
             ]
         },
@@ -183,17 +205,20 @@
                 {
                     "item": "dator",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "vackarklocka",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "",
                     "category": "furniture",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 }
             ]
         },
@@ -206,22 +231,26 @@
                 {
                     "item": "jeans",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "skjorta",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "skarp",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "",
                     "category": "underwear",
-                    "order": 66
+                    "order": 0,
+					"optional": true
                 }
             ]
         },
@@ -234,17 +263,20 @@
                 {
                     "item": "ryggsack",
                     "category": "",
-                    "order": 2
+                    "order": 2,
+					"optional": false
                 },
                 {
                     "item": "",
                     "category": "homework",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "",
                     "category": "homework",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 }
             ]
         },
@@ -257,17 +289,20 @@
                 {
                     "item": "tidning",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "pennor",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "vackarklocka",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 }
             ]
         },
@@ -280,17 +315,20 @@
                 {
                     "item": "",
                     "category": "top",
-                    "order": 0
+                    "order": 0,
+					"optional": false
                 },
                 {
                     "item": "",
                     "category": "bottom_cold",
-                    "order": 2
+                    "order": 2,
+					"optional": false
                 },
                 {
                     "item": "",
                     "category": "underwear",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 }
              ]
         },
@@ -303,22 +341,26 @@
                 {
                     "item": "ryggsack",
                     "category": "",
-                    "order": 2
+                    "order": 2,
+					"optional": false
                 },
                 {
                     "item": "tennisracket",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "",
                     "category": "ball",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "",
                     "category": "clothes",
-                    "order": 66
+                    "order": 0,
+					"optional": true
                 }
             ]
         },
@@ -331,7 +373,8 @@
                 {
                     "item": "bocker_sovrum",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 }
             ]
         },
@@ -344,7 +387,8 @@
                 {
                     "item": "robot",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 }
             ]
         },
@@ -357,7 +401,8 @@
                 {
                     "item": "sangbord",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 }
             ]
         },
@@ -370,7 +415,8 @@
                 {
                     "item": "lampa",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 }
             ]
         },
@@ -383,7 +429,8 @@
                 {
                     "item": "vackarklocka",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 }
             ]
         },
@@ -396,7 +443,8 @@
                 {
                     "item": "",
                     "category": "book",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 }
             ]
         },
@@ -409,7 +457,8 @@
                 {
                     "item": "tidning",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 }
             ]
         },
@@ -422,7 +471,8 @@
                 {
                     "item": "ryggsack",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 }
             ]
         },
@@ -435,7 +485,8 @@
                 {
                     "item": "tennisracket",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 }
             ]
         },
@@ -448,7 +499,8 @@
                 {
                     "item": "skarp",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 }
             ]
         },
@@ -461,7 +513,8 @@
                 {
                     "item": "",
                     "category": "ball",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 }
             ]
         },
@@ -474,7 +527,8 @@
                 {
                     "item": "pennor",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 }
             ]
         },
@@ -487,7 +541,8 @@
                 {
                     "item": "lampa",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 }
             ]
         },
@@ -500,7 +555,8 @@
                 {
                     "item": "",
                     "category": "plant",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 }
             ]
         },
@@ -513,7 +569,8 @@
                 {
                     "item": "strumpor",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 }
             ]
         },
@@ -526,7 +583,8 @@
                 {
                     "item": "lakan",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 }
             ]
         },
@@ -539,12 +597,14 @@
                 {
                     "item": "strumpor",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "",
                     "category": "bottom",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 }
             ]
         },
@@ -557,12 +617,14 @@
                 {
                     "item": "t-shirt",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "troja",
                     "category": "",
-                    "order": 2
+                    "order": 2,
+					"optional": false
                 }
             ]
         },
@@ -575,12 +637,14 @@
                 {
                     "item": "lakan",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "ryggsack",
                     "category": "",
-                    "order": 2
+                    "order": 2,
+					"optional": false
                 }
             ]
         },
@@ -593,12 +657,14 @@
                 {
                     "item": "",
                     "category": "ball",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "tennisracket",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 }
             ]
         },
@@ -611,22 +677,26 @@
                 {
                     "item": "",
                     "category": "underwear",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "kjol",
                     "category": "",
-                    "order": 2
+                    "order": 2,
+					"optional": false
                 },
                 {
                     "item": "strumpor",
                     "category": "",
-                    "order": 66
+                    "order": 0,
+					"optional": true
                 },
                 {
                     "item": "",
                     "category": "top",
-                    "order": 0
+                    "order": 0,
+					"optional": false
                 }
             ]
         },
@@ -639,12 +709,14 @@
                 {
                     "item": "",
                     "category": "toy",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "ryggsack",
                     "category": "",
-                    "order": 2
+                    "order": 2,
+					"optional": false
                 }
             ]
         },
@@ -657,17 +729,20 @@
                 {
                     "item": "dator",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "vackarklocka",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "",
                     "category": "furniture",
-                    "order": 66
+                    "order": 0,
+					"optional": true
                 }
             ]
         }, 
@@ -680,32 +755,38 @@
                 {
                     "item": "",
                     "category": "underwear",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "",
                     "category": "bottom_warm",
-                    "order": 2
+                    "order": 2,
+					"optional": false
                 },
                 {
                     "item": "",
                     "category": "top_warm",
-                    "order": 3
+                    "order": 3,
+					"optional": false
                 },
                 {
                     "item": "",
                     "category": "top_cold",
-                    "order": 2
+                    "order": 2,
+					"optional": false
                 },
                 {
                     "item": "strumpor",
                     "category": "",
-                    "order": 0
+                    "order": 0,
+					"optional": false
                 },
                 {
                     "item": "",
                     "category": "clothes",
-                    "order": 66
+                    "order": 0,
+					"optional": true
                 }
 	        ]
         },		
@@ -718,17 +799,20 @@
                 {
                     "item": "tennisracket",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "",
                     "category": "ball",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "vackarklocka",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 }
             ]
         },
@@ -741,17 +825,20 @@
                 {
                     "item": "tidning",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "pennor",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "vackarklocka",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 }
             ]
         },
@@ -764,17 +851,20 @@
                 {
                     "item": "",
                     "category": "book",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "sang",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "lampa",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 }
             ]
  
@@ -788,27 +878,32 @@
                 {
                     "item": "",
                     "category": "bottom",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "",
                     "category": "top",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "",
                     "category": "underwear",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "strumpor",
                     "category": "",
-                    "order": 66
+                    "order": 0,
+					"optional": true
                 },
                 {
                     "item": "ryggsack",
                     "category": "",
-                    "order": 2
+                    "order": 2,
+					"optional": false
                 }
             ]
         },
@@ -821,27 +916,32 @@
                 {
                     "item": "",
                     "category": "underwear",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
                 {
                     "item": "",
                     "category": "nice_bottom",
-                    "order": 2
+                    "order": 2,
+					"optional": false
                 },
                 {
                     "item": "",
                     "category": "nice_top",
-                    "order": 2
+                    "order": 2,
+					"optional": false
                 },
                 {
                     "item": "strumpor",
                     "category": "",
-                    "order": 0
+                    "order": 0,
+					"optional": false
                 },
                 {
                     "item": "",
                     "category": "clothes",
-                    "order": 66
+                    "order": 0,
+					"optional": true
                 }
             ]
         }

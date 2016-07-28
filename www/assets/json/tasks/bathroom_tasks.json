@@ -9,17 +9,20 @@
 				{
 					"item": "tvattmaskin",
 					"category": "",
-					"order": 2
+					"order": 2,
+					"optional": false
 				},
 				{
 					"item": "",
 					"category": "clothes",
-					"order": 1
+					"order": 1,
+					"optional": false
 				},
 				{
 					"item": "tvattmedel",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 				}
 			]
 		},
@@ -32,23 +35,27 @@
 				{
 					"item": "tandborste",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 					
 				},
 				{
 					"item": "tandkram",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 				},
 				{
 					"item": "vatten",
 					"category": "",
-					"order": 0
+					"order": 0,
+					"optional": false
 				},
 				{
 					"item": "handduk",
 					"category": "",
-					"order": 66
+					"order": 0,
+					"optional": true
 				}
 			]
 		},
@@ -61,22 +68,26 @@
 				{
 					"item": "dusch",
 					"category": "",
-					"order": 2
+					"order": 2,
+					"optional": false
 				},
                 {
 					"item": "duschtval",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 				},
                 {
                     "item": "schampo",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 },
 				{
 					"item": "handduk",
 					"category": "",
-					"order": 3
+					"order": 3,
+					"optional": false
 				}
 			]
 		},
@@ -89,13 +100,15 @@
 				{
 					"item": "",
 					"category": "clothes",
-					"order": 1
+					"order": 1,
+					"optional": false
 					
 				},
                 {
                     "item": "torktumlare",
                     "category": "",
-                    "order": 2
+                    "order": 2,
+					"optional": false
                 }
             ]
 		},
@@ -108,17 +121,20 @@
 				{
 					"item": "",
 					"category": "soap",
-					"order": 1
+					"order": 1,
+					"optional": false
 				},
 				{
 					"item": "vatten",
 					"category": "",
-					"order": 2
+					"order": 2,
+					"optional": false
 				},
 				{
 					"item": "handduk",
 					"category": "",
-					"order": 3
+					"order": 3,
+					"optional": false
 				}
 			]
 		},
@@ -131,27 +147,32 @@
 				{
 					"item": "toalett",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 				},
 				{
 					"item": "toalettpapper",
 					"category": "",
-					"order": 2
+					"order": 2,
+					"optional": false
 				},
                 {
 					"item": "vatten",
 					"category": "",
-					"order": 4	
+					"order": 4,
+					"optional": false	
 				},
 				{
 					"item": "",
 					"category": "soap",
-					"order": 3
+					"order": 3,
+					"optional": false
 				},
 				{
 					"item": "handduk",
 					"category": "",
-					"order": 66
+					"order": 0,
+					"optional": true
 				}
 			]
 		},
@@ -164,17 +185,20 @@
 				{
 					"item": "",
 					"category": "soap",
-					"order": 1
+					"order": 1,
+					"optional": false
 				},
 				{
 					"item": "vatten",
 					"category": "",
-					"order": 2		
+					"order": 2,
+					"optional": false		
 				},
 				{
 					"item": "handduk",
 					"category": "",
-					"order": 3
+					"order": 3,
+					"optional": false
 				}
 			]
 		},
@@ -187,17 +211,20 @@
 				{
 					"item": "",
 					"category": "soap",
-					"order": 1
+					"order": 1,
+					"optional": false
 				},
 				{
 					"item": "dusch",
 					"category": "",
-					"order": 2
+					"order": 2,
+					"optional": false
 				},
 				{
 					"item": "handduk",
 					"category": "",
-					"order": 3
+					"order": 3,
+					"optional": false
 				}
 			]
 		},
@@ -210,7 +237,8 @@
 				{
 					"item": "",
 					"category": "clothes",
-					"order": 1
+					"order": 1,
+					"optional": false
 					
 				}
             ]
@@ -224,7 +252,8 @@
 				{
 					"item": "handduk",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 					
 				}
             ]
@@ -238,7 +267,8 @@
 				{
 					"item": "",
 					"category": "soap",
-					"order": 1
+					"order": 1,
+					"optional": false
 					
 				}
             ]
@@ -252,7 +282,8 @@
 				{
 					"item": "tvattmedel",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 					
 				}
             ]
@@ -266,7 +297,8 @@
                 {
                     "item": "tandborste",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
 
                 }
             ]
@@ -280,17 +312,20 @@
 				{
 					"item": "tvattmaskin",
 					"category": "",
-					"order": 2
+					"order": 2,
+					"optional": false
 				},
 				{
 					"item": "handduk",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 				},
 				{
 					"item": "tvattmedel",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 				}
 			]
 		},
@@ -303,13 +338,15 @@
 				{
 					"item": "handduk",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 					
 				},
                 {
                     "item": "torktumlare",
                     "category": "",
-                    "order": 2
+                    "order": 2,
+					"optional": false
                 }
             ]
 		},
@@ -322,7 +359,8 @@
 				{
 					"item": "tandkram",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 					
 				}
             ]
@@ -336,7 +374,8 @@
 				{
 					"item": "",
 					"category": "soap",
-					"order": 1
+					"order": 1,
+					"optional": false
 					
 				}
             ]
@@ -350,7 +389,8 @@
 				{
 					"item": "",
 					"category": "soap",
-					"order": 1
+					"order": 1,
+					"optional": false
 					
 				}
             ]
@@ -364,7 +404,8 @@
 				{
 					"item": "tvattkorg",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 					
 				}
             ]
@@ -378,7 +419,8 @@
 				{
 					"item": "vatten",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 					
 				}
             ]
@@ -392,7 +434,8 @@
 				{
 					"item": "torktumlare",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 					
 				}
             ]
@@ -406,7 +449,8 @@
 				{
 					"item": "tvattmaskin",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 					
 				}
             ]
@@ -420,7 +464,8 @@
 				{
 					"item": "toalett",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 					
 				}
             ]
@@ -434,7 +479,8 @@
 				{
 					"item": "dusch",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 					
 				}
             ]
@@ -448,7 +494,8 @@
 				{
 					"item": "toalettpapper",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 					
 				}
             ]
@@ -462,13 +509,15 @@
 				{
 					"item": "tandborste",
 					"category": "",
-					"order": 2
+					"order": 2,
+					"optional": false
 					
 				},
                 {
                     "item": "tandkram",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 }
             ]
 		},
@@ -481,28 +530,33 @@
 				{
 					"item": "handduk",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 					
 				},
                 {
                     "item": "torktumlare",
                     "category": "",
-                    "order": 2
+                    "order": 2,
+					"optional": false
                 },
 				{
 					"item": "tvattmaskin",
 					"category": "",
-					"order": 4
+					"order": 4,
+					"optional": false
 				},
 				{
 					"item": "",
 					"category": "clothes",
-					"order": 3
+					"order": 3,
+					"optional": false
 				},
 				{
 					"item": "tvattmedel",
 					"category": "",
-					"order": 3
+					"order": 3,
+					"optional": false
 				}
 				
             ]
@@ -516,33 +570,39 @@
 				{
 					"item": "tandborste",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 					
 				},
 				{
 					"item": "tandkram",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 				},
 				{
 					"item": "vatten",
 					"category": "",
-					"order": 0
+					"order": 0,
+					"optional": false
 				},
 				{
 					"item": "",
 					"category": "soap",
-					"order": 3
+					"order": 3,
+					"optional": false
 				},
 				{
 					"item": "dusch",
 					"category": "",
-					"order": 4
+					"order": 4,
+					"optional": false
 				},
 				{
 					"item": "handduk",
 					"category": "",
-					"order": 5
+					"order": 5,
+					"optional": false
 				}
 								
             ]
@@ -556,13 +616,15 @@
 				{
 					"item": "tvattmedel",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 					
 				},
                 {
                     "item": "tvattmaskin",
                     "category": "",
-                    "order": 2
+                    "order": 2,
+					"optional": false
                 }
             ]
 		},
@@ -576,24 +638,28 @@
 				{
 					"item": "tvattmaskin",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 					
 				},
                 {
                     "item": "torktumlare",
                     "category": "",
-                    "order": 2
+                    "order": 2,
+					"optional": false
                 },
 				{
 					"item": "tvattmedel",
 					"category": "",
-					"order": 66
+					"order": 0,
+					"optional": true
 					
 				},
                 {
                     "item": "",
                     "category": "clothes",
-                    "order": 66
+                    "order": 0,
+					"optional": true
                 }
             ]
 		},
@@ -606,7 +672,8 @@
 				{
 					"item": "toalettpapper",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 					
 				}
             ]
@@ -620,13 +687,15 @@
 				{
 					"item": "dusch",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 					
 				},
                 {
                     "item": "handduk",
                     "category": "",
-                    "order": 2
+                    "order": 2,
+					"optional": false
                 }
             ]
 		},
@@ -639,13 +708,15 @@
 				{
 					"item": "",
 					"category": "soap",
-					"order": 1
+					"order": 1,
+					"optional": false
 					
 				},
                 {
                     "item": "vatten",
                     "category": "",
-                    "order": 2
+                    "order": 2,
+					"optional": false
                 }
             ]
 		},
@@ -658,51 +729,59 @@
 				{
 					"item": "toalettpapper",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 					
 				},
                 {
                     "item": "toalett",
                     "category": "",
-                    "order": 2
+                    "order": 2,
+					"optional": false
                 }
             ]
 		},
 		{
 			"id": 36,
 			"name": "",
-			"difficulty": 4,
+			"difficulty": 3,
 			"audio": "wav/wash_clothes_THEN_brush_teeth.wav",
 			"items": [
 				{
 					"item": "tvattmaskin",
 					"category": "",
-					"order": 2
+					"order": 2,
+					"optional": false
 				},
 				{
 					"item": "",
 					"category": "clothes",
-					"order": 1
+					"order": 1,
+					"optional": false
 				},
 				{
 					"item": "tvattmedel",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 				},
 				{
 					"item": "tandborste",
 					"category": "",
-					"order": 3
+					"order": 3,
+					"optional": false
 				},
 				{
 					"item": "tandkram",
 					"category": "",
-					"order": 3
+					"order": 3,
+					"optional": false
 				},
 				{
 					"item": "vatten",
 					"category": "",
-					"order": 3
+					"order": 3,
+					"optional": false
 				}
 			]
 		},
@@ -715,24 +794,28 @@
 				{
 					"item": "toalettpapper",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 					
 				},
 				{
 					"item": "dusch",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 					
 				},
                 {
                     "item": "handduk",
                     "category": "",
-                    "order": 2
+                    "order": 2,
+					"optional": false
                 },
                 {
                     "item": "",
                     "category": "soap",
-                    "order": 66
+                    "order": 0,
+					"optional": true
                 }
             ]
 		},
@@ -745,27 +828,32 @@
 				{
 					"item": "tvattmedel",
 					"category": "",
-					"order": 1					
+					"order": 1,
+					"optional": false					
 				},
                 {
                     "item": "tvattmaskin",
                     "category": "",
-                    "order": 2
+                    "order": 2,
+					"optional": false
                 },
 				{
 					"item": "",
 					"category": "soap",
-					"order": 3
+					"order": 3,
+					"optional": false
 				},
 				{
 					"item": "vatten",
 					"category": "",
-					"order": 4
+					"order": 4,
+					"optional": false
 				},
 				{
 					"item": "handduk",
 					"category": "",
-					"order": 5
+					"order": 5,
+					"optional": false
 				}
             ]
 		},
@@ -778,22 +866,26 @@
 				{
 					"item": "toalettpapper",
 					"category": "",
-					"order": 1					
+					"order": 1,
+					"optional": false					
 				},
 				{
 					"item": "",
 					"category": "soap",
-					"order": 2
+					"order": 2,
+					"optional": false
 				},
 				{
 					"item": "vatten",
 					"category": "",
-					"order": 3
+					"order": 3,
+					"optional": false
 				},
 				{
 					"item": "handduk",
 					"category": "",
-					"order": 4
+					"order": 4,
+					"optional": false
 				}
             ]
 		},		
@@ -806,18 +898,21 @@
 				{
 					"item": "tandborste",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 					
 				},
                 {
                     "item": "vatten",
                     "category": "",
-                    "order": 2
+                    "order": 2,
+					"optional": false
                 },
                 {
                     "item": "",
                     "category": "soap",
-                    "order": 66
+                    "order": 0,
+					"optional": true
                 }
             ]
 		},
@@ -830,17 +925,20 @@
 				{
 					"item": "",
 					"category": "clothes",
-					"order": 1
+					"order": 1,
+					"optional": false
 				},
 				{
 					"item": "tvattmedel",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 				},
 				{
 					"item": "vatten",
 					"category": "",
-					"order": 2
+					"order": 2,
+					"optional": false
 				}
 			]
 		},
@@ -853,13 +951,15 @@
 				{
 					"item": "handduk",
 					"category": "",
-					"order": 1
+					"order": 1,
+					"optional": false
 					
 				},
                 {
                     "item": "vatten",
                     "category": "",
-                    "order": 1
+                    "order": 1,
+					"optional": false
                 }
             ]
 		}
