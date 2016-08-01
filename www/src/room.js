@@ -73,8 +73,9 @@ GameObj.Room = function (game) {
 	
 	
 	
-	this.LEVEL_DOWN_LIMIT = 1;
+	this.LEVEL_DOWN_LIMIT = 2;
 	this.TASK_WRONG_LIMIT = 8;
+	this.LEVEL_UP_LIMIT = 5;
 	this.OPEN_ROOM_LIMIT = 8;
 	this.OLDER_TASK_PROBABILITY = 4;
 	
@@ -1344,7 +1345,7 @@ GameObj.Room.prototype = {
 			// Update level cleared
 			GameObj.level.cleared++;	
 			// Check if should level up
-			if(GameObj.level.cleared >= 3) {
+			if(GameObj.level.cleared >= this.LEVEL_UP_LIMIT) {
 				// Reset tasks cleared
 				GameObj.level.cleared = 0;
 				GameObj.db.clearLevelCleared(GameObj.level.id);
