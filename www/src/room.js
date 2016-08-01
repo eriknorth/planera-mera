@@ -1216,10 +1216,10 @@ GameObj.Room.prototype = {
 			// There is a task started
 			else {
 				
-				// TODO: Test tasks... always gets this...
+				// TODO: [LISA] Force a task. Uncoment these three lines below and comment the one below text "Save task in game object"
 				// var task = res.rows.item(0);
-// 				task.task = 409;
-// 				GameObj.task = task;
+				// task.task = 409;
+				// GameObj.task = task;
 				
 				// Save task in game object
 				GameObj.task = res.rows.item(0);
