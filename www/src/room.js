@@ -929,13 +929,14 @@ GameObj.Room.prototype = {
 				// Find where is the item
 				for(var j = 0; j < itemOrder.length; j++) {
 					// Consider only if empty
-					if(itemOrderStatus[j] == 0) {
+					if(itemOrderStatus[j] == 0 && taskItems[i].order != -1) {
 					
 						var itemCategories = self._itemArray[itemOrder[j]].categories;
 						for(var k = 0; k < itemCategories.length; k++) {
 							if(taskItems[i].category == itemCategories[k]) {
 							
 								itemOrderStatus[j] = taskItems[i].order;
+								taskItems[i].order = -1;
 								break;
 							}
 						}
@@ -1217,12 +1218,12 @@ GameObj.Room.prototype = {
 			else {
 				
 				// TODO: [LISA] Force a task. Uncoment these three lines below and comment the one below text "Save task in game object"
-				// var task = res.rows.item(0);
-				// task.task = 409;
-				// GameObj.task = task;
+				var task = res.rows.item(0);
+				task.task = 5;
+				GameObj.task = task;
 				
 				// Save task in game object
-				GameObj.task = res.rows.item(0);
+				// GameObj.task = res.rows.item(0);
 				
 				// Load task in the object
 				self._currTask = self._taskArray.filter(function (obj) {

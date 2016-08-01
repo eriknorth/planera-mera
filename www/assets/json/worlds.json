@@ -72,7 +72,7 @@
 			"icon": "school.png",
 			"background": "home.png",
 			"level": 0,
-			"enabled": true,
+			"enabled": false,
 			"rooms": [
 				{
 					"id": 1,

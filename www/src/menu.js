@@ -41,6 +41,15 @@ GameObj.Menu.prototype = {
 		
 		// Add world icons/padlocks
 		var worldCount = worldsJson.worlds.length;
+		// Count enabled worlds
+		var enabledWorldCount = 0;
+		for(i = 0; i < worldCount; i++) {
+			if(worldsJson.worlds[i].enabled == true) {
+				enabledWorldCount++;
+			}
+		}
+		
+		
 		var worldIcons = [];
 		for(i = 0; i < worldCount; i++)
 		{
@@ -48,7 +57,7 @@ GameObj.Menu.prototype = {
 			if(worldsJson.worlds[i].enabled == true) {
 				// Check if level is enough high to access
 				if(GameObj.user.level >= worldsJson.worlds[i].level) {
-					worldIcons[i] = this.add.sprite(worldIconPos[worldCount-1][i].x, worldIconPos[worldCount-1][i].y, 'w'+worldsJson.worlds[i].id+'_icon');
+					worldIcons[i] = this.add.sprite(worldIconPos[enabledWorldCount-1][i].x, worldIconPos[enabledWorldCount-1][i].y, 'w'+worldsJson.worlds[i].id+'_icon');
 					worldIcons[i].inputEnabled = true;
 					worldIcons[i].anchor.setTo(0.5, 0.5);
 					// Add event
@@ -56,7 +65,7 @@ GameObj.Menu.prototype = {
 				}
 				else {
 					// Add padlock
-					worldIcons[i] = this.add.sprite(worldIconPos[worldCount-1][i].x, worldIconPos[worldCount-1][i].y, 'padlock_icon');
+					worldIcons[i] = this.add.sprite(worldIconPos[enabledWorldCount-1][i].x, worldIconPos[enabledWorldCount-1][i].y, 'padlock_icon');
 					worldIcons[i].anchor.setTo(0.5, 0.5);
 				}
 			}
