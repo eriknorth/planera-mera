@@ -85,10 +85,16 @@
 			"categories": ["cleaning_products"]
 		},
 		{
-			"name": "vatten",
+			"name": "vatten_1",
 			"x": 1174,
 			"y": 361,
-			"categories": ["cleaning_products"]	
+			"categories": ["cleaning_products", "water"]	
+		},
+		{
+			"name": "vatten_2",
+			"x": 1174,
+			"y": 361,
+			"categories": ["cleaning_products", "water"]	
 		},
 		{
 			"name": "paraply",

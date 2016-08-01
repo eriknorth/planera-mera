@@ -36,8 +36,7 @@
 					"item": "tandborste",
 					"category": "",
 					"order": 1,
-					"optional": false
-					
+					"optional": false					
 				},
 				{
 					"item": "tandkram",
@@ -46,15 +45,15 @@
 					"optional": false
 				},
 				{
-					"item": "vatten",
-					"category": "",
-					"order": 0,
+					"item": "",
+					"category": "water",
+					"order": 1,
 					"optional": false
 				},
 				{
 					"item": "handduk",
 					"category": "",
-					"order": 0,
+					"order": 2,
 					"optional": true
 				}
 			]
@@ -66,8 +65,8 @@
 			"audio": "wav/shower.wav",
 			"items": [
 				{
-					"item": "dusch",
-					"category": "",
+					"item": "",
+					"category": "shower",
 					"order": 2,
 					"optional": false
 				},
@@ -121,19 +120,25 @@
 				{
 					"item": "",
 					"category": "soap",
-					"order": 1,
+					"order": 2,
 					"optional": false
 				},
 				{
-					"item": "vatten",
-					"category": "",
-					"order": 2,
+					"item": "",
+					"category": "water",
+					"order": 3,
 					"optional": false
 				},
 				{
 					"item": "handduk",
 					"category": "",
-					"order": 3,
+					"order": 4,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "water",
+					"order": 1,
 					"optional": false
 				}
 			]
@@ -157,21 +162,27 @@
 					"optional": false
 				},
                 {
-					"item": "vatten",
-					"category": "",
-					"order": 4,
+					"item": "",
+					"category": "water",
+					"order": 3,
 					"optional": false	
 				},
 				{
 					"item": "",
 					"category": "soap",
-					"order": 3,
+					"order": 4,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "water",
+					"order": 5,
 					"optional": false
 				},
 				{
 					"item": "handduk",
 					"category": "",
-					"order": 0,
+					"order": 6,
 					"optional": true
 				}
 			]
@@ -189,8 +200,8 @@
 					"optional": false
 				},
 				{
-					"item": "vatten",
-					"category": "",
+					"item": "",
+					"category": "water",
 					"order": 2,
 					"optional": false		
 				},
@@ -215,8 +226,8 @@
 					"optional": false
 				},
 				{
-					"item": "dusch",
-					"category": "",
+					"item": "",
+					"category": "shower",
 					"order": 2,
 					"optional": false
 				},
@@ -417,8 +428,8 @@
 			"audio": "wav/get_water.wav",
 			"items": [
 				{
-					"item": "vatten",
-					"category": "",
+					"item": "",
+					"category": "water",
 					"order": 1,
 					"optional": false
 					
@@ -477,8 +488,8 @@
 			"audio": "wav/get_shower.wav",
 			"items": [
 				{
-					"item": "dusch",
-					"category": "",
+					"item": "",
+					"category": "shower",
 					"order": 1,
 					"optional": false
 					
@@ -571,8 +582,7 @@
 					"item": "tandborste",
 					"category": "",
 					"order": 1,
-					"optional": false
-					
+					"optional": false					
 				},
 				{
 					"item": "tandkram",
@@ -581,27 +591,39 @@
 					"optional": false
 				},
 				{
-					"item": "vatten",
-					"category": "",
-					"order": 0,
-					"optional": false
-				},
-				{
 					"item": "",
-					"category": "soap",
-					"order": 3,
-					"optional": false
-				},
-				{
-					"item": "dusch",
-					"category": "",
-					"order": 4,
+					"category": "water",
+					"order": 1,
 					"optional": false
 				},
 				{
 					"item": "handduk",
 					"category": "",
+					"order": 2,
+					"optional": true
+				},
+				{
+					"item": "",
+					"category": "shower",
+					"order": 3,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "soap",
+					"order": 4,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "shower",
 					"order": 5,
+					"optional": false
+				},
+				{
+					"item": "handduk",
+					"category": "",
+					"order": 6,
 					"optional": false
 				}
 								
@@ -651,7 +673,7 @@
 				{
 					"item": "tvattmedel",
 					"category": "",
-					"order": 0,
+					"order": 1,
 					"optional": true
 					
 				},
@@ -685,8 +707,8 @@
 			"audio": "wav/wet_hair_and_dry_it.wav",
 			"items": [
 				{
-					"item": "dusch",
-					"category": "",
+					"item": "",
+					"category": "shower",
 					"order": 1,
 					"optional": false
 					
@@ -713,8 +735,8 @@
 					
 				},
                 {
-                    "item": "vatten",
-                    "category": "",
+                    "item": "",
+                    "category": "water",
                     "order": 2,
 					"optional": false
                 }
@@ -778,8 +800,8 @@
 					"optional": false
 				},
 				{
-					"item": "vatten",
-					"category": "",
+					"item": "",
+					"category": "water",
 					"order": 3,
 					"optional": false
 				}
@@ -799,8 +821,8 @@
 					
 				},
 				{
-					"item": "dusch",
-					"category": "",
+					"item": "",
+					"category": "shower",
 					"order": 1,
 					"optional": false
 					
@@ -814,7 +836,7 @@
                 {
                     "item": "",
                     "category": "soap",
-                    "order": 0,
+                    "order": 1,
 					"optional": true
                 }
             ]
@@ -839,20 +861,26 @@
                 },
 				{
 					"item": "",
-					"category": "soap",
+					"category": "water",
 					"order": 3,
+					"optional": true
+				},
+				{
+					"item": "",
+					"category": "soap",
+					"order": 4,
 					"optional": false
 				},
 				{
-					"item": "vatten",
-					"category": "",
-					"order": 4,
+					"item": "",
+					"category": "water",
+					"order": 5,
 					"optional": false
 				},
 				{
 					"item": "handduk",
 					"category": "",
-					"order": 5,
+					"order": 6,
 					"optional": false
 				}
             ]
@@ -871,20 +899,26 @@
 				},
 				{
 					"item": "",
-					"category": "soap",
+					"category": "water",
 					"order": 2,
+					"optional": true
+				},
+				{
+					"item": "",
+					"category": "soap",
+					"order": 3,
 					"optional": false
 				},
 				{
-					"item": "vatten",
-					"category": "",
-					"order": 3,
+					"item": "",
+					"category": "water",
+					"order": 4,
 					"optional": false
 				},
 				{
 					"item": "handduk",
 					"category": "",
-					"order": 4,
+					"order": 5,
 					"optional": false
 				}
             ]
@@ -903,15 +937,15 @@
 					
 				},
                 {
-                    "item": "vatten",
-                    "category": "",
+                    "item": "",
+                    "category": "water",
                     "order": 2,
 					"optional": false
                 },
                 {
                     "item": "",
                     "category": "soap",
-                    "order": 0,
+                    "order": 1,
 					"optional": true
                 }
             ]
@@ -922,22 +956,29 @@
 			"difficulty": 2,
 			"audio": "wav/wash_clothes_in_sink.wav",
 			"items": [
+				
 				{
 					"item": "",
 					"category": "clothes",
-					"order": 1,
+					"order": 2,
 					"optional": false
+				},
+				{
+					"item": "",
+					"category": "water",
+					"order": 1,
+					"optional": true
 				},
 				{
 					"item": "tvattmedel",
 					"category": "",
-					"order": 1,
+					"order": 2,
 					"optional": false
 				},
 				{
-					"item": "vatten",
-					"category": "",
-					"order": 2,
+					"item": "",
+					"category": "water",
+					"order": 3,
 					"optional": false
 				}
 			]
@@ -956,8 +997,8 @@
 					
 				},
                 {
-                    "item": "vatten",
-                    "category": "",
+                    "item": "",
+                    "category": "water",
                     "order": 1,
 					"optional": false
                 }

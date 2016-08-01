@@ -85,7 +85,12 @@
 		"spriteSourceSize": {"x":0,"y":0,"w":118,"h":86},
 		"sourceSize": {"w":118,"h":86}
 	},
-	"vatten": {
+	"vatten_1": {
+		"frame": {"x":189, "y":527, "w":155, "h":65},
+		"spriteSourceSize": {"x":0,"y":0,"w":155,"h":65},
+		"sourceSize": {"w":155,"h":65}
+	},
+	"vatten_2": {
 		"frame": {"x":189, "y":527, "w":155, "h":65},
 		"spriteSourceSize": {"x":0,"y":0,"w":155,"h":65},
 		"sourceSize": {"w":155,"h":65}

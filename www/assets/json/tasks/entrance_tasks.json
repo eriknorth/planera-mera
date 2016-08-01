@@ -46,7 +46,7 @@
 			"audio": "wav/water_the_plants.wav",
 			"items": [
 				{
-					"item": "vatten",
+					"item": "vatten_1",
 					"category": "",
 					"order": 1,
 					"optional": false
@@ -79,7 +79,7 @@
 					"optional": false				
 				},
                 {
-                    "item": "vatten",
+                    "item": "vatten_1",
                     "category": "",
                     "order": 2,
 					"optional": false
@@ -132,7 +132,7 @@
 					"optional": false
                 },
                 {
-                    "item": "vatten",
+                    "item": "vatten_1",
                     "category": "",
                     "order": 1,
 					"optional": false
@@ -198,7 +198,7 @@
 					"optional": false
 				},
 				{
-					"item": "vatten",
+					"item": "vatten_1",
 					"category": "",
 					"order": 1,
 					"optional": false
@@ -218,7 +218,7 @@
 					"optional": false
 				},
 				{
-					"item": "vatten",
+					"item": "vatten_1",
 					"category": "",
 					"order": 1,
 					"optional": false
@@ -480,7 +480,7 @@
 			"audio": "wav/get_water.wav",
 			"items": [
 				{
-					"item": "vatten",
+					"item": "vatten_1",
 					"category": "",
                     "order": 1,
 					"optional": false
@@ -514,7 +514,7 @@
 				{
 					"item": "",
 					"category": "fruit",
-					"order": 0,
+					"order": 1,
 					"optional": true
 				}
 			]
@@ -550,7 +550,7 @@
 					"optional": false
 				},
 				{
-					"item": "vatten",
+					"item": "vatten_1",
 					"category": "",
 					"order": 3,
 					"optional": false
@@ -565,7 +565,7 @@
 				{
 					"item": "",
 					"category": "fruit",
-					"order": 0,
+					"order": 1,
 					"optional": true
 				}
 			]
@@ -601,7 +601,7 @@
 					"optional": false
 				},
 				{
-					"item": "vatten",
+					"item": "vatten_1",
 					"category": "",
 					"order": 3,
 					"optional": false
@@ -625,8 +625,7 @@
 					"item": "stovlar",
 					"category": "",
 					"order": 1,
-					"optional": false
-					
+					"optional": false					
 				},
 				{
                     "item": "jacka",
@@ -661,7 +660,7 @@
 					"optional": false
 				},
 				{
-					"item": "vatten",
+					"item": "vatten_1",
 					"category": "",
 					"order": 1,
 					"optional": false
@@ -681,7 +680,7 @@
 					"optional": false
 				},
 				{
-					"item": "vatten",
+					"item": "vatten_1",
 					"category": "",
 					"order": 1,
 					"optional": false

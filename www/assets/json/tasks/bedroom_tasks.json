@@ -231,25 +231,25 @@
                 {
                     "item": "jeans",
                     "category": "",
-                    "order": 1,
+                    "order": 2,
 					"optional": false
                 },
                 {
                     "item": "skjorta",
                     "category": "",
-                    "order": 1,
+                    "order": 2,
 					"optional": false
                 },
                 {
                     "item": "skarp",
                     "category": "",
-                    "order": 1,
+                    "order": 2,
 					"optional": false
                 },
                 {
                     "item": "",
                     "category": "underwear",
-                    "order": 0,
+                    "order": 1,
 					"optional": true
                 }
             ]
