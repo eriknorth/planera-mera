@@ -785,14 +785,16 @@ GameObj.Room.prototype = {
 					// Reset
 					this._lastWasWrong = false;
 
-					this._sound.playSequence(['doPlanning_audio', this.prefix + '_t' + this._currTask.id + '_audio', 200,'aTip_audio'],
+					this._sound.playSequence([this.prefix + '_t' + this._currTask.id + '_audio', 200,'aTip_audio'],
+					// this._sound.playSequence(['doPlanning_audio', this.prefix + '_t' + this._currTask.id + '_audio', 200,'aTip_audio'],
 						function() { self._alien.talk(false); self.setButtonsActive(true); },
 						function() { self._alien.talk(false); },
 						function() { self._alien.talk(true); }
 					);
 				}
 				else {
-					this._sound.playSequence(['doPlanning_audio', this.prefix + '_t' + this._currTask.id + '_audio'], 
+					this._sound.playSequence([this.prefix + '_t' + this._currTask.id + '_audio'], 
+					// this._sound.playSequence(['doPlanning_audio', this.prefix + '_t' + this._currTask.id + '_audio'], 
 						function() { self._alien.talk(false); self.setButtonsActive(true); },
 						function() { self._alien.talk(false); },
 						function() { self._alien.talk(true); }
@@ -802,7 +804,8 @@ GameObj.Room.prototype = {
 			// }
 			break;
 		case 1:
-			this._sound.playSequence(['doPlanning_audio', this.prefix + '_t' + this._currTask.id + '_audio', 200, 'orderInstruction_audio'], 
+			this._sound.playSequence([this.prefix + '_t' + this._currTask.id + '_audio', 200, 'orderInstruction_audio'], 
+			// this._sound.playSequence(['doPlanning_audio', this.prefix + '_t' + this._currTask.id + '_audio', 200, 'orderInstruction_audio'], 
 				function() { self._alien.talk(false); self.setButtonsActive(true); },
 				function() { self._alien.talk(false); },
 				function() { self._alien.talk(true); }
@@ -823,6 +826,11 @@ GameObj.Room.prototype = {
 			return false;
 		}
 		
+		// Check if there are minimum of items required
+		if(self._selectedItems.length < self._currTask.items.length) {
+			return false;
+		}
+		
 		// Reset task item status
 		var taskItemStatus = [];
 		for(var i = 0; i < self._currTask.items.length; i++) {
@@ -834,6 +842,7 @@ GameObj.Room.prototype = {
 				taskItemStatus[i] = 0;
 			}
 		}
+		
 		
 		
 		// Loop through all selected items
