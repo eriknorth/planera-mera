@@ -785,8 +785,14 @@ GameObj.Room.prototype = {
 				if(this._lastWasWrong == true) {
 					// Reset
 					this._lastWasWrong = false;
-
-					this._sound.playSequence([this.prefix + '_t' + this._currTask.id + '_audio', 200,'aTip_audio'],
+					
+					var audioArray = ['doPlanning_audio', this.prefix + '_t' + this._currTask.id + '_audio', 200,'aTip_audio'];
+					if(this._currTask.difficulty == 0) {
+					    audioArray = [this.prefix + '_t' + this._currTask.id + '_audio', 200,'aTip_audio'];
+					}
+					
+					this._sound.playSequence(audioArray,
+					//this._sound.playSequence([this.prefix + '_t' + this._currTask.id + '_audio', 200,'aTip_audio'],
 					// this._sound.playSequence(['doPlanning_audio', this.prefix + '_t' + this._currTask.id + '_audio', 200,'aTip_audio'],
 						function() { self._alien.talk(false); self.setButtonsActive(true); },
 						function() { self._alien.talk(false); },
@@ -794,7 +800,14 @@ GameObj.Room.prototype = {
 					);
 				}
 				else {
-					this._sound.playSequence([this.prefix + '_t' + this._currTask.id + '_audio'], 
+				
+				    var audioArray = ['doPlanning_audio', this.prefix + '_t' + this._currTask.id + '_audio'];
+					if(this._currTask.difficulty == 0) {
+					    audioArray = [this.prefix + '_t' + this._currTask.id + '_audio'];
+					}
+					
+					this._sound.playSequence(audioArray,
+					//this._sound.playSequence([this.prefix + '_t' + this._currTask.id + '_audio'], 
 					// this._sound.playSequence(['doPlanning_audio', this.prefix + '_t' + this._currTask.id + '_audio'], 
 						function() { self._alien.talk(false); self.setButtonsActive(true); },
 						function() { self._alien.talk(false); },
