@@ -828,7 +828,10 @@ GameObj.Room.prototype = {
 		}
 		
 		// Check if there are minimum of items required
-		if(self._selectedItems.length < self._currTask.items.length) {
+		var currTaskWOOptionals = self._currTask.items.filter(function(obj) {
+		    return obj.optional != true;
+		});
+		if(self._selectedItems.length < currTaskWOOptionals.length) {
 			return false;
 		}
 		
