@@ -19,8 +19,8 @@
 					"optional": false
 				},
 				{
-					"item": "tvattmedel",
-					"category": "",
+					"item": "",
+					"category": "washing_soap",
 					"order": 1,
 					"optional": false
 				}
@@ -291,8 +291,8 @@
 			"audio": "wav/get_washing_liquid.wav",
 			"items": [
 				{
-					"item": "tvattmedel",
-					"category": "",
+					"item": "",
+					"category": "washing_soap",
 					"order": 1,
 					"optional": false
 					
@@ -333,8 +333,8 @@
 					"optional": false
 				},
 				{
-					"item": "tvattmedel",
-					"category": "",
+					"item": "",
+					"category": "washing_soap",
 					"order": 1,
 					"optional": false
 				}
@@ -564,8 +564,8 @@
 					"optional": false
 				},
 				{
-					"item": "tvattmedel",
-					"category": "",
+					"item": "",
+					"category": "washing_soap",
 					"order": 3,
 					"optional": false
 				}
@@ -636,8 +636,8 @@
 			"audio": "wav/put_soap_in_washing_mashine.wav",
 			"items": [
 				{
-					"item": "tvattmedel",
-					"category": "",
+					"item": "",
+					"category": "washing_soap",
 					"order": 1,
 					"optional": false
 					
@@ -671,8 +671,8 @@
 					"optional": false
                 },
 				{
-					"item": "tvattmedel",
-					"category": "",
+					"item": "",
+					"category": "washing_soap",
 					"order": 1,
 					"optional": true
 					
@@ -680,7 +680,7 @@
                 {
                     "item": "",
                     "category": "clothes",
-                    "order": 0,
+                    "order": 1,
 					"optional": true
                 }
             ]
@@ -782,7 +782,7 @@
 					"optional": false
 				},
 				{
-					"item": "tvattmedel",
+					"item": "washing_soap",
 					"category": "",
 					"order": 1,
 					"optional": false
@@ -848,8 +848,8 @@
 			"audio": "wav/put_soap_in_washing_mashine_THEN_wash_hands.wav",
 			"items": [
 				{
-					"item": "tvattmedel",
-					"category": "",
+					"item": "",
+					"category": "washing_soap",
 					"order": 1,
 					"optional": false					
 				},
@@ -933,20 +933,13 @@
 					"item": "tandborste",
 					"category": "",
 					"order": 1,
-					"optional": false
-					
+					"optional": false					
 				},
                 {
                     "item": "",
                     "category": "water",
-                    "order": 2,
-					"optional": false
-                },
-                {
-                    "item": "",
-                    "category": "soap",
                     "order": 1,
-					"optional": true
+					"optional": false
                 }
             ]
 		},
@@ -970,8 +963,8 @@
 					"optional": true
 				},
 				{
-					"item": "tvattmedel",
-					"category": "",
+					"item": "",
+					"category": "washing_soap",
 					"order": 2,
 					"optional": false
 				},
@@ -999,7 +992,7 @@
                 {
                     "item": "",
                     "category": "water",
-                    "order": 1,
+                    "order": 2,
 					"optional": false
                 }
             ]

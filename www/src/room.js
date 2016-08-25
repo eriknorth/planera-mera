@@ -412,7 +412,7 @@ GameObj.Room.prototype = {
 									// Feedback + present
 									self._alien.talk(true);
 									// Check if a new room has opened
-									let audioList = ['positiveFeedback_audio', 500, 'gotRocketItem_audio'];
+									var audioList = ['positiveFeedback_audio', 500, 'gotRocketItem_audio'];
 									if(levelUp) {
 										audioList = ['positiveFeedback_audio', 500, 'gotRocketItem_audio', 500, 'newRoomOpen_audio'];
 									}
@@ -433,7 +433,7 @@ GameObj.Room.prototype = {
 									// Feedback
 									self._alien.talk(true);
 									// Check if a new room has opened
-									let audioList = ['positiveFeedback_audio'];
+									var audioList = ['positiveFeedback_audio'];
 									if(levelUp) {
 										audioList = ['positiveFeedback_audio', 500, 'newRoomOpen_audio'];
 									}
@@ -1245,7 +1245,7 @@ GameObj.Room.prototype = {
 				
 				// TODO: [LISA] Force a task. Uncoment these three lines below and comment the one below text "Save task in game object"
 				var task = res.rows.item(0);
-				task.task = 5;
+				task.task = 327;
 				GameObj.task = task;
 				
 				// Save task in game object

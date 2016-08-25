@@ -9,26 +9,38 @@
 		{
 			"name": "jacka",
 			"x": 306,
-			"y": 512,
+			"y": 502,
 			"categories": ["clothes"]
 		},
 		{
 			"name": "planta",
 			"x": 480,
-			"y": 646,
+			"y": 653,
 			"categories": ["plant"]
 		},
 		{
 			"name": "bok",
-			"x": 610,
-			"y": 606,
-			"categories": ["school_stuff"]
+			"x": 660,
+			"y": 605,
+			"categories": ["school_stuff", "book"]
+		},
+		{
+			"name": "bok_1",
+			"x": 579,
+			"y": 609,
+			"categories": ["school_stuff", "book"]
+		},
+		{
+			"name": "bok_2",
+			"x": 596,
+			"y": 492,
+			"categories": ["school_stuff", "book"]
 		},
 		{
 			"name": "apple",
-			"x": 630,
-			"y": 463,
-			"categories": ["fruit"]
+			"x": 672,
+			"y": 464,
+			"categories": ["fruit", "edible"]
 		},
 		{
 			"name": "mossa",
@@ -43,9 +55,9 @@
 			"categories": ["clothes"]
 		},
 		{
-			"name": "penna",
-			"x": 490,
-			"y": 456,
+			"name": "pennfack",
+			"x": 500,
+			"y": 470,
 			"categories": ["school_stuff"]
 		},
 		{
@@ -81,7 +93,7 @@
 		{
 			"name": "hink",
 			"x": 973,
-			"y": 271,
+			"y": 274,
 			"categories": ["cleaning_products"]
 		},
 		{

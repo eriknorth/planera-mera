@@ -46,8 +46,8 @@
 			"audio": "wav/water_the_plants.wav",
 			"items": [
 				{
-					"item": "vatten_1",
-					"category": "",
+					"item": "",
+					"category": "water",
 					"order": 1,
 					"optional": false
 					
@@ -79,8 +79,8 @@
 					"optional": false				
 				},
                 {
-                    "item": "vatten_1",
-                    "category": "",
+                    "item": "",
+                    "category": "water",
                     "order": 2,
 					"optional": false
                 },
@@ -132,8 +132,8 @@
 					"optional": false
                 },
                 {
-                    "item": "vatten_1",
-                    "category": "",
+                    "item": "",
+                    "category": "water",
                     "order": 1,
 					"optional": false
                 }
@@ -172,13 +172,13 @@
 			"audio": "wav/write_in_book.wav",
 			"items": [
 				{
-					"item": "bok",
-					"category": "",
+					"item": "",
+					"category": "book",
 					"order": 1,
 					"optional": false
 				},
 				{
-					"item": "penna",
+					"item": "pennfack",
 					"category": "",
 					"order": 1,
 					"optional": false
@@ -198,10 +198,16 @@
 					"optional": false
 				},
 				{
-					"item": "vatten_1",
-					"category": "",
+					"item": "",
+					"category": "water",
 					"order": 1,
 					"optional": false
+				},
+				{
+					"item": "rengoringsmedel",
+					"category": "",
+					"order": 1,
+					"optional": true
 				}
 			]
 		},
@@ -218,8 +224,8 @@
 					"optional": false
 				},
 				{
-					"item": "vatten_1",
-					"category": "",
+					"item": "",
+					"category": "water",
 					"order": 1,
 					"optional": false
 				},
@@ -272,7 +278,7 @@
 					"optional": false
 				}
 			]		
-		},
+		},		
 		{
 			"id": 313,
 			"name": "",
@@ -382,7 +388,7 @@
 			"audio": "wav/get_pen.wav",
 			"items": [
 				{
-					"item": "penna",
+					"item": "pennfack",
 					"category": "",
                     "order": 1,
 					"optional": false
@@ -424,8 +430,8 @@
 			"audio": "wav/get_books.wav",
 			"items": [
 				{
-					"item": "bok",
-					"category": "",
+					"item": "",
+					"category": "book",
                     "order": 1,
 					"optional": false
 				}
@@ -480,8 +486,8 @@
 			"audio": "wav/get_water.wav",
 			"items": [
 				{
-					"item": "vatten_1",
-					"category": "",
+					"item": "",
+					"category": "water",
                     "order": 1,
 					"optional": false
 				}
@@ -550,8 +556,8 @@
 					"optional": false
 				},
 				{
-					"item": "vatten_1",
-					"category": "",
+					"item": "",
+					"category": "water",
 					"order": 3,
 					"optional": false
 					
@@ -577,6 +583,18 @@
 			"audio": "wav/pack_bag_with_warm_clothes_THEN_fill_bucket_with_water_and_soap.wav",
 			"items": [
 				{
+					"item": "",
+					"category": "clothes",
+					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "clothes",
+					"order": 1,
+					"optional": false
+				},
+				{
 					"item": "ryggsack",
 					"category": "",
 					"order": 2,
@@ -584,25 +602,7 @@
 				},
 				{
 					"item": "",
-					"category": "clothes",
-					"order": 1,
-					"optional": false
-				},
-				{
-					"item": "",
-					"category": "clothes",
-					"order": 1,
-					"optional": false
-				},
-				{
-					"item": "hink",
-					"category": "",
-					"order": 4,
-					"optional": false
-				},
-				{
-					"item": "vatten_1",
-					"category": "",
+					"category": "water",
 					"order": 3,
 					"optional": false
 				},
@@ -610,6 +610,12 @@
 					"item": "rengoringsmedel",
 					"category": "",
 					"order": 3,
+					"optional": false
+				},
+				{
+					"item": "hink",
+					"category": "",
+					"order": 4,
 					"optional": false
 				}
 				
@@ -660,8 +666,8 @@
 					"optional": false
 				},
 				{
-					"item": "vatten_1",
-					"category": "",
+					"item": "",
+					"category": "water",
 					"order": 1,
 					"optional": false
 				}
@@ -680,8 +686,8 @@
 					"optional": false
 				},
 				{
-					"item": "vatten_1",
-					"category": "",
+					"item": "",
+					"category": "water",
 					"order": 1,
 					"optional": false
 				}

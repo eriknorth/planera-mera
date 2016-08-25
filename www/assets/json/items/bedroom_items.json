@@ -37,15 +37,27 @@
 			"categories": ["furniture"]
 		},
 		{
-			"name": "bocker_sovrum",
-			"x": 470,
-			"y": 575,
+			"name": "bok",
+			"x": 563,
+			"y": 584,
+			"categories": ["homework", "book"]
+		},
+		{
+			"name": "bok_1",
+			"x": 398,
+			"y": 589,
+			"categories": ["homework", "book"]
+		},
+		{
+			"name": "bok_2",
+			"x": 491,
+			"y": 589,
 			"categories": ["homework", "book"]
 		},
 		{
 			"name": "vaxt",
-			"x": 601,
-			"y": 575,
+			"x": 611,
+			"y": 580,
 			"categories": ["plant"]
 		},
 		{
@@ -92,14 +104,20 @@
 		},
 		{
 			"name": "kjol",
-			"x": 1058,
-			"y": 437,
+			"x": 889,
+			"y": 479,
 			"categories": ["clothes", "nice_bottom", "summer", "bottom", "bottom_cold"]
 		},
 		{
 			"name": "strumpor",
-			"x": 988,
-			"y": 424,
+			"x": 982,
+			"y": 452,
+			"categories": ["clothes"]
+		},
+		{
+			"name": "keps",
+			"x": 1056,
+			"y": 477,
 			"categories": ["clothes"]
 		},
 		{
@@ -121,6 +139,12 @@
 			"categories": ["clothes", "top", "top_cold"]
 		},
 		{
+			"name": "vast",
+			"x": 818,
+			"y": 483,
+			"categories": ["clothes", "top", "top_cold", "nice_top"]
+		},
+		{
 			"name": "tennisracket",
 			"x": 663,
 			"y": 702,
@@ -139,15 +163,15 @@
 			"categories": ["toy", "ball"]
 		},
 		{
-			"name": "pennor",
-			"x": 487,
-			"y": 353,
-			"categories": ["homework"]
-		},
-		{
 			"name": "dator",
 			"x": 581,
 			"y": 392,
+			"categories": ["homework"]
+		},
+		{
+			"name": "pennfack",
+			"x": 503,
+			"y": 347,
 			"categories": ["homework"]
 		},
 		{
@@ -167,6 +191,12 @@
 			"x": 674,
 			"y": 403,
 			"categories": ["furniture"]
+		},
+		{
+			"name": "skor",
+			"x": 1045,
+			"y": 407,
+			"categories": ["clothes"]
 		},
 		{
 			"name": "dorr_garderob_sovrum",

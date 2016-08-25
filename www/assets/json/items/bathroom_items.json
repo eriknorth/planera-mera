@@ -46,19 +46,19 @@
             "name": "dusch_1",
             "x": 1171,
             "y": 583,
-            "categories": [ "shower" ]
+            "categories": [ "shower", "water" ]
         },
         {
             "name": "dusch_2",
             "x": 1171,
             "y": 583,
-            "categories": [ "shower" ]
+            "categories": [ "shower", "water" ]
         },
         {
             "name": "tvattmedel",
             "x": 223,
             "y": 665,
-            "categories": [ "soap" ]
+            "categories": [ "washing_soap" ]
         },
         {
             "name": "tandkram",
@@ -70,19 +70,19 @@
             "name": "schampo",
             "x": 1013,
             "y": 590,
-            "categories": [ "soap" ]
+            "categories": [ "soap", "washing_soap" ]
         },
         {
             "name": "duschtval",
             "x": 1057,
             "y": 590,
-            "categories": [ "soap" ]
+            "categories": [ "soap", "washing_soap" ]
         },
         {
             "name": "handtval",
             "x": 778,
             "y": 573,
-            "categories": [ "soap" ]
+            "categories": [ "soap", "washing_soap" ]
         },
         {
             "name": "vatten_1",

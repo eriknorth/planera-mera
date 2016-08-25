@@ -1,102 +1,117 @@
 {
 "frames": {
 	"apple": {
-		"frame": {"x":189, "y":672, "w":40, "h":52},
+		"frame": {"x":189, "y":337, "w":40, "h":52},
 		"spriteSourceSize": {"x":0,"y":0,"w":40,"h":52},
 		"sourceSize": {"w":40,"h":52}
 	},
 	"bok": {
-		"frame": {"x":345, "y":479, "w":138, "h":99},
-		"spriteSourceSize": {"x":0,"y":0,"w":138,"h":99},
-		"sourceSize": {"w":138,"h":99}
+		"frame": {"x":637, "y":327, "w":37, "h":93},
+		"spriteSourceSize": {"x":0,"y":0,"w":37,"h":93},
+		"sourceSize": {"w":37,"h":93}
+	},
+	"bok_1": {
+		"frame": {"x":632, "y":652, "w":95, "h":107},
+		"spriteSourceSize": {"x":0,"y":0,"w":95,"h":107},
+		"sourceSize": {"w":95,"h":107}
+	},
+	"bok_2": {
+		"frame": {"x":533, "y":652, "w":98, "h":107},
+		"spriteSourceSize": {"x":0,"y":0,"w":98,"h":107},
+		"sourceSize": {"w":98,"h":107}
 	},
 	"dammsugare": {
-		"frame": {"x":282, "y":250, "w":154, "h":228},
+		"frame": {"x":0, "y":491, "w":154, "h":228},
 		"spriteSourceSize": {"x":0,"y":0,"w":154,"h":228},
 		"sourceSize": {"w":154,"h":228}
 	},
 	"dorr_garderob_hall": {
-		"frame": {"x":0, "y":0, "w":281, "h":526},
+		"frame": {"x":282, "y":0, "w":281, "h":526},
 		"spriteSourceSize": {"x":0,"y":0,"w":281,"h":526},
 		"sourceSize": {"w":281,"h":526}
 	},
 	"dorr_lador_hall": {
-		"frame": {"x":282, "y":0, "w":281, "h":249},
+		"frame": {"x":0, "y":0, "w":281, "h":249},
 		"spriteSourceSize": {"x":0,"y":0,"w":281,"h":249},
 		"sourceSize": {"w":281,"h":249}
 	},
 	"hink": {
-		"frame": {"x":564, "y":0, "w":99, "h":124},
+		"frame": {"x":533, "y":527, "w":99, "h":124},
 		"spriteSourceSize": {"x":0,"y":0,"w":116,"h":146},
 		"sourceSize": {"w":116,"h":146}
 	},
 	"jacka": {
-		"frame": {"x":0, "y":527, "w":188, "h":174},
+		"frame": {"x":0, "y":250, "w":188, "h":174},
 		"spriteSourceSize": {"x":0,"y":0,"w":188,"h":174},
 		"sourceSize": {"w":188,"h":174}
 	},
 	"mopp": {
-		"frame": {"x":664, "y":0, "w":64, "h":214},
+		"frame": {"x":633, "y":435, "w":64, "h":214},
 		"spriteSourceSize": {"x":0,"y":0,"w":64,"h":214},
 		"sourceSize": {"w":64,"h":214}
 	},
 	"mossa": {
-		"frame": {"x":484, "y":487, "w":92, "h":86},
+		"frame": {"x":189, "y":250, "w":92, "h":86},
 		"spriteSourceSize": {"x":0,"y":0,"w":92,"h":86},
 		"sourceSize": {"w":92,"h":86}
 	},
 	"paraply": {
-		"frame": {"x":600, "y":313, "w":72, "h":246},
+		"frame": {"x":564, "y":188, "w":72, "h":246},
 		"spriteSourceSize": {"x":0,"y":0,"w":72,"h":246},
 		"sourceSize": {"w":72,"h":246}
 	},
 	"penna": {
-		"frame": {"x":0, "y":702, "w":45, "h":26},
+		"frame": {"x":0, "y":720, "w":45, "h":26},
 		"spriteSourceSize": {"x":0,"y":0,"w":45,"h":26},
 		"sourceSize": {"w":45,"h":26}
 	},
+	"pennfack": {
+		"frame": {"x":155, "y":677, "w":88, "h":62},
+		"spriteSourceSize": {"x":0,"y":0,"w":88,"h":62},
+		"sourceSize": {"w":88,"h":62}
+	},
 	"planta": {
-		"frame": {"x":564, "y":125, "w":92, "h":187},
+		"frame": {"x":564, "y":0, "w":92, "h":187},
 		"spriteSourceSize": {"x":0,"y":0,"w":92,"h":187},
 		"sourceSize": {"w":92,"h":187}
 	},
 	"rengoringsmedel": {
-		"frame": {"x":599, "y":560, "w":59, "h":138},
+		"frame": {"x":637, "y":188, "w":59, "h":138},
 		"spriteSourceSize": {"x":0,"y":0,"w":59,"h":138},
 		"sourceSize": {"w":59,"h":138}
 	},
 	"ryggsack": {
-		"frame": {"x":481, "y":579, "w":117, "h":144},
+		"frame": {"x":299, "y":606, "w":117, "h":144},
 		"spriteSourceSize": {"x":0,"y":0,"w":117,"h":144},
 		"sourceSize": {"w":117,"h":144}
 	},
 	"skor": {
-		"frame": {"x":337, "y":593, "w":143, "h":70},
+		"frame": {"x":155, "y":606, "w":143, "h":70},
 		"spriteSourceSize": {"x":0,"y":0,"w":143,"h":70},
 		"sourceSize": {"w":143,"h":70}
 	},
 	"stovlar": {
-		"frame": {"x":484, "y":337, "w":115, "h":149},
+		"frame": {"x":417, "y":527, "w":115, "h":149},
 		"spriteSourceSize": {"x":0,"y":0,"w":115,"h":149},
 		"sourceSize": {"w":115,"h":149}
 	},
 	"vantar": {
-		"frame": {"x":437, "y":250, "w":118, "h":86},
+		"frame": {"x":156, "y":425, "w":118, "h":86},
 		"spriteSourceSize": {"x":0,"y":0,"w":118,"h":86},
 		"sourceSize": {"w":118,"h":86}
 	},
 	"vatten_1": {
-		"frame": {"x":189, "y":527, "w":155, "h":65},
+		"frame": {"x":0, "y":425, "w":155, "h":65},
 		"spriteSourceSize": {"x":0,"y":0,"w":155,"h":65},
 		"sourceSize": {"w":155,"h":65}
 	},
 	"vatten_2": {
-		"frame": {"x":189, "y":527, "w":155, "h":65},
+		"frame": {"x":0, "y":425, "w":155, "h":65},
 		"spriteSourceSize": {"x":0,"y":0,"w":155,"h":65},
 		"sourceSize": {"w":155,"h":65}
 	},
 	"vattenkanna": {
-		"frame": {"x":189, "y":593, "w":147, "h":78},
+		"frame": {"x":155, "y":527, "w":147, "h":78},
 		"spriteSourceSize": {"x":0,"y":0,"w":147,"h":78},
 		"sourceSize": {"w":147,"h":78}
 	}
@@ -104,7 +119,7 @@
 },
 "meta": {
 	"image": "sprites.png",
-	"size": {"w": 729, "h": 729},
+	"size": {"w": 728, "h": 760},
 	"scale": "1"
 }
 }

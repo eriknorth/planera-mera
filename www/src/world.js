@@ -48,8 +48,8 @@ GameObj.World.prototype = {
 				
 				
 				
-				// TODO: [LISA] Uncomment this line and comment the one below!
-				if(GameObj.user.level >= worldObj.rooms[i].level || 1 == 1) {	// Uncomment this
+				// TODO: [LISA] To unlock all worlds. Uncomment this line and comment the one below! 
+				 if(GameObj.user.level >= worldObj.rooms[i].level || 1 == 1) {	// Uncomment this
 				// if(GameObj.user.level >= worldObj.rooms[i].level) {					// Comment this
 					this._roomIcons[i] = this.add.button(
 						worldObj.rooms[i].icon_x, 

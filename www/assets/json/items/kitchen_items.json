@@ -20,6 +20,12 @@
 			"categories": ["edible", "sweet", "fruit"]
 		},
 		{
+			"name": "apple",
+			"x": 277,
+			"y": 245,
+			"categories": ["edible", "sweet", "fruit"]
+		},
+		{
 			"name": "apelsin",
 			"x": 172,
 			"y": 601,
@@ -40,7 +46,7 @@
 		{
 			"name": "smor",
 			"x": 264,
-			"y": 474,
+			"y": 479,
 			"categories": ["edible", "topping", "frying_fat"]
 		},
 		{
@@ -118,7 +124,7 @@
 		{
 			"name": "korvbrod",
 			"x": 829,
-			"y": 633,
+			"y": 640,
 			"categories": ["edible", "bread"]
 		},
 		{
@@ -154,7 +160,7 @@
 		{
 			"name": "diskmedel",
 			"x": 559,
-			"y": 455,
+			"y": 277,
 			"categories": ["doing_dishes"]
 		},
 		{
@@ -262,7 +268,7 @@
 		{
 			"name": "skarbrada",
 			"x": 553,
-			"y": 275,
+			"y": 446,
 			"categories": [""]
 		},
 		{
@@ -274,7 +280,7 @@
 		{
 			"name": "sopor",
 			"x": 387,
-			"y": 338,
+			"y": 302,
 			"categories": [""]
 		},
 		{
