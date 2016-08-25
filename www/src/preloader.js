@@ -238,6 +238,10 @@ GameObj.Preloader.prototype = {
 		this.audioList.push('orderInstruction_audio');
 		this.load.audio('positiveFeedback_audio', 'assets/audio/wav/positive_feedback.wav');
 		this.audioList.push('positiveFeedback_audio');
+		this.load.audio('positiveFeedback2_audio', 'assets/audio/wav/positive_feedback_2.wav');
+		this.audioList.push('positiveFeedback2_audio');
+		this.load.audio('positiveFeedback3_audio', 'assets/audio/wav/positive_feedback_3.wav');
+		this.audioList.push('positiveFeedback3_audio');
 		this.load.audio('somethingIsMissing_audio', 'assets/audio/wav/you_have_taken_too_many_or_too_few_items.wav');
 		this.audioList.push('somethingIsMissing_audio');
 		this.load.audio('theOrderIsNotCorrect_audio', 'assets/audio/wav/the_order_is_not_correct.wav');
@@ -313,6 +317,8 @@ GameObj.Preloader.prototype = {
 	
 	exportDatabase: function () {
 		
+		console.log("EXPORT");
+		
 		var errorHandler = function (err) {
 			console.log(err);
 		}
@@ -329,15 +335,15 @@ GameObj.Preloader.prototype = {
 					fileWriter.onwriteend = function(e) {
 						console.log('Write completed.');
 						console.log(pathToFile);
-						cordova.plugins.email.open({
-							app: 'gmail',
-							to: 'eriza653@student.liu.se',
-							attachments: pathToFile,
-							subject: 'PlaneraMera - DB',
-							isHtml: false
-						}, function () {
-							console.log('email view dismissed');
-						}); 
+						// cordova.plugins.email.open({
+// 							app: 'gmail',
+// 							to: 'eriza653@student.liu.se',
+// 							attachments: pathToFile,
+// 							subject: 'PlaneraMera - DB',
+// 							isHtml: false
+// 						}, function () {
+// 							console.log('email view dismissed');
+// 						});
 					};
 
 					fileWriter.onerror = function(e) {

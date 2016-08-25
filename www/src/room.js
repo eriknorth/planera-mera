@@ -72,14 +72,17 @@ GameObj.Room = function (game) {
 	this._taskHistoryPtr = 0;
 	
 	
+	// Positive audio names
+	this.POSITIVE_FEEDBACK_AUDIO_NAMES = ['positiveFeedback_audio', 'positiveFeedback2_audio', 'positiveFeedback3_audio'];
+	
 	
 	this.LEVEL_DOWN_LIMIT = 2;
 	this.TASK_WRONG_LIMIT = 8;
-	this.LEVEL_UP_LIMIT = 5;
-	this.OPEN_ROOM_LIMIT = 8;
-	this.OLDER_TASK_PROBABILITY = 4;
+	this.LEVEL_UP_LIMIT = 6;
+	this.OPEN_ROOM_LIMIT = 15;
+	this.OLDER_TASK_PROBABILITY = 4; // 40% probability
 	
-	this.TASK_HISTORY_SIZE = 3;
+	this.TASK_HISTORY_SIZE = 4;
 };
 
 GameObj.Room.prototype = {
@@ -380,14 +383,15 @@ GameObj.Room.prototype = {
 		// Save event
 		GameObj.db.insertEvent(GameObj.user.id, 'click', 'room:' + GameObj.room, 'play');
 		
+		// Randomly choose positive feedback audio
+		var positiveFeedbackAudio = this.POSITIVE_FEEDBACK_AUDIO_NAMES[self.rnd.integerInRange(0, 2)];
+		
 		// Play audio depending on the gameplay state
 		switch(this._state)
 		{
 		case 0:
 			// Play result
 			if(this.checkFirstAnswer() == true) {
-				
-				
 				
 				
 				// TODO: Check difficulty and depending on that process result...
@@ -400,7 +404,7 @@ GameObj.Room.prototype = {
 						// Disable buttons
 						self.setButtonsActive(false);
 						
-						
+					
 						//self._sound.play('playButton_audio', function() {
 							//self._alien.talk(false); 
 							// Run with delay
@@ -412,9 +416,9 @@ GameObj.Room.prototype = {
 									// Feedback + present
 									self._alien.talk(true);
 									// Check if a new room has opened
-									var audioList = ['positiveFeedback_audio', 500, 'gotRocketItem_audio'];
+									var audioList = [positiveFeedbackAudio, 500, 'gotRocketItem_audio'];
 									if(levelUp) {
-										audioList = ['positiveFeedback_audio', 500, 'gotRocketItem_audio', 500, 'newRoomOpen_audio'];
+										audioList = [positiveFeedbackAudio, 500, 'gotRocketItem_audio', 500, 'newRoomOpen_audio'];
 									}
 									
 									self._sound.playSequence(audioList, 
@@ -433,9 +437,9 @@ GameObj.Room.prototype = {
 									// Feedback
 									self._alien.talk(true);
 									// Check if a new room has opened
-									var audioList = ['positiveFeedback_audio'];
+									var audioList = [positiveFeedbackAudio];
 									if(levelUp) {
-										audioList = ['positiveFeedback_audio', 500, 'newRoomOpen_audio'];
+										audioList = [positiveFeedbackAudio, 500, 'newRoomOpen_audio'];
 									}
 									
 									self._sound.playSequence(audioList, 
@@ -499,7 +503,7 @@ GameObj.Room.prototype = {
 						// Run with delay
 						//setTimeout(function () {
 							self._alien.talk(true);
-							self._sound.playSequence(['positiveFeedback_audio', 500, 'orderInstruction_audio'], 
+							self._sound.playSequence([positiveFeedbackAudio, 500, 'orderInstruction_audio'], 
 								function() { 
 									self._alien.talk(false);
 									self.setButtonsActive(true);
@@ -588,8 +592,14 @@ GameObj.Room.prototype = {
 					
 					if(presentItem != -1 && firstPresent == true) {
 						// Feedback + present
-						self._alien.talk(true);
-						self._sound.playSequence(['positiveFeedback_audio', 500, 'gotRocketItem_audio'], 
+						
+						// Check if a new room has opened
+						var audioList = [positiveFeedbackAudio, 500, 'gotRocketItem_audio'];
+						if(levelUp) {
+							audioList = [positiveFeedbackAudio, 500, 'gotRocketItem_audio', 500, 'newRoomOpen_audio'];
+						}
+						
+						self._sound.playSequence(audioList, 
 							function() { 
 								self._alien.talk(false); 
 								self.setButtonsActive(true); 
@@ -605,16 +615,28 @@ GameObj.Room.prototype = {
 						);
 					}
 					else {
-						self._sound.play('positiveFeedback_audio', function() { 
-							self._alien.talk(false);
-							self.setButtonsActive(true); 
-					
-							// Change state
-							self.changeState(0, function() {
-								// Start new task
-								// self.startNewTask();
-							});		
-						});
+						
+						
+						// Check if a new room has opened
+						var audioList = [positiveFeedbackAudio];
+						if(levelUp) {
+							audioList = [positiveFeedbackAudio, 500, 'newRoomOpen_audio'];
+						}
+						
+						self._sound.playSequence(audioList, 
+							function() { 
+								self._alien.talk(false); 
+								self.setButtonsActive(true); 
+								
+								// Change state
+								self.changeState(0, function() {
+									// Start new task
+									// self.startNewTask();
+								});	
+							},
+							function() { self._alien.talk(false); },
+							function() { self._alien.talk(true); }
+						);
 					}
 				});
 			
@@ -1134,11 +1156,11 @@ GameObj.Room.prototype = {
 				// Make sure there are any tasks to handle
 				if(self._taskArray.length > 0) {
 				
-				var levelTasks = [];
+					var levelTasks = [];
 				
-				// Choose if it is current level or some of the old tasks
+					// Choose if it is current level or some of the old tasks
 					var rndNum = self.rnd.integerInRange(0, 10);
-					// If 80% current level OR level is 0 as there are now lower levels
+					// If % current level OR level is 0 as there are no lower levels
 					// Make sure that difficulty is not more than 3
 					var levelDifficulty = GameObj.level.level;
 					if(levelDifficulty > 3) {
@@ -1151,21 +1173,21 @@ GameObj.Room.prototype = {
 						});
 					}
 					else {
-						// If 20% then old ones...
+						// If % then old ones...
 						levelTasks = self._taskArray.filter(function (obj) {
-							return obj.difficulty < levelDifficulty;
+							return (obj.difficulty <= levelDifficulty);
 						});
 					}
 								
 				
 					// TODO: Make sure that selected task is not the same as previous
-					// Try to do it 10 times if do not manage... continue with same task (maybe there is just one task)
+					// Try to do it 20 times if do not manage... continue with same task (maybe there is just one task)
 					// Check if there was any previous
 					var selectionFailed = true;
 					
 					if(self._currTask != null) {
 												
-						for(var i = 0; i < 10; i++) {
+						for(var i = 0; i < 20; i++) {
 					
 							var rndTask = self.rnd.integerInRange(0, levelTasks.length-1);
 					
@@ -1202,7 +1224,7 @@ GameObj.Room.prototype = {
 						// TODO: This is a hack! Selection failed...
 						if(selectionFailed == true) {
 							// Pick a task the old way
-							for(var i = 0; i < 10; i++) {
+							for(var i = 0; i < 20; i++) {
 								var rndTask = self.rnd.integerInRange(0, levelTasks.length-1);
 								if(self._currTask.id == levelTasks[rndTask].id) {
 									continue;
@@ -1500,10 +1522,16 @@ GameObj.Room.prototype = {
 					rocketItems.push(res.rows.item(i).item);
 				}
 			
-				do {
+				// This is new... try 200 times to get a new present
+				for(var i = 0; i < 200; i++) {
 					rndNum = self.rnd.integerInRange(0, self._rocketItemArray.length-1);
+					if(rocketItems.indexOf(rndNum) > -1) {
+						continue;
+					}
+					else {
+						break;
+					}
 				}
-				while (rocketItems.indexOf(rndNum) > -1)
 
 				// If 10 minutes have passed -> give a present
 				if(Date.now() - res.rows.item(0).timestamp > (1000 * 60 * 10)) {
