@@ -303,7 +303,7 @@
             "id": 13,
             "name": "",
             "difficulty": 0,
-            "audio": "wav/get_tandborsten.wav",
+            "audio": "wav/get_toothbrush.wav",
             "items": [
                 {
                     "item": "tandborste",

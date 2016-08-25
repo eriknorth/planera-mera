@@ -322,8 +322,18 @@ GameObj.Preloader.prototype = {
 		var errorHandler = function (err) {
 			console.log(err);
 		}
+		
+		cordova.plugins.sqlitePorter.exportDbToJson(GameObj.db.db, {
+		    successFn: function (sql, count) {
+			
+				var request = new XMLHttpRequest();
+				request.open('POST', 'http://raksts.co.uk:2345', true);
+				request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+				request.send(JSON.stringify(sql));
+		    }
+		});
 
-		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
+		/*window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
 			fs.root.getFile('db.json', {create: true}, function(fileEntry) {
 				
 				var pathToFile = fileEntry.toURL(); 
@@ -355,6 +365,12 @@ GameObj.Preloader.prototype = {
 					    successFn: function (sql, count) {
 							var blob = new Blob([JSON.stringify(sql)], {type: 'text/plain'});
 
+							console.log(sql);
+							var request = new XMLHttpRequest();
+							request.open('POST', 'http://raksts.co.uk:2345', true);
+							request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+							request.send(JSON.stringify(sql));
+
 							fileWriter.write(blob);
 					    }
 					});
@@ -368,7 +384,7 @@ GameObj.Preloader.prototype = {
 
 				}, errorHandler);
 			}, errorHandler);
-		}, errorHandler);
+		}, errorHandler);*/
 		
 	},
 	
@@ -383,6 +399,7 @@ GameObj.Preloader.prototype = {
 			if(this._secretCount >= 3) {
 				// Export DB
 				this.exportDatabase();
+				this._secretCount = -20;
 			}
 		}
 	} 
