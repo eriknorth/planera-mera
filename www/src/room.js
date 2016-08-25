@@ -1266,12 +1266,12 @@ GameObj.Room.prototype = {
 			else {
 				
 				// TODO: [LISA] Force a task. Uncoment these three lines below and comment the one below text "Save task in game object"
-				var task = res.rows.item(0);
-				task.task = 327;
-				GameObj.task = task;
+				// var task = res.rows.item(0);
+				// task.task = 327;
+				// GameObj.task = task;
 				
 				// Save task in game object
-				// GameObj.task = res.rows.item(0);
+				GameObj.task = res.rows.item(0);
 				
 				// Load task in the object
 				self._currTask = self._taskArray.filter(function (obj) {
