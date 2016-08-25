@@ -171,6 +171,12 @@
 					"category": "drinkable",
 					"order": 1,
 					"optional": true
+				},
+				{
+					"item": "spagetti",
+					"category": "",
+					"order": 1,
+					"optional": true
 				}
 			]
 		},
