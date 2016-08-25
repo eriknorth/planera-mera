@@ -83,6 +83,8 @@ GameObj.Room = function (game) {
 	this.OLDER_TASK_PROBABILITY = 4; // 40% probability
 	
 	this.TASK_HISTORY_SIZE = 4;
+	
+	this.TIP_PLAYS_AFTER_COUNT = 14;
 };
 
 GameObj.Room.prototype = {
@@ -804,9 +806,14 @@ GameObj.Room.prototype = {
 	// 			);
 	// 		}
 	// 		else {
-				if(this._lastWasWrong == true) {
+				if(this._lastWasWrong == true || this._tipCounter == this.TIP_PLAYS_AFTER_COUNT) {
 					// Reset
 					this._lastWasWrong = false;
+					
+					// Reset tip counter
+					if(this._tipCounter == this.TIP_PLAYS_AFTER_COUNT) {
+						this._tipCounter = 0;
+					}
 					
 					var audioArray = ['doPlanning_audio', this.prefix + '_t' + this._currTask.id + '_audio', 200,'aTip_audio'];
 					if(this._currTask.difficulty == 0) {
