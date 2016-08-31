@@ -256,6 +256,9 @@ GameObj.Preloader.prototype = {
 		this.audioList.push('gotRocketItem_audio');
 		this.load.audio('newRoomOpen_audio', 'assets/audio/wav/nytt_rum_oppnades.wav');
 		this.audioList.push('newRoomOpen_audio');
+		this.load.audio('glassDrinkFeedback_audio', 'assets/audio/wav/glass_drink_feedback.wav');
+		this.audioList.push('glassDrinkFeedback_audio');
+		
 		// --- </ Load Audio > ---
 		
 		

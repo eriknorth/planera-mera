@@ -71,6 +71,13 @@ GameObj.Room = function (game) {
 	this._taskHistory = [];
 	this._taskHistoryPtr = 0;
 	
+	// First task time
+	this._firstTaskTime = 0;
+	
+	
+	// Special feedback tasks
+	this.SPECIAL_FEEDBACK_TASKS = [401, 402, 412, 416, 434, 435];
+	this.SPECIAL_FEEDBACK_ENDS_AFTER_MINS = 30;
 	
 	// Positive audio names
 	this.POSITIVE_FEEDBACK_AUDIO_NAMES = ['positiveFeedback_audio', 'positiveFeedback2_audio', 'positiveFeedback3_audio'];
@@ -84,7 +91,8 @@ GameObj.Room = function (game) {
 	
 	this.TASK_HISTORY_SIZE = 4;
 	
-	this.TIP_PLAYS_AFTER_COUNT = 14;
+	this.TIP_PLAYS_AFTER_COUNT = 12;
+	
 };
 
 GameObj.Room.prototype = {
@@ -259,6 +267,24 @@ GameObj.Room.prototype = {
 				self.startNewTask(true);
 			}, 500);
 		});
+		
+		
+		
+		
+		
+		
+		// Get time of the first task played... 
+		GameObj.db.getFirstTask(GameObj.user.id, function (res) {
+			
+			// If no result returned -> set current time
+			if(res.rows.length == 0) {
+				self._firstTaskTime = Date.now();
+			}
+			else {
+				self._firstTaskTime = res.rows.item(0).timestamp;
+			}
+		});
+		
 	},
 	
 	// TODO: Need to fix
@@ -675,10 +701,35 @@ GameObj.Room.prototype = {
 						// Disable buttons
 						self.setButtonsActive(false);
 						
-						self._sound.play('theOrderIsNotCorrect_audio', function() { 
-							self._alien.talk(false);
-							self.setButtonsActive(true);
-						});
+						// Check if special task can be played
+						if((Date.now() - self._firstTaskTime) > self.SPECIAL_FEEDBACK_ENDS_AFTER_MINS * 60 * 1000) {
+							// Time passed -> play normal
+							self._sound.play('theOrderIsNotCorrect_audio', function() { 
+								self._alien.talk(false);
+								self.setButtonsActive(true);
+							});
+						}
+						else {
+							// Check if special task 
+							if(self.SPECIAL_FEEDBACK_TASKS.indexOf(self._currTask.id) > -1) {
+								// Special task... play feedback
+								self._sound.playSequence(['theOrderIsNotCorrect_audio', 500, 'glassDrinkFeedback_audio'], 
+									function() { 
+										self._alien.talk(false);
+										self.setButtonsActive(true);
+									},
+									function() { self._alien.talk(false); },
+									function() { self._alien.talk(true); }
+								);
+							}
+							else {
+								// Otherwise as usual
+								self._sound.play('theOrderIsNotCorrect_audio', function() { 
+									self._alien.talk(false);
+									self.setButtonsActive(true);
+								});
+							}
+						}
 					}
 					
 				});
@@ -1006,7 +1057,7 @@ GameObj.Room.prototype = {
 
 		// Check if correct
 		var currOrder = 0;
-		for(var i = 0; i < (itemOrderStatus.length-1); i++) {
+		for(var i = 0; i < itemOrderStatus.length; i++) {
 			if(itemOrderStatus[i] == 0) {
 				continue;
 			}
@@ -1274,12 +1325,12 @@ GameObj.Room.prototype = {
 			else {
 				
 				// TODO: [LISA] Force a task. Uncoment these three lines below and comment the one below text "Save task in game object"
-				var task = res.rows.item(0);
-				task.task = 408;
-				GameObj.task = task;
+				//var task = res.rows.item(0);
+				//task.task = 401;
+				//GameObj.task = task;
 				
 				// Save task in game object
-				//GameObj.task = res.rows.item(0);
+				GameObj.task = res.rows.item(0);
 				
 				// Load task in the object
 				self._currTask = self._taskArray.filter(function (obj) {
