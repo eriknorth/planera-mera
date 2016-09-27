@@ -1014,6 +1014,45 @@ GameObj.Room.prototype = {
 			return obj.order != 0;
 		});
 		var taskItems = JSON.parse(JSON.stringify(taskItemsWR));
+		
+		
+		
+		
+		// TODO: Was trying to fix two water problem where one is optional and other is not, but that did not work
+		// // Check if optional items and temove from task if no present in item list
+		// for(var i = 0; i < taskItems.length; i++) {
+		// 	if(taskItems[i].optional == true) {
+		//
+		// 		var found = false;
+		//
+		// 		for(var j = 0; j < itemOrder.length; j++) {
+		//
+		// 			// Check names
+		// 			if(taskItems[i].item == self._itemArray[itemOrder[j]].name) {
+		// 				found = true;
+		// 				break;
+		// 			}
+		//
+		// 			// Check category
+		// 			var itemCategories = self._itemArray[itemOrder[j]].categories;
+		// 			for(var k = 0; k < itemCategories.length; k++) {
+		// 				if(taskItems[i].category == itemCategories[k]) {
+		//
+		// 					found = true;
+		// 					break;
+		// 				}
+		// 			}
+		// 		}
+		//
+		// 		if(found != true) {
+		// 			taskItems.splice(i, 1);
+		// 		}
+		// 	}
+		// }
+		//
+		
+		
+		
 	
 		// Check items with names
 		for(var i = 0; i < taskItems.length; i++) {
@@ -1325,12 +1364,12 @@ GameObj.Room.prototype = {
 			else {
 				
 				// TODO: [LISA] Force a task. Uncoment these three lines below and comment the one below text "Save task in game object"
-				//var task = res.rows.item(0);
-				//task.task = 401;
-				//GameObj.task = task;
+				var task = res.rows.item(0);
+				task.task = 38;
+				GameObj.task = task;
 				
 				// Save task in game object
-				GameObj.task = res.rows.item(0);
+				//GameObj.task = res.rows.item(0);
 				
 				// Load task in the object
 				self._currTask = self._taskArray.filter(function (obj) {
@@ -1460,7 +1499,7 @@ GameObj.Room.prototype = {
 			GameObj.db.incLevelClearedTotal(GameObj.level.id);
 			
 			// Check if should level up
-			if(GameObj.level.cleared_total >= this.OPEN_ROOM_LIMIT && GameObj.user.level <= this._room.level) {
+			if(GameObj.level.cleared_total == this.OPEN_ROOM_LIMIT && GameObj.user.level <= this._room.level) {
 				GameObj.user.level++;
 				GameObj.db.incUserLevel(GameObj.user.id);
 				levelUp = true;

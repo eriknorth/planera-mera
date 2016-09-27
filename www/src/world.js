@@ -49,8 +49,8 @@ GameObj.World.prototype = {
 				
 				
 				// TODO: [LISA] To unlock all worlds. Uncomment this line and comment the one below! 
-				 // if(GameObj.user.level >= worldObj.rooms[i].level || 1 == 1) {	// Uncomment this
-				if(GameObj.user.level >= worldObj.rooms[i].level) {					// Comment this
+				if(GameObj.user.level >= worldObj.rooms[i].level || 1 == 1) {	// Uncomment this
+				//if(GameObj.user.level >= worldObj.rooms[i].level) {					// Comment this
 					this._roomIcons[i] = this.add.button(
 						worldObj.rooms[i].icon_x, 
 						worldObj.rooms[i].icon_y, 
@@ -181,13 +181,13 @@ GameObj.World.prototype = {
 			this._giggle = false;
 			
 			// Start audio with delay
-			setTimeout(function () {
-				// Start talking animation
-				self._alien.talk(true);
-				self._sound.play('giggle_audio', function() { 
-					self._alien.talk(false);
-				});
-			}, 1000);
+			// setTimeout(function () {
+			// 	// Start talking animation
+			// 	self._alien.talk(true);
+			// 	self._sound.play('giggle_audio', function() {
+			// 		self._alien.talk(false);
+			// 	});
+			// }, 1000);
 		}
 		else {
 			// Start talking animation
