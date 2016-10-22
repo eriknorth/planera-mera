@@ -93,6 +93,11 @@ GameObj.Room = function (game) {
 	
 	this.TIP_PLAYS_AFTER_COUNT = 12;
 	
+    
+    
+    
+    // CONTROL APP
+    this.GIVE_NEW_ITEM_AFTER_MINS = 3;
 };
 
 GameObj.Room.prototype = {
@@ -169,6 +174,11 @@ GameObj.Room.prototype = {
 				i,
 				door
 			);
+            
+            if(door != true) {
+                this._items[i].visible = false;
+            }
+            
 			this.add.existing(this._items[i]);
 			this._layer1.add(this._items[i]);
 			// Add events
@@ -179,6 +189,12 @@ GameObj.Room.prototype = {
 				this._doors.push(this._items[i]);
 			}
 		}
+        
+        // Update visibilty
+        this.updateItemVisibility();
+        
+        
+        
 		
 		// Back button
 		this._btnBack = this.add.button(60, 60, 'btnBack', this.goBack, this, 2, 0, 1);
@@ -260,13 +276,13 @@ GameObj.Room.prototype = {
 		this._alien.bringToTop();
 		
 		// Give instruction
-		this.giveInstruction(function () {
-			// Start with delay
-			setTimeout(function () {
-				// Start New Task
-				self.startNewTask(true);
-			}, 500);
-		});
+		// this.giveInstruction(function () {
+//             // Start with delay
+//             setTimeout(function () {
+//                 // Start New Task
+//                 self.startNewTask(true);
+//             }, 500);
+//         });
 		
 		
 		
@@ -285,6 +301,18 @@ GameObj.Room.prototype = {
 			}
 		});
 		
+        
+        
+        
+        
+        
+        
+        
+        // Allow to move object how one wants
+        
+        
+        
+        
 	},
 	
 	// TODO: Need to fix
@@ -407,10 +435,99 @@ GameObj.Room.prototype = {
 	play: function (pointer) {
 		
 		var self = this;
+        
+        
+		GameObj.db.getLastEvent(GameObj.user.id, 'click', 'room:' + GameObj.room, 'play:1', function (res) {
+        
+            if(res.rows.length > 0) {
+                
+                var playTimestamp = res.rows[0].timestamp;
+                
+                if((Date.now() - playTimestamp) > (self.GIVE_NEW_ITEM_AFTER_MINS * 60 * 1000)) {
+                    // Give new item
+                    
+                    GameObj.level.item_count += 1;
+                    
+            		// Save event
+            		GameObj.db.insertEvent(GameObj.user.id, 'click', 'room:' + GameObj.room, 'play:1');
+                } 
+                else {
+                    // No new items
+            		// Save event
+            		GameObj.db.insertEvent(GameObj.user.id, 'click', 'room:' + GameObj.room, 'play:0');
+                }
+                
+                
+            }
+            else {
+                // Add item
+                GameObj.level.item_count += 1;
+                
+        		// Save event
+        		GameObj.db.insertEvent(GameObj.user.id, 'click', 'room:' + GameObj.room, 'play:1');
+            }
+            
+            console.log('Items: ' + GameObj.level.item_count);
+            
+            
+            
+            
+			// Give present in the rocket
+			self.givePresent(function (presentItem, firstPresent) {
+				// Give positiive feedback	
+            
+            
+        		// Randomly choose positive feedback audio
+        		var positiveFeedbackAudio = self.POSITIVE_FEEDBACK_AUDIO_NAMES[self.rnd.integerInRange(0, 2)];
+            
+                self.setButtonsActive(false);
+                self.showStar(presentItem);
+            
+    			// Feedback + present
+    			self._alien.talk(true);
+            
+            
+                var audioList = [];
+            
+                if(presentItem != -1 && firstPresent == true) {
+    			    // Check if a new room has opened
+    			    audioList = [positiveFeedbackAudio, 500, 'gotRocketItem_audio'];
+                }
+                else {
+                    audioList = [positiveFeedbackAudio];
+                }
+			
+    			self._sound.playSequence(audioList, 
+    				function() { 
+    					self._alien.talk(false); 
+    					self.setButtonsActive(true);
+					
+                        // Update visibility
+                        self.updateItemVisibility();
+                    
+    					// Change state
+    					self.resetControlState();
+    				},
+    				function() { self._alien.talk(false); },
+    				function() { self._alien.talk(true); }
+    			);
+            
+            });
+        });
 		
-		// Save event
-		GameObj.db.insertEvent(GameObj.user.id, 'click', 'room:' + GameObj.room, 'play');
-		
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        return;
+        
+        
 		// Randomly choose positive feedback audio
 		var positiveFeedbackAudio = this.POSITIVE_FEEDBACK_AUDIO_NAMES[self.rnd.integerInRange(0, 2)];
 		
@@ -753,6 +870,9 @@ GameObj.Room.prototype = {
 	itemClickRelease: function (item) {
 
 		var self = this;
+        
+        // Control app
+        return;
 
 		// Play audio depending on the gameplay state
 		switch(this._state)
@@ -1688,4 +1808,62 @@ GameObj.Room.prototype = {
 	// render: function () {
 	// 	this.game.debug.text(this.game.time.fps, 2, 14, "#00ff00");
 	// }
+    
+    
+    updateItemVisibility: function () {
+    
+    
+        
+        var counter = 0;
+        for(i = 0; i < this._items.length; i++) {
+            
+            if(counter < GameObj.level.item_count) {
+                
+                if(this._items[i]._door == false) {
+                    
+                    this._items[i].visible = true;
+                    counter++;
+                }
+                
+            }
+            else {
+                break;
+            }
+            
+            
+        }
+    
+    },
+    
+    
+    resetControlState: function() {
+        
+        var counter = 0;
+        for(i = 0; i < this._items.length; i++) {
+            
+            if(counter < GameObj.level.item_count) {
+                
+                if(this._items[i]._door == false) {
+                    
+                    this._items[i].resetPos();
+                    counter++;
+                }
+                
+            }
+            else {
+                break;
+            }
+            
+        }
+        
+		// Close door
+		for(var i = 0; i < this._doors.length; i++)
+		{
+			this._doors[i].closeDoor();
+		}
+        
+        this._layer1.sort('depth', Phaser.Group.SORT_ASCENDING);
+    },
+    
+    
 };

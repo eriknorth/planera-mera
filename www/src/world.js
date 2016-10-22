@@ -146,16 +146,30 @@ GameObj.World.prototype = {
 						// Save user in game object
 						GameObj.level = {id: id, user_id: GameObj.user.id, room: roomObj.id, level: 0, cleared: 0, cleared_total: 0, failed: 0, timestamp: Date.now()};
 						
-						// Go to room only when level stuff loaded
-						self.state.start('Room');
+                        
+                        // Count play events (with items)
+                        GameObj.db.countEvents(GameObj.user.id, 'click', 'room:'+GameObj.room, 'play:1', function (res) {
+                        
+                            GameObj.level.item_count = res.rows[0].num + 3;
+                        
+    						// Go to room only when level stuff loaded
+    						self.state.start('Room');
+                        });
+                        
 					});
 				}
 				else {
 					// Save room in game object
 					GameObj.level = res.rows.item(0);
 					
-					// Go to room only when level stuff loaded
-					self.state.start('Room');
+                    // Count play events (with items)
+                    GameObj.db.countEvents(GameObj.user.id, 'click', 'room:'+GameObj.room, 'play:1', function (res) {
+                    
+                        GameObj.level.item_count = res.rows[0].num + 3;
+                    
+						// Go to room only when level stuff loaded
+						self.state.start('Room');
+                    });
 				}
 			});
 		}

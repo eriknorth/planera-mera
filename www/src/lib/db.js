@@ -163,6 +163,35 @@ Db.prototype = {
 		});
 	},
 	
+	// Get last event
+	getLastEvent: function (userId, event, loc, value, callback) {
+		this.db.transaction(function(tx) {
+			tx.executeSql(
+				'SELECT * FROM events ' + 
+				'WHERE user_id = ? AND event = ? AND location = ? AND value = ? ' +
+				'ORDER BY id DESC ' + 
+				'LIMIT 1', 
+			[userId, event, loc, value], function(tx, res) {
+				// Run callback if defined
+				typeof callback === 'function' && callback(res);
+			});		
+		});
+	},
+    
+	// Get last event
+	countEvents: function (userId, event, loc, value, callback) {
+		this.db.transaction(function(tx) {
+			tx.executeSql(
+				'SELECT COUNT(*) AS num FROM events ' + 
+				'WHERE user_id = ? AND event = ? AND location = ? AND value = ? ',
+			[userId, event, loc, value], function(tx, res) {
+				// Run callback if defined
+				typeof callback === 'function' && callback(res);
+			});		
+		});
+	},
+    
+    
 	// Insert task
 	insertTask: function (userId, levelId, task, difficulty, callback) {
 		this.db.transaction(function(tx) {
