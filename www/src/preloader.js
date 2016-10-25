@@ -258,6 +258,8 @@ GameObj.Preloader.prototype = {
 		this.audioList.push('newRoomOpen_audio');
 		this.load.audio('glassDrinkFeedback_audio', 'assets/audio/wav/glass_drink_feedback.wav');
 		this.audioList.push('glassDrinkFeedback_audio');
+		this.load.audio('letsCreate_audio', 'assets/audio/wav/lets_create.wav');
+		this.audioList.push('letsCreate_audio');
 		
 		// --- </ Load Audio > ---
 		

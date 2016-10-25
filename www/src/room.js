@@ -96,8 +96,9 @@ GameObj.Room = function (game) {
     
     
     
-    // CONTROL APP
-    this.GIVE_NEW_ITEM_AFTER_MINS = 3;
+  // CONTROL APP
+  this.GIVE_NEW_ITEM_AFTER_MINS = 3;
+  this.LEVEL_UP_CONTROL = 3;
 };
 
 GameObj.Room.prototype = {
@@ -436,6 +437,7 @@ GameObj.Room.prototype = {
 		
 		var self = this;
         
+		var levelUp = false;
         
 		GameObj.db.getLastEvent(GameObj.user.id, 'click', 'room:' + GameObj.room, 'play:1', function (res) {
         
@@ -447,6 +449,9 @@ GameObj.Room.prototype = {
                     // Give new item
                     
                     GameObj.level.item_count += 1;
+					if(GameObj.level.item_count == this.LEVEL_UP_CONTROL) {
+						levelUp = true;
+					}
                     
             		// Save event
             		GameObj.db.insertEvent(GameObj.user.id, 'click', 'room:' + GameObj.room, 'play:1');
@@ -477,43 +482,53 @@ GameObj.Room.prototype = {
 				// Give positiive feedback	
             
             
-        		// Randomly choose positive feedback audio
-        		var positiveFeedbackAudio = self.POSITIVE_FEEDBACK_AUDIO_NAMES[self.rnd.integerInRange(0, 2)];
+				// Randomly choose positive feedback audio
+				var positiveFeedbackAudio = self.POSITIVE_FEEDBACK_AUDIO_NAMES[self.rnd.integerInRange(0, 2)];
             
-                self.setButtonsActive(false);
-                self.showStar(presentItem);
+				self.setButtonsActive(false);
+				self.showStar(presentItem);
             
-    			// Feedback + present
-    			self._alien.talk(true);
+				// Feedback + present
+				self._alien.talk(true);
             
             
-                var audioList = [];
+				var audioList = [];
             
-                if(presentItem != -1 && firstPresent == true) {
-    			    // Check if a new room has opened
-    			    audioList = [positiveFeedbackAudio, 500, 'gotRocketItem_audio'];
-                }
-                else {
-                    audioList = [positiveFeedbackAudio];
-                }
+				if(presentItem != -1 && firstPresent == true) {
+					// Check if a new room has opened
+					if(levelUp) {
+						audioList = [positiveFeedbackAudio, 500, 'gotRocketItem_audio', 500, 'newRoomOpen_audio'];
+					}
+					else {
+						audioList = [positiveFeedbackAudio, 500, 'gotRocketItem_audio'];
+					}
+				}
+				else {
+					if(levelUp) {
+						audioList = [positiveFeedbackAudio, 'newRoomOpen_audio'];
+					}
+					else {
+						audioList = [positiveFeedbackAudio];
+					}
+				}
 			
-    			self._sound.playSequence(audioList, 
-    				function() { 
-    					self._alien.talk(false); 
-    					self.setButtonsActive(true);
+				self._sound.playSequence(audioList, 
+					function() { 
+						self._alien.talk(false); 
+						self.setButtonsActive(true);
 					
-                        // Update visibility
-                        self.updateItemVisibility();
+						// Update visibility
+						self.updateItemVisibility();
                     
-    					// Change state
-    					self.resetControlState();
-    				},
-    				function() { self._alien.talk(false); },
-    				function() { self._alien.talk(true); }
-    			);
+						// Change state
+						self.resetControlState();
+					},
+					function() { self._alien.talk(false); },
+					function() { self._alien.talk(true); }
+				);
             
-            });
-        });
+			});
+		});
 		
         
         
@@ -960,6 +975,18 @@ GameObj.Room.prototype = {
 		
 		// Disable buttons
 		this.setButtonsActive(false);
+    
+		var audioArray = ['letsCreate_audio'];
+		
+		this._sound.playSequence(audioArray,
+			function() { self._alien.talk(false); self.setButtonsActive(true); },
+			function() { self._alien.talk(false); },
+			function() { self._alien.talk(true); }
+		);
+    
+    // This is for control app
+    return;
+    
 		
 		// Play audio depending on the gameplay state
 		switch(this._state)
@@ -1576,7 +1603,8 @@ GameObj.Room.prototype = {
 			self._layer3.visible = false;
 			
 			// Start new task
-			self.startNewTask();
+			// TODO: This is for control... so no new task
+      //self.startNewTask();
 			
 			// Callback to know that state change has been complete
 			typeof callback === 'function' && callback();
