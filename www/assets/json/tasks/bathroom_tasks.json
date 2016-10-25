@@ -605,19 +605,13 @@
 				{
 					"item": "",
 					"category": "shower",
-					"order": 3,
+					"order": 0,
 					"optional": false
 				},
 				{
 					"item": "",
 					"category": "soap",
 					"order": 4,
-					"optional": false
-				},
-				{
-					"item": "",
-					"category": "shower",
-					"order": 5,
 					"optional": false
 				},
 				{
@@ -660,28 +654,28 @@
 				{
 					"item": "tvattmaskin",
 					"category": "",
-					"order": 1,
+					"order": 2,
 					"optional": false
 					
 				},
                 {
                     "item": "torktumlare",
                     "category": "",
-                    "order": 2,
+                    "order": 3,
 					"optional": false
                 },
 				{
 					"item": "",
 					"category": "washing_soap",
 					"order": 1,
-					"optional": true
+					"optional": false
 					
 				},
                 {
                     "item": "",
                     "category": "clothes",
                     "order": 1,
-					"optional": true
+					"optional": false
                 }
             ]
 		},
@@ -718,7 +712,14 @@
                     "category": "",
                     "order": 2,
 					"optional": false
-                }
+                },
+				{
+					"item": "",
+					"category": "soap",
+					"order": 0,
+					"optional": true
+					
+				}
             ]
 		},
 		{
@@ -730,14 +731,14 @@
 				{
 					"item": "",
 					"category": "soap",
-					"order": 1,
+					"order": 0,
 					"optional": false
 					
 				},
                 {
                     "item": "",
                     "category": "water",
-                    "order": 2,
+                    "order": 0,
 					"optional": false
                 }
             ]
@@ -782,8 +783,8 @@
 					"optional": false
 				},
 				{
-					"item": "washing_soap",
-					"category": "",
+					"item": "",
+					"category": "washing_soap",
 					"order": 1,
 					"optional": false
 				},
