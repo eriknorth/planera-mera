@@ -98,7 +98,7 @@ GameObj.Room = function (game) {
     
   // CONTROL APP
   this.GIVE_NEW_ITEM_AFTER_MINS = 3;
-  this.LEVEL_UP_CONTROL = 3;
+  this.LEVEL_UP_CONTROL = 4;
 };
 
 GameObj.Room.prototype = {
@@ -451,6 +451,7 @@ GameObj.Room.prototype = {
                     GameObj.level.item_count += 1;
 					if(GameObj.level.item_count == this.LEVEL_UP_CONTROL) {
 						levelUp = true;
+						GameObj.db.incLevel(GameObj.level.id);g
 					}
                     
             		// Save event
