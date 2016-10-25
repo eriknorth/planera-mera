@@ -10,7 +10,7 @@
 				{
 					"item": "",
 					"category": "edible",
-					"order": 1,
+					"order": 0,
 					"optional": false
 				},
 				{
@@ -24,6 +24,30 @@
 					"category": "drinking_vessel",
 					"order": 2,
 					"optional": false
+				},
+				{
+					"item": "",
+					"category": "plate",
+					"order": 0,
+					"optional": true
+				},
+				{
+					"item": "aggkopp",
+					"category": "",
+					"order": 0,
+					"optional": true
+				},
+				{
+					"item": "",
+					"category": "topping",
+					"order": 0,
+					"optional": true
+				},
+				{
+					"item": "",
+					"category": "cutlery",
+					"order": 0,
+					"optional": true
 				}
 			]
 		},
@@ -43,19 +67,19 @@
 				{
 					"item": "",
 					"category": "fruit",
-					"order": 1,
+					"order": 0,
 					"optional": false
 				},
 				{
 					"item": "",
 					"category": "edible",
-					"order": 1,
+					"order": 0,
 					"optional": false
 				},
 				{
 					"item": "",
 					"category": "drinking_vessel",
-					"order": 1,
+					"order": 2,
 					"optional": false
 				},
 				{
@@ -67,6 +91,12 @@
 				{
 					"item": "",
 					"category": "plate",
+					"order": 0,
+					"optional": true
+				},
+				{
+					"item": "aggkopp",
+					"category": "",
 					"order": 0,
 					"optional": true
 				}
@@ -98,6 +128,12 @@
 				},
 				{
 					"item": "aggkopp",
+					"category": "",
+					"order": 3,
+					"optional": true
+				},
+				{
+					"item": "salt",
 					"category": "",
 					"order": 3,
 					"optional": true
@@ -145,37 +181,37 @@
 				{
 					"item": "",
 					"category": "plate",
-					"order": 1,
+					"order": 0,
 					"optional": false
 				},
 				{
 					"item": "",
 					"category": "cutlery",
-					"order": 1,
+					"order": 0,
 					"optional": false
 				},
 				{
 					"item": "",
 					"category": "drinking_vessel",
-					"order": 1,
+					"order": 0,
 					"optional": false
 				},
 				{
 					"item": "",
 					"category": "topping",
-					"order": 1,
+					"order": 0,
 					"optional": false
 				},
 				{
 					"item": "",
 					"category": "drinkable",
-					"order": 1,
+					"order": 0,
 					"optional": true
 				},
 				{
 					"item": "spagetti",
 					"category": "",
-					"order": 1,
+					"order": 0,
 					"optional": true
 				}
 			]
@@ -233,7 +269,7 @@
 				{
 					"item": "smutsdisk",
 					"category": "",
-					"order": 2,
+					"order": 1,
 					"optional": false
 				},
 				{
@@ -245,13 +281,13 @@
 				{
 					"item": "",
 					"category": "water",
-					"order": 3,
+					"order": 1,
 					"optional": false
 				},
 				{
 					"item": "diskborste",
 					"category": "",
-					"order": 2,
+					"order": 1,
 					"optional": false
 				},
 				{
@@ -309,7 +345,7 @@
 				{
 					"item": "",
 					"category": "boiler",
-					"order": 2,
+					"order": 1,
 					"optional": false
 				},
 				{
@@ -405,6 +441,12 @@
 					"category": "",
 					"order": 0,
 					"optional": true
+				},
+				{
+					"item": "",
+					"category": "frying_fat",
+					"order": 0,
+					"optional": true
 				}
 			]
 		},
@@ -455,6 +497,12 @@
 				{
 					"item": "",
 					"category": "plate",
+					"order": 0,
+					"optional": true
+				},
+				{
+					"item": "aggkopp",
+					"category": "",
 					"order": 0,
 					"optional": true
 				}
@@ -558,19 +606,19 @@
 				{
 					"item": "prinsesstarta",
 					"category": "",
-					"order": 1,
-					"optional": false
-				},
-				{
-					"item": "",
-					"category": "plate",
 					"order": 2,
 					"optional": false
 				},
 				{
 					"item": "",
-					"category": "knife",
+					"category": "plate",
 					"order": 0,
+					"optional": false
+				},
+				{
+					"item": "",
+					"category": "knife",
+					"order": 1,
 					"optional": true
 				},
 				{
@@ -588,7 +636,7 @@
 				{
 					"item": "",
 					"category": "cutlery",
-					"order": 1,
+					"order": 0,
 					"optional": false
 				}
 			]
@@ -658,7 +706,7 @@
 				{
 					"item": "",
 					"category": "drinking_vessel",
-					"order": 3,
+					"order": 4,
 					"optional": false
 				},
 				{
@@ -676,6 +724,12 @@
 				{
 					"item": "",
 					"category": "cutlery",
+					"order": 0,
+					"optional": true
+				},
+				{
+					"item": "aggkopp",
+					"category": "",
 					"order": 0,
 					"optional": true
 				}
@@ -714,6 +768,12 @@
 				{
 					"item": "",
 					"category": "cutlery",
+					"order": 0,
+					"optional": true
+				},
+				{
+					"item": "salt",
+					"category": "",
 					"order": 0,
 					"optional": true
 				}
@@ -988,19 +1048,19 @@
 				{
 					"item": "tallrik_djup",
 					"category": "",
-					"order": 1,
+					"order": 0,
 					"optional": false
 				},
 				{
 					"item": "sked",
 					"category": "",
-					"order": 1,
+					"order": 0,
 					"optional": false
 				},
 				{
 					"item": "",
 					"category": "drinking_vessel",
-					"order": 1,
+					"order": 0,
 					"optional": false
 				},
 				{
@@ -1027,13 +1087,13 @@
 				{
 					"item": "",
 					"category": "edible",
-					"order": 1,
+					"order": 0,
 					"optional": false
 				},
 				{
 					"item": "",
 					"category": "drinking_vessel",
-					"order": 1,
+					"order": 2,
 					"optional": false
 				},
 				{
@@ -1045,6 +1105,12 @@
 				{
 					"item": "",
 					"category": "plate",
+					"order": 0,
+					"optional": true
+				},
+				{
+					"item": "aggkopp",
+					"category": "",
 					"order": 0,
 					"optional": true
 				}

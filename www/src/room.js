@@ -1484,9 +1484,9 @@ GameObj.Room.prototype = {
 			else {
 				
 				// TODO: [LISA] Force a task. Uncoment these three lines below and comment the one below text "Save task in game object"
-				var task = res.rows.item(0);
-				task.task = 38;
-				GameObj.task = task;
+				//var task = res.rows.item(0);
+				//task.task = 329;
+				//GameObj.task = task;
 				
 				// Save task in game object
 				//GameObj.task = res.rows.item(0);
@@ -1751,8 +1751,8 @@ GameObj.Room.prototype = {
 					}
 				}
 
-				// If 10 minutes have passed -> give a present
-				if(Date.now() - res.rows.item(0).timestamp > (1000 * 60 * 10)) {
+				// If 25 minutes have passed -> give a present
+				if(Date.now() - res.rows.item(0).timestamp > (1000 * 60 * 25)) {
 					GameObj.db.insertRocketItem(GameObj.user.id, rndNum);
 					
 					// Run callback
