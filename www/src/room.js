@@ -113,54 +113,6 @@ GameObj.Room.prototype = {
 
 
 
-		// // ------------------------------------------------ THIS IS FOR COG MASTER STUDENT
-		var cogTaskId = GameObj.cogTaskList[GameObj.cogTaskIndex];
-		if (cogTaskId == 9999) {
-			self.goBack();
-			return;
-		}
-
-
-		this._cogTaskArray = [];
-		for (var m = 0; m < 4; m++)
-		{
-			var prefix = 'w'+worldObj.id+'_r'+worldObj.rooms[m].id;
-			var taskJ = this.cache.getJSON(prefix + '_tasks');
-			this._cogTaskArray[m] = taskJ.tasks;
-		}
-
-
-		// Find Room
-		var roomId = -1;
-		for (var m = 0; m < 4; m++)
-		{
-			var taskInRoom = self._cogTaskArray[m].filter(function (obj) {
-				return obj.id === cogTaskId;
-			});
-
-			// Found the room
-			if (taskInRoom.length > 0) {
-				roomId = m;
-
-				if (roomId != GameObj.room) {
-					// console.log('Go to different room: ' + roomId);
-					// // Go to the room
-					// var roomFunc = GameObj.World.prototype.goToRoom(roomId);
-					// var hello = roomFunc.bind(self);
-					// hello();
-					//
-					self.goBack();
-					return;
-				}
-			}
-		}
-		// // -------------------------------------------------------------------------------
-
-
-
-
-
-
 
 		// Make prefix
 		this.prefix = 'w'+worldObj.id+'_r'+roomObj.id;
@@ -311,32 +263,92 @@ GameObj.Room.prototype = {
 		this._cloud.bringToTop();
 		this._alien.bringToTop();
 
-		// Give instruction
-		this.giveInstruction(function () {
-			// Start with delay
-			setTimeout(function () {
-				// Start New Task
-				self.startNewTask(true);
-			}, 500);
-		});
 
 
 
 
+		// // ------------------------------------------------ THIS IS FOR COG MASTER STUDENT
 
+		self.getCogId(function(cogId) {
 
+			// console.log('COG ID is ' + cogId);
 
-		// Get time of the first task played...
-		GameObj.db.getFirstTask(GameObj.user.id, function (res) {
-
-			// If no result returned -> set current time
-			if(res.rows.length == 0) {
-				self._firstTaskTime = Date.now();
+			var cogTaskId = GameObj.cogTaskList[GameObj.cogTaskIndex];
+			// console.log('COG Task ID is ' + cogTaskId);
+			if (cogTaskId == 9999) {
+				self.disableGamepaly();
+				return;
 			}
-			else {
-				self._firstTaskTime = res.rows.item(0).timestamp;
+
+
+			self._cogTaskArray = [];
+			for (var m = 0; m < 4; m++)
+			{
+				var prefix = 'w'+worldObj.id+'_r'+worldObj.rooms[m].id;
+				var taskJ = self.cache.getJSON(prefix + '_tasks');
+				self._cogTaskArray[m] = taskJ.tasks;
 			}
+
+
+			// Find Room
+			var roomId = -1;
+			for (var m = 0; m < 4; m++)
+			{
+				var taskInRoom = self._cogTaskArray[m].filter(function (obj) {
+					return obj.id === cogTaskId;
+				});
+
+				// Found the room
+				if (taskInRoom.length > 0) {
+					roomId = m;
+
+					if (roomId != GameObj.room) {
+						// console.log('Go to different room: ' + roomId);
+						// // Go to the room
+						// var roomFunc = GameObj.World.prototype.goToRoom(roomId);
+						// var hello = roomFunc.bind(self);
+						// hello();
+						//
+						// self.goBack();
+						// return;
+
+						self.disableGamepaly();
+					}
+					else {
+
+
+
+						// Give instruction
+						self.giveInstruction(function () {
+							// Start with delay
+							setTimeout(function () {
+								// Start New Task
+								self.startNewTask(true);
+							}, 500);
+						});
+
+
+						// Get time of the first task played...
+						GameObj.db.getFirstTask(GameObj.user.id, function (res) {
+
+							// If no result returned -> set current time
+							if(res.rows.length == 0) {
+								self._firstTaskTime = Date.now();
+							}
+							else {
+								self._firstTaskTime = res.rows.item(0).timestamp;
+							}
+						});
+
+
+
+
+					}
+				}
+			}
+
 		});
+		// // -------------------------------------------------------------------------------
 
 	},
 
@@ -1310,7 +1322,9 @@ GameObj.Room.prototype = {
 
 					var cogTaskId = GameObj.cogTaskList[GameObj.cogTaskIndex];
 					if (cogTaskId == 9999) {
-						self.goBack();
+						// self.goBack();
+						// return;
+						self.disableGamepaly();
 						return;
 					}
 					var cogTask = self._taskArray.filter(function (obj) {
@@ -1326,7 +1340,9 @@ GameObj.Room.prototype = {
 					// Find room with this task and go to that room
 					else {
 
-						self.goBack();
+						// self.goBack();
+						// return;
+						self.disableGamepaly();
 						return;
 
 					}
@@ -1687,8 +1703,60 @@ GameObj.Room.prototype = {
 		}
 	},
 
+
+	disableGamepaly: function () {
+
+			this._btnPlay.alpha = 0.5;
+			this._alien.alpha = 0.8;
+			this._btnPlay.inputEnabled = false;
+			this._alien.inputEnabled = false;
+
+	},
+
+
+	getCogId: function (callback) {
+
+		// First try to get task from DB
+		GameObj.db.getLastTask(GameObj.user.id, function (res) {
+
+			// If no result returned -> there is not task started
+			if(res.rows.length == 0) {
+				GameObj.cogTaskIndex = 0
+			}
+			else {
+
+				// Save task in game object
+				GameObj.task = res.rows.item(0);
+
+				// Find COG index
+				for (var n = 0; n < GameObj.cogTaskList.length; n++)
+				{
+					// console.log(GameObj.cogTaskList[n], GameObj.task.task);
+					if (GameObj.cogTaskList[n] == GameObj.task.task) {
+						if (GameObj.task.value == 0) {
+							GameObj.cogTaskIndex = n;
+						}
+						else {
+							GameObj.cogTaskIndex = n + 1;
+						}
+						break;
+					}
+				}
+
+				// Run callback if defined
+				typeof callback === 'function' && callback(GameObj.cogTaskIndex);
+			}
+		});
+
+	},
+
+
 	// TODO: This is for testing framerate
 	// render: function () {
 	// 	this.game.debug.text(this.game.time.fps, 2, 14, "#00ff00");
 	// }
+
+
+
+
 };

@@ -4,13 +4,13 @@ GameObj.World = function (game) {
 
 	// Alien
 	this._alien = null;
-	
+
 	// Sound
 	this._sound = null;
-	
+
 	// Room icons
 	this._roomIcons = [];
-	
+
 	// Giggle
 	this._giggle = false;
 };
@@ -24,39 +24,39 @@ GameObj.World.prototype = {
 	},
 
 	create: function () {
-		
+
 		var self = this;
-		
+
 		// Get JSONs
 		var gameJson = this.cache.getJSON('game');
 		var worldsJson = this.cache.getJSON('worlds');
-		
+
 		var worldObj = worldsJson.worlds[GameObj.world];
-		
+
 		// Background
 		this.stage.backgroundColor = '#304656';
 		this.add.sprite(0, 0, 'w'+worldObj.id+'_bg');
-		
+
 		// Room icons
-		for(i = 0; i < worldObj.rooms.length; i++) 
+		for(i = 0; i < worldObj.rooms.length; i++)
 		{
 			// Check if room is enabled
 			if(worldObj.rooms[i].enabled == true)
 			{
 				// Check if level is enough high to access
 				// TODO: Remove 1 == 1 ! TESTING...
-				
-				
-				
-				// TODO: [LISA] To unlock all worlds. Uncomment this line and comment the one below! 
+
+
+
+				// TODO: [LISA] To unlock all worlds. Uncomment this line and comment the one below!
 				if(GameObj.user.level >= worldObj.rooms[i].level || 1 == 1) {	// Uncomment this
 				//if(GameObj.user.level >= worldObj.rooms[i].level) {					// Comment this
 					this._roomIcons[i] = this.add.button(
-						worldObj.rooms[i].icon_x, 
-						worldObj.rooms[i].icon_y, 
-						'w'+worldObj.id+'_r'+worldObj.rooms[i].id+'_icon', 
+						worldObj.rooms[i].icon_x,
+						worldObj.rooms[i].icon_y,
+						'w'+worldObj.id+'_r'+worldObj.rooms[i].id+'_icon',
 						this.goToRoom(i), this, 2, 0, 1);
-					
+
 					this._roomIcons[i].anchor.setTo(0.5);
 					this._roomIcons[i].scale.setTo(0.8);
 				}
@@ -68,7 +68,7 @@ GameObj.World.prototype = {
 				}
 			}
 		}
-		
+
 		// Back button
 		this._btnBack = this.add.button(60, 60, 'btnBack', this.goToMenu, this, 2, 0, 1);
 		this._btnBack.anchor.set(0.5);
@@ -77,23 +77,23 @@ GameObj.World.prototype = {
 		// var alien = this.add.sprite(1080, 550, 'alien');
 		// alien.frame = 0;
 		// alien.anchor.setTo(0.5, 0.5);
-		
-		
+
+
 		// Alien
 		this._alien = new Alien(this, 1080, 550);
 		this.add.existing(this._alien);
 		this._alien.inputEnabled = true;
 		this._alien.events.onInputDown.add(this.alienClickRelease, this);
-		
+
 		// Sound library
 		this._sound = new Sound(this);
-		
+
 		// Give instruction
 		// Get Stuff from DB
 		// Check first room level...
 		var roomObj = worldsJson.worlds[GameObj.world].rooms[0];
 		GameObj.db.getLevel(GameObj.user.id, roomObj.id, function (res) {
-			
+
 			// If no result returned -> first time this room has been opened
 			if(res.rows.length == 0) {
 				self.giveInstruction(false);
@@ -103,7 +103,7 @@ GameObj.World.prototype = {
 			}
 		});
 	},
-	
+
 	goToMenu: function (pointer) {
 
 		// Save event
@@ -113,39 +113,39 @@ GameObj.World.prototype = {
 		this.state.start('Menu');
 
 	},
-	
+
 	goToRoom: function (room) {
 		return function () {
-			
+
 			var self = this;
 			GameObj.room = room;
-			
+
 			// Save event
 			GameObj.db.insertEvent(GameObj.user.id, 'click', 'world:' + GameObj.world, 'room:' + room);
-			
+
 			// Get JSONs
 			var worldsJson = this.cache.getJSON('worlds');
 			// Get room objects
 			var roomObj = worldsJson.worlds[GameObj.world].rooms[GameObj.room];
-			
+
 			// Get Stuff from DB
 			// Get room level
 			GameObj.db.getLevel(GameObj.user.id, roomObj.id, function (res) {
-				
+
 				// If no result returned -> first time this room has been opened
 				if(res.rows.length == 0) {
-					
+
 					// If room id is higher then One, start from higher level
 					var startLevel = 0;
 					if(roomObj.id > 1) {
 						startLevel = 1;
 					}
-					
+
 					// Insert new clean room entry
 					GameObj.db.insertLevel(GameObj.user.id, roomObj.id, startLevel, function (id) {
 						// Save user in game object
 						GameObj.level = {id: id, user_id: GameObj.user.id, room: roomObj.id, level: 0, cleared: 0, cleared_total: 0, failed: 0, timestamp: Date.now()};
-						
+
 						// Go to room only when level stuff loaded
 						self.state.start('Room');
 					});
@@ -153,7 +153,7 @@ GameObj.World.prototype = {
 				else {
 					// Save room in game object
 					GameObj.level = res.rows.item(0);
-					
+
 					// Go to room only when level stuff loaded
 					self.state.start('Room');
 				}
@@ -170,16 +170,18 @@ GameObj.World.prototype = {
 		// TODO: tell something
 		this.giveInstruction(false);
 	},
-	
+
 	giveInstruction: function (doGiggle) {
-		
+
+		return;
+
 		var self = this;
-		
+
 		// Choose audio
 		// Allow only one giggle
 		if(this._giggle == true || doGiggle == true) {
 			this._giggle = false;
-			
+
 			// Start audio with delay
 			// setTimeout(function () {
 			// 	// Start talking animation
@@ -193,18 +195,18 @@ GameObj.World.prototype = {
 			// Start talking animation
 			this._alien.talk(true);
 			this.setButtonsActive(false);
-		
-			this._sound.play('introTeachMeHowToPlan_audio', function() { 
+
+			this._sound.play('introTeachMeHowToPlan_audio', function() {
 				self._alien.talk(false);
 				self.setButtonsActive(true);
 			});
 
 		}
 	},
-	
+
 	// Enable / Disable buttons
 	setButtonsActive: function (state) {
-		
+
 		if(state == true) {
 			for(var i = 0; i < this._roomIcons.length; i++) {
 				this._roomIcons[i].alpha = 1;
@@ -222,6 +224,6 @@ GameObj.World.prototype = {
 			this._btnBack.inputEnabled = false;
 		}
 	},
-	
-	
+
+
 };

@@ -206,6 +206,20 @@ Db.prototype = {
 			});
 		});
 	},
+	// Get last task
+	getLastTask: function (userId, callback) {
+		this.db.transaction(function(tx) {
+			tx.executeSql(
+				'SELECT * FROM tasks ' +
+				'WHERE user_id = ? ' +
+				'ORDER BY id DESC ' +
+				'LIMIT 1',
+			[userId], function(tx, res) {
+				// Run callback if defined
+				typeof callback === 'function' && callback(res);
+			});
+		});
+	},
 	// Insert task wrong
 	incTaskWrong: function (taskId) {
 		this.db.transaction(function(tx) {
