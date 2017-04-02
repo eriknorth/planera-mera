@@ -271,10 +271,10 @@ GameObj.Room.prototype = {
 
 		self.getCogId(function(cogId) {
 
-			// console.log('COG ID is ' + cogId);
+			console.log('COG ID is ' + cogId);
 
 			var cogTaskId = GameObj.cogTaskList[GameObj.cogTaskIndex];
-			// console.log('COG Task ID is ' + cogTaskId);
+			console.log('COG Task ID is ' + cogTaskId);
 			if (cogTaskId == 9999) {
 				self.disableGamepaly();
 				return;
@@ -1721,7 +1721,8 @@ GameObj.Room.prototype = {
 
 			// If no result returned -> there is not task started
 			if(res.rows.length == 0) {
-				GameObj.cogTaskIndex = 0
+				GameObj.cogTaskIndex = 0;
+				typeof callback === 'function' && callback(GameObj.cogTaskIndex);
 			}
 			else {
 
