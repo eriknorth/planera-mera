@@ -293,7 +293,7 @@
 				{
 					"item": "diskstall",
 					"category": "",
-					"order": 4,
+					"order": 2,
 					"optional": false
 				}
 			]
@@ -345,7 +345,7 @@
 				{
 					"item": "",
 					"category": "boiler",
-					"order": 1,
+					"order": 2,
 					"optional": false
 				},
 				{
@@ -606,7 +606,7 @@
 				{
 					"item": "prinsesstarta",
 					"category": "",
-					"order": 2,
+					"order": 0,
 					"optional": false
 				},
 				{
@@ -618,7 +618,7 @@
 				{
 					"item": "",
 					"category": "knife",
-					"order": 1,
+					"order": 0,
 					"optional": true
 				},
 				{

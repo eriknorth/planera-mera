@@ -49,12 +49,6 @@
             "categories": [ "shower", "water" ]
         },
         {
-            "name": "dusch_2",
-            "x": 1171,
-            "y": 583,
-            "categories": [ "shower", "water" ]
-        },
-        {
             "name": "tvattmedel",
             "x": 223,
             "y": 665,
@@ -86,12 +80,6 @@
         },
         {
             "name": "vatten_1",
-            "x": 724,
-            "y": 441,
-            "categories": [ "water" ]
-        },
-        {
-            "name": "vatten_2",
             "x": 724,
             "y": 441,
             "categories": [ "water" ]

@@ -120,25 +120,19 @@
 				{
 					"item": "",
 					"category": "soap",
-					"order": 2,
-					"optional": false
-				},
-				{
-					"item": "",
-					"category": "water",
-					"order": 3,
-					"optional": false
-				},
-				{
-					"item": "handduk",
-					"category": "",
-					"order": 4,
+					"order": 1,
 					"optional": false
 				},
 				{
 					"item": "",
 					"category": "water",
 					"order": 1,
+					"optional": false
+				},
+				{
+					"item": "handduk",
+					"category": "",
+					"order": 2,
 					"optional": false
 				}
 			]
@@ -164,25 +158,19 @@
                 {
 					"item": "",
 					"category": "water",
-					"order": 3,
+					"order": 4,
 					"optional": false	
 				},
 				{
 					"item": "",
 					"category": "soap",
-					"order": 4,
-					"optional": false
-				},
-				{
-					"item": "",
-					"category": "water",
-					"order": 5,
+					"order": 3,
 					"optional": false
 				},
 				{
 					"item": "handduk",
 					"category": "",
-					"order": 6,
+					"order": 5,
 					"optional": true
 				}
 			]
@@ -226,8 +214,8 @@
 					"optional": false
 				},
 				{
-					"item": "",
-					"category": "shower",
+					"item": "dusch_1",
+					"category": "",
 					"order": 2,
 					"optional": false
 				},
@@ -243,7 +231,7 @@
 			"id": 9,
 			"name": "",
 			"difficulty": 0,
-			"audio": "wav/get_clothes.wav",
+			"audio": "wav/get_laundry.wav",
 			"items": [
 				{
 					"item": "",
@@ -591,33 +579,27 @@
 					"optional": false
 				},
 				{
-					"item": "",
+					"item": "vatten_1",
 					"category": "water",
 					"order": 1,
 					"optional": false
 				},
 				{
-					"item": "handduk",
+					"item": "dusch_1",
 					"category": "",
-					"order": 2,
-					"optional": true
-				},
-				{
-					"item": "",
-					"category": "shower",
-					"order": 0,
+					"order": 3,
 					"optional": false
 				},
 				{
 					"item": "",
 					"category": "soap",
-					"order": 4,
+					"order": 2,
 					"optional": false
 				},
 				{
 					"item": "handduk",
 					"category": "",
-					"order": 6,
+					"order": 4,
 					"optional": false
 				}
 								
@@ -801,8 +783,8 @@
 					"optional": false
 				},
 				{
-					"item": "",
-					"category": "water",
+					"item": "vatten_1",
+					"category": "",
 					"order": 3,
 					"optional": false
 				}
@@ -845,7 +827,7 @@
 		{
 			"id": 38,
 			"name": "",
-			"difficulty": 2,
+			"difficulty": 3,
 			"audio": "wav/put_soap_in_washing_mashine_THEN_wash_hands.wav",
 			"items": [
 				{
@@ -862,26 +844,20 @@
                 },
 				{
 					"item": "",
-					"category": "water",
-					"order": 3,
-					"optional": true
-				},
-				{
-					"item": "",
 					"category": "soap",
-					"order": 4,
+					"order": 3,
 					"optional": false
 				},
 				{
-					"item": "",
-					"category": "water",
-					"order": 5,
+					"item": "vatten_1",
+					"category": "",
+					"order": 4,
 					"optional": false
 				},
 				{
 					"item": "handduk",
 					"category": "",
-					"order": 6,
+					"order": 5,
 					"optional": false
 				}
             ]
@@ -889,7 +865,7 @@
 		{
 			"id": 39,
 			"name": "",
-			"difficulty": 1,
+			"difficulty": 3,
 			"audio": "wav/blow_nose_THEN_wash_hands.wav",
 			"items": [
 				{
@@ -900,26 +876,20 @@
 				},
 				{
 					"item": "",
-					"category": "water",
-					"order": 2,
-					"optional": true
-				},
-				{
-					"item": "",
 					"category": "soap",
-					"order": 3,
+					"order": 2,
 					"optional": false
 				},
 				{
-					"item": "",
-					"category": "water",
-					"order": 4,
+					"item": "vatten_1",
+					"category": "",
+					"order": 3,
 					"optional": false
 				},
 				{
 					"item": "handduk",
 					"category": "",
-					"order": 5,
+					"order": 4,
 					"optional": false
 				}
             ]
