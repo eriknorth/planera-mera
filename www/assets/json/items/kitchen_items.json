@@ -144,12 +144,6 @@
 			"x": 455,
 			"y": 436,
 			"categories": ["drinkable", "doing_dishes", "water"]
-		},		
-		{
-			"name": "vatten_2",
-			"x": 455,
-			"y": 436,
-			"categories": ["drinkable", "doing_dishes", "water"]
 		},
 		{
 			"name": "diskborste",
