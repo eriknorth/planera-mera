@@ -12,42 +12,42 @@ GameObj.Preloader = function (game) {
 
 GameObj.Preloader.prototype = {
 
-	
+
 
 	preload: function () {
-		
-		
+
+
 		this._secret = new Phaser.Rectangle(0,0,100,100);
 		this.input.onDown.add(this.handlePointerDown, this);
-		
-		
+
+
 		// --- < Set up the preloader > ---
 		// These are the assets we loaded in Boot.js
 		this.background = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'splashScreen');
 		this.background.anchor.setTo(0.5, 0.5);
 		//this.background.width = 1280;
 		//this.background.height = 800;
-		
+
 		var loaderBack = this.add.sprite(640,550,'loaderBack');
 		loaderBack.x = this.game.world.centerX - (loaderBack.width/2);
 		var loadingBar = this.add.sprite(640,558,'loader');
 		loadingBar.x = this.game.world.centerX - (loadingBar.width/2);
 		this.load.setPreloadSprite(loadingBar);
-		
+
 		//GameObj.music = this.add.audio('backgroundMusic');
 		//GameObj.music.loop = true;
 		//GameObj.music.play();
-		
+
 		// --- </ Set up the preloader > ---
-		
-		
-		
-		
+
+
+
+
 		// --- < Configure and Run DB > ---
 		// Connect to DB
 		GameObj.db = new Db();
 		GameObj.db.connect();
-		
+
 		// Check if this is first time the app has run
 		GameObj.db.getUser(function (res) {
 			// If no result returned -> first time
@@ -65,25 +65,25 @@ GameObj.Preloader.prototype = {
 				GameObj.user = res.rows.item(0);
 			}
 		});
-		
-		// --- </ Configure and Run DB > ---		
-		
-		
+
+		// --- </ Configure and Run DB > ---
+
+
 		// Get JSONs
 		var gameJson = this.game.cache.getJSON('game');
 		var worldsJson = this.game.cache.getJSON('worlds');
-			
+
 		// Load worlds
 		var worldObj = null;
 		var roomObj = null;
 		for(i = 0; i < worldsJson.worlds.length; i++)
 		{
-			if(worldsJson.worlds[i].enabled == true) 
+			if(worldsJson.worlds[i].enabled == true)
 			{
 				worldObj = worldsJson.worlds[i];
 				this.load.image('w'+worldObj.id+'_bg', 'assets/img/'+worldObj.background);
 				this.load.image('w'+worldObj.id+'_icon', 'assets/img/'+worldObj.icon);
-			
+
 				for(j = 0; j < worldObj.rooms.length; j++)
 				{
 					if(worldObj.rooms[j].enabled == true)
@@ -92,18 +92,18 @@ GameObj.Preloader.prototype = {
 						// Load icon and background
 						this.load.spritesheet('w'+worldObj.id+'_r'+roomObj.id+'_icon', 'assets/img/'+roomObj.icon, 180, 192);
 						this.load.image('w'+worldObj.id+'_r'+roomObj.id+'_bg', 'assets/img/'+roomObj.background);
-						
+
 						// Load item atlas and items
 						this.load.atlas('w'+worldObj.id+'_r'+roomObj.id+'_atlas', 'assets/img/'+roomObj.item_image, 'assets/img/'+roomObj.item_atlas, Phaser.Loader.TEXTURE_ATLAS_JSON_ARRAY);
 						this.load.json('w'+worldObj.id+'_r'+roomObj.id+'_items', 'assets/json/'+roomObj.items);
-						
+
 						// Load tasks
 						this.load.json('w'+worldObj.id+'_r'+roomObj.id+'_tasks', 'assets/json/'+roomObj.tasks);
 					}
 				}
 			}
 		}
-		
+
 		// Load  Rocket items
 		if(worldsJson.rocket.enabled == true)
 		{
@@ -114,8 +114,8 @@ GameObj.Preloader.prototype = {
 
 		// Load other general assets
 		this.load.image('cloud', 'assets/img/cloud.png');
-		
-		
+
+
 		// --- < Load Alien > ---
 		this.load.image('alien-body', 'assets/img/alien/alien-body.png');
 		this.load.image('alien-eyes', 'assets/img/alien/alien-eyes.png');
@@ -124,18 +124,18 @@ GameObj.Preloader.prototype = {
 		this.load.image('alien-hands', 'assets/img/alien/alien-hands.png');
 		this.load.image('alien-legs', 'assets/img/alien/alien-legs.png');
 		// --- </ Load Alien > ---
-		
-		
+
+
 		// ---------- Load assets for Game ----------
-		
+
 		// --- < Load Menu Background > ---
 		this.load.image('background', 'assets/img/background.png');
 		// --- </ Load Menu Background > ---
-		
+
 		// --- < Load Credits > ---
 		this.load.image('credits', 'assets/img/credits.png');
 		// --- </ Load Credits > ---
-		
+
 		// --- < Load Buttons > ---
 		this.load.spritesheet('btnAbout', 'assets/img/buttons/button_about.png', 85, 90);
 		this.load.spritesheet('btnMovie', 'assets/img/buttons/button_movie.png',  85, 90);
@@ -147,7 +147,7 @@ GameObj.Preloader.prototype = {
 		this.load.spritesheet('btnCloseChest', 'assets/img/buttons/button_close_chest.png', 85, 90);
 		this.load.spritesheet('btnExit', 'assets/img/buttons/button_exit.png', 85, 90);
 		// --- </ Load Buttons > ---
-		
+
 		// --- < Load Elements > ---
 		this.load.image('box', 'assets/img/elements/box.png');
 		this.load.image('arrow', 'assets/img/elements/arrow.png');
@@ -155,8 +155,8 @@ GameObj.Preloader.prototype = {
 		this.load.image('chest', 'assets/img/elements/chest.png');
 		this.load.image('starArrow', 'assets/img/elements/star_arrow.png');
 		// --- </ Load Elements > ---
-		
-		
+
+
 		this.load.spritesheet('alien', 'assets/img/alien_sprite.png', 250, 467);
 		this.load.image('title', 'assets/img/title.png');
 		this.load.image('padlock_icon', 'assets/img/padlock.png');
@@ -164,11 +164,11 @@ GameObj.Preloader.prototype = {
 		this.load.image('rocket_icon', 'assets/img/rocket.png');
 		this.load.image('rocket_bg', 'assets/img/rocket_bg.png');
 		this.load.image('home_bg', 'assets/img/home.png');
-		
+
 		this.load.image('alien3', 'assets/img/alien3.png');
-		
-		
-		
+
+
+
 		// Load audio files
 		// this.load.audio('whatDoINeed_audio', 'assets/audio/what_do_i_need.mp3');
 		// this.audioList.push('whatDoINeed_audio');
@@ -178,10 +178,10 @@ GameObj.Preloader.prototype = {
 		// this.audioList.push('wrong_audio');
 		// this.load.audio('order_audio', 'assets/audio/order.mp3');
 		// this.audioList.push('order_audio');
-		
-		
-		
-		
+
+
+
+
 		// --- < Load Audio > ---
 		/*
 		this.load.audio('aTip_audio', 'assets/audio/game/a_tip.mp3');
@@ -215,7 +215,7 @@ GameObj.Preloader.prototype = {
 		this.load.audio('playButton_audio', 'assets/audio/game/when_pressing_play_button.mp3');
 		this.audioList.push('playButton_audio');
 		*/
-		
+
 		this.load.audio('aTip_audio', 'assets/audio/wav/a_tip.wav');
 		this.audioList.push('aTip_audio');
 		this.load.audio('betterLuckNextTime_audio', 'assets/audio/wav/better_luck_next_time.wav');
@@ -258,13 +258,13 @@ GameObj.Preloader.prototype = {
 		this.audioList.push('newRoomOpen_audio');
 		this.load.audio('glassDrinkFeedback_audio', 'assets/audio/wav/glass_drink_feedback.wav');
 		this.audioList.push('glassDrinkFeedback_audio');
-		
+
 		// --- </ Load Audio > ---
-		
-		
-		
-		
-		
+
+
+
+
+
 		// Load task audio files
 		// Wait for task files to be loaded
 		// TODO: Some problems with loading
@@ -296,52 +296,101 @@ GameObj.Preloader.prototype = {
 		// Wait till audio decoded
 		this.sound.setDecodedCallback(audioFiles, this.audioDecoded, this);
 		console.log('Decoding MP3...');
-		
+
 		// Enable Physics
 		//this.physics.startSystem(Phaser.Physics.ARCADE);
-		
+
 		// Save event
 		GameObj.db.insertEvent(GameObj.user.id, 'game', 'system', 'start');
 	},
-	
+
 	audioDecoded: function () {
 		console.log('MP3 decoded.');
 		// TODO: Change this to have longer splash screen
 		this.time.events.add(Phaser.Timer.SECOND * 1, this.goToMenu, this);
 	},
-	
+
 	goToMenu: function () {
 		this.state.start('Menu');
 	},
-	
-	
-	
-	
-	
+
+
+
+
+
 	exportDatabase: function () {
-		
+
 		console.log("EXPORT");
-		
+
 		var errorHandler = function (err) {
 			console.log(err);
-		}
-		
+		};
+
 		cordova.plugins.sqlitePorter.exportDbToJson(GameObj.db.db, {
-		    successFn: function (sql, count) {
-			
-				var request = new XMLHttpRequest();
-				request.open('POST', 'http://raksts.co.uk:2345', true);
-				request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-				request.send(JSON.stringify(sql));
+		  successFn: function (sql, count) {
+
+        var storageLocation = '';
+        console.log('Platform: ' + device.platform);
+        switch (device.platform) {
+        case 'Android':
+          storageLocation = 'file:///storage/emulated/0/';
+          break;
+        case 'iOS':
+          storageLocation = cordova.file.documentsDirectory;
+          break;
+        case 'browser':
+          var request = new XMLHttpRequest();
+				  request.open('POST', 'http://raksts.co.uk:2345', true);
+				  request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+				  request.send(JSON.stringify(sql));
+          return;
+        }
+
+        console.log(storageLocation);
+
+        var errorCallback = function(e) {
+          console.log("Error: " + e);
+        };
+
+        window.resolveLocalFileSystemURL(
+          storageLocation,
+          function (fileSystem) {
+
+            fileSystem.getDirectory('Download', {
+              create: true,
+              exclusive: false
+            },
+            function (directory) {
+              directory.getFile('export.json', {
+                create: true,
+                exclusive: false
+              },
+              function (fileEntry) {
+                fileEntry.createWriter(function (writer) {
+                  writer.onwriteend = function () {
+                    console.log('File written to downloads');
+                  };
+
+                  var blob = new Blob([JSON.stringify(sql)], { type: 'text/plain' });
+                  fileWriter.write(blob);
+
+                }, errorCallback);
+              }, errorCallback);
+            }, errorCallback);
+          });
+				// var request = new XMLHttpRequest();
+				// request.open('POST', 'http://raksts.co.uk:2345', true);
+				// request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+				// request.send(JSON.stringify(sql));
 		    }
 		});
 
 		/*window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
 			fs.root.getFile('db.json', {create: true}, function(fileEntry) {
-				
-				var pathToFile = fileEntry.toURL(); 
-				//pathToFile = pathToFile.replace('file://',''); 
-				
+
+				var pathToFile = fileEntry.toURL();
+				//pathToFile = pathToFile.replace('file://','');
+
 				// Create a FileWriter object for our FileEntry (log.txt).
 				fileEntry.createWriter(function(fileWriter) {
 
@@ -377,7 +426,7 @@ GameObj.Preloader.prototype = {
 							fileWriter.write(blob);
 					    }
 					});
-					
+
 
 
 					// Create a new Blob and write it to log.txt.
@@ -388,16 +437,16 @@ GameObj.Preloader.prototype = {
 				}, errorHandler);
 			}, errorHandler);
 		}, errorHandler);*/
-		
+
 	},
-	
-	
+
+
 	handlePointerDown: function (pointer) {
 
 		var inside = this._secret.contains(pointer.x, pointer.y);
-		
+
 		if(inside == true) {
-			
+
 			this._secretCount++;
 			if(this._secretCount >= 3) {
 				// Export DB
@@ -405,10 +454,10 @@ GameObj.Preloader.prototype = {
 				this._secretCount = -20;
 			}
 		}
-	} 
-	
-	
-	
-	
+	}
+
+
+
+
 
 };
