@@ -246,7 +246,7 @@ GameObj.Preloader.prototype = {
 		this.audioList.push('somethingIsMissing_audio');
 		this.load.audio('theOrderIsNotCorrect_audio', 'assets/audio/wav/the_order_is_not_correct.wav');
 		this.audioList.push('theOrderIsNotCorrect_audio');
-		this.load.audio('whatThingsDoINeed_audio', 'assets/audio/wav/what_things_do_I_need.wav');
+		this.load.audio('whatThingsDoINeed_audio', 'assets/audio/wav/what_things_do_i_need.wav');
 		this.audioList.push('whatThingsDoINeed_audio');
 		this.load.audio('playButton_audio', 'assets/audio/wav/when_pressing_play_button.wav');
 		this.audioList.push('playButton_audio');
@@ -372,7 +372,7 @@ GameObj.Preloader.prototype = {
                   };
 
                   var blob = new Blob([JSON.stringify(sql)], { type: 'text/plain' });
-                  fileWriter.write(blob);
+                  writer.write(blob);
 
                 }, errorCallback);
               }, errorCallback);

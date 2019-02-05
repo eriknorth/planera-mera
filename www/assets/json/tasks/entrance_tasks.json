@@ -529,7 +529,7 @@
 			"id": 327,
 			"name": "",
 			"difficulty": 2,
-			"audio": "wav/pack_bag_for_school_THEN_water_plants.wav",
+			"audio": "wav/pack_bag_for_school_then_water_plants.wav",
 			"items": [
 				{
 					"item": "ryggsack",
@@ -580,7 +580,7 @@
 			"id": 328,
 			"name": "",
 			"difficulty": 3,
-			"audio": "wav/pack_bag_with_warm_clothes_THEN_fill_bucket_with_water_and_soap.wav",
+			"audio": "wav/pack_bag_with_warm_clothes_then_fill_bucket_with_water_and_soap.wav",
 			"items": [
 				{
 					"item": "",
